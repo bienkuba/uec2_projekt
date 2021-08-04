@@ -1,7 +1,7 @@
 # Constraints for CLK
 set_property PACKAGE_PIN W5 [get_ports clk]
 set_property IOSTANDARD LVCMOS33 [get_ports clk]
-create_clock -name external_clock -period 10.00 [get_ports clk]
+create_clock -period 10.00 [get_ports clk]
 
 # Constraints for VS and HS
 set_property PACKAGE_PIN R19 [get_ports {vs}]
@@ -49,10 +49,3 @@ set_property CONFIG_VOLTAGE 3.3 [current_design]
 # Constraints for reset
 set_property PACKAGE_PIN U18 [get_ports {rst}]
 set_property IOSTANDARD LVCMOS33 [get_ports {rst}]
-
-create_clock -period 10.000 [get_ports clk]
-set_input_jitter [get_clocks -of_objects [get_ports clk]] 0.1
-
-
-set_false_path -to [get_cells  -hier {*seq_reg*[0]} -filter {is_sequential}]
-set_property PHASESHIFT_MODE WAVEFORM [get_cells -hierarchical *adv*]

@@ -35,7 +35,7 @@ module vga_example (
   (* KEEP = "TRUE" *) 
   (* ASYNC_REG = "TRUE" *)
   reg [7:0] safe_start = 0;
-
+  /*
   IBUF clk_ibuf (.I(clk),.O(clk_in));
 
   MMCME2_BASE #(
@@ -67,7 +67,7 @@ module vga_example (
   always @(posedge clk_ss) safe_start<= {safe_start[6:0],locked};
 
   BUFGCE clk_out_bufgce (.I(clk_out),.CE(safe_start[7]),.O(pclk));
-
+  */
   // Mirrors pclk on a pin for use by the testbench;
   // not functionally required for this design to work.
 
