@@ -37,6 +37,7 @@ if {[lindex $argv 0] == "program"} {
 
 read_xdc {
     constraints/vga_example.xdc
+    constraints/clk_wiz_0.xdc
 }
 
 read_verilog {
@@ -44,6 +45,8 @@ read_verilog {
     rtl/vga_timing.v
     rtl/draw_background.v
     rtl/draw_rect.v
+    rtl/clk_wiz_0.v
+    rtl/clk_wiz_0_clk_wiz.v
 }
 
 add_files -fileset sim_1 {
