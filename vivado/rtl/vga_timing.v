@@ -28,7 +28,7 @@ module vga_timing (
   localparam HOR_TOTAL_TIME  = 1650;
   localparam HOR_BLANK_START = 1280;
   localparam HOR_BLANK_TIME  = 370;
-  localparam HOR_SYNC_START  = 1500; //__________________________________?
+  localparam HOR_SYNC_START  = 1390; //__________________________________?
   localparam HOR_SYNC_TIME   = 40;
 
   localparam VER_TOTAL_TIME  = 750;

@@ -1,4 +1,4 @@
-set project lab_II_3
+set project Tetris
 set top_module vga_example
 set target xc7a35tcpg236-1
 set bitstream_file build/${project}.runs/impl_1/${top_module}.bit
