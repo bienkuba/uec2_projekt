@@ -84,6 +84,15 @@ module vga_example (
   // Instantiate the vga_timing module, which is
   // the module you are designing for this lab.
   
+  wire mclk;
+  clk_wiz_0 clk_wiz_0_my(
+      .clk(clk),
+      .clk75MHz(pclk),
+      .clk100MHz(mclk),
+      .reset(rst),
+      .locked(locked)
+    );
+
   wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r;
   wire vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r;
   wire vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r;
