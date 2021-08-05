@@ -46,21 +46,44 @@
     // During blanking, make it it black.
     if (vblnk_in || hblnk_in) rgb_out_nxt <= 12'h0_0_0; 
     else begin
+      // guide net      
+           if (hcount_in == 235) rgb_out_nxt <= 12'h0_f_0;
+      else if (hcount_in == 270) rgb_out_nxt <= 12'h0_f_0;
+      else if (hcount_in == 200+315) rgb_out_nxt <= 12'h0_f_0;
+      else if (vcount_in == 45) rgb_out_nxt <= 12'hf_f_0;
+      else if (vcount_in == 80) rgb_out_nxt <= 12'hf_f_0;
+      else if (vcount_in == 10+665) rgb_out_nxt <= 12'hf_f_0;
+      // frame bright part
+      else if (hcount_in >= 190 && hcount_in <= 191) rgb_out_nxt <= 12'ha_a_a;
+      else if ((hcount_in >= 550 && hcount_in <= 551) && (vcount_in >= 10 && vcount_in <= 710)) rgb_out_nxt <= 12'ha_a_a;      
+      else if ((hcount_in >= 190 && hcount_in <= 560) && (vcount_in >= 0 && vcount_in <= 1)) rgb_out_nxt <= 12'ha_a_a;
+      else if ((hcount_in >= 200 && hcount_in <= 551) && (vcount_in >= 710 && vcount_in <= 711)) rgb_out_nxt <= 12'ha_a_a;
+      // frame dark part
+      else if ((hcount_in >= 198 && hcount_in <= 199) && (vcount_in >= 10 && vcount_in <= 710)) rgb_out_nxt <= 12'h6_6_6;
+      else if (hcount_in >= 559 && hcount_in <= 560) rgb_out_nxt <= 12'h6_6_6;      
+      else if ((hcount_in >= 199 && hcount_in <= 550) && (vcount_in >= 8 && vcount_in <= 9)) rgb_out_nxt <= 12'h6_6_6;
+      else if ((hcount_in >= 190 && hcount_in <= 560) && (vcount_in >= 718 && vcount_in <= 719)) rgb_out_nxt <= 12'h6_6_6;
+      // basic frame of game area
+      else if (hcount_in >= 190 && hcount_in <= 199) rgb_out_nxt <= 12'h8_8_8; 
+      else if (hcount_in >= 550 && hcount_in <= 560) rgb_out_nxt <= 12'h8_8_8;
+      else if ((hcount_in >= 190 && hcount_in <= 560) && (vcount_in >= 0 && vcount_in <= 9)) rgb_out_nxt <= 12'h8_8_8;
+      else if ((hcount_in >= 190 && hcount_in <= 560) && (vcount_in >= 710 && vcount_in <= 719)) rgb_out_nxt <= 12'h8_8_8;
+      // game area background
+      else if ((hcount_in >= 200 && hcount_in <= 549) && (vcount_in >= 10 && vcount_in <= 710)) rgb_out_nxt <= 12'h0_0_0;   
+      
+      
+      // ____________________________________________________DELETE LATER 
       // Active display, top edge, make a yellow line.
-      if (vcount_in == 0) rgb_out_nxt <= 12'hf_f_0;
+      else if (vcount_in == 0) rgb_out_nxt <= 12'hf_f_0;
       // Active display, bottom edge, make a red line.
       else if (vcount_in == 719) rgb_out_nxt <= 12'hf_0_0;
       // Active display, left edge, make a green line.
       else if (hcount_in == 0) rgb_out_nxt <= 12'h0_f_0;
       // Active display, right edge, make a blue line.
       else if (hcount_in == 1279) rgb_out_nxt <= 12'h0_0_f;
-      // Active display, interior, fill with gray.
-      // You will replace this with your own test.
-      else if((hcount_in >= 60 && hcount_in <= 90)   && (vcount_in >= 150 && vcount_in <= 500)) rgb_out_nxt <= 12'hd_f_3; 
-      
-      
-      else rgb_out_nxt <= 12'h8_8_8;    
-        
+      // Active display, interior, fill with gray.  
+      //_____________________________________________________DELETE LATER 
+      else rgb_out_nxt <= 12'h1_9_f;  
     end
   end
             
