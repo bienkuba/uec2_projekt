@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Thu Aug  5 18:32:41 2021
+# Process ID: 12948
+# Current directory: F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/xsim_webtalk.tcl -notrace

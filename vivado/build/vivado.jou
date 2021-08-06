@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Thu Aug  5 18:35:18 2021
+# Process ID: 21016
+# Current directory: F:/Project_tetris/uec2_projekt/vivado/build
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12740 F:\Project_tetris\uec2_projekt\vivado\build\Tetris.xpr
+# Log file: F:/Project_tetris/uec2_projekt/vivado/build/vivado.log
+# Journal file: F:/Project_tetris/uec2_projekt/vivado/build\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project F:/Project_tetris/uec2_projekt/vivado/build/Tetris.xpr
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files F:/Project_tetris/uec2_projekt/vivado/rtl/draw_tetrimino.v] -no_script -reset -force -quiet
+remove_files  F:/Project_tetris/uec2_projekt/vivado/rtl/draw_tetrimino.v
+add_files -norecurse F:/Project_tetris/uec2_projekt/vivado/rtl/game_ctl.v
+update_compile_order -fileset sources_1
