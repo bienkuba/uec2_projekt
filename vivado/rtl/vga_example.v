@@ -12,7 +12,10 @@
 
 module vga_example (
   input wire clk,
-  input wire rst, 
+  input wire rst,
+  input wire btnL,
+  input wire btnR,
+  input wire btnD,
   output reg vs,
   output reg hs,
   output reg [3:0] r,
@@ -35,41 +38,6 @@ module vga_example (
   (* KEEP = "TRUE" *) 
   (* ASYNC_REG = "TRUE" *)
   reg [7:0] safe_start = 0;
-  /*
-  IBUF clk_ibuf (.I(clk),.O(clk_in));
-
-  MMCME2_BASE #(
-    .CLKIN1_PERIOD(10.000),
-    .CLKFBOUT_MULT_F(10.000),
-    .CLKOUT0_DIVIDE_F(25.000))
-  clk_in_mmcme2 (
-    .CLKIN1(clk_in),
-    .CLKOUT0(clk_out),
-    .CLKOUT0B(),
-    .CLKOUT1(),
-    .CLKOUT1B(),
-    .CLKOUT2(),
-    .CLKOUT2B(),
-    .CLKOUT3(),
-    .CLKOUT3B(),
-    .CLKOUT4(),
-    .CLKOUT5(),
-    .CLKOUT6(),
-    .CLKFBOUT(clkfb),
-    .CLKFBOUTB(),
-    .CLKFBIN(clkfb),
-    .LOCKED(locked),
-    .PWRDWN(1'b0),
-    .RST(1'b0)
-  );
-
-  BUFH clk_out_bufh (.I(clk_out),.O(clk_ss));
-  always @(posedge clk_ss) safe_start<= {safe_start[6:0],locked};
-
-  BUFGCE clk_out_bufgce (.I(clk_out),.CE(safe_start[7]),.O(pclk));
-  */
-  // Mirrors pclk on a pin for use by the testbench;
-  // not functionally required for this design to work.
 
   ODDR pclk_oddr (
     .Q(pclk_mirror),
@@ -96,7 +64,8 @@ module vga_example (
   wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r;
   wire vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r;
   wire vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r;
-  wire [11:0] rgb_out_b, rgb_out_r;
+  wire db_tick, db_level;
+  wire [11:0] rgb_out_b, rgb_out_r, xpos_out, ypos_out;
 
 
   vga_timing my_timing (
@@ -140,7 +109,9 @@ module vga_example (
     .rgb_in(rgb_out_b),
     .pclk(pclk),
     .rst(rst),
-           
+    .xpos(xpos_out),
+    .ypos(ypos_out),
+          
     .hcount_out(hcount_out_r),
     .hsync_out(hsync_out_r),
     .hblnk_out(hblnk_out_r),
@@ -149,7 +120,19 @@ module vga_example (
     .vblnk_out(vblnk_out_r),
     .rgb_out(rgb_out_r)
     );
-      
+
+  draw_rect_ctl my_rect_ctl(
+    .pclk(pclk),
+    .rst(rst),       
+    .btnL(btnL),
+    .btnR(btnR),
+    .btnD(btnD),
+    
+    .xpos(xpos_out),
+    .ypos(ypos_out)
+  );
+  
+
   always @(posedge pclk)begin
     hs <= hsync_out_r;
     vs <= vsync_out_r;

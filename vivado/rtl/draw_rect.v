@@ -31,6 +31,8 @@ module draw_rect(
  input wire pclk,
  input wire [11:0] rgb_in,
  input wire rst,
+ input wire [11:0] xpos,
+ input wire [11:0] ypos,
  
  output reg [10:0] vcount_out,
  output reg vsync_out,
@@ -76,21 +78,21 @@ module draw_rect(
       if (vblnk_in || hblnk_in) rgb_out_nxt = 12'h0_0_0; 
         else begin
           // left and top edge -> bright
-          if      (vcount_in >= Y_POS     && vcount_in < SIZE + Y_POS - 1 && hcount_in == X_POS)            rgb_out_nxt = 12'hf_a_b; 
-          else if (vcount_in >= Y_POS     && vcount_in < SIZE + Y_POS - 2 && hcount_in == X_POS + 1)        rgb_out_nxt = 12'hf_a_b; 
-          else if (vcount_in >= Y_POS     && vcount_in < SIZE + Y_POS - 3 && hcount_in == X_POS + 2)        rgb_out_nxt = 12'hf_a_b;
-          else if (vcount_in == Y_POS     && hcount_in > X_POS             && hcount_in < SIZE + X_POS - 1) rgb_out_nxt = 12'hf_a_b;
-          else if (vcount_in == Y_POS + 1 && hcount_in > X_POS             && hcount_in < SIZE + X_POS - 2) rgb_out_nxt = 12'hf_a_b;
-          else if (vcount_in == Y_POS + 2 && hcount_in > X_POS             && hcount_in < SIZE + X_POS - 3) rgb_out_nxt = 12'hf_a_b;
+          if      (vcount_in >= ypos     && vcount_in < SIZE + ypos - 1 && hcount_in == xpos)            rgb_out_nxt = 12'hf_a_b; 
+          else if (vcount_in >= ypos     && vcount_in < SIZE + ypos - 2 && hcount_in == xpos + 1)        rgb_out_nxt = 12'hf_a_b; 
+          else if (vcount_in >= ypos     && vcount_in < SIZE + ypos - 3 && hcount_in == xpos + 2)        rgb_out_nxt = 12'hf_a_b;
+          else if (vcount_in == ypos     && hcount_in > xpos             && hcount_in < SIZE + xpos - 1) rgb_out_nxt = 12'hf_a_b;
+          else if (vcount_in == ypos + 1 && hcount_in > xpos             && hcount_in < SIZE + xpos - 2) rgb_out_nxt = 12'hf_a_b;
+          else if (vcount_in == ypos + 2 && hcount_in > xpos             && hcount_in < SIZE + xpos - 3) rgb_out_nxt = 12'hf_a_b;
           // right and bottom edge -> dark
-          else if (vcount_in >= Y_POS + 1        && vcount_in < SIZE + Y_POS && hcount_in == X_POS + SIZE - 1) rgb_out_nxt = 12'h8_0_0; 
-          else if (vcount_in >= Y_POS + 2        && vcount_in < SIZE + Y_POS && hcount_in == X_POS + SIZE - 2) rgb_out_nxt = 12'h8_0_0; 
-          else if (vcount_in >= Y_POS + 3        && vcount_in < SIZE + Y_POS && hcount_in == X_POS + SIZE - 3) rgb_out_nxt = 12'h8_0_0;
-          else if (vcount_in == Y_POS + SIZE - 1 && hcount_in > X_POS         && hcount_in < SIZE + X_POS)     rgb_out_nxt = 12'h8_0_0;
-          else if (vcount_in == Y_POS + SIZE - 2 && hcount_in > X_POS + 1     && hcount_in < SIZE + X_POS)     rgb_out_nxt = 12'h8_0_0;
-          else if (vcount_in == Y_POS + SIZE - 3 && hcount_in > X_POS + 2     && hcount_in < SIZE + X_POS)     rgb_out_nxt = 12'h8_0_0;          
+          else if (vcount_in >= ypos + 1        && vcount_in < SIZE + ypos && hcount_in == xpos + SIZE - 1) rgb_out_nxt = 12'h8_0_0; 
+          else if (vcount_in >= ypos + 2        && vcount_in < SIZE + ypos && hcount_in == xpos + SIZE - 2) rgb_out_nxt = 12'h8_0_0; 
+          else if (vcount_in >= ypos + 3        && vcount_in < SIZE + ypos && hcount_in == xpos + SIZE - 3) rgb_out_nxt = 12'h8_0_0;
+          else if (vcount_in == ypos + SIZE - 1 && hcount_in > xpos         && hcount_in < SIZE + xpos)     rgb_out_nxt = 12'h8_0_0;
+          else if (vcount_in == ypos + SIZE - 2 && hcount_in > xpos + 1     && hcount_in < SIZE + xpos)     rgb_out_nxt = 12'h8_0_0;
+          else if (vcount_in == ypos + SIZE - 3 && hcount_in > xpos + 2     && hcount_in < SIZE + xpos)     rgb_out_nxt = 12'h8_0_0;          
           // inside color
-          else if (vcount_in >= Y_POS && vcount_in < SIZE + Y_POS && hcount_in >= X_POS && hcount_in < SIZE + X_POS) rgb_out_nxt = COLOR;
+          else if (vcount_in >= ypos && vcount_in < SIZE + ypos && hcount_in >= xpos && hcount_in < SIZE + xpos) rgb_out_nxt = COLOR;
             else rgb_out_nxt = rgb_in;
           end
       end

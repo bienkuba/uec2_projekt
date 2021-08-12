@@ -47,6 +47,8 @@ read_verilog {
     rtl/draw_rect.v
     rtl/clk_wiz_0.v
     rtl/clk_wiz_0_clk_wiz.v
+    rtl/debounce.v
+    rtl/draw_rect_ctl.v
 }
 
 add_files -fileset sim_1 {
