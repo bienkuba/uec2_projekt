@@ -43,12 +43,11 @@ module draw_rect(
  output reg [11:0] rgb_out
  );
   
-  localparam x = 9; //from 0 to 9
-  localparam y = 19; //from 0 to 19
-  localparam X_POS = 201+35*x;
-  localparam Y_POS = 10+35*y;
+//  localparam x = 9; //from 0 to 9
+//  localparam y = 19; //from 0 to 19
+//  localparam X_POS = 201+35*x;
+//  localparam Y_POS = 10+35*y;
   localparam SIZE  = 35;
-  localparam COLOR = 12'hf_0_0;
     
   reg [11:0] rgb_out_nxt;
            
@@ -77,22 +76,8 @@ module draw_rect(
     begin
       if (vblnk_in || hblnk_in) rgb_out_nxt = 12'h0_0_0; 
         else begin
-          // left and top edge -> bright
-          if      (vcount_in >= ypos     && vcount_in < SIZE + ypos - 1 && hcount_in == xpos)            rgb_out_nxt = 12'hf_a_b; 
-          else if (vcount_in >= ypos     && vcount_in < SIZE + ypos - 2 && hcount_in == xpos + 1)        rgb_out_nxt = 12'hf_a_b; 
-          else if (vcount_in >= ypos     && vcount_in < SIZE + ypos - 3 && hcount_in == xpos + 2)        rgb_out_nxt = 12'hf_a_b;
-          else if (vcount_in == ypos     && hcount_in > xpos             && hcount_in < SIZE + xpos - 1) rgb_out_nxt = 12'hf_a_b;
-          else if (vcount_in == ypos + 1 && hcount_in > xpos             && hcount_in < SIZE + xpos - 2) rgb_out_nxt = 12'hf_a_b;
-          else if (vcount_in == ypos + 2 && hcount_in > xpos             && hcount_in < SIZE + xpos - 3) rgb_out_nxt = 12'hf_a_b;
-          // right and bottom edge -> dark
-          else if (vcount_in >= ypos + 1        && vcount_in < SIZE + ypos && hcount_in == xpos + SIZE - 1) rgb_out_nxt = 12'h8_0_0; 
-          else if (vcount_in >= ypos + 2        && vcount_in < SIZE + ypos && hcount_in == xpos + SIZE - 2) rgb_out_nxt = 12'h8_0_0; 
-          else if (vcount_in >= ypos + 3        && vcount_in < SIZE + ypos && hcount_in == xpos + SIZE - 3) rgb_out_nxt = 12'h8_0_0;
-          else if (vcount_in == ypos + SIZE - 1 && hcount_in > xpos         && hcount_in < SIZE + xpos)     rgb_out_nxt = 12'h8_0_0;
-          else if (vcount_in == ypos + SIZE - 2 && hcount_in > xpos + 1     && hcount_in < SIZE + xpos)     rgb_out_nxt = 12'h8_0_0;
-          else if (vcount_in == ypos + SIZE - 3 && hcount_in > xpos + 2     && hcount_in < SIZE + xpos)     rgb_out_nxt = 12'h8_0_0;          
-          // inside color
-          else if (vcount_in >= ypos && vcount_in < SIZE + ypos && hcount_in >= xpos && hcount_in < SIZE + xpos) rgb_out_nxt = COLOR;
+            if (vcount_in >= ypos && vcount_in < SIZE + ypos && hcount_in >= xpos && hcount_in < SIZE + xpos) rgb_out_nxt = 12'hf_0_0;
+            
             else rgb_out_nxt = rgb_in;
           end
       end

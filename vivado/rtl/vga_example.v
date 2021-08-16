@@ -16,6 +16,7 @@ module vga_example (
   input wire btnL,
   input wire btnR,
   input wire btnD,
+  input wire btnU,
   output reg vs,
   output reg hs,
   output reg [3:0] r,
@@ -127,9 +128,12 @@ module vga_example (
     .btnL(btnL),
     .btnR(btnR),
     .btnD(btnD),
+    .btnU(btnU),
     
     .xpos(xpos_out),
-    .ypos(ypos_out)
+    .ypos(ypos_out),
+    .column(),
+    .row()
   );
   
 
