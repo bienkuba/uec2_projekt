@@ -1,0 +1,2561 @@
+/*
+
+Xilinx Vivado v2017.3 (64-bit) [Major: 2017, Minor: 3]
+SW Build: 2018833 on Wed Oct  4 19:58:22 MDT 2017
+IP Build: 2016188 on Wed Oct  4 21:52:56 MDT 2017
+
+Process ID: 33288
+License: Customer
+
+Current time: 	Sun Aug 15 14:06:38 CEST 2021
+Time zone: 	Central European Time (Europe/Belgrade)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 12
+
+Screen size: 1536x864
+Screen resolution (DPI): 96
+Available screens: 2
+Available disk space: 144 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	C:/Xilinx/Vivado/2017.3/tps/win64/jre
+JVM executable location: 	C:/Xilinx/Vivado/2017.3/tps/win64/jre/bin/java.exe
+
+User name: 	czlow
+User home directory: C:/Users/czlow
+User working directory: C:/Users/czlow/OneDrive/Pulpit/vivado/build
+User country: 	PL
+User language: 	pl
+User locale: 	pl_PL
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2017.3
+RDI_DATADIR: C:/Xilinx/Vivado/2017.3/data
+RDI_BINDIR: C:/Xilinx/Vivado/2017.3/bin
+
+User preferences location: C:/Users/czlow/AppData/Roaming/Xilinx/Vivado
+Vivado preferences directory: C:/Users/czlow/AppData/Roaming/Xilinx/Vivado/2017.3/vivado.xml
+Vivado layouts directory: C:/Users/czlow/AppData/Roaming/Xilinx/Vivado/2017.3/layouts
+PlanAhead jar file location: 	C:/Xilinx/Vivado/2017.3/lib/classes/planAhead.jar
+Vivado log file location: 	C:/Users/czlow/OneDrive/Pulpit/vivado/build/vivado.log
+Vivado journal file location: 	C:/Users/czlow/OneDrive/Pulpit/vivado/build/vivado.jou
+Engine tmp dir: 	C:/Users/czlow/OneDrive/Pulpit/vivado/build/.Xil/Vivado-33288-LAPTOP-1QF2NU10
+
+GUI allocated memory:	198 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 647 MB
+
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// TclEventType: PROJECT_OPEN_DIALOG
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// bs (cl):  Open Project : addNotify
+// Opening Vivado Project: C:\Users\czlow\OneDrive\Pulpit\vivado\build\Tetris.xpr. Version: Vivado v2017.3 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 72 MB (+72951kb) [00:00:04]
+// [Engine Memory]: 539 MB (+414169kb) [00:00:04]
+// Tcl Message: open_project C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 104 MB (+30235kb) [00:00:05]
+// [Engine Memory]: 588 MB (+22846kb) [00:00:05]
+// [GUI Memory]: 122 MB (+12518kb) [00:00:05]
+// [Engine Memory]: 621 MB (+3486kb) [00:00:05]
+// [GUI Memory]: 134 MB (+6333kb) [00:00:06]
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.3/data/ip'. 
+// Project name: Tetris; location: C:/Users/czlow/OneDrive/Pulpit/vivado/build; part: xc7a35tcpg236-1
+// [Engine Memory]: 662 MB (+10907kb) [00:00:06]
+dismissDialog("Open Project"); // bs (cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// HMemoryUtils.trashcanNow. Engine heap size: 665 MB. GUI used memory: 41 MB. Current time: 8/15/21 2:06:40 PM CEST
+// TclEventType: DG_GRAPH_GENERATED
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 30 seconds
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aF (Q, cl)
+selectCheckBox(PAResourceItoN.MsgView_INFORMATION_MESSAGES, (String) null, false); // g (aQ, cl): FALSE
+// Elapsed time: 58 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v)]", 1, true); // B (D, cl) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v)]", 1, true, false, false, false, false, true); // B (D, cl) - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v), my_rect_ctl : draw_rect_ctl (draw_rect_ctl.v)]", 6, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v), my_rect_ctl : draw_rect_ctl (draw_rect_ctl.v)]", 6, false, false, false, false, false, true); // B (D, cl) - Double Click
+// Elapsed time: 37 seconds
+selectButton(PAResourceQtoS.SyntheticaStateMonitor_CANCEL, "Cancel"); // h (N, cl)
+// bs (cl):  Resetting Runs : addNotify
+selectButton("PAResourceQtoS.StateMonitor_OK_TO_CANCEL_YOUR_RUNNING_SYNTHESIS_Cancel Process", "Cancel Process"); // JButton (A, G)
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+dismissDialog("Resetting Runs"); // bs (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis]", 3); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 14:09:01 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 14:09:01 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+// [Engine Memory]: 723 MB (+28950kb) [00:02:35]
+// HMemoryUtils.trashcanNow. Engine heap size: 723 MB. GUI used memory: 43 MB. Current time: 8/15/21 2:09:10 PM CEST
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// ah (cl): Bitstream Generation Completed: addNotify
+// Elapsed time: 119 seconds
+selectRadioButton(PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER, "Open Hardware Manager"); // a (N, ah)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (ah)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Tcl Command: 'load_features labtools'
+// TclEventType: LOAD_FEATURE
+// bs (cl):  Open Hardware Manager : addNotify
+// TclEventType: HW_SESSION_OPEN
+// Tcl Message: open_hw 
+dismissDialog("Open Hardware Manager"); // bs (cl)
+// Elapsed time: 12 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Open Target]", 22, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HW_TARGET
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET, "Auto Connect"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET
+// Tcl Message: connect_hw_server 
+// Tcl Message: INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121 
+// bs (cl):  Auto Connect : addNotify
+// Tcl Message: INFO: [Labtools 27-2222] Launching hw_server... 
+// Tcl Message: INFO: [Labtools 27-2221] Launch Output:  ****** Xilinx hw_server v2017.3   **** Build date : Oct  4 2017-20:12:17     ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   
+// TclEventType: HW_SERVER_UPDATE
+// TclEventType: HW_TARGET_CHANGE
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_ADD
+// TclEventType: HW_TARGET_UPDATE
+// Tcl Message: open_hw_target 
+// Tcl Message: INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183756550A 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: current_hw_device [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// [Engine Memory]: 1,258 MB (+523326kb) [00:04:50]
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+dismissDialog("Auto Connect"); // bs (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 23, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7a35t_0"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bA (cl): Program Device: addNotify
+// HMemoryUtils.trashcanNow. Engine heap size: 1,266 MB. GUI used memory: 50 MB. Current time: 8/15/21 2:11:25 PM CEST
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bA)
+// bs (cl):  Program Device : addNotify
+// TclEventType: HW_DEVICE_CHANGE
+dismissDialog("Program Device"); // bA (cl)
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+// 'I' command handler elapsed time: 3 seconds
+dismissDialog("Program Device"); // bs (cl)
+// Elapsed time: 44 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aF (Q, cl)
+// Elapsed time: 10 seconds
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Vivado Commands, refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]. ]", 3); // ah (O, cl)
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Vivado Commands, reset_run synth_1. ]", 1); // ah (O, cl)
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Vivado Commands]", 0); // ah (O, cl)
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-3332] Sequential element (my_draw_rect/vcount_out_reg[10]) is unused and will be removed from module vga_example.. ]", 4); // ah (O, cl)
+// Elapsed time: 12 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\draw_rect_ctl.v, [Synth 8-151] case item 32'b00000000000000000000000000000010 is unreachable [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:56]. ]", 3, false); // ah (O, cl)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\czlow\OneDrive\Pulpit\vivado\rtl\draw_rect_ctl.v;-;;-;16;-;line;-;56;-;;-;16;-;"); // ah (O, cl)
+// Elapsed time: 20 seconds
+selectCodeEditor("draw_rect_ctl.v", 324, 378); // cd (w, cl)
+// Elapsed time: 61 seconds
+selectTab((HResource) null, (HResource) null, "Sources", 0); // aF (Q, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v), my_draw_rect : draw_rect (draw_rect.v)]", 5, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v), my_draw_rect : draw_rect (draw_rect.v)]", 5, false, false, false, false, false, true); // B (D, cl) - Double Click
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect.v", 14, 246); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 207, 295); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 14, 246, false, false, false, true, false); // cd (w, cl) - Popup Trigger
+selectMenuItem(RDIResource.HInputHandler_TOGGLE_LINE_COMMENTS, "Toggle Line Comments"); // ac (ai, Popup.HeavyWeightWindow)
+selectCodeEditor("draw_rect.v", 266, 307); // cd (w, cl)
+// Elapsed time: 88 seconds
+selectCodeEditor("draw_rect.v", 113, 333); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 269, 348); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 85, 349); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 82, 330); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 75, 292); // cd (w, cl)
+// Elapsed time: 120 seconds
+selectCodeEditor("draw_rect.v", 208, 281); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 920, 332); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 923, 331); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 220, 334); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 321, 364); // cd (w, cl)
+// Elapsed time: 27 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect_ctl.v", 55, 195); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 197, 255); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect_ctl.v", 215, 183); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 412, 185); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 220, 199); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 397, 199); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 375, 192); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 318, 177); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 214, 124); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 78, 243); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 199, 299); // cd (w, cl)
+// Elapsed time: 37 seconds
+selectCodeEditor("draw_rect_ctl.v", 321, 112); // cd (w, cl)
+// Elapsed time: 65 seconds
+selectCodeEditor("draw_rect_ctl.v", 320, 118); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 323, 109); // cd (w, cl)
+// Elapsed time: 32 seconds
+selectCodeEditor("draw_rect_ctl.v", 48, 143); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 104, 177); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 36, 145); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+// Elapsed time: 33 seconds
+selectCodeEditor("draw_rect_ctl.v", 277, 195); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 35, 181); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 30, 179); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 231, 196); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 141, 193); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 144, 194); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 138, 194); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 138, 195); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 28, 196); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 129, 197); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 143, 197); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 148, 197); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect_ctl.v", 195, 210); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 195, 213); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 182, 214); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect_ctl.v", 174, 216); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 228, 212); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 160, 197); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 332, 311); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 246, 198); // cd (w, cl)
+// Elapsed time: 32 seconds
+selectCodeEditor("draw_rect_ctl.v", 386, 198); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 460, 305); // cd (w, cl)
+// Elapsed time: 46 seconds
+selectCodeEditor("draw_rect_ctl.v", 429, 128); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 432, 128); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 441, 128); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 552, 129); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect_ctl.v", 448, 126); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 441, 129); // cd (w, cl)
+// Elapsed time: 28 seconds
+selectCodeEditor("draw_rect_ctl.v", 441, 130); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 635, 131); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 662, 156); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 216, 130); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 318, 137); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 326, 126); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 330, 126); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 355, 132); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 406, 124); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 210, 125); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 216, 128); // cd (w, cl)
+// Elapsed time: 13 seconds
+selectCodeEditor("draw_rect_ctl.v", 437, 128); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 678, 127); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 699, 130); // cd (w, cl)
+// Elapsed time: 34 seconds
+selectCodeEditor("draw_rect_ctl.v", 744, 300); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 50, 110); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 59, 112); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 54, 127); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect_ctl.v", 218, 127); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 221, 124); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 58, 144); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect_ctl.v", 432, 145); // cd (w, cl)
+// Elapsed time: 33 seconds
+selectCodeEditor("draw_rect_ctl.v", 277, 127); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 249, 179); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 538, 144); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect_ctl.v", 246, 28); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,292 MB. GUI used memory: 52 MB. Current time: 8/15/21 2:29:20 PM CEST
+selectCodeEditor("draw_rect_ctl.v", 345, 86); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 573, 25); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 603, 32); // cd (w, cl)
+// Elapsed time: 136 seconds
+selectCodeEditor("draw_rect_ctl.v", 223, 74); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 172, 314); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 221, 318); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 173, 299); // cd (w, cl)
+// Elapsed time: 28 seconds
+selectCodeEditor("draw_rect_ctl.v", 225, 299); // cd (w, cl)
+// Elapsed time: 41 seconds
+selectCodeEditor("draw_rect_ctl.v", 452, 229); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 681, 233); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 263, 232); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 329, 231); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect_ctl.v", 139, 145); // cd (w, cl)
+// Elapsed time: 70 seconds
+selectComboBox("FindAndReplaceDialog.cl_Replace with:", "FALL_DELAY", -1); // JComboBox (cl, FindAndReplaceDialog)
+selectButton("FindAndReplaceDialog.cl_Find", "Find"); // JButton (cl, FindAndReplaceDialog)
+// Elapsed time: 51 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect.v", 513, 195); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+typeControlKey(null, null, 'z');
+// Elapsed time: 12 seconds
+selectCodeEditor("draw_rect_ctl.v", 284, 77); // cd (w, cl)
+typeControlKey(null, null, 'z');
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation]", 2); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 14:36:19 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 14:36:19 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// ah (cl): Bitstream Generation Completed: addNotify
+// Elapsed time: 96 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (ah)
+dismissDialog("Bitstream Generation Completed"); // ah (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 23, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7a35t_0"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bA (cl): Program Device: addNotify
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bA)
+// bs (cl):  Program Device : addNotify
+// TclEventType: HW_DEVICE_CHANGE
+dismissDialog("Program Device"); // bA (cl)
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+dismissDialog("Program Device"); // bs (cl)
+// Elapsed time: 65 seconds
+selectCodeEditor("draw_rect_ctl.v", 223, 300); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 311, 339); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect_ctl.v", 229, 279); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 297, 293); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 297, 293); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 242, 245); // cd (w, cl)
+// Elapsed time: 302 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 23, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 6); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7a35t_0"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bA (cl): Program Device: addNotify
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bA)
+// bs (cl):  Program Device : addNotify
+// TclEventType: HW_DEVICE_CHANGE
+dismissDialog("Program Device"); // bA (cl)
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+dismissDialog("Program Device"); // bs (cl)
+// Elapsed time: 83 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\draw_rect_ctl.v, [Synth 8-151] case item 32'b00000000000000000000000000000010 is unreachable [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:58]. ]", 6, false); // ah (O, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 53 MB. Current time: 8/15/21 2:46:12 PM CEST
+selectCodeEditor("draw_rect_ctl.v", 298, 207); // cd (w, cl)
+// Elapsed time: 27 seconds
+selectCodeEditor("draw_rect_ctl.v", 121, 294); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect_ctl.v", 359, 359); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 419 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 13 seconds
+selectCodeEditor("draw_rect.v", 192, 317); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 106, 334); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 69, 115, false, false, false, true, false); // cd (w, cl) - Popup Trigger
+selectMenuItem(RDIResource.HInputHandler_TOGGLE_BLOCK_COMMENTS, "Toggle Block Comments"); // ac (ai, cl)
+selectCodeEditor("draw_rect.v", 370, 378); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 12, 93); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 9, 91); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 25, 113); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 35, 195); // cd (w, cl)
+// Elapsed time: 46 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 33 seconds
+selectCodeEditor("draw_rect_ctl.v", 182, 162); // cd (w, cl)
+// Elapsed time: 62 seconds
+selectCodeEditor("draw_rect_ctl.v", 177, 182); // cd (w, cl)
+// Elapsed time: 20 seconds
+selectCodeEditor("draw_rect_ctl.v", 28, 176); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 168, 197); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 35, 178); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 120, 180); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 135, 189); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 172, 199); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 170, 198, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("draw_rect_ctl.v", 167, 197); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 171, 197); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 253, 208); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect_ctl.v", 29, 332); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect_ctl.v", 87, 316); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 89, 318); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 32, 329); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 72, 335); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 109, 340); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 103, 330); // cd (w, cl)
+// Elapsed time: 22 seconds
+selectCodeEditor("draw_rect_ctl.v", 248, 331); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 191, 60); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 26, 345); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 145, 353); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 232, 335); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 232, 334); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 147, 351); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 237, 333); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 263, 338); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 233, 336); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 189, 347); // cd (w, cl)
+// Elapsed time: 38 seconds
+selectCodeEditor("draw_rect_ctl.v", 170, 96); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 259, 300); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 150, 79); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 155, 78); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 90, 329); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 92, 335); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 167, 299); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 86, 332); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 90, 331); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 85, 313); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 148, 319); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 81, 313); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 129, 333); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 132, 332); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 82, 332); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 125, 315); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 185, 339); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 237, 318); // cd (w, cl)
+// Elapsed time: 50 seconds
+selectCodeEditor("draw_rect_ctl.v", 236, 93); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 185, 285); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 190, 284); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 111, 300); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 169, 297); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 167, 298); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 203, 302); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 215, 89); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 74, 261); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 182, 266); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 274, 366); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 168, 403); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 184, 164); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 68, 311); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect_ctl.v", 0, 401); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 0, 275); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 5, 164); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 2, 42); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 76, 182); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 0, 245); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 14, 129); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 85, 122); // cd (w, cl)
+// Elapsed time: 45 seconds
+selectCodeEditor("draw_rect_ctl.v", 160, 161); // cd (w, cl)
+// Elapsed time: 35 seconds
+selectCodeEditor("draw_rect_ctl.v", 69, 45); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 120, 126); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 279, 169); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect_ctl.v", 224, 163); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 98, 165); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 201, 217); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+// Elapsed time: 24 seconds
+selectCodeEditor("draw_rect_ctl.v", 161, 177); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect_ctl.v", 180, 96); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 141, 177); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+// Elapsed time: 44 seconds
+selectCodeEditor("draw_rect_ctl.v", 217, 182); // cd (w, cl)
+// Elapsed time: 27 seconds
+selectCodeEditor("draw_rect_ctl.v", 140, 178); // cd (w, cl)
+// Elapsed time: 17 seconds
+selectCodeEditor("draw_rect_ctl.v", 162, 169); // cd (w, cl)
+// Elapsed time: 38 seconds
+selectCodeEditor("draw_rect_ctl.v", 189, 156); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 166, 182); // cd (w, cl)
+// Elapsed time: 33 seconds
+selectCodeEditor("draw_rect_ctl.v", 67, 144); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect_ctl.v", 114, 76); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 118, 62); // cd (w, cl)
+// Elapsed time: 29 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// TclEventType: DG_GRAPH_GENERATED
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.v", 0); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 11 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.v", 0); // k (j, cl)
+selectCodeEditor("vga_example.v", 137, 217); // cd (w, cl)
+// Elapsed time: 30 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.v", 0); // k (j, cl)
+selectCodeEditor("vga_example.v", 78, 254); // cd (w, cl)
+selectCodeEditor("vga_example.v", 97, 250); // cd (w, cl)
+selectCodeEditor("vga_example.v", 31, 251); // cd (w, cl)
+selectCodeEditor("vga_example.v", 71, 241); // cd (w, cl)
+selectCodeEditor("vga_example.v", 26, 231); // cd (w, cl)
+selectCodeEditor("vga_example.v", 27, 222); // cd (w, cl)
+selectCodeEditor("vga_example.v", 57, 225); // cd (w, cl)
+selectCodeEditor("vga_example.v", 74, 256); // cd (w, cl)
+// Elapsed time: 15 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 59 seconds
+selectCodeEditor("draw_rect.v", 116, 335); // cd (w, cl)
+// Elapsed time: 32 seconds
+typeControlKey(null, null, 'z');
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 52 MB. Current time: 8/15/21 3:16:13 PM CEST
+// Elapsed time: 1671 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation]", 2); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// am (cl): Save Project: addNotify
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (am)
+// bs (cl):  Save Constraints : addNotify
+// TclEventType: DG_GRAPH_STALE
+// bs (cl):  Resetting Runs : addNotify
+dismissDialog("Save Project"); // am (cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// TclEventType: DG_ANALYSIS_MSG_RESET
+dismissDialog("Resetting Runs"); // bs (cl)
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Sun Aug 15 15:39:33 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 15:39:33 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// ah (cl): Bitstream Generation Completed: addNotify
+// Elapsed time: 103 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (ah)
+dismissDialog("Bitstream Generation Completed"); // ah (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 23, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7a35t_0"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bA (cl): Program Device: addNotify
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bA)
+// bs (cl):  Program Device : addNotify
+// TclEventType: HW_DEVICE_CHANGE
+dismissDialog("Program Device"); // bA (cl)
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+dismissDialog("Program Device"); // bs (cl)
+// Elapsed time: 120 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 70 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 23, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 6); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7a35t_0"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bA (cl): Program Device: addNotify
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bA)
+// bs (cl):  Program Device : addNotify
+// TclEventType: HW_DEVICE_CHANGE
+dismissDialog("Program Device"); // bA (cl)
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+dismissDialog("Program Device"); // bs (cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 3:46:13 PM CEST
+// Elapsed time: 863 seconds
+selectCodeEditor("draw_rect_ctl.v", 178, 200); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 69, 112); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 178, 213); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 6, 189); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 69, 267); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 167, 365); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 10, 339); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 169, 367); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 11, 349); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 70, 235); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 168, 339); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 3, 311); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 171, 332); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 14, 316); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect_ctl.v", 69, 194); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 69, 233); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 70, 383); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 171, 300); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 4, 280); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 75, 231); // cd (w, cl)
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect_ctl.v", 225, 212); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 10, 187); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 172, 267); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 19, 248); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 231, 183); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 15, 162); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 182, 403); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 11, 388); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 269, 334); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 278, 337); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 17, 312); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 265, 332); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 66, 239); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 261, 350); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 10, 330); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 70, 181); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 168, 279); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 5, 257); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 513, 261); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 171, 297); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 68, 244); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 169, 312); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 11, 293); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 186, 228); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 13, 211); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 248, 357); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 157, 194); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 189, 149); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 188, 199); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 162, 232); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 176, 78); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 168, 164); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 182, 116); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 271, 151); // cd (w, cl)
+// Elapsed time: 48 seconds
+selectCodeEditor("draw_rect_ctl.v", 188, 191); // cd (w, cl)
+// Elapsed time: 92 seconds
+selectCodeEditor("draw_rect_ctl.v", 176, 267); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 157, 265); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 154, 265); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 172, 267); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 175, 264); // cd (w, cl)
+// Elapsed time: 25 seconds
+selectCodeEditor("draw_rect_ctl.v", 233, 267); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 272, 362); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 168, 247); // cd (w, cl)
+// Elapsed time: 12 seconds
+selectCodeEditor("draw_rect_ctl.v", 152, 229); // cd (w, cl)
+selectButton("FindAndReplaceDialog.cl_Close", "Close"); // JButton (cl, FindAndReplaceDialog)
+selectCodeEditor("draw_rect_ctl.v", 261, 235); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 152, 232); // cd (w, cl)
+selectComboBox("FindAndReplaceDialog.cl_Replace with:", "201 + 35*column", -1); // JComboBox (cl, FindAndReplaceDialog)
+selectComboBox("FindAndReplaceDialog.cl_Replace with:", "xpos_nxt  = 201 + 35*column", -1); // JComboBox (cl, FindAndReplaceDialog)
+selectButton("FindAndReplaceDialog.cl_Find", "Find"); // JButton (cl, FindAndReplaceDialog)
+selectCodeEditor("draw_rect_ctl.v", 258, 93); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 285, 230); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 335, 267); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 285, 128); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 261, 267); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect_ctl.v", 287, 201); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect_ctl.v", 363, 264); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 258, 265); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 271, 266); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect_ctl.v", 270, 266); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 216, 366); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect_ctl.v", 209, 214); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 194, 207); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 213, 212); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 180, 351); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+// Elapsed time: 20 seconds
+selectCodeEditor("draw_rect_ctl.v", 235, 266); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 187, 148); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 222, 284); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 177, 400); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 180, 401); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 187, 301); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 184, 211); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 233, 368); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 251, 359); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 228, 315); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+// Elapsed time: 12 seconds
+selectCodeEditor("draw_rect_ctl.v", 203, 144); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 159, 161); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect_ctl.v", 159, 181); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect_ctl.v", 202, 146); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 204, 388); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect_ctl.v", 265, 130); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 112, 125); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 265, 125); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 252, 146); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 91, 142); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 181, 143); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 269, 159); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 160, 286); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 213, 326); // cd (w, cl)
+// Elapsed time: 20 seconds
+selectCodeEditor("draw_rect_ctl.v", 579, 146); // cd (w, cl)
+// Elapsed time: 13 seconds
+selectCodeEditor("draw_rect_ctl.v", 522, 144); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 549, 148); // cd (w, cl)
+// Elapsed time: 26 seconds
+selectCodeEditor("draw_rect_ctl.v", 563, 149); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 825, 144); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 833, 141); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 824, 148); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 779, 147); // cd (w, cl)
+// Elapsed time: 26 seconds
+selectCodeEditor("draw_rect_ctl.v", 1062, 145); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 1005, 152); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 1028, 144); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 1056, 149); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 1047, 172); // cd (w, cl)
+// Elapsed time: 13 seconds
+selectCodeEditor("draw_rect_ctl.v", 300, 163); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 249, 163); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 293, 160); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 266, 162); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 291, 162); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 260, 162); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 283, 163); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect_ctl.v", 362, 144); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 320, 211); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 303, 248); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 35 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 6); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 16:13:10 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 16:13:10 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// ah (cl): Bitstream Generation Completed: addNotify
+// Elapsed time: 163 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (ah)
+dismissDialog("Bitstream Generation Completed"); // ah (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 23, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7a35t_0"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bA (cl): Program Device: addNotify
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bA)
+// bs (cl):  Program Device : addNotify
+// TclEventType: HW_DEVICE_CHANGE
+dismissDialog("Program Device"); // bA (cl)
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+dismissDialog("Program Device"); // bs (cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 53 MB. Current time: 8/15/21 4:16:13 PM CEST
+// Elapsed time: 122 seconds
+selectCodeEditor("draw_rect_ctl.v", 188, 303); // cd (w, cl)
+// Elapsed time: 224 seconds
+selectCodeEditor("draw_rect_ctl.v", 192, 143); // cd (w, cl)
+// Elapsed time: 904 seconds
+selectCodeEditor("draw_rect_ctl.v", 109, 162); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 458, 106); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 52 MB. Current time: 8/15/21 4:46:13 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 52 MB. Current time: 8/15/21 5:16:14 PM CEST
+// TclEventType: HW_TARGET_NEEDS_CLOSE
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_SYSMON_DELETE
+// TclEventType: HW_TARGET_UPDATE
+// TclEventType: DEBUG_PROBE_DELETE
+// Tcl Message: ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210183756550A 
+// TclEventType: HW_TARGET_NEEDS_CLOSE
+// TclEventType: HW_SERVER_UPDATE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 5:46:14 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 6:16:15 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 6:46:15 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 7:16:15 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 7:46:15 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 8:16:16 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 8:46:16 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 9:16:16 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 9:46:17 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 10:16:17 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 10:46:17 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 11:16:18 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/15/21 11:49:37 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 12:19:41 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 12:49:41 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/16/21 1:19:41 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 1:49:41 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 2:19:42 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 2:49:42 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 3:19:42 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 3:49:43 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 4:19:43 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 4:49:43 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 5:19:44 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/16/21 5:49:44 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 6:19:44 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 6:49:45 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 7:19:45 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 7:49:45 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/16/21 8:19:46 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 51 MB. Current time: 8/16/21 8:49:46 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 50 MB. Current time: 8/16/21 9:19:46 AM CEST
+// [GUI Memory]: 144 MB (+4160kb) [19:36:54]
+// Elapsed time: 61712 seconds
+selectCodeEditor("draw_rect_ctl.v", 152, 164); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 257, 160); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 71, 106); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 175, 122); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 54 MB. Current time: 8/16/21 9:49:47 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 56 MB. Current time: 8/16/21 10:19:47 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 55 MB. Current time: 8/16/21 10:49:47 AM CEST
+// Elapsed time: 5089 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 276 seconds
+selectCodeEditor("draw_rect.v", 112, 435); // cd (w, cl)
+// Elapsed time: 111 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 151, 434); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 147, 434, false, false, false, false, true); // cd (w, cl) - Double Click
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect.v", 146, 438); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 140, 431); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 144, 434); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 138, 433); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 197, 435); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect.v", 245, 437); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.v", 0); // k (j, cl)
+// Elapsed time: 12 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 125, 434); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 120, 434); // cd (w, cl)
+// Elapsed time: 49 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 568, 296); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 55 MB. Current time: 8/16/21 11:19:48 AM CEST
+// Elapsed time: 334 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 469, 411); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 248, 435); // cd (w, cl)
+// Elapsed time: 160 seconds
+selectCodeEditor("draw_rect.v", 762, 453); // cd (w, cl)
+// Elapsed time: 12 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.v", 0); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 18 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 16 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 1061, 248); // cd (w, cl)
+// Elapsed time: 12 seconds
+selectCodeEditor("draw_rect_ctl.v", 68, 246); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 69, 281); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 67, 281); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 124, 296); // cd (w, cl)
+// Elapsed time: 23 seconds
+selectCodeEditor("draw_rect_ctl.v", 221, 245); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 160, 250); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 163, 268); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 137, 271); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 150, 284); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 214, 279); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 78, 435); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect.v", 936, 445); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 80, 433); // cd (w, cl)
+// Elapsed time: 118 seconds
+selectCodeEditor("draw_rect.v", 1176, 394, false, false, false, true, false); // cd (w, cl) - Popup Trigger
+selectCodeEditor("draw_rect.v", 588, 353); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 44, 128); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 302, 244); // cd (w, cl)
+// Elapsed time: 23 seconds
+selectCodeEditor("draw_rect_ctl.v", 69, 59); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 167, 80); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 189, 196); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 201, 197); // cd (w, cl)
+// Elapsed time: 76 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 7, true); // B (D, cl) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 7, true, false, false, false, false, true); // B (D, cl) - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 8, true); // B (D, cl) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 8, true, false, false, false, false, true); // B (D, cl) - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, vga_example.xdc]", 9, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, vga_example.xdc]", 9, false, false, false, false, false, true); // B (D, cl) - Double Click
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 7); // B (D, cl)
+// Elapsed time: 809 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 139 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 66, 193); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 292, 279); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 127, 249); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 173, 280); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 57 MB. Current time: 8/16/21 11:49:48 AM CEST
+// Elapsed time: 47 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 1082, 416); // cd (w, cl)
+// Elapsed time: 59 seconds
+selectCodeEditor("draw_rect.v", 946, 434); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 80, 461); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 87, 453); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 948, 450); // cd (w, cl)
+// Elapsed time: 77 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 30 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 87 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 232, 216); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 56, 252); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 648, 246); // cd (w, cl)
+// Elapsed time: 73 seconds
+selectCodeEditor("draw_rect_ctl.v", 57, 115); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 107, 111); // cd (w, cl)
+// Elapsed time: 92 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 380, 441); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 638, 434); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 79, 435); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 938, 437); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 938, 437); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect.v", 185, 445); // cd (w, cl)
+// Elapsed time: 13 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 33 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 132 seconds
+selectCodeEditor("draw_rect.v", 186, 357); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 244, 112); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 104 seconds
+selectCodeEditor("draw_rect_ctl.v", 1192, 125); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 247, 350); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 234, 350); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 7, 446); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 27, 416); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 92, 414); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 92, 414); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 92, 433); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 89, 450); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 87, 470); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 87, 483); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 89, 504); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 91, 518); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 84, 539); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 93, 419); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect.v", 133, 418); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 93, 435); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 93, 454); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 91, 462); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 87, 483); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 89, 483); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 90, 501); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 93, 516); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 93, 416); // cd (w, cl)
+// Elapsed time: 10 seconds
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+// Elapsed time: 15 seconds
+selectCodeEditor("draw_rect.v", 138, 480); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect.v", 187, 284); // cd (w, cl)
+// Elapsed time: 158 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 351, 358); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 15, 287); // cd (w, cl)
+// Elapsed time: 52 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 13 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 181, 313); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 152, 491); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 139, 299); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 91, 299); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 45, 505); // cd (w, cl)
+// Elapsed time: 46 seconds
+selectCodeEditor("draw_rect.v", 476, 158); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 592, 337); // cd (w, cl)
+// Elapsed time: 33 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 25 seconds
+selectCodeEditor("draw_rect_ctl.v", 104, 381); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 165, 312); // cd (w, cl)
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect.v", 156, 225); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 34, 427); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 9, 433); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey(null, null, 'z');
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 35, 347); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 408, 390); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 8, 364); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 38, 382); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 44, 382); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 24, 370); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 14, 379); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1, 368); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 3, 386); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 0, 366); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1, 384); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 67, 400); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 44, 418); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 71, 431); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 117, 283); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 197, 281); // cd (w, cl)
+// Elapsed time: 19 seconds
+selectCodeEditor("draw_rect.v", 213, 420); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 102, 317); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 213, 314); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 189, 316); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 189, 316, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("draw_rect.v", 133, 317); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 82, 288); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 182, 280); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 140, 40); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 133, 349); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 212, 364); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 69, 403); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 62, 401); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 399, 304); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 401, 393); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 1, 178); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 8, 423); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 29, 315); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 185, 515); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 123, 336); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 64, 350); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 192, 381); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 110, 389); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 104, 387); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 180, 386); // cd (w, cl)
+// Elapsed time: 25 seconds
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect.v", 182, 162); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 180, 314); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 208, 348); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 128, 273); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 131, 263); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect.v", 135, 265); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 355, 252); // cd (w, cl)
+// Elapsed time: 78 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 54, 391); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 84, 357); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 34, 365); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 63, 366); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 69, 385); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 131, 386); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 30, 385); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 29, 368); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 131, 401); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 111, 382); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 93, 381); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 95, 382, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("draw_rect.v", 95, 382); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 105, 380); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 91, 379); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 74, 382); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 140, 399); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 130, 400); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 52, 406); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 132, 404); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 204, 317); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 56, 414); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.xdc", 3); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 157, 470); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 81, 453); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1, 468); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 7, 482); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 2, 484); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 2, 539); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 62, 386); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 62, 435); // cd (w, cl)
+// Elapsed time: 15 seconds
+selectCodeEditor("draw_rect.v", 62, 370); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 78, 400); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 0, 415); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 63, 354); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 64, 400); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 63, 451); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 164, 506); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 72, 348); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 92, 352); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 80, 349); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 84, 348); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 47, 291); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 54, 294); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 57 MB. Current time: 8/16/21 12:19:48 PM CEST
+// Elapsed time: 37 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 68, 348); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 88, 350); // cd (w, cl)
+// Elapsed time: 70 seconds
+selectCodeEditor("draw_rect.v", 125, 351); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 23 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 49 seconds
+selectCodeEditor("draw_rect.v", 137, 351); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 80, 355); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 82, 348); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 143, 351); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect.v", 111, 352); // cd (w, cl)
+// Elapsed time: 12 seconds
+selectCodeEditor("draw_rect.v", 114, 363); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 124, 358); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 118, 352); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 116, 369); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 112, 369); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 111, 367, false, false, false, false, true); // cd (w, cl) - Double Click
+selectCodeEditor("draw_rect.v", 114, 384); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 112, 397); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 121, 400); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 111, 352); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect.v", 199, 439); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 220, 444); // cd (w, cl)
+// Elapsed time: 27 seconds
+selectCodeEditor("draw_rect.v", 304, 498); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 112, 429); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 130, 499); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 95, 431); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 93, 434); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 66, 397); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 82, 437); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 235, 445); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 229, 437); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 205, 436); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 55, 406); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 213, 436); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 202, 433); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 226, 433); // cd (w, cl)
+// Elapsed time: 13 seconds
+selectCodeEditor("draw_rect.v", 236, 286); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 116, 236); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 110, 255); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 110, 249); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 110, 230); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect.v", 110, 244); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 224, 268); // cd (w, cl)
+// Elapsed time: 95 seconds
+selectCodeEditor("draw_rect.v", 112, 280); // cd (w, cl)
+// Elapsed time: 24 seconds
+selectCodeEditor("draw_rect.v", 96, 140); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 111, 147); // cd (w, cl)
+// Elapsed time: 142 seconds
+selectCodeEditor("draw_rect.v", 133, 146); // cd (w, cl)
+// Elapsed time: 44 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 53 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 12 seconds
+selectCodeEditor("draw_rect.v", 179, 147); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 171, 141); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 175, 142); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 174, 147); // cd (w, cl)
+// Elapsed time: 125 seconds
+selectCodeEditor("draw_rect.v", 84, 146); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 105, 149); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 110, 147); // cd (w, cl)
+// Elapsed time: 19 seconds
+selectCodeEditor("draw_rect.v", 216, 146); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 217, 146); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 83, 161); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 137, 165); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 209, 169); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 203, 165); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 210, 144); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect.v", 117, 181); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 179, 141); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 372, 182); // cd (w, cl)
+// Elapsed time: 31 seconds
+selectCodeEditor("draw_rect.v", 205, 386); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 179, 402); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 129, 425); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 195, 400); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 192, 405); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 85, 419); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 0, 418); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1, 455); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 85, 488); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1, 492); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 150, 508); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 108, 451); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect.v", 491, 473); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: HW_TARGET_NEEDS_CLOSE
+// TclEventType: HW_SERVER_UPDATE
+// TclEventType: HW_TARGET_CHANGE
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_ADD
+// TclEventType: HW_TARGET_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 57 MB. Current time: 8/16/21 12:49:49 PM CEST
+// Elapsed time: 824 seconds
+selectCodeEditor("draw_rect.v", 321, 288); // cd (w, cl)
+// Elapsed time: 56 seconds
+selectCodeEditor("draw_rect.v", 16, 414); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 13, 418); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 13, 418); // cd (w, cl)
+// Elapsed time: 13 seconds
+selectCodeEditor("draw_rect.v", 194, 417); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 197, 419); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 205, 398); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 209, 406); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 204, 418); // cd (w, cl)
+// Elapsed time: 85 seconds
+selectButton(PAResourceEtoH.FileSetPanel_MESSAGES, "2"); // h (f, cl)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // B (D, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect.v", 613, 328); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 476, 248); // cd (w, cl)
+// Elapsed time: 36 seconds
+selectCodeEditor("draw_rect.v", 223, 299); // cd (w, cl)
+// Elapsed time: 60 seconds
+selectCodeEditor("draw_rect.v", 268, 343); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 129, 352); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 125, 372); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 229, 368); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 213, 351); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 161, 334); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect.v", 138, 247); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 157, 214); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 159, 228); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 159, 241); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 160, 260); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 160, 277); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 160, 300); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 162, 319); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 159, 327); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+// Elapsed time: 24 seconds
+selectCodeEditor("draw_rect.v", 215, 214); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 226, 215); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 224, 216); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 250, 214); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 246, 216); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 252, 215); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 174, 211); // cd (w, cl)
+selectComboBox("FindAndReplaceDialog.cl_Replace with:", "+ 35*", -1); // JComboBox (cl, FindAndReplaceDialog)
+selectComboBox("FindAndReplaceDialog.cl_Replace with:", "CALIB + 35*", -1); // JComboBox (cl, FindAndReplaceDialog)
+selectButton("FindAndReplaceDialog.cl_Find", "Find"); // JButton (cl, FindAndReplaceDialog)
+selectCodeEditor("draw_rect.v", 369, 428); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 287, 211); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect.v", 14, 336); // cd (w, cl)
+// Elapsed time: 53 seconds
+selectCodeEditor("draw_rect.v", 136, 314); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 138, 316); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 88, 229); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 157, 230); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 157, 230); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 424, 232); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 420, 235); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 420, 234); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 436, 234); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 425, 231); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect.v", 354, 230); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 426, 228); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 180, 234); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 171, 235); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 177, 233); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 243, 234); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 315, 235); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 452, 232); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 455, 232); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 525, 233); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 528, 232); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 595, 232); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 646, 231); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect.v", 80, 236); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 194, 215); // cd (w, cl)
+// Elapsed time: 32 seconds
+selectCodeEditor("draw_rect.v", 254, 211); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 265, 211); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 259, 215); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 293, 215); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 264, 218); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 258, 229); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 298, 332); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 296, 321); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("draw_rect.v", 308, 330); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 304, 318); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+// Run Command: RDIResourceCommand.RDICommands_UNDO
+typeControlKey(null, null, 'z');
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: undo 
+// Tcl Message: INFO: [Common 17-17] undo 'set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]' 
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectCodeEditor("draw_rect.v", 304, 306); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 301, 302); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 302, 211); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+// Elapsed time: 37 seconds
+selectCodeEditor("draw_rect.v", 370, 226); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 334, 314); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 84, 231); // cd (w, cl)
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect.v", 339, 286); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 0, 278); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 332, 283); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 336, 290); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 334, 282); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 4, 280); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 341, 249); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 2, 249); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 333, 251); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 26, 246); // cd (w, cl)
+// Elapsed time: 12 seconds
+selectCodeEditor("draw_rect.v", 335, 347); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 25, 351); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 333, 420); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 34, 417); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 79, 447); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 84, 450); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 338, 382); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 333, 312); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 82, 385); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 334, 268); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 336, 335); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 156, 366); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 161, 383); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 316, 503); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 35, 416); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect.v", 323, 229); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 319, 249); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 323, 264); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 323, 276); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 319, 299); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 318, 234); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 321, 316); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 318, 317); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 333, 315); // cd (w, cl)
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect.v", 352, 151); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 3, 195); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 52, 208); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 334, 312); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 322, 192); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 321, 233); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 322, 264); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 321, 283); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 321, 305); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 320, 309); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 343, 315); // cd (w, cl)
+// Elapsed time: 28 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 190, 229); // cd (w, cl)
+// Elapsed time: 47 seconds
+selectCodeEditor("draw_rect_ctl.v", 187, 217); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 244, 249); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.v", 0); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 195, 232); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.v", 0); // k (j, cl)
+selectCodeEditor("vga_example.v", 78, 318); // cd (w, cl)
+selectCodeEditor("vga_example.v", 54, 328); // cd (w, cl)
+selectCodeEditor("vga_example.v", 76, 314); // cd (w, cl)
+selectCodeEditor("vga_example.v", 61, 331); // cd (w, cl)
+selectCodeEditor("vga_example.v", 188, 350); // cd (w, cl)
+selectCodeEditor("vga_example.v", 227, 338); // cd (w, cl)
+// Elapsed time: 10 seconds
+selectCodeEditor("vga_example.v", 168, 403); // cd (w, cl)
+// Elapsed time: 17 seconds
+selectCodeEditor("vga_example.v", 284, 443); // cd (w, cl)
+// Elapsed time: 13 seconds
+selectCodeEditor("vga_example.v", 181, 400); // cd (w, cl)
+selectCodeEditor("vga_example.v", 176, 429); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 26 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 303 seconds
+selectCodeEditor("draw_rect.v", 140, 79); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 230, 432); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 559, 427); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 568, 431); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 784, 438); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 139, 29); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 231, 434); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 446, 433); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 229, 434); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 448, 434); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1049, 433); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 85, 455); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1052, 448); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 86, 456); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 120, 453); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 83, 469); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 85, 479); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 261, 454); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 480, 449); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 657, 454); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 644, 456); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 871, 448); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 258, 468); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 478, 471); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 650, 466); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 869, 471); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 869, 481); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 653, 489); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 478, 485); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 262, 489); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect.v", 334, 314); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 0, 367); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 10, 538); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 0, 265); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 2, 492); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 0, 362); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 324, 403); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 304, 381); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 324, 398); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 320, 225); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 317, 435); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 323, 263); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 337, 250); // cd (w, cl)
+// Elapsed time: 12 seconds
+selectCodeEditor("draw_rect.v", 93, 299); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 256, 223); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 197, 224); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 235, 211); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect_ctl.v", 244, 230); // cd (w, cl)
+typeControlKey(null, null, 'z');
+selectCodeEditor("draw_rect_ctl.v", 246, 235); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 340, 333); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 228, 338); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 326, 334); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 339, 440); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 409, 537); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 332, 264); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 366, 372); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 322, 468); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 263, 401); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 363, 504); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect_ctl.v", 915, 395); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectComboBox("FindAndReplaceDialog.cl_Replace with:", "xpos", -1); // JComboBox (cl, FindAndReplaceDialog)
+selectButton("FindAndReplaceDialog.cl_Find", "Find"); // JButton (cl, FindAndReplaceDialog)
+selectCodeEditor("draw_rect_ctl.v", 738, 274); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 245, 250); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 251, 249); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 246, 247); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 1042, 235); // cd (w, cl)
+selectComboBox("FindAndReplaceDialog.cl_Replace with:", "ypos", -1); // JComboBox (cl, FindAndReplaceDialog)
+selectButton("FindAndReplaceDialog.cl_Find", "Find"); // JButton (cl, FindAndReplaceDialog)
+selectCodeEditor("draw_rect_ctl.v", 281, 486); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 237, 279); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 22 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect.v", 168, 245); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 171, 246); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 2, 262); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 0, 274); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 159, 269); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 160, 269); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 160, 282); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 58 MB. Current time: 8/16/21 1:19:49 PM CEST
+selectCodeEditor("draw_rect.v", 104, 281); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 103, 268); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 157, 285); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.v", 0); // k (j, cl)
+selectCodeEditor("vga_example.v", 136, 276); // cd (w, cl)
+selectCodeEditor("vga_example.v", 141, 281); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("vga_example.v", 90, 329); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'c'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 33, 248); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 57, 247); // cd (w, cl)
+selectCodeEditor("vga_example.v", 117, 260); // cd (w, cl)
+// Elapsed time: 43 seconds
+selectCodeEditor("vga_example.v", 86, 455); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("vga_example.v", 112, 454); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'c'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 82, 77); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 113, 66); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 125, 42); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 125, 29); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 111, 383); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 189, 382); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 309, 403); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 378, 400); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 15 seconds
+selectCodeEditor("draw_rect.v", 228, 273); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect.v", 118, 368); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 91, 370); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 507, 333); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 17 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 1048, 506); // cd (w, cl)
+// Elapsed time: 33 seconds
+selectCodeEditor("draw_rect_ctl.v", 186, 348); // cd (w, cl)
+// Elapsed time: 48 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 65 seconds
+selectCodeEditor("draw_rect.v", 195, 177); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+selectCodeEditor("draw_rect_ctl.v", 173, 370); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 194, 365); // cd (w, cl)
+// Elapsed time: 17 seconds
+selectCodeEditor("draw_rect_ctl.v", 216, 247); // cd (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_rect_ctl.v", 261, 489); // cd (w, cl)
+// Elapsed time: 98 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 6); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// am (cl): Save Project: addNotify
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (am)
+// bs (cl):  Save Constraints : addNotify
+// TclEventType: DG_GRAPH_STALE
+// bs (cl):  Resetting Runs : addNotify
+dismissDialog("Save Project"); // am (cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// 'ct' command handler elapsed time: 4 seconds
+// TclEventType: DG_ANALYSIS_MSG_RESET
+dismissDialog("Resetting Runs"); // bs (cl)
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Mon Aug 16 13:27:48 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Mon Aug 16 13:27:48 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectTab((HResource) null, (HResource) null, "Serial I/O Links", 2); // aF (Q, cl)
+// TclEventType: DG_GRAPH_GENERATED
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aF (Q, cl)
+selectButton(PAResourceItoN.MsgView_CLEAR_MESSAGES_RESULTING_FROM_USER_EXECUTED, "Messages_cleanUpMessages"); // B (cl)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 59 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\draw_rect_ctl.v, [Synth 8-3352] multi-driven net block_ctl[2] with 1st driver pin 'my_rect_ctl/block_reg[2]/Q' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:69]. ]", 2, false); // ah (O, cl)
+// ah (cl): Implementation Failed: addNotify
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (ah)
+dismissDialog("Implementation Failed"); // ah (cl)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\draw_rect_ctl.v, [Synth 8-3352] multi-driven net block_ctl[2] with 1st driver pin 'my_rect_ctl/block_reg[2]/Q' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:69]. ]", 2, false); // ah (O, cl)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\czlow\OneDrive\Pulpit\vivado\rtl\draw_rect_ctl.v;-;;-;16;-;line;-;69;-;;-;16;-;"); // ah (O, cl)
+selectCheckBox(PAResourceItoN.MsgView_CRITICAL_WARNINGS, (String) null, false); // g (aQ, cl): FALSE
+selectCheckBox(PAResourceItoN.MsgView_CRITICAL_WARNINGS, (String) null, true); // g (aQ, cl): TRUE
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\draw_rect_ctl.v, [Synth 8-3352] multi-driven net block_ctl[0] with 2nd driver pin 'my_rect_ctl/block_reg[0]__0/Q' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:44]. ]", 7, false); // ah (O, cl)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\czlow\OneDrive\Pulpit\vivado\rtl\draw_rect_ctl.v;-;;-;16;-;line;-;44;-;;-;16;-;"); // ah (O, cl)
+// Elapsed time: 44 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\draw_rect_ctl.v, [Synth 8-3352] multi-driven net block_ctl[2] with 2nd driver pin 'my_rect_ctl/block_reg[2]__0/Q' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:44]. ]", 3, false); // ah (O, cl)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\czlow\OneDrive\Pulpit\vivado\rtl\draw_rect_ctl.v;-;;-;16;-;line;-;44;-;;-;16;-;"); // ah (O, cl)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\draw_rect_ctl.v, [Synth 8-3352] multi-driven net block_ctl[2] with 2nd driver pin 'my_rect_ctl/block_reg[2]__0/Q' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:44]. ]", 3, false); // ah (O, cl)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\czlow\OneDrive\Pulpit\vivado\rtl\draw_rect_ctl.v;-;;-;16;-;line;-;44;-;;-;16;-;"); // ah (O, cl)
+// Elapsed time: 12 seconds
+selectCodeEditor("draw_rect_ctl.v", 229, 260); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect_ctl.v", 309, 263); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 281, 213); // cd (w, cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Open Elaborated Design]", 12, true); // u (O, cl) - Node
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator]", 1); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_GOTO_RTL_DESIGN
+// x (cl): Elaborate Design: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (x)
+// bs (cl):  Open Elaborated Design : addNotify
+dismissDialog("Elaborate Design"); // x (cl)
+// TclEventType: ELABORATE_START
+// Tcl Message: synth_design -rtl -name rtl_1 
+// Tcl Message: Command: synth_design -rtl -name rtl_1 Starting synth_design Using part: xc7a35tcpg236-1 Top: vga_example 
+// TclEventType: ELABORATE_FINISH
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: POWER_CNS_STALE
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: FLOORPLAN_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: DESIGN_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 58 MB. Current time: 8/16/21 1:30:55 PM CEST
+// TclEventType: DESIGN_NEW
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// Schematic: addNotify
+// TclEventType: CURR_DESIGN_SET
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1538.547 ; gain = 23.145 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: INFO: [Synth 8-638] synthesizing module 'vga_example' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:13] INFO: [Synth 8-5534] Detected attribute (* KEEP = "TRUE" *) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:41] INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:41] INFO: [Synth 8-638] synthesizing module 'ODDR' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:30648] 
+// Tcl Message: 	Parameter DDR_CLK_EDGE bound to: OPPOSITE_EDGE - type: string  	Parameter INIT bound to: 1'b0  	Parameter IS_C_INVERTED bound to: 1'b0  	Parameter IS_D1_INVERTED bound to: 1'b0  	Parameter IS_D2_INVERTED bound to: 1'b0  	Parameter SRTYPE bound to: SYNC - type: string  
+// Tcl Message: 	Parameter CAPACITANCE bound to: DONT_CARE - type: string  	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string  	Parameter IBUF_LOW_PWR bound to: TRUE - type: string  	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string  	Parameter IOSTANDARD bound to: DEFAULT - type: string  
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'IBUF' (2#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:19468] INFO: [Synth 8-638] synthesizing module 'MMCME2_ADV' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:25757] 
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'MMCME2_ADV' (3#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:25757] INFO: [Synth 8-638] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:607] INFO: [Synth 8-256] done synthesizing module 'BUFG' (4#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:607] INFO: [Synth 8-638] synthesizing module 'BUFGCE' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:617] 
+// Tcl Message: 	Parameter CE_TYPE bound to: SYNC - type: string  	Parameter IS_CE_INVERTED bound to: 1'b0  	Parameter IS_I_INVERTED bound to: 1'b0  
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'BUFGCE' (5#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:617] INFO: [Synth 8-638] synthesizing module 'BUFH' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:806] INFO: [Synth 8-256] done synthesizing module 'BUFH' (6#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:806] INFO: [Synth 8-256] done synthesizing module 'clk_wiz_0_clk_wiz' (7#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v:69] INFO: [Synth 8-256] done synthesizing module 'clk_wiz_0' (8#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0.v:71] INFO: [Synth 8-638] synthesizing module 'vga_timing' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_timing.v:13] 
+// Tcl Message: 	Parameter HOR_TOTAL_TIME bound to: 1650 - type: integer  	Parameter HOR_BLANK_START bound to: 1280 - type: integer  	Parameter HOR_BLANK_TIME bound to: 370 - type: integer  	Parameter HOR_SYNC_START bound to: 1390 - type: integer  	Parameter HOR_SYNC_TIME bound to: 40 - type: integer  	Parameter VER_TOTAL_TIME bound to: 750 - type: integer  	Parameter VER_BLANK_START bound to: 720 - type: integer  	Parameter VER_BLANK_TIME bound to: 30 - type: integer  	Parameter VER_SYNC_START bound to: 725 - type: integer  	Parameter VER_SYNC_TIME bound to: 5 - type: integer  
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'vga_timing' (9#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_timing.v:13] INFO: [Synth 8-638] synthesizing module 'draw_background' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_background.v:3] 
+// Tcl Message: 	Parameter SIZE bound to: 35 - type: integer  
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'draw_background' (10#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_background.v:3] INFO: [Synth 8-638] synthesizing module 'draw_rect' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect.v:5] 
+// Tcl Message: 	Parameter X_CALIB bound to: 201 - type: integer  	Parameter Y_CALIB bound to: 10 - type: integer  	Parameter SIZE bound to: 35 - type: integer  	Parameter I_BLOCK bound to: 0 - type: integer  	Parameter O_BLOCK bound to: 1 - type: integer  	Parameter T_BLOCK bound to: 2 - type: integer  	Parameter S_BLOCK bound to: 3 - type: integer  	Parameter Z_BLOCK bound to: 4 - type: integer  	Parameter J_BLOCK bound to: 5 - type: integer  	Parameter L_BLOCK bound to: 6 - type: integer  
+// Tcl Message: INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect.v:69] INFO: [Synth 8-256] done synthesizing module 'draw_rect' (11#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect.v:5] INFO: [Synth 8-638] synthesizing module 'draw_rect_ctl' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:3] 
+// Tcl Message: 	Parameter LEVEL bound to: 1 - type: integer  	Parameter FALL_DELAY bound to: 900 - type: integer  	Parameter TRIGGER bound to: 0 - type: integer  	Parameter IDLE bound to: 1 - type: integer  	Parameter MOVE_DOWN bound to: 2 - type: integer  	Parameter MOVE_LEFT bound to: 3 - type: integer  	Parameter MOVE_RIGHT bound to: 4 - type: integer  	Parameter FOLD_BTN bound to: 5 - type: integer  	Parameter STOP bound to: 6 - type: integer  	Parameter MOVE_UP bound to: 7 - type: integer  
+// Tcl Message: INFO: [Synth 8-226] default block is never used [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:48] INFO: [Synth 8-226] default block is never used [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:63] 
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'draw_rect_ctl' (12#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:3] INFO: [Synth 8-256] done synthesizing module 'vga_example' (13#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:13] 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1572.605 ; gain = 57.203 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message:  Report Check Netlist:  +------+------------------+-------+---------+-------+------------------+ |      |Item              |Errors |Warnings |Status |Description       | +------+------------------+-------+---------+-------+------------------+ |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets | +------+------------------+-------+---------+-------+------------------+ --------------------------------------------------------------------------------- 
+// Tcl Message: Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1572.605 ; gain = 57.203 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds INFO: [Device 21-403] Loading part xc7a35tcpg236-1 INFO: [Project 1-570] Preparing netlist for logic optimization 
+// Tcl Message:  Processing XDC Constraints Initializing timing engine Parsing XDC File [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/vga_example.xdc] Finished Parsing XDC File [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/vga_example.xdc] Parsing XDC File [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/clk_wiz_0.xdc] Finished Parsing XDC File [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/clk_wiz_0.xdc] 
+// Tcl Message: INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/clk_wiz_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/vga_example_propImpl.xdc]. Resolution: To avoid this warning, move constraints listed in [.Xil/vga_example_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis. INFO: [Timing 38-2] Deriving generated clocks 
+// Tcl Message: Completed Processing XDC Constraints  
+// Tcl Message: INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers. INFO: [Opt 31-141] Inserted 1 OBUFs to IO ports without IO buffers. INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s). INFO: [Project 1-111] Unisim Transformation Summary:   A total of 2 instances were transformed.   BUFGCE => BUFGCTRL: 2 instances  
+// Tcl Message: RTL Elaboration Complete:  : Time (s): cpu = 00:00:18 ; elapsed = 00:00:14 . Memory (MB): peak = 1887.129 ; gain = 371.727 
+// Tcl Message: 45 Infos, 22 Warnings, 0 Critical Warnings and 0 Errors encountered. synth_design completed successfully 
+// Tcl Message: synth_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:14 . Memory (MB): peak = 1887.129 ; gain = 371.727 
+// 'dM' command handler elapsed time: 15 seconds
+// Elapsed time: 14 seconds
+dismissDialog("Open Elaborated Design"); // bs (cl)
+// Elapsed time: 25 seconds
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aF (Q, cl)
+// Elapsed time: 50 seconds
+closeView(PAResourceOtoP.PAViews_SCHEMATIC, "Schematic"); // f
+// Elapsed time: 12 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 2); // k (j, cl)
+// Elapsed time: 15 seconds
+selectCodeEditor("draw_rect_ctl.v", 101, 215); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 96, 214); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: DESIGN_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 20 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.xdc", 4); // k (j, cl)
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // B
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Open Elaborated Design, Report Methodology]", 13, false, false, false, false, true, false); // u (O, cl) - Popup Trigger
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Open Elaborated Design]", 12, true, false, false, false, true, false); // u (O, cl) - Popup Trigger - Node
+selectMenuItem(PAResourceCommand.PACommandNames_CLOSE_RTL_DESIGN, "Close"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_CLOSE_RTL_DESIGN
+// TclEventType: DESIGN_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,318 MB. GUI used memory: 82 MB. Current time: 8/16/21 1:33:12 PM CEST
+// Engine heap size: 1,318 MB. GUI used memory: 83 MB. Current time: 8/16/21 1:33:12 PM CEST
+// TclEventType: CURR_DESIGN_SET
+// TclEventType: DESIGN_CLOSE
+// Tcl Message: close_design 
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 23, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Mon Aug 16 13:33:14 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Mon Aug 16 13:33:14 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 23, false); // u (O, cl)
+// TclEventType: RUN_FAILED
+// ah (cl): Synthesis Failed: addNotify
+// Elapsed time: 16 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (ah)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // ah (cl)
+selectCodeEditor("draw_rect_ctl.v", 103, 217); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 221, 260); // cd (w, cl)
+// Elapsed time: 15 seconds
+selectCodeEditor("draw_rect_ctl.v", 67, 383); // cd (w, cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 23, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 6); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// am (cl): Save Project: addNotify
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (am)
+// bs (cl):  Save Constraints : addNotify
+// TclEventType: DG_GRAPH_STALE
+// bs (cl):  Resetting Runs : addNotify
+dismissDialog("Save Project"); // am (cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// TclEventType: DG_ANALYSIS_MSG_RESET
+dismissDialog("Resetting Runs"); // bs (cl)
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// bs (cl):  Generate Bitstream : addNotify
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Mon Aug 16 13:34:03 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Mon Aug 16 13:34:03 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_COMPLETED
+// Elapsed time: 45 seconds
+selectCodeEditor("draw_rect_ctl.v", 86, 316); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 81, 316); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 102, 309); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 150, 345); // cd (w, cl)
+selectButton(PAResourceQtoS.SyntheticaStateMonitor_CANCEL, "Cancel"); // h (N, cl)
+// aN (cl): Cancel Implementation: addNotify
+// TclEventType: RUN_STEP_COMPLETED
+selectButton(PAResourceQtoS.StateMonitor_RESET_RUN, "Reset Run"); // a (aN)
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Cancel Implementation"); // aN (cl)
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run impl_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+dismissDialog("Resetting Runs"); // bs (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 23, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// am (cl): Save Project: addNotify
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (am)
+// bs (cl):  Save Constraints : addNotify
+// TclEventType: DG_GRAPH_STALE
+// bs (cl):  Resetting Runs : addNotify
+dismissDialog("Save Project"); // am (cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+dismissDialog("Resetting Runs"); // bs (cl)
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Mon Aug 16 13:35:16 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// ah (cl): Bitstream Generation Completed: addNotify
+// Elapsed time: 63 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (ah)
+dismissDialog("Bitstream Generation Completed"); // ah (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 26, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7a35t_0"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bA (cl): Program Device: addNotify
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bA)
+// bs (cl):  Program Device : addNotify
+// TclEventType: HW_DEVICE_CHANGE
+dismissDialog("Program Device"); // bA (cl)
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+// 'I' command handler elapsed time: 6 seconds
+dismissDialog("Program Device"); // bs (cl)
+// Elapsed time: 66 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect.v", 2); // k (j, cl)
+// Elapsed time: 20 seconds
+selectCodeEditor("draw_rect.v", 260, 333); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 202, 334); // cd (w, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("draw_rect.v", 210, 59); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 207, 333); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 203, 332); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 211, 79); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 204, 333); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 238, 351); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 239, 368); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 239, 386); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 288, 368); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 286, 347); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 262, 333); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 251, 333); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 83, 332); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 320, 427); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 288, 333); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 301, 332); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 292, 348); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 294, 356); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 295, 365); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 294, 375); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 301, 348); // cd (w, cl)
+// Elapsed time: 13 seconds
+selectCodeEditor("draw_rect.v", 306, 335); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 262, 179); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 306, 332); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 308, 350); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 305, 363); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 303, 386); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 306, 384); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 329, 332); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 544, 337); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 545, 346); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 545, 361); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 543, 384); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 194, 162); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 753, 330); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 754, 349); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 756, 362); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 754, 384); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1064, 335); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1063, 348); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1063, 364); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 1063, 383); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 259, 179); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 157, 161); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 261, 146); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 261, 127); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 259, 108); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 261, 94); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 257, 78); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 260, 63); // cd (w, cl)
+// Elapsed time: 23 seconds
+selectCodeEditor("draw_rect.v", 228, 415); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 363, 249); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 344, 81); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 351, 119); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 367, 367); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 340, 370); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 336, 365); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 336, 196); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 345, 26); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 56, 300); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 215, 398); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 232, 448); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 52, 468); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 53, 233); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 56, 405); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 55, 384); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 81, 434); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 337, 301); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 404, 302); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 213, 296); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 181, 208); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 213, 246); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 217, 261); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 215, 296); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 214, 283); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 251, 286); // cd (w, cl)
+selectCodeEditor("draw_rect.v", 251, 263); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 16 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 23, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis]", 3); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Mon Aug 16 13:42:19 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Mon Aug 16 13:42:19 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 23, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Mon Aug 16 13:42:21 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Mon Aug 16 13:42:21 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// ah (cl): Bitstream Generation Completed: addNotify
+// Elapsed time: 138 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (ah)
+dismissDialog("Bitstream Generation Completed"); // ah (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 26, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7a35t_0"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bA (cl): Program Device: addNotify
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bA)
+// bs (cl):  Program Device : addNotify
+// TclEventType: HW_DEVICE_CHANGE
+dismissDialog("Program Device"); // bA (cl)
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+dismissDialog("Program Device"); // bs (cl)
+// Elapsed time: 102 seconds
+selectCodeEditor("draw_rect.v", 1013, 357); // cd (w, cl)

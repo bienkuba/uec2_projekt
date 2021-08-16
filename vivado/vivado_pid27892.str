@@ -1,0 +1,483 @@
+/*
+
+Xilinx Vivado v2017.3 (64-bit) [Major: 2017, Minor: 3]
+SW Build: 2018833 on Wed Oct  4 19:58:22 MDT 2017
+IP Build: 2016188 on Wed Oct  4 21:52:56 MDT 2017
+
+Process ID: 27892
+License: Customer
+
+Current time: 	Sun Aug 15 13:50:38 CEST 2021
+Time zone: 	Central European Time (Europe/Belgrade)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 12
+
+Screen size: 1536x864
+Screen resolution (DPI): 96
+Available screens: 2
+Available disk space: 144 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	C:/Xilinx/Vivado/2017.3/tps/win64/jre
+JVM executable location: 	C:/Xilinx/Vivado/2017.3/tps/win64/jre/bin/java.exe
+
+User name: 	czlow
+User home directory: C:/Users/czlow
+User working directory: C:/Users/czlow/OneDrive/Pulpit/vivado
+User country: 	PL
+User language: 	pl
+User locale: 	pl_PL
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2017.3
+RDI_DATADIR: C:/Xilinx/Vivado/2017.3/data
+RDI_BINDIR: C:/Xilinx/Vivado/2017.3/bin
+
+User preferences location: C:/Users/czlow/AppData/Roaming/Xilinx/Vivado
+Vivado preferences directory: C:/Users/czlow/AppData/Roaming/Xilinx/Vivado/2017.3/vivado.xml
+Vivado layouts directory: C:/Users/czlow/AppData/Roaming/Xilinx/Vivado/2017.3/layouts
+PlanAhead jar file location: 	C:/Xilinx/Vivado/2017.3/lib/classes/planAhead.jar
+Vivado log file location: 	C:/Users/czlow/OneDrive/Pulpit/vivado/vivado.log
+Vivado journal file location: 	C:/Users/czlow/OneDrive/Pulpit/vivado/vivado.jou
+Engine tmp dir: 	C:/Users/czlow/OneDrive/Pulpit/vivado/.Xil/Vivado-27892-LAPTOP-1QF2NU10
+
+GUI allocated memory:	241 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 615 MB
+
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// [GUI Memory]: 54 MB (+53814kb) [00:00:07]
+// [Engine Memory]: 572 MB (+448334kb) [00:00:07]
+// [GUI Memory]: 58 MB (+2023kb) [00:00:08]
+// [GUI Memory]: 64 MB (+2850kb) [00:00:08]
+// TclEventType: START_PROGRESS_DIALOG
+// Tcl Message: source run.tcl 
+// Tcl Message: INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim' INFO: [SIM-utils-51] Simulation object is 'sim_1' INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'... INFO: [USF-XSim-97] Finding global include files... INFO: [USF-XSim-98] Fetching design files from 'sim_1'... INFO: [USF-XSim-2] XSim::Compile design INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim' 
+// Tcl Message: INFO: [USF-XSim-69] 'compile' step finished in '1' seconds INFO: [USF-XSim-3] XSim::Elaborate design INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim' 
+// Tcl Message: run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:09 . Memory (MB): peak = 243.969 ; gain = 0.000 
+// Tcl Message: INFO: [USF-XSim-69] 'elaborate' step finished in '9' seconds INFO: [USF-XSim-4] XSim::Simulate design INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim' INFO: [USF-XSim-98] *** Running xsim 
+// Tcl Message:    with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -log {simulate.log}" 
+// Tcl Message: INFO: [USF-XSim-8] Loading simulator feature 
+// Tcl Message: Vivado Simulator 2017.3 Time resolution is 1 ps 
+// Tcl Message: source testbench.tcl 
+// Tcl Message: ## current_wave_config 
+// Tcl Message: INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded. INFO: [USF-XSim-97] XSim simulation ran for 1000ns 
+// Tcl Message: launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:12 . Memory (MB): peak = 253.223 ; gain = 15.379 
+// TclEventType: START_PROGRESS_DIALOG
+// TclEventType: STOP_PROGRESS_DIALOG
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// [GUI Memory]: 73 MB (+5721kb) [00:00:11]
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// Waveform: addNotify
+// [GUI Memory]: 81 MB (+4498kb) [00:00:11]
+// bs (cl):  Sourcing Tcl script 'run.tcl' : addNotify
+// TclEventType: STOP_PROGRESS_DIALOG
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// [Engine Memory]: 615 MB (+14879kb) [00:00:12]
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+dismissDialog("Sourcing Tcl script 'run.tcl'"); // bs (cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// Tcl Message: update_compile_order -fileset sim_1 
+// Elapsed time: 13 seconds
+selectTab((HResource) null, (HResource) null, "Sources", 1); // aF (Q, cl)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v)]", 1); // B (D, cl)
+// PAPropertyPanels.initPanels (draw_rect_ctl.v) elapsed time: 0.2s
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v), my_rect_ctl : draw_rect_ctl (draw_rect_ctl.v)]", 6, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v), my_rect_ctl : draw_rect_ctl (draw_rect_ctl.v)]", 6, false, false, false, false, false, true); // B (D, cl) - Double Click
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect_ctl.v", 471, 281); // cd (w, cl)
+// Elapsed time: 32 seconds
+selectCodeEditor("draw_rect_ctl.v", 435, 278); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 537, 284); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 579, 325); // cd (w, cl)
+// Elapsed time: 115 seconds
+selectCodeEditor("draw_rect_ctl.v", 237, 196); // cd (w, cl)
+// Elapsed time: 36 seconds
+selectCodeEditor("draw_rect_ctl.v", 152, 212); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 255, 384); // cd (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("draw_rect_ctl.v", 412, 313); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 128, 400); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 131, 397); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect_ctl.v", 378, 404); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 218, 379); // cd (w, cl)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 7); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 8, true); // B (D, cl) - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 8); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, vga_example.xdc]", 9, false); // B (D, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, vga_example.xdc]", 9, false, false, false, false, false, true); // B (D, cl) - Double Click
+selectCodeEditor("vga_example.xdc", 7, 441); // cd (w, cl)
+selectCodeEditor("vga_example.xdc", 3, 433); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// [GUI Memory]: 86 MB (+1101kb) [00:05:18]
+// Elapsed time: 35 seconds
+selectCodeEditor("draw_rect_ctl.v", 103, 127); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 35, 145); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 97, 143); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 113, 152); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Untitled 1", 0); // k (j, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// Elapsed time: 12 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v)]", 1, true); // B (D, cl) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vga_example (vga_example.v)]", 1, true, false, false, false, false, true); // B (D, cl) - Double Click - Node
+// [GUI Memory]: 93 MB (+2757kb) [00:06:10]
+selectCodeEditor("vga_example.v", 128, 300); // cd (w, cl)
+selectCodeEditor("vga_example.v", 128, 300); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'c'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 122, 299); // cd (w, cl)
+selectCodeEditor("vga_example.v", 129, 299); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 120, 317); // cd (w, cl)
+selectCodeEditor("vga_example.v", 143, 315); // cd (w, cl)
+selectCodeEditor("vga_example.v", 112, 298); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'c'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 29, 312); // cd (w, cl)
+typeControlKey((HResource) null, "vga_example.v", 'v'); // cd (w, cl)
+selectCodeEditor("vga_example.v", 101, 316); // cd (w, cl)
+selectCodeEditor("vga_example.v", 99, 316); // cd (w, cl)
+selectCodeEditor("vga_example.v", 134, 296); // cd (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.xdc", 2); // k (j, cl)
+// TclEventType: FILE_SET_CHANGE
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_example.v", 3); // k (j, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "draw_rect_ctl.v", 1); // k (j, cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("draw_rect_ctl.v", 883, 119); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 654, 195); // cd (w, cl)
+// Elapsed time: 13 seconds
+selectCodeEditor("draw_rect_ctl.v", 94, 193); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 80, 399); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 89, 501); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 55, 438); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 88, 504); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 70, 460); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 54, 405); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 66, 330); // cd (w, cl)
+// Elapsed time: 18 seconds
+selectCodeEditor("draw_rect_ctl.v", 62, 214); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 320, 243); // cd (w, cl)
+// Elapsed time: 15 seconds
+selectCodeEditor("draw_rect_ctl.v", 198, 297); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 369, 373); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// [GUI Memory]: 98 MB (+227kb) [00:08:36]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 13:59:03 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 13:59:03 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 13:59:06 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 13:59:06 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+// TclEventType: RUN_FAILED
+// ah (cl): Synthesis Failed: addNotify
+// HMemoryUtils.trashcanNow. Engine heap size: 635 MB. GUI used memory: 49 MB. Current time: 8/15/21 1:59:20 PM CEST
+// Elapsed time: 21 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (ah)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // ah (cl)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\vga_example.v, [Synth 8-285] failed synthesizing module 'vga_example' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:13]. ]", 3, false); // ah (O, cl)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\czlow\OneDrive\Pulpit\vivado\rtl\vga_example.v;-;;-;16;-;line;-;13;-;;-;16;-;"); // ah (O, cl)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\vga_example.v, [Synth 8-344] instance 'my_rect_ctl' has duplicate port connection for port 'btnD' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:131]. ]", 2, false); // ah (O, cl)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\czlow\OneDrive\Pulpit\vivado\rtl\vga_example.v;-;;-;16;-;line;-;131;-;;-;16;-;"); // ah (O, cl)
+selectCodeEditor("vga_example.v", 63, 421); // cd (w, cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 6); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// am (cl): Save Project: addNotify
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (am)
+// bs (cl):  Save Constraints : addNotify
+// TclEventType: DG_GRAPH_STALE
+// bs (cl):  Resetting Runs : addNotify
+dismissDialog("Save Project"); // am (cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_ANALYSIS_MSG_RESET
+dismissDialog("Resetting Runs"); // bs (cl)
+// bs (cl):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Sun Aug 15 13:59:45 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 13:59:45 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bs (cl)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// Elapsed time: 17 seconds
+selectCodeEditor("vga_example.v", 62, 453); // cd (w, cl)
+selectCodeEditor("vga_example.v", 130, 455); // cd (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 661 MB. GUI used memory: 49 MB. Current time: 8/15/21 2:00:15 PM CEST
+// [Engine Memory]: 661 MB (+16136kb) [00:09:52]
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// ah (cl): Bitstream Generation Completed: addNotify
+// Elapsed time: 76 seconds
+selectRadioButton(PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER, "Open Hardware Manager"); // a (N, ah)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (ah)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Tcl Command: 'load_features labtools'
+// TclEventType: STOP_PROGRESS_DIALOG
+// TclEventType: LOAD_FEATURE
+// bs (cl):  Open Hardware Manager : addNotify
+// TclEventType: HW_SESSION_OPEN
+// Tcl Message: open_hw 
+dismissDialog("Open Hardware Manager"); // bs (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Open Target]", 22, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HW_TARGET
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET, "Auto Connect"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET
+// bs (cl):  Auto Connect : addNotify
+// Tcl Message: connect_hw_server 
+// Tcl Message: INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121 
+// Tcl Message: INFO: [Labtools 27-2222] Launching hw_server... 
+// Tcl Message: INFO: [Labtools 27-2221] Launch Output:  ****** Xilinx hw_server v2017.3   **** Build date : Oct  4 2017-20:12:17     ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   
+// TclEventType: HW_SERVER_UPDATE
+// Tcl Message: connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 941.922 ; gain = 0.000 
+// TclEventType: HW_TARGET_CHANGE
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_ADD
+// TclEventType: HW_TARGET_UPDATE
+// Tcl Message: open_hw_target 
+// Tcl Message: INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183756550A 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: current_hw_device [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// [Engine Memory]: 1,199 MB (+529583kb) [00:11:12]
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1435] Device xc7a35t (JTAG device index = 0) is not programmed (DONE status = 0). 
+dismissDialog("Auto Connect"); // bs (cl)
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aF (Q, cl)
+selectCheckBox(PAResourceItoN.MsgView_WARNING_MESSAGES, (String) null, true); // g (aQ, cl): TRUE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,207 MB. GUI used memory: 54 MB. Current time: 8/15/21 2:01:40 PM CEST
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, C:\\Users\\czlow\\OneDrive\\Pulpit\\vivado\\rtl\\draw_rect_ctl.v, [Synth 8-151] case item 32'b00000000000000000000000000000010 is unreachable [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:56]. ]", 2, false); // ah (O, cl)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\czlow\OneDrive\Pulpit\vivado\rtl\draw_rect_ctl.v;-;;-;16;-;line;-;56;-;;-;16;-;"); // ah (O, cl)
+// Elapsed time: 21 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 23, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis]", 4); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// HMemoryUtils.trashcanNow. Engine heap size: 1,231 MB. GUI used memory: 54 MB. Current time: 8/15/21 2:02:05 PM CEST
+selectMenuItem((HResource) null, "xc7a35t_0"); // ac (ai, cl)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bA (cl): Program Device: addNotify
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bA)
+// bs (cl):  Program Device : addNotify
+// TclEventType: HW_DEVICE_CHANGE
+dismissDialog("Program Device"); // bA (cl)
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+dismissDialog("Program Device"); // bs (cl)
+// Elapsed time: 30 seconds
+selectCodeEditor("draw_rect_ctl.v", 497, 227); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 488, 237); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// [GUI Memory]: 103 MB (+467kb) [00:12:23]
+// TclEventType: DG_GRAPH_GENERATED
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis]", 3); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// CommandFailedException: boost::filesystem::status: Odmowa dostêpu: "C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example_timing_summary_routed.rpx"
+/*
+#--------------------------------------------------------------------------
+# Xilinx Vivado v2017.3 (64-bit)
+# SW Build: 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build: 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Current time: Sun Aug 15 14:02:49 CEST 2021
+# Process ID: 27892
+# OS: Windows 10
+# User: czlow
+#
+# This file is an indication that an internal application error occurred.
+# This information is useful for debugging. Please open a case with Xilinx.
+# Technical Support with this file and a testcase attached.
+#--------------------------------------------------------------------------
+ui.frmwork.CommandFailedException: boost::filesystem::status: Odmowa dostêpu: "C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example_timing_summary_routed.rpx" (See C:/Users/czlow/OneDrive/Pulpit/vivado/vivado_pid27892.debug)
+*/
+// HOptionPane Error: 'boost::filesystem::status: Odmowa dostêpu: "C:/Users/czlow/OneDrive/Pulpit/vivado/ build/Tetris.runs/impl_1/vga_example_timing_summary_routed.rpx" (Vivado v2017.3 (64-bit))'
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 14:02:50 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 14:02:50 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+selectButton("RDIResource.MainWindowUtils_ERROR_OK", "OK"); // JButton (A, G)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation]", 5); // u (O, cl)
+// Elapsed time: 50 seconds
+selectCodeEditor("draw_rect_ctl.v", 686, 161); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'c'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 939, 162); // cd (w, cl)
+typeControlKey((HResource) null, "draw_rect_ctl.v", 'v'); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 941, 164); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 958, 161); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 989, 163); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 1054, 160); // cd (w, cl)
+// Elapsed time: 17 seconds
+selectCodeEditor("draw_rect_ctl.v", 1137, 160); // cd (w, cl)
+selectCodeEditor("draw_rect_ctl.v", 1140, 163); // cd (w, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// Elapsed time: 19 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator]", 1); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_RESET
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_GRAPH_GENERATED
+// Tcl Message: reset_run synth_1 
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 14:04:45 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 14:04:45 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 14:04:50 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 14:04:50 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+// [GUI Memory]: 109 MB (+917kb) [00:14:28]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// bs (cl):  Starting Design Runs : addNotify
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs synth_1 -jobs 12 
+// Tcl Message: [Sun Aug 15 14:04:59 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bs (cl)
+// Elapsed time: 34 seconds
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aF (Q, cl)
+selectButton(PAResourceItoN.MsgView_CLEAR_MESSAGES_RESULTING_FROM_USER_EXECUTED, "Messages_cleanUpMessages"); // B (cl)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 14:05:41 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 14:05:41 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cl)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bs (cl):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+dismissDialog("Resetting Runs"); // bs (cl)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 12 
+// Tcl Message: [Sun Aug 15 14:05:44 2021] Launched synth_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log [Sun Aug 15 14:05:44 2021] Launched impl_1... Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log 

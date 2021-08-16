@@ -65,8 +65,8 @@ module vga_example (
   wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r;
   wire vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r;
   wire vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r;
-  wire db_tick, db_level;
-  wire [11:0] rgb_out_b, rgb_out_r, xpos_out, ypos_out;
+  wire [2:0] rot_ctl, block_ctl;
+  wire [11:0] rgb_out_b, rgb_out_r, xpos_ctl, ypos_ctl;
 
 
   vga_timing my_timing (
@@ -110,8 +110,10 @@ module vga_example (
     .rgb_in(rgb_out_b),
     .pclk(pclk),
     .rst(rst),
-    .xpos(xpos_out),
-    .ypos(ypos_out),
+    .xpos(xpos_ctl),
+    .ypos(ypos_ctl),
+    .block(block_ctl),
+    .rot(rot_ctl),
           
     .hcount_out(hcount_out_r),
     .hsync_out(hsync_out_r),
@@ -130,10 +132,10 @@ module vga_example (
     .btnD(btnD),
     .btnU(btnU),
     
-    .xpos(xpos_out),
-    .ypos(ypos_out),
-    .column(),
-    .row()
+    .xpos(xpos_ctl),
+    .ypos(ypos_ctl),
+    .block(block_ctl),
+    .rot(rot_ctl)
   );
   
 

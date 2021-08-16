@@ -1,0 +1,247 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Sun Aug 15 13:49:55 2021
+# Process ID: 27892
+# Current directory: C:/Users/czlow/OneDrive/Pulpit/vivado
+# Command line: vivado.exe -mode tcl -source run.tcl -tclargs simulation
+# Log file: C:/Users/czlow/OneDrive/Pulpit/vivado/vivado.log
+# Journal file: C:/Users/czlow/OneDrive/Pulpit/vivado\vivado.jou
+#-----------------------------------------------------------
+source run.tcl
+# set project Tetris
+# set top_module vga_example
+# set target xc7a35tcpg236-1
+# set bitstream_file build/${project}.runs/impl_1/${top_module}.bit
+# proc usage {} {
+#     puts "usage: vivado -mode tcl -source [info script] -tclargs \[simulation/bitstream/program\]"
+#     exit 1
+# }
+# if {($argc != 1) || ([lindex $argv 0] ni {"simulation" "bitstream" "program"})} {
+#     usage
+# }
+# if {[lindex $argv 0] == "program"} {
+#     open_hw
+#     connect_hw_server
+#     current_hw_target [get_hw_targets *]
+#     open_hw_target
+#     current_hw_device [lindex [get_hw_devices] 0]
+#     refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
+# 
+#     set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+#     set_property FULL_PROBES.FILE {} [lindex [get_hw_devices] 0]
+#     set_property PROGRAM.FILE ${bitstream_file} [lindex [get_hw_devices] 0]
+# 
+#     program_hw_devices [lindex [get_hw_devices] 0]
+#     refresh_hw_device [lindex [get_hw_devices] 0]
+#     
+#     exit
+# } else {
+#     file mkdir build
+#     create_project ${project} build -part ${target} -force
+# }
+# read_xdc {
+#     constraints/vga_example.xdc
+#     constraints/clk_wiz_0.xdc
+# }
+# read_verilog {
+#     rtl/vga_example.v
+#     rtl/vga_timing.v
+#     rtl/draw_background.v
+#     rtl/draw_rect.v
+#     rtl/clk_wiz_0.v
+#     rtl/clk_wiz_0_clk_wiz.v
+#     rtl/draw_rect_ctl.v
+# }
+# add_files -fileset sim_1 {
+#     sim/testbench.v
+#     sim/tiff_writer.v
+# }
+# set_property top ${top_module} [current_fileset]
+# update_compile_order -fileset sources_1
+# update_compile_order -fileset sim_1
+# if {[lindex $argv 0] == "simulation"} {
+#     launch_simulation
+#     start_gui
+# } else {
+#     launch_runs synth_1 -jobs 8
+#     wait_on_run synth_1
+# 
+#     launch_runs impl_1 -to_step write_bitstream -jobs 8
+#     wait_on_run impl_1
+#     exit
+# }
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'testbench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj testbench_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_0_clk_wiz
+INFO: [VRFC 10-2458] undeclared symbol clk100MHz_clk_wiz_0_en_clk, assumed default net type wire [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v:215]
+INFO: [VRFC 10-2458] undeclared symbol clk75MHz_clk_wiz_0_en_clk, assumed default net type wire [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v:234]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_background.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_background
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_rect
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_rect_ctl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/sim/tiff_writer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tiff_writer
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vga_example
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_timing.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vga_timing
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/sim/testbench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module testbench
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim'
+Vivado Simulator 2017.3
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.3/bin/unwrapped/win64.o/xelab.exe -wto 597452ae108d484abb0e46d1e3ed9b0a --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot testbench_behav xil_defaultlib.testbench xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.ODDR
+Compiling module unisims_ver.IBUF
+Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=9.75,...
+Compiling module unisims_ver.BUFG
+Compiling module unisims_ver.BUFGCE_default
+Compiling module unisims_ver.BUFH
+Compiling module xil_defaultlib.clk_wiz_0_clk_wiz
+Compiling module xil_defaultlib.clk_wiz_0
+Compiling module xil_defaultlib.vga_timing
+Compiling module xil_defaultlib.draw_background
+Compiling module xil_defaultlib.draw_rect_default
+Compiling module xil_defaultlib.draw_rect_ctl
+Compiling module xil_defaultlib.vga_example
+Compiling module xil_defaultlib.tiff_writer
+Compiling module xil_defaultlib.testbench
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot testbench_behav
+
+****** Webtalk v2017.3 (64-bit)
+  **** SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Sun Aug 15 13:50:21 2021...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:09 . Memory (MB): peak = 243.969 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '9' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2017.3
+Time resolution is 1 ps
+source testbench.tcl
+## current_wave_config
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:12 . Memory (MB): peak = 253.223 ; gain = 15.379
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 13:59:03 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 13:59:03 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. PID not specified
+
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 13:59:06 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 13:59:06 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 13:59:45 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 13:59:45 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2017.3
+  **** Build date : Oct  4 2017-20:12:17
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 941.922 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183756550A
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1435] Device xc7a35t (JTAG device index = 0) is not programmed (DONE status = 0).
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 14:02:50 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 14:02:50 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 14:04:45 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 14:04:45 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. PID not specified
+
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 14:04:50 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 14:04:50 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 12
+[Sun Aug 15 14:04:59 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 14:05:41 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 14:05:41 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. PID not specified
+
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 14:05:44 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 14:05:44 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log

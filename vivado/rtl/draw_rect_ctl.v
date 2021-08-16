@@ -10,8 +10,8 @@ module draw_rect_ctl(
     
     output reg [11:0] xpos,
     output reg [11:0] ypos,
-    output reg [19:0] row,
-    output reg [9:0] column
+    output reg [2:0] block,
+    output reg [2:0] rot
     );
     
     localparam LEVEL = 1; //_______________________ make it input later
@@ -24,9 +24,9 @@ module draw_rect_ctl(
     localparam MOVE_RIGHT = 'b100;
     localparam FOLD_BTN   = 'b101;
     localparam STOP       = 'b110;
-    localparam MOVE_UP    = 'b111; //______________________________ DELETE LATER
+    localparam MOVE_UP    = 'b111; //______________________________ make it ROT - ratation alter
              
-    reg [2:0]  state_nxt, state;
+    reg [2:0]  state_nxt, state, block_nxt;
     reg [19:0] row_nxt;
     reg [9:0] column_nxt;
     reg [11:0] ypos_nxt, xpos_nxt;
@@ -41,15 +41,14 @@ module draw_rect_ctl(
             xpos     <= xpos_nxt;
             counter  <= counter_nxt;
             iterator <= iterator_nxt;
-            column   <= column_nxt;
-            row      <= row_nxt;        
+            block    <= block_nxt;      
         end
     
     always@*begin
       case(state)
         TRIGGER:   state_nxt = (btnD) ? IDLE : TRIGGER;
-        IDLE:      state_nxt = (counter > FALL_DELAY) ? MOVE_DOWN : (btnD && (counter > FALL_DELAY/2)) ? MOVE_DOWN :(btnR && column < 9) ? MOVE_RIGHT : (btnL && column > 0) ? MOVE_LEFT : (btnU && row > 0) ? MOVE_UP : IDLE; 
-        MOVE_DOWN: state_nxt = (row >= 19) ? STOP : IDLE;
+        IDLE:      state_nxt = (counter > FALL_DELAY) ? MOVE_DOWN : (btnD && (counter > FALL_DELAY/2)) ? MOVE_DOWN :(btnR && xpos < 9) ? MOVE_RIGHT : (btnL && xpos > 0) ? MOVE_LEFT : (btnU && ypos > 0) ? MOVE_UP : IDLE; 
+        MOVE_DOWN: state_nxt = (ypos >= 19) ? STOP : IDLE;
         MOVE_LEFT: state_nxt = FOLD_BTN;
         MOVE_RIGHT:state_nxt = FOLD_BTN;
         FOLD_BTN:  state_nxt = (counter > FALL_DELAY) ? MOVE_DOWN : (!btnR && !btnL && !btnU) ? IDLE : FOLD_BTN;
@@ -63,74 +62,57 @@ module draw_rect_ctl(
     always@*begin 
       case (state_nxt)  
         TRIGGER: begin
-          column_nxt = 4;
-          row_nxt = 0;          
-          xpos_nxt  = 201 + 35*column;
-          ypos_nxt  = 10 +35*row;
+          xpos_nxt = 4;
+          ypos_nxt = 0;          
           counter_nxt = 0;   
           iterator_nxt = 0;
+          block_nxt = 'b000;
           end         
         IDLE: begin
-          column_nxt = column;
-          row_nxt = row;           
-          xpos_nxt  = 201 + 35*column;
-          ypos_nxt  = 10 +35*row;            
+          xpos_nxt = xpos;
+          ypos_nxt = ypos;           
           iterator_nxt = iterator + 1;
           counter_nxt = (iterator)>>16;   
           end 
         MOVE_DOWN: begin
-          column_nxt = column;
-          row_nxt = row + 1;          
-          xpos_nxt  = 201 + 35*column;
-          ypos_nxt  = 10 +35*row;            
+          xpos_nxt = xpos;
+          ypos_nxt = ypos + 1;          
           iterator_nxt = 0;
           counter_nxt = 0;           
           end
         MOVE_LEFT: begin
-          column_nxt = column - 1;
-          row_nxt = row;         
-          ypos_nxt = 10 +35*row;          
-          xpos_nxt = 201 + 35*column;
+          xpos_nxt = xpos - 1;
+          ypos_nxt = ypos;         
           iterator_nxt = iterator;
           counter_nxt = counter;        
           end
         MOVE_RIGHT: begin
-          column_nxt = column + 1;
-          row_nxt = row;           
-          ypos_nxt = 10 +35*row;         
-          xpos_nxt = 201 + 35*column;
+          xpos_nxt = xpos + 1;
+          ypos_nxt = ypos;           
           iterator_nxt = iterator;
           counter_nxt = counter;         
           end
         FOLD_BTN: begin
-          column_nxt = column;
-          row_nxt = row;  
-          ypos_nxt = 10 +35*row;          
-          xpos_nxt = 201 + 35*column;
+          xpos_nxt = xpos;
+          ypos_nxt = ypos;  
           iterator_nxt = iterator + 1;
           counter_nxt = (iterator)>>16;        
           end
         STOP: begin
-          column_nxt = column;
-          row_nxt = row;          
-          xpos_nxt  = 201 + 35*column;
-          ypos_nxt  = 10 +35*row;
+          xpos_nxt = xpos;
+          ypos_nxt = ypos;          
           counter_nxt = 0;   
-          iterator_nxt = 0;         
+          iterator_nxt = 0;       
           end
         MOVE_UP: begin
-          column_nxt = column;
-          row_nxt = row - 1;          
-          xpos_nxt  = 201 + 35*column;
-          ypos_nxt  = 10 +35*row;           
+          xpos_nxt = xpos;
+          ypos_nxt = ypos - 1;                
           iterator_nxt = 0;
           counter_nxt = 0;          
           end
         default: begin
-          column_nxt = column;
-          row_nxt = row;          
-          xpos_nxt  = 201 + 35*11;
-          ypos_nxt  = 10 + 35*3;
+          xpos_nxt = xpos;
+          ypos_nxt = ypos;          
           iterator_nxt = 0;
           counter_nxt = 0;          
           end

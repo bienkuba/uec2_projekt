@@ -1,0 +1,406 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Sun Aug 15 14:06:28 2021
+# Process ID: 33288
+# Current directory: C:/Users/czlow/OneDrive/Pulpit/vivado/build
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent36460 C:\Users\czlow\OneDrive\Pulpit\vivado\build\Tetris.xpr
+# Log file: C:/Users/czlow/OneDrive/Pulpit/vivado/build/vivado.log
+# Journal file: C:/Users/czlow/OneDrive/Pulpit/vivado/build\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.3/data/ip'.
+update_compile_order -fileset sources_1
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Couldn't access process for termination
+
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 14:09:01 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 14:09:01 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2017.3
+  **** Build date : Oct  4 2017-20:12:17
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183756550A
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 14:36:19 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 14:36:19 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 15:39:33 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 15:39:33 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Sun Aug 15 16:13:10 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Sun Aug 15 16:13:10 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210183756550A
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183756550A
+INFO: [Labtools 27-1435] Device xc7a35t (JTAG device index = 0) is not programmed (DONE status = 0).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+undo
+INFO: [Common 17-17] undo 'set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]'
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Mon Aug 16 13:27:48 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Mon Aug 16 13:27:48 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+synth_design -rtl -name rtl_1
+Command: synth_design -rtl -name rtl_1
+Starting synth_design
+Using part: xc7a35tcpg236-1
+Top: vga_example
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1538.547 ; gain = 23.145
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'vga_example' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:13]
+INFO: [Synth 8-5534] Detected attribute (* KEEP = "TRUE" *) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:41]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:41]
+INFO: [Synth 8-638] synthesizing module 'ODDR' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:30648]
+	Parameter DDR_CLK_EDGE bound to: OPPOSITE_EDGE - type: string 
+	Parameter INIT bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter SRTYPE bound to: SYNC - type: string 
+INFO: [Synth 8-256] done synthesizing module 'ODDR' (1#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:30648]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0.v:71]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0_clk_wiz' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v:69]
+INFO: [Synth 8-5534] Detected attribute (* KEEP = "TRUE" *) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v:127]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v:127]
+INFO: [Synth 8-5534] Detected attribute (* KEEP = "TRUE" *) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v:130]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v:130]
+INFO: [Synth 8-638] synthesizing module 'IBUF' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:19468]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-256] done synthesizing module 'IBUF' (2#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:19468]
+INFO: [Synth 8-638] synthesizing module 'MMCME2_ADV' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:25757]
+	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
+	Parameter CLKFBOUT_MULT_F bound to: 9.750000 - type: float 
+	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKFBOUT_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKIN1_PERIOD bound to: 10.000000 - type: float 
+	Parameter CLKIN2_PERIOD bound to: 0.000000 - type: float 
+	Parameter CLKOUT0_DIVIDE_F bound to: 9.750000 - type: float 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT0_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT1_DIVIDE bound to: 13 - type: integer 
+	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT1_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT1_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT2_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT2_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT2_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT2_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT3_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT3_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT3_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT3_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT4_CASCADE bound to: FALSE - type: string 
+	Parameter CLKOUT4_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT4_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT4_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT4_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT5_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT5_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT5_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT5_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT6_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT6_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT6_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT6_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter COMPENSATION bound to: ZHOLD - type: string 
+	Parameter DIVCLK_DIVIDE bound to: 1 - type: integer 
+	Parameter IS_CLKINSEL_INVERTED bound to: 1'b0 
+	Parameter IS_PSEN_INVERTED bound to: 1'b0 
+	Parameter IS_PSINCDEC_INVERTED bound to: 1'b0 
+	Parameter IS_PWRDWN_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter REF_JITTER1 bound to: 0.010000 - type: float 
+	Parameter REF_JITTER2 bound to: 0.010000 - type: float 
+	Parameter SS_EN bound to: FALSE - type: string 
+	Parameter SS_MODE bound to: CENTER_HIGH - type: string 
+	Parameter SS_MOD_PERIOD bound to: 10000 - type: integer 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-256] done synthesizing module 'MMCME2_ADV' (3#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:25757]
+INFO: [Synth 8-638] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'BUFG' (4#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-638] synthesizing module 'BUFGCE' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:617]
+	Parameter CE_TYPE bound to: SYNC - type: string 
+	Parameter IS_CE_INVERTED bound to: 1'b0 
+	Parameter IS_I_INVERTED bound to: 1'b0 
+INFO: [Synth 8-256] done synthesizing module 'BUFGCE' (5#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:617]
+INFO: [Synth 8-638] synthesizing module 'BUFH' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:806]
+INFO: [Synth 8-256] done synthesizing module 'BUFH' (6#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:806]
+INFO: [Synth 8-256] done synthesizing module 'clk_wiz_0_clk_wiz' (7#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0_clk_wiz.v:69]
+INFO: [Synth 8-256] done synthesizing module 'clk_wiz_0' (8#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/clk_wiz_0.v:71]
+INFO: [Synth 8-638] synthesizing module 'vga_timing' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_timing.v:13]
+	Parameter HOR_TOTAL_TIME bound to: 1650 - type: integer 
+	Parameter HOR_BLANK_START bound to: 1280 - type: integer 
+	Parameter HOR_BLANK_TIME bound to: 370 - type: integer 
+	Parameter HOR_SYNC_START bound to: 1390 - type: integer 
+	Parameter HOR_SYNC_TIME bound to: 40 - type: integer 
+	Parameter VER_TOTAL_TIME bound to: 750 - type: integer 
+	Parameter VER_BLANK_START bound to: 720 - type: integer 
+	Parameter VER_BLANK_TIME bound to: 30 - type: integer 
+	Parameter VER_SYNC_START bound to: 725 - type: integer 
+	Parameter VER_SYNC_TIME bound to: 5 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'vga_timing' (9#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_timing.v:13]
+INFO: [Synth 8-638] synthesizing module 'draw_background' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_background.v:3]
+	Parameter SIZE bound to: 35 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'draw_background' (10#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_background.v:3]
+INFO: [Synth 8-638] synthesizing module 'draw_rect' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect.v:5]
+	Parameter X_CALIB bound to: 201 - type: integer 
+	Parameter Y_CALIB bound to: 10 - type: integer 
+	Parameter SIZE bound to: 35 - type: integer 
+	Parameter I_BLOCK bound to: 0 - type: integer 
+	Parameter O_BLOCK bound to: 1 - type: integer 
+	Parameter T_BLOCK bound to: 2 - type: integer 
+	Parameter S_BLOCK bound to: 3 - type: integer 
+	Parameter Z_BLOCK bound to: 4 - type: integer 
+	Parameter J_BLOCK bound to: 5 - type: integer 
+	Parameter L_BLOCK bound to: 6 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect.v:69]
+INFO: [Synth 8-256] done synthesizing module 'draw_rect' (11#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect.v:5]
+INFO: [Synth 8-638] synthesizing module 'draw_rect_ctl' [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:3]
+	Parameter LEVEL bound to: 1 - type: integer 
+	Parameter FALL_DELAY bound to: 900 - type: integer 
+	Parameter TRIGGER bound to: 0 - type: integer 
+	Parameter IDLE bound to: 1 - type: integer 
+	Parameter MOVE_DOWN bound to: 2 - type: integer 
+	Parameter MOVE_LEFT bound to: 3 - type: integer 
+	Parameter MOVE_RIGHT bound to: 4 - type: integer 
+	Parameter FOLD_BTN bound to: 5 - type: integer 
+	Parameter STOP bound to: 6 - type: integer 
+	Parameter MOVE_UP bound to: 7 - type: integer 
+INFO: [Synth 8-226] default block is never used [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:48]
+INFO: [Synth 8-226] default block is never used [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:63]
+WARNING: [Synth 8-3848] Net block_nxt in module/entity draw_rect_ctl does not have driver. [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:29]
+WARNING: [Synth 8-3848] Net rot in module/entity draw_rect_ctl does not have driver. [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:14]
+INFO: [Synth 8-256] done synthesizing module 'draw_rect_ctl' (12#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/draw_rect_ctl.v:3]
+INFO: [Synth 8-256] done synthesizing module 'vga_example' (13#1) [C:/Users/czlow/OneDrive/Pulpit/vivado/rtl/vga_example.v:13]
+WARNING: [Synth 8-3331] design draw_rect_ctl has unconnected port rot[2]
+WARNING: [Synth 8-3331] design draw_rect_ctl has unconnected port rot[1]
+WARNING: [Synth 8-3331] design draw_rect_ctl has unconnected port rot[0]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port xpos[11]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port xpos[10]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port xpos[9]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port xpos[8]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port xpos[7]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port xpos[6]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port xpos[5]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port ypos[11]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port ypos[10]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port ypos[9]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port ypos[8]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port ypos[7]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port ypos[6]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port ypos[5]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port rot[2]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port rot[1]
+WARNING: [Synth 8-3331] design draw_rect has unconnected port rot[0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1572.605 ; gain = 57.203
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1572.605 ; gain = 57.203
+---------------------------------------------------------------------------------
+INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/vga_example.xdc]
+Finished Parsing XDC File [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/vga_example.xdc]
+Parsing XDC File [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/clk_wiz_0.xdc]
+Finished Parsing XDC File [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/clk_wiz_0.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/czlow/OneDrive/Pulpit/vivado/constraints/clk_wiz_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/vga_example_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/vga_example_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Completed Processing XDC Constraints
+
+INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 1 OBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  BUFGCE => BUFGCTRL: 2 instances
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:18 ; elapsed = 00:00:14 . Memory (MB): peak = 1887.129 ; gain = 371.727
+45 Infos, 22 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:14 . Memory (MB): peak = 1887.129 ; gain = 371.727
+close_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Mon Aug 16 13:33:14 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Mon Aug 16 13:33:14 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Mon Aug 16 13:34:03 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Mon Aug 16 13:34:03 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Mon Aug 16 13:35:16 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Mon Aug 16 13:42:19 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Mon Aug 16 13:42:19 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. PID not specified
+
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Mon Aug 16 13:42:21 2021] Launched synth_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/synth_1/runme.log
+[Mon Aug 16 13:42:21 2021] Launched impl_1...
+Run output will be captured here: C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/czlow/OneDrive/Pulpit/vivado/build/Tetris.runs/impl_1/vga_example.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
