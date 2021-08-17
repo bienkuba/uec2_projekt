@@ -1,0 +1,28 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_0_clk_wiz
+INFO: [VRFC 10-2458] undeclared symbol clk100MHz_clk_wiz_0_en_clk, assumed default net type wire [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:215]
+INFO: [VRFC 10-2458] undeclared symbol clk75MHz_clk_wiz_0_en_clk, assumed default net type wire [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:234]
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/d_ff.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module d_ff
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/debounce.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module debounce
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/draw_background.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_background
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_rect
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect_ctl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_rect_ctl
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/slow_clock_4Hz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module slowe_clock_4Hz
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/sim/tiff_writer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tiff_writer
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vga_example
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/vga_timing.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vga_timing
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/sim/testbench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module testbench
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
