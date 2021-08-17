@@ -1,7 +1,5 @@
 `timescale 1ns / 1ps
 
-
-
 module draw_rect(
 
  input wire [10:0] vcount_in,
@@ -15,8 +13,8 @@ module draw_rect(
  input wire rst,
  input wire [11:0] xpos,
  input wire [11:0] ypos,
- input wire [2:0] block, 
- input wire [2:0] rot,
+ input wire [3:0] block, 
+ input wire [3:0] rot,
   
  output reg [10:0] vcount_out,
  output reg vsync_out,
@@ -24,24 +22,46 @@ module draw_rect(
  output reg [10:0] hcount_out,
  output reg hsync_out,
  output reg hblnk_out,
- output reg [11:0] rgb_out
+ output reg [11:0] rgb_out,
+ output reg [1:0] height,
+ output reg [1:0] lenght
  );
   
 
   localparam X_CALIB = 201;
   localparam Y_CALIB = 10;
   localparam SIZE  = 35;
- 
-  localparam I_BLOCK = 'b000;
-  localparam O_BLOCK = 'b001;
-  localparam T_BLOCK = 'b010;
-  localparam S_BLOCK = 'b011;
-  localparam Z_BLOCK = 'b100;
-  localparam J_BLOCK = 'b101;
-  localparam L_BLOCK = 'b110;
+  
+  
+  localparam RED_L    = 12'hf_a_b;
+  localparam RED_D    = 12'h8_0_0;
+  localparam RED_N    = 12'hf_0_0;
+  localparam YELLOW_L = 12'hf_f_8;
+  localparam YELLOW_D = 12'hb_b_6;
+  localparam YELLOW_N = 12'hf_f_0;
+  localparam PINK_L   = 12'he_8_e;
+  localparam PINK_D   = 12'h8_0_8;
+  localparam PINK_N   = 12'hf_0_f;
+  localparam BLUE_L   = 12'h0_b_f;
+  localparam BLUE_D   = 12'h0_0_8;
+  localparam BLUE_N   = 12'h0_0_f;
+  localparam GREEN_L  = 12'h9_f_9;
+  localparam GREEN_D  = 12'h0_8_0;
+  localparam GREEN_N  = 12'h0_f_0;
+  localparam CYAN_L   = 12'hc_f_f;
+  localparam CYAN_D   = 12'h0_c_f;
+  localparam CYAN_N   = 12'h0_f_f;
+  
+  localparam I_BLOCK = 'b1000;
+  localparam O_BLOCK = 'b1001;
+  localparam T_BLOCK = 'b1010;
+  localparam S_BLOCK = 'b1011;
+  localparam Z_BLOCK = 'b1100;
+  localparam J_BLOCK = 'b1101;
+  localparam L_BLOCK = 'b1110;
 
   reg [4:0] sq_1_col, sq_2_col, sq_3_col, sq_4_col, sq_1_row, sq_2_row, sq_3_row, sq_4_row;
-  reg [11:0] rgb_out_nxt;
+  reg [11:0] rgb_out_nxt, color_L, color_D, color_N;
            
   always@(posedge pclk or posedge rst)begin
     if (rst) begin
@@ -68,16 +88,38 @@ module draw_rect(
     always@*begin
       case (block) 
         I_BLOCK: begin
-            sq_1_col = xpos + 0;
+          color_L = RED_L;
+          color_D = RED_D;
+          color_N = RED_N;
+          if(rot == 0 || rot == 2) begin  
+            sq_1_col = xpos - 1;
             sq_1_row = ypos + 0;
-            sq_2_col = xpos + 1;
+            sq_2_col = xpos + 0;
             sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 2;
+            sq_3_col = xpos + 1;
             sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 3;
-            sq_4_row = ypos + 0;       
+            sq_4_col = xpos + 2;
+            sq_4_row = ypos + 0;
+            lenght = 4;
+            height = 1;
+          end
+          else begin            
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos + 0;
+            sq_3_row = ypos + 1;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos + 2;
+            lenght = 1;
+            height = 4;
+          end       
         end
         O_BLOCK: begin
+          color_L = YELLOW_L;
+          color_D = YELLOW_D;
+          color_N = YELLOW_N;
             sq_1_col = xpos + 0;
             sq_1_row = ypos + 0;
             sq_2_col = xpos + 1;
@@ -85,57 +127,238 @@ module draw_rect(
             sq_3_col = xpos + 0;
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;          
+            sq_4_row = ypos + 1;
+            lenght = 2;
+            height = 2;            
         end
         T_BLOCK: begin
-            sq_1_col = xpos + 0;
+          color_L = PINK_L;
+          color_D = PINK_D;
+          color_N = PINK_N;        
+          if(rot == 0) begin   
+            sq_1_col = xpos - 1;
             sq_1_row = ypos + 0;
-            sq_2_col = xpos + 1;
+            sq_2_col = xpos + 0;
             sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 0;
-            sq_3_row = ypos + 1;            
-            sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;         
+            sq_3_col = xpos + 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos + 1;
+            lenght = 3;
+            height = 2;
+          end  
+          else if (rot == 1) begin
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos - 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos + 1;
+            lenght = 2;
+            height = 3;                     
+          end
+          else if (rot == 2) begin
+            sq_1_col = xpos - 1;
+            sq_1_row = ypos + 0;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos + 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos - 1;          
+            lenght = 3;
+            height = 2;          
+          end 
+          else begin
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos + 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos + 1;          
+            lenght = 2;
+            height = 3;          
+          end 
         end        
         S_BLOCK: begin
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos + 0;
-            sq_2_col = xpos + 1;
+          color_L = GREEN_L;
+          color_D = GREEN_D;
+          color_N = GREEN_N;        
+          if(rot == 0 || rot == 2) begin  
+            sq_1_col = xpos - 1;
+            sq_1_row = ypos + 1;
+            sq_2_col = xpos + 0;
             sq_2_row = ypos + 0;            
             sq_3_col = xpos + 0;
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;        
+            sq_4_row = ypos + 0;
+            lenght = 2;
+            height = 3;
+          end
+          else begin
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos + 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos + 1;
+            sq_4_row = ypos + 1;
+            lenght = 3;
+            height = 2;
+          end
         end        
         Z_BLOCK: begin
-            sq_1_col = xpos + 0;
+          color_L = BLUE_L;
+          color_D = BLUE_D;
+          color_N = BLUE_N;        
+          if(rot == 0 || rot == 2) begin  
+            sq_1_col = xpos - 1;
             sq_1_row = ypos + 0;
-            sq_2_col = xpos + 1;
+            sq_2_col = xpos + 0;
             sq_2_row = ypos + 0;            
             sq_3_col = xpos + 0;
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;        
+            sq_4_row = ypos + 1;
+            lenght = 2;
+            height = 3;
+          end
+          else begin
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos - 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos - 1;
+            sq_4_row = ypos + 1;
+            lenght = 3;
+            height = 2;
+          end       
         end
         J_BLOCK: begin
-            sq_1_col = xpos + 0;
+          color_L = CYAN_L;
+          color_D = CYAN_D;
+          color_N = CYAN_N;          
+          if(rot == 0) begin   
+            sq_1_col = xpos - 1;
             sq_1_row = ypos + 0;
-            sq_2_col = xpos + 1;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos + 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos + 1;
+            sq_4_row = ypos + 1;
+            lenght = 3;
+            height = 2;
+          end  
+          else if (rot == 1) begin
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos + 0;
             sq_2_row = ypos + 0;            
             sq_3_col = xpos + 0;
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;     
+            sq_4_row = ypos - 1;
+            lenght = 2;
+            height = 3;                     
+          end
+          else if (rot == 2) begin
+            sq_1_col = xpos - 1;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos - 1;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos + 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos + 0;          
+            lenght = 3;
+            height = 2;          
+          end 
+          else begin
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos - 1;
+            sq_3_row = ypos + 1;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos + 1;          
+            lenght = 2;
+            height = 3;          
+          end     
         end
         L_BLOCK: begin
-            sq_1_col = xpos + 0;
+          color_L = RED_L;
+          color_D = RED_D;
+          color_N = RED_N;        
+          if(rot == 0) begin   
+            sq_1_col = xpos - 1;
             sq_1_row = ypos + 0;
-            sq_2_col = xpos + 1;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos + 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos - 1;
+            sq_4_row = ypos + 1;
+            lenght = 3;
+            height = 2;
+          end  
+          else if (rot == 1) begin
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos + 0;
             sq_2_row = ypos + 0;            
             sq_3_col = xpos + 0;
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;        
+            sq_4_row = ypos + 1;
+            lenght = 2;
+            height = 3;                     
+          end
+          else if (rot == 2) begin
+            sq_1_col = xpos + 1;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos - 1;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos + 1;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos + 0;          
+            lenght = 3;
+            height = 2;          
+          end 
+          else begin
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos - 1;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos - 1;
+            sq_3_row = ypos - 1;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos + 1;          
+            lenght = 2;
+            height = 3;          
+          end     
+        end
+        default: begin
+            sq_1_col = xpos + 0;
+            sq_1_row = ypos + 0;
+            sq_2_col = xpos + 0;
+            sq_2_row = ypos + 0;            
+            sq_3_col = xpos + 0;
+            sq_3_row = ypos + 0;            
+            sq_4_col = xpos + 0;
+            sq_4_row = ypos + 0;
+            lenght = 1;
+            height = 1;                
         end        
       endcase
     end
@@ -144,10 +367,74 @@ module draw_rect(
     begin
       if (vblnk_in || hblnk_in) rgb_out_nxt = 12'h0_0_0; 
         else begin
-                 if (vcount_in >= Y_CALIB + 35*sq_1_row && vcount_in < SIZE + Y_CALIB + 35*sq_1_row && hcount_in >= X_CALIB + 35*sq_1_col && hcount_in < SIZE + X_CALIB + 35*sq_1_col) rgb_out_nxt = 12'hf_0_0;
-            else if (vcount_in >= Y_CALIB + 35*sq_2_row && vcount_in < SIZE + Y_CALIB + 35*sq_2_row && hcount_in >= X_CALIB + 35*sq_2_col && hcount_in < SIZE + X_CALIB + 35*sq_2_col) rgb_out_nxt = 12'hf_0_0;
-            else if (vcount_in >= Y_CALIB + 35*sq_3_row && vcount_in < SIZE + Y_CALIB + 35*sq_3_row && hcount_in >= X_CALIB + 35*sq_3_col && hcount_in < SIZE + X_CALIB + 35*sq_3_col) rgb_out_nxt = 12'hf_0_0;
-            else if (vcount_in >= Y_CALIB + 35*sq_4_row && vcount_in < SIZE + Y_CALIB + 35*sq_4_row && hcount_in >= X_CALIB + 35*sq_4_col && hcount_in < SIZE + X_CALIB + 35*sq_4_col) rgb_out_nxt = 12'hf_0_0;
+              // left and top edge -> bright
+            if      (vcount_in >= Y_CALIB + 35*sq_1_row     && vcount_in < SIZE + Y_CALIB + 35*sq_1_row - 1 && hcount_in == X_CALIB + 35*sq_1_col)            rgb_out_nxt = color_L; 
+            else if (vcount_in >= Y_CALIB + 35*sq_1_row     && vcount_in < SIZE + Y_CALIB + 35*sq_1_row - 2 && hcount_in == X_CALIB + 35*sq_1_col + 1)        rgb_out_nxt = color_L; 
+            else if (vcount_in >= Y_CALIB + 35*sq_1_row     && vcount_in < SIZE + Y_CALIB + 35*sq_1_row - 3 && hcount_in == X_CALIB + 35*sq_1_col + 2)        rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_1_row     && hcount_in > X_CALIB + 35*sq_1_col             && hcount_in < SIZE + X_CALIB + 35*sq_1_col - 1) rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_1_row + 1 && hcount_in > X_CALIB + 35*sq_1_col             && hcount_in < SIZE + X_CALIB + 35*sq_1_col - 2) rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_1_row + 2 && hcount_in > X_CALIB + 35*sq_1_col             && hcount_in < SIZE + X_CALIB + 35*sq_1_col - 3) rgb_out_nxt = color_L;
+            // right and bottom edge -> dark
+            else if (vcount_in >= Y_CALIB + 35*sq_1_row + 1        && vcount_in < SIZE + Y_CALIB + 35*sq_1_row && hcount_in == X_CALIB + 35*sq_1_col + SIZE - 1) rgb_out_nxt = color_D; 
+            else if (vcount_in >= Y_CALIB + 35*sq_1_row + 2        && vcount_in < SIZE + Y_CALIB + 35*sq_1_row && hcount_in == X_CALIB + 35*sq_1_col + SIZE - 2) rgb_out_nxt = color_D; 
+            else if (vcount_in >= Y_CALIB + 35*sq_1_row + 3        && vcount_in < SIZE + Y_CALIB + 35*sq_1_row && hcount_in == X_CALIB + 35*sq_1_col + SIZE - 3) rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_1_row + SIZE - 1 && hcount_in > X_CALIB + 35*sq_1_col         && hcount_in < SIZE + X_CALIB + 35*sq_1_col)     rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_1_row + SIZE - 2 && hcount_in > X_CALIB + 35*sq_1_col + 1     && hcount_in < SIZE + X_CALIB + 35*sq_1_col)     rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_1_row + SIZE - 3 && hcount_in > X_CALIB + 35*sq_1_col + 2     && hcount_in < SIZE + X_CALIB + 35*sq_1_col)     rgb_out_nxt = color_D;          
+            // inside color
+            else if (vcount_in >= Y_CALIB + 35*sq_1_row && vcount_in < SIZE + Y_CALIB + 35*sq_1_row && hcount_in >= X_CALIB + 35*sq_1_col && hcount_in < SIZE + X_CALIB + 35*sq_1_col) rgb_out_nxt = color_N;                 
+
+              // left and top edge -> bright
+            else if (vcount_in >= Y_CALIB + 35*sq_2_row     && vcount_in < SIZE + Y_CALIB + 35*sq_2_row - 1 && hcount_in == X_CALIB + 35*sq_2_col)            rgb_out_nxt = color_L; 
+            else if (vcount_in >= Y_CALIB + 35*sq_2_row     && vcount_in < SIZE + Y_CALIB + 35*sq_2_row - 2 && hcount_in == X_CALIB + 35*sq_2_col + 1)        rgb_out_nxt = color_L; 
+            else if (vcount_in >= Y_CALIB + 35*sq_2_row     && vcount_in < SIZE + Y_CALIB + 35*sq_2_row - 3 && hcount_in == X_CALIB + 35*sq_2_col + 2)        rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_2_row     && hcount_in > X_CALIB + 35*sq_2_col             && hcount_in < SIZE + X_CALIB + 35*sq_2_col - 1) rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_2_row + 1 && hcount_in > X_CALIB + 35*sq_2_col             && hcount_in < SIZE + X_CALIB + 35*sq_2_col - 2) rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_2_row + 2 && hcount_in > X_CALIB + 35*sq_2_col             && hcount_in < SIZE + X_CALIB + 35*sq_2_col - 3) rgb_out_nxt = color_L;
+            // right and bottom edge -> dark
+            else if (vcount_in >= Y_CALIB + 35*sq_2_row + 1        && vcount_in < SIZE + Y_CALIB + 35*sq_2_row && hcount_in == X_CALIB + 35*sq_2_col + SIZE - 1) rgb_out_nxt = color_D; 
+            else if (vcount_in >= Y_CALIB + 35*sq_2_row + 2        && vcount_in < SIZE + Y_CALIB + 35*sq_2_row && hcount_in == X_CALIB + 35*sq_2_col + SIZE - 2) rgb_out_nxt = color_D; 
+            else if (vcount_in >= Y_CALIB + 35*sq_2_row + 3        && vcount_in < SIZE + Y_CALIB + 35*sq_2_row && hcount_in == X_CALIB + 35*sq_2_col + SIZE - 3) rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_2_row + SIZE - 1 && hcount_in > X_CALIB + 35*sq_2_col         && hcount_in < SIZE + X_CALIB + 35*sq_2_col)     rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_2_row + SIZE - 2 && hcount_in > X_CALIB + 35*sq_2_col + 1     && hcount_in < SIZE + X_CALIB + 35*sq_2_col)     rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_2_row + SIZE - 3 && hcount_in > X_CALIB + 35*sq_2_col + 2     && hcount_in < SIZE + X_CALIB + 35*sq_2_col)     rgb_out_nxt = color_D;          
+            // inside color
+            else if (vcount_in >= Y_CALIB + 35*sq_2_row && vcount_in < SIZE + Y_CALIB + 35*sq_2_row && hcount_in >= X_CALIB + 35*sq_2_col && hcount_in < SIZE + X_CALIB + 35*sq_2_col) rgb_out_nxt = color_N;
+            
+            // left and top edge -> bright
+            else if (vcount_in >= Y_CALIB + 35*sq_3_row     && vcount_in < SIZE + Y_CALIB + 35*sq_3_row - 1 && hcount_in == X_CALIB + 35*sq_3_col)            rgb_out_nxt = color_L; 
+            else if (vcount_in >= Y_CALIB + 35*sq_3_row     && vcount_in < SIZE + Y_CALIB + 35*sq_3_row - 2 && hcount_in == X_CALIB + 35*sq_3_col + 1)        rgb_out_nxt = color_L; 
+            else if (vcount_in >= Y_CALIB + 35*sq_3_row     && vcount_in < SIZE + Y_CALIB + 35*sq_3_row - 3 && hcount_in == X_CALIB + 35*sq_3_col + 2)        rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_3_row     && hcount_in > X_CALIB + 35*sq_3_col             && hcount_in < SIZE + X_CALIB + 35*sq_3_col - 1) rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_3_row + 1 && hcount_in > X_CALIB + 35*sq_3_col             && hcount_in < SIZE + X_CALIB + 35*sq_3_col - 2) rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_3_row + 2 && hcount_in > X_CALIB + 35*sq_3_col             && hcount_in < SIZE + X_CALIB + 35*sq_3_col - 3) rgb_out_nxt = color_L;
+            // right and bottom edge -> dark
+            else if (vcount_in >= Y_CALIB + 35*sq_3_row + 1        && vcount_in < SIZE + Y_CALIB + 35*sq_3_row && hcount_in == X_CALIB + 35*sq_3_col + SIZE - 1) rgb_out_nxt = color_D; 
+            else if (vcount_in >= Y_CALIB + 35*sq_3_row + 2        && vcount_in < SIZE + Y_CALIB + 35*sq_3_row && hcount_in == X_CALIB + 35*sq_3_col + SIZE - 2) rgb_out_nxt = color_D; 
+            else if (vcount_in >= Y_CALIB + 35*sq_3_row + 3        && vcount_in < SIZE + Y_CALIB + 35*sq_3_row && hcount_in == X_CALIB + 35*sq_3_col + SIZE - 3) rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_3_row + SIZE - 1 && hcount_in > X_CALIB + 35*sq_3_col         && hcount_in < SIZE + X_CALIB + 35*sq_3_col)     rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_3_row + SIZE - 2 && hcount_in > X_CALIB + 35*sq_3_col + 1     && hcount_in < SIZE + X_CALIB + 35*sq_3_col)     rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_3_row + SIZE - 3 && hcount_in > X_CALIB + 35*sq_3_col + 2     && hcount_in < SIZE + X_CALIB + 35*sq_3_col)     rgb_out_nxt = color_D;          
+            // inside color
+            else if (vcount_in >= Y_CALIB + 35*sq_3_row && vcount_in < SIZE + Y_CALIB + 35*sq_3_row && hcount_in >= X_CALIB + 35*sq_3_col && hcount_in < SIZE + X_CALIB + 35*sq_3_col) rgb_out_nxt = color_N;                             
+            
+            // left and top edge -> bright
+            else if (vcount_in >= Y_CALIB + 35*sq_4_row     && vcount_in < SIZE + Y_CALIB + 35*sq_4_row - 1 && hcount_in == X_CALIB + 35*sq_4_col)            rgb_out_nxt = color_L; 
+            else if (vcount_in >= Y_CALIB + 35*sq_4_row     && vcount_in < SIZE + Y_CALIB + 35*sq_4_row - 2 && hcount_in == X_CALIB + 35*sq_4_col + 1)        rgb_out_nxt = color_L; 
+            else if (vcount_in >= Y_CALIB + 35*sq_4_row     && vcount_in < SIZE + Y_CALIB + 35*sq_4_row - 3 && hcount_in == X_CALIB + 35*sq_4_col + 2)        rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_4_row     && hcount_in > X_CALIB + 35*sq_4_col             && hcount_in < SIZE + X_CALIB + 35*sq_4_col - 1) rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_4_row + 1 && hcount_in > X_CALIB + 35*sq_4_col             && hcount_in < SIZE + X_CALIB + 35*sq_4_col - 2) rgb_out_nxt = color_L;
+            else if (vcount_in == Y_CALIB + 35*sq_4_row + 2 && hcount_in > X_CALIB + 35*sq_4_col             && hcount_in < SIZE + X_CALIB + 35*sq_4_col - 3) rgb_out_nxt = color_L;
+            // right and bottom edge -> dark
+            else if (vcount_in >= Y_CALIB + 35*sq_4_row + 1        && vcount_in < SIZE + Y_CALIB + 35*sq_4_row && hcount_in == X_CALIB + 35*sq_4_col + SIZE - 1) rgb_out_nxt = color_D; 
+            else if (vcount_in >= Y_CALIB + 35*sq_4_row + 2        && vcount_in < SIZE + Y_CALIB + 35*sq_4_row && hcount_in == X_CALIB + 35*sq_4_col + SIZE - 2) rgb_out_nxt = color_D; 
+            else if (vcount_in >= Y_CALIB + 35*sq_4_row + 3        && vcount_in < SIZE + Y_CALIB + 35*sq_4_row && hcount_in == X_CALIB + 35*sq_4_col + SIZE - 3) rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_4_row + SIZE - 1 && hcount_in > X_CALIB + 35*sq_4_col         && hcount_in < SIZE + X_CALIB + 35*sq_4_col)     rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_4_row + SIZE - 2 && hcount_in > X_CALIB + 35*sq_4_col + 1     && hcount_in < SIZE + X_CALIB + 35*sq_4_col)     rgb_out_nxt = color_D;
+            else if (vcount_in == Y_CALIB + 35*sq_4_row + SIZE - 3 && hcount_in > X_CALIB + 35*sq_4_col + 2     && hcount_in < SIZE + X_CALIB + 35*sq_4_col)     rgb_out_nxt = color_D;          
+            // inside color
+            else if (vcount_in >= Y_CALIB + 35*sq_4_row && vcount_in < SIZE + Y_CALIB + 35*sq_4_row && hcount_in >= X_CALIB + 35*sq_4_col && hcount_in < SIZE + X_CALIB + 35*sq_4_col) rgb_out_nxt = color_N;                 
+        
             else rgb_out_nxt = rgb_in;
           end
       end
