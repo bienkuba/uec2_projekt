@@ -68,6 +68,7 @@ module vga_example (
   wire [3:0] rot_ctl, block_ctl;
   wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r;
   wire [11:0] rgb_out_b, rgb_out_r, xpos_ctl, ypos_ctl;
+  wire btnD_d;
 
 
   vga_timing my_timing (
@@ -127,12 +128,18 @@ module vga_example (
     .lenght(lenght_r)
     );
 
+  debounce my_debounce (
+    .pb(btnD),
+    .clk_in(pclk),
+    .led(btnD_d)
+);
+
   draw_rect_ctl my_rect_ctl(
     .pclk(pclk),
     .rst(rst),       
     .btnL(btnL),
     .btnR(btnR),
-    .btnD(btnD),
+    .btnD(btnD_d),
     .btnU(btnU),
     .height(height_r),
     .lenght(lenght_r),
