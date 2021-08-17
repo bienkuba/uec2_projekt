@@ -21,7 +21,7 @@
     
   reg [11:0] rgb_out_nxt = 0;
     
-    //T
+/*    //T
     localparam Y_T1 = 40;
     localparam X_T1 = 600;
     localparam Y_T2 = 40;
@@ -135,7 +135,7 @@
     localparam X_S10 = 600 + 35*16;    
     localparam Y_S11 = 40 + 35*4;
     localparam X_S11 = 600 + 35*15; 
-
+*/
 
 
     
@@ -191,7 +191,7 @@
       // game area background
       else if ((hcount_in >= 200 && hcount_in <= 549) && (vcount_in >= 10 && vcount_in <= 710)) rgb_out_nxt <= 12'h0_0_0;   
 
-    // T1 of TETRIS sigh 
+/*    // T1 of TETRIS sigh 
     else if (vcount_in >= Y_T1     && vcount_in < SIZE + Y_T1 - 1  && hcount_in == X_T1)            rgb_out_nxt = 12'hf_a_b; 
     else if (vcount_in >= Y_T1     && vcount_in < SIZE + Y_T1 - 2  && hcount_in == X_T1 + 1)        rgb_out_nxt = 12'hf_a_b; 
     else if (vcount_in >= Y_T1     && vcount_in < SIZE + Y_T1 - 3  && hcount_in == X_T1 + 2)        rgb_out_nxt = 12'hf_a_b;
@@ -1057,7 +1057,7 @@
     else if (vcount_in == Y_S11 + SIZE - 3 && hcount_in > X_S11 + 2     && hcount_in < SIZE + X_S11)     rgb_out_nxt = 12'h0_c_f;          
     // inside color
     else if (vcount_in >= Y_S11 && vcount_in < SIZE + Y_S11 && hcount_in >= X_S11 && hcount_in < SIZE + X_S11) rgb_out_nxt = 12'h0_f_f;       
-      
+      */
       
       
       
