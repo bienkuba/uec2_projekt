@@ -62,10 +62,11 @@ module vga_example (
       .locked(locked)
     );
 
-  wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r;
   wire vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r;
   wire vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r;
-  wire [2:0] rot_ctl, block_ctl;
+  wire [1:0] height_r, lenght_r;
+  wire [3:0] rot_ctl, block_ctl;
+  wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r;
   wire [11:0] rgb_out_b, rgb_out_r, xpos_ctl, ypos_ctl;
   wire btnD_d, btnD_u, btnD_l, btnD_r;
 
@@ -122,7 +123,9 @@ module vga_example (
     .vcount_out(vcount_out_r),
     .vsync_out(vsync_out_r),
     .vblnk_out(vblnk_out_r),
-    .rgb_out(rgb_out_r)
+    .rgb_out(rgb_out_r),
+    .height(height_r),
+    .lenght(lenght_r)
     );
 
   debounce my_debounce (
@@ -144,6 +147,9 @@ module vga_example (
     .btnR(btnD_r),
     .btnD(btnD_d),
     .btnU(btnD_u),
+    .height(height_r),
+    .lenght(lenght_r),
+
     
     .xpos(xpos_ctl),
     .ypos(ypos_ctl),
