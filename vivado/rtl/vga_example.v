@@ -62,13 +62,14 @@ module vga_example (
       .locked(locked)
     );
 
-  wire vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r;
-  wire vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r;
-  wire [1:0] height_r, lenght_r;
-  wire [3:0] rot_ctl, block_ctl;
+  wire        btnD_d, btnD_u, btnD_l, btnD_r;
+  wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r;
+  wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r;
+  wire [1:0]  offset_L, offset_R;
+  wire [3:0]  rot_ctl, block_ctl;
+  wire [4:0]  sq_1_col, sq_1_row, sq_2_col, sq_2_row, sq_3_col, sq_3_row, sq_4_col, sq_4_row; 
   wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r;
   wire [11:0] rgb_out_b, rgb_out_r, xpos_ctl, ypos_ctl;
-  wire btnD_d, btnD_u, btnD_l, btnD_r;
 
 
   vga_timing my_timing (
@@ -124,8 +125,16 @@ module vga_example (
     .vsync_out(vsync_out_r),
     .vblnk_out(vblnk_out_r),
     .rgb_out(rgb_out_r),
-    .height(height_r),
-    .lenght(lenght_r)
+    .sq_1_col(sq_1_col),
+    .sq_1_row(sq_1_row),
+    .sq_2_col(sq_2_col),
+    .sq_2_row(sq_2_row),
+    .sq_3_col(sq_3_col),
+    .sq_3_row(sq_3_row),
+    .sq_4_col(sq_4_col),
+    .sq_4_row(sq_4_row),
+    .offset_L(offset_L),
+    .offset_R(offset_R)
     );
 
   debounce_d my_d (
@@ -161,8 +170,16 @@ module vga_example (
     .btnR(btnD_r),
     .btnD(btnD_d),
     .btnU(btnD_u),
-    .height(height_r),
-    .lenght(lenght_r),
+    .sq_1_col(sq_1_col),
+    .sq_1_row(sq_1_row),
+    .sq_2_col(sq_2_col),
+    .sq_2_row(sq_2_row),
+    .sq_3_col(sq_3_col),
+    .sq_3_row(sq_3_row),
+    .sq_4_col(sq_4_col),
+    .sq_4_row(sq_4_row),
+    .offset_L(offset_L),
+    .offset_R(offset_R),
 
     
     .xpos(xpos_ctl),
