@@ -48,7 +48,6 @@ read_verilog {
     rtl/clk_wiz_0.v
     rtl/clk_wiz_0_clk_wiz.v
     rtl/draw_rect_ctl.v
-    rtl/debounce.v
     rtl/debounce_d.v
     rtl/debounce_u.v
     rtl/debounce_l.v

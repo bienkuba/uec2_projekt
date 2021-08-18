@@ -128,17 +128,31 @@ module vga_example (
     .lenght(lenght_r)
     );
 
-  debounce my_debounce (
+  debounce_d my_d (
     .pb_d(btnD),
-    .pb_u(btnU),
+    .clk_in(pclk),
+    .rect_down(btnD_d)
+  );
+
+  debounce_l my_l (
     .pb_l(btnL),
+    .clk_in(pclk),
+    .rect_left(btnD_l)
+  );
+
+  debounce_r my_r (
     .pb_r(btnR),
     .clk_in(pclk),
-    .rect_down(btnD_d),
-    .rect_up(btnD_u),
-    .rect_right(btnD_r),
-    .rect_left(btnD_l)
-);
+    .rect_right(btnD_r)
+  );
+
+  debounce_u my_u (
+    .pb_u(btnU),
+    .clk_in(pclk),
+    .rect_up(btnD_u)
+  );
+
+
 
   draw_rect_ctl my_rect_ctl(
     .pclk(pclk),
