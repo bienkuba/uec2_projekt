@@ -1,3 +1,4 @@
+
 module debounce (
     input pb_d, pb_u, pb_l, pb_r,
     input  clk_in,
@@ -6,25 +7,28 @@ module debounce (
     output rect_right,
     output rect_left
 );
-    wire clk_out;
-    wire Q1, Q2, Q3, Q4;
-    wire Q1_n, Q2_n, Q3_n, Q4_n;
-    wire Q1_bar, Q2_bar, Q3_bar, Q4_bar;
-    
-    slowe_clock_4Hz my_slowe_clock(clk_in, clk_out);
-    d_ff d1(clk_out, pb_d, pb_u, pb_l, pb_r, Q1, Q2, Q3, Q4);
-    d_ff d2(clk_out, Q1, Q2, Q3, Q4, Q1_n, Q2_n, Q3_n, Q4_n);
+    debounce_d my_d(
+        .pb_d(pb_d),
+        .clk_in(clk_in),
+        .rect_down(rect_down)
+    );
 
-    assign Q1_bar = ~Q1_n;
-    assign rect_down = Q1 & ~Q1_bar;
+    debounce_l my_l(
+        .pb_l(pb_l),
+        .clk_in(clk_in),
+        .rect_left(rect_left)
+    );
 
-    assign Q2_bar = ~Q2_n;
-    assign rect_up = Q2 & ~Q2_bar;
+    debounce_r my_r(
+        .pb_r(pb_r),
+        .clk_in(clk_in),
+        .rect_right(rect_right)
+    );
 
-    assign Q3_bar = ~Q3_n;
-    assign rect_right = Q3 & ~Q3_bar;
-
-    assign Q4_bar = ~Q4_n;
-    assign rect_left = Q4 & ~Q4_bar;
+    debounce_u my_u(
+        .pb_u(pb_u),
+        .clk_in(clk_in),
+        .rect_up(rect_up)
+    );
 
 endmodule
