@@ -7,17 +7,25 @@ module draw_rect_ctl(
     input btnR,
     input btnD,
     input btnU,
-    input [1:0] height,
-    input [1:0] lenght,
+    input [4:0] sq_1_col,
+    input [4:0] sq_1_row,
+    input [4:0] sq_2_col,
+    input [4:0] sq_2_row,
+    input [4:0] sq_3_col,
+    input [4:0] sq_3_row,          
+    input [4:0] sq_4_col,
+    input [4:0] sq_4_row,
+    input [1:0] offset_L,
+    input [1:0] offset_R,
     
     output reg [11:0] xpos,
     output reg [11:0] ypos,
-    output reg [3:0] block,
+    output reg [2:0] block,
     output reg [3:0] rot
     );
     
     localparam LEVEL = 1; //_______________________ make it input later
-    localparam FALL_DELAY = 2000 - 100*LEVEL;
+    localparam FALL_DELAY = 1000 - 100*LEVEL;
     
     localparam TRIGGER    = 'b000;
     localparam IDLE       = 'b001;
@@ -35,12 +43,11 @@ module draw_rect_ctl(
     localparam Z_BLOCK = 'b1100;
     localparam J_BLOCK = 'b1101;
     localparam L_BLOCK = 'b1110;
-             
-    reg [3:0]  state_nxt, state, block_nxt, rot_nxt;
-    reg [19:0] row_nxt;
-    reg [9:0]  column_nxt;
+    
+    reg [2:0]  block_nxt, rot_nxt;      
+    reg [3:0]  state_nxt, state;    
+    reg [10:0] iterator, iterator_nxt, counter, counter_nxt;
     reg [11:0] ypos_nxt, xpos_nxt;
-    reg [31:0] iterator, iterator_nxt, counter, counter_nxt;
     
     always@(posedge pclk)
         if (rst)
@@ -58,13 +65,13 @@ module draw_rect_ctl(
     always@*begin
       case(state)
         TRIGGER:   state_nxt = (btnD) ? IDLE : TRIGGER;
-        IDLE:      state_nxt = (counter > FALL_DELAY) ? MOVE_DOWN : (btnD && (counter > FALL_DELAY/4)) ? MOVE_DOWN :(btnR && xpos < 9) ? MOVE_RIGHT : (btnL && xpos > 0) ? MOVE_LEFT : (btnU) ? ROT : IDLE; 
+        IDLE:      state_nxt = /*(counter > FALL_DELAY) ? MOVE_DOWN :*/ (btnD /*&& (counter > FALL_DELAY/4)*/) ? MOVE_DOWN : btnR ? MOVE_RIGHT : btnL ? MOVE_LEFT : btnU ? ROT : IDLE; 
         MOVE_DOWN: state_nxt = (ypos >= 19) ? STOP : IDLE;
-        MOVE_LEFT: state_nxt = FOLD_BTN;
-        MOVE_RIGHT:state_nxt = FOLD_BTN;
-        FOLD_BTN:  state_nxt = (counter > FALL_DELAY) ? MOVE_DOWN : (!btnR && !btnL && !btnU) ? IDLE : FOLD_BTN;
+        MOVE_LEFT: state_nxt = IDLE;//FOLD_BTN;
+        MOVE_RIGHT:state_nxt = IDLE;//FOLD_BTN;
+        FOLD_BTN:  state_nxt = IDLE;//(counter > FALL_DELAY) ? MOVE_DOWN : (!btnR && !btnL && !btnU) ? IDLE : FOLD_BTN;
         STOP:      state_nxt = TRIGGER;
-        ROT:       state_nxt = FOLD_BTN;
+        ROT:       state_nxt = IDLE;//FOLD_BTN;
       default:
         state_nxt = STOP;  
       endcase
@@ -93,19 +100,29 @@ module draw_rect_ctl(
           ypos_nxt = ypos + 1;          
           iterator_nxt = 0;
           counter_nxt = 0;
-          block_nxt = block;
+          block_nxt = block + 1;
           rot_nxt = rot;           
           end
         MOVE_LEFT: begin
-          xpos_nxt = xpos - 1;
+            if(sq_1_col || sq_2_col || sq_3_col || sq_4_col == 0)begin
+              xpos_nxt = xpos - 1;
+              end
+            else begin
+              xpos_nxt = xpos;
+              end
           ypos_nxt = ypos;         
           iterator_nxt = iterator;
           counter_nxt = counter;
-          block_nxt = block + 1;
+          block_nxt = block;
           rot_nxt = rot;        
           end
         MOVE_RIGHT: begin
-          xpos_nxt = xpos + 1;
+            if(sq_1_col || sq_2_col || sq_3_col || sq_4_col == 9)begin
+              xpos_nxt = xpos - 1;
+              end
+            else begin
+              xpos_nxt = xpos;
+              end
           ypos_nxt = ypos;           
           iterator_nxt = iterator;
           counter_nxt = counter;
@@ -134,17 +151,25 @@ module draw_rect_ctl(
             end          
           end
         ROT: begin
-          xpos_nxt = xpos;
-          ypos_nxt = ypos;                
-          iterator_nxt = 0;
-          counter_nxt = 0;
-          block_nxt = block;
             if (rot == 3)begin
               rot_nxt = 0;
-            end
+              end
             else begin
               rot_nxt = rot + 1;
-            end
+              end
+            if(sq_1_col || sq_2_col || sq_3_col || sq_4_col > 9)begin
+              xpos_nxt = xpos - 1;
+              end
+            else if(sq_1_col || sq_2_col || sq_3_col || sq_4_col < 0)begin 
+              xpos_nxt = xpos + 1;
+              end
+            else begin
+              xpos_nxt = xpos;
+              end
+          ypos_nxt = ypos;                
+          iterator_nxt = iterator;
+          counter_nxt = counter;
+          block_nxt = block;
           end
         default: begin
           xpos_nxt = xpos;
