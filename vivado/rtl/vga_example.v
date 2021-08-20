@@ -62,12 +62,13 @@ module vga_example (
       .locked(locked)
     );
 
-  wire vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r;
-  wire vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r;
-  wire [1:0] height_r, lenght_r;
-  wire [3:0] rot_ctl, block_ctl;
+  //wire        btnL, btnR, btnD, btnU;
+  wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r;
+  wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r;
+  wire [1:0]  offset_L, offset_R, rot_ctl;
+  wire [4:0]  sq_1_col, sq_1_row, sq_2_col, sq_2_row, sq_3_col, sq_3_row, sq_4_col, sq_4_row, block_ctl, xpos_ctl, ypos_ctl; 
   wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r;
-  wire [11:0] rgb_out_b, rgb_out_r, xpos_ctl, ypos_ctl;
+  wire [11:0] rgb_out_b, rgb_out_r;
 
 
   vga_timing my_timing (
@@ -123,9 +124,43 @@ module vga_example (
     .vsync_out(vsync_out_r),
     .vblnk_out(vblnk_out_r),
     .rgb_out(rgb_out_r),
-    .height(height_r),
-    .lenght(lenght_r)
+    .sq_1_col(sq_1_col),
+    .sq_1_row(sq_1_row),
+    .sq_2_col(sq_2_col),
+    .sq_2_row(sq_2_row),
+    .sq_3_col(sq_3_col),
+    .sq_3_row(sq_3_row),
+    .sq_4_col(sq_4_col),
+    .sq_4_row(sq_4_row),
+    .offset_L(offset_L),
+    .offset_R(offset_R)
     );
+
+//  debounce_d my_d (
+//    .pb_d(btnD),
+//    .clk_in(pclk),
+//    .rect_down(btnD_d)
+//  );
+
+//  debounce_l my_l (
+//    .pb_l(btnL),
+//    .clk_in(pclk),
+//    .rect_left(btnD_l)
+//  );
+
+//  debounce_r my_r (
+//    .pb_r(btnR),
+//    .clk_in(pclk),
+//    .rect_right(btnD_r)
+//  );
+
+//  debounce_u my_u (
+//    .pb_u(btnU),
+//    .clk_in(pclk),
+//    .rect_up(btnD_u)
+//  );
+
+
 
   draw_rect_ctl my_rect_ctl(
     .pclk(pclk),
@@ -134,8 +169,17 @@ module vga_example (
     .btnR(btnR),
     .btnD(btnD),
     .btnU(btnU),
-    .height(height_r),
-    .lenght(lenght_r),
+    .sq_1_col(sq_1_col),
+    .sq_1_row(sq_1_row),
+    .sq_2_col(sq_2_col),
+    .sq_2_row(sq_2_row),
+    .sq_3_col(sq_3_col),
+    .sq_3_row(sq_3_row),
+    .sq_4_col(sq_4_col),
+    .sq_4_row(sq_4_row),
+    .offset_L(offset_L),
+    .offset_R(offset_R),
+
     
     .xpos(xpos_ctl),
     .ypos(ypos_ctl),

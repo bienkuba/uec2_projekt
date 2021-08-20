@@ -48,6 +48,12 @@ read_verilog {
     rtl/clk_wiz_0.v
     rtl/clk_wiz_0_clk_wiz.v
     rtl/draw_rect_ctl.v
+    rtl/debounce_d.v
+    rtl/debounce_u.v
+    rtl/debounce_l.v
+    rtl/debounce_r.v
+    rtl/d_ff.v
+    rtl/slow_clock_4Hz.v
 }
 
 add_files -fileset sim_1 {
