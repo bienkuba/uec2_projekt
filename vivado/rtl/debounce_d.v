@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module debounce_d (
     input pb_d,
     input  clk_in,

@@ -11,17 +11,17 @@ module draw_rect(
  input wire pclk,
  input wire [11:0] rgb_in,
  input wire rst,
- input wire [11:0] xpos,
- input wire [11:0] ypos,
- input wire [3:0] block, 
- input wire [3:0] rot,
+ input wire [4:0] xpos,
+ input wire [4:0] ypos,
+ input wire [4:0] block, 
+ input wire [1:0] rot,
   
- output reg [10:0] vcount_out,
- output reg vsync_out,
- output reg vblnk_out,
  output reg [10:0] hcount_out,
  output reg hsync_out,
  output reg hblnk_out,
+ output reg [10:0] vcount_out,
+ output reg vsync_out,
+ output reg vblnk_out,
  output reg [11:0] rgb_out,
  output reg [4:0] sq_1_col,
  output reg [4:0] sq_1_row,
@@ -30,9 +30,7 @@ module draw_rect(
  output reg [4:0] sq_3_col,
  output reg [4:0] sq_3_row,          
  output reg [4:0] sq_4_col,
- output reg [4:0] sq_4_row,
- output reg [1:0] offset_R,
- output reg [1:0] offset_L
+ output reg [4:0] sq_4_row
  );
   
 
@@ -60,13 +58,13 @@ module draw_rect(
   localparam CYAN_D   = 12'h0_c_f;
   localparam CYAN_N   = 12'h0_f_f;
   
-  localparam I_BLOCK = 'b1000;
-  localparam O_BLOCK = 'b1001;
-  localparam T_BLOCK = 'b1010;
-  localparam S_BLOCK = 'b1011;
-  localparam Z_BLOCK = 'b1100;
-  localparam J_BLOCK = 'b1101;
-  localparam L_BLOCK = 'b1110;
+  localparam I_BLOCK = 'b10000;
+  localparam O_BLOCK = 'b10001;
+  localparam T_BLOCK = 'b10010;
+  localparam S_BLOCK = 'b10011;
+  localparam Z_BLOCK = 'b10100;
+  localparam J_BLOCK = 'b10101;
+  localparam L_BLOCK = 'b10110;
 
   reg [11:0] rgb_out_nxt, color_L, color_D, color_N;
            
@@ -107,8 +105,6 @@ module draw_rect(
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 2;
             sq_4_row = ypos + 0;
-            offset_L = 1;
-            offset_R = 2;
           end
           else begin            
             sq_1_col = xpos + 0;
@@ -119,8 +115,6 @@ module draw_rect(
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 0;
             sq_4_row = ypos + 2;
-            offset_L = 0;
-            offset_R = 0;
           end       
         end
         O_BLOCK: begin
@@ -134,9 +128,7 @@ module draw_rect(
             sq_3_col = xpos + 0;
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;
-            offset_L = 0;
-            offset_R = 1;            
+            sq_4_row = ypos + 1;        
         end
         T_BLOCK: begin
           color_L = PINK_L;
@@ -151,8 +143,6 @@ module draw_rect(
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 0;
             sq_4_row = ypos + 1;
-            offset_L = 1;
-            offset_R = 1;
           end  
           else if (rot == 1) begin
             sq_1_col = xpos + 0;
@@ -162,9 +152,7 @@ module draw_rect(
             sq_3_col = xpos - 1;
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 0;
-            sq_4_row = ypos + 1;
-            offset_L = 1;
-            offset_R = 0;                     
+            sq_4_row = ypos + 1;       
           end
           else if (rot == 2) begin
             sq_1_col = xpos - 1;
@@ -174,9 +162,7 @@ module draw_rect(
             sq_3_col = xpos + 1;
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 0;
-            sq_4_row = ypos - 1;          
-            offset_L = 1;
-            offset_R = 1;          
+            sq_4_row = ypos - 1;
           end 
           else begin
             sq_1_col = xpos + 0;
@@ -186,9 +172,7 @@ module draw_rect(
             sq_3_col = xpos + 1;
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 0;
-            sq_4_row = ypos + 1;          
-            offset_L = 0;
-            offset_R = 1;          
+            sq_4_row = ypos + 1;  
           end 
         end        
         S_BLOCK: begin
@@ -204,8 +188,6 @@ module draw_rect(
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
             sq_4_row = ypos + 0;
-            offset_L = 1;
-            offset_R = 1;
           end
           else begin
             sq_1_col = xpos + 0;
@@ -216,8 +198,6 @@ module draw_rect(
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 1;
             sq_4_row = ypos + 1;
-            offset_L = 0;
-            offset_R = 1;
           end
         end        
         Z_BLOCK: begin
@@ -233,8 +213,6 @@ module draw_rect(
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
             sq_4_row = ypos + 1;
-            offset_L = 1;
-            offset_R = 1;
           end
           else begin
             sq_1_col = xpos + 0;
@@ -245,8 +223,6 @@ module draw_rect(
             sq_3_row = ypos + 0;            
             sq_4_col = xpos - 1;
             sq_4_row = ypos + 1;
-            offset_L = 1;
-            offset_R = 0;
           end       
         end
         J_BLOCK: begin
@@ -262,8 +238,6 @@ module draw_rect(
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 1;
             sq_4_row = ypos + 1;
-            offset_L = 1;
-            offset_R = 1;
           end  
           else if (rot == 1) begin
             sq_1_col = xpos + 0;
@@ -273,9 +247,7 @@ module draw_rect(
             sq_3_col = xpos + 0;
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
-            sq_4_row = ypos - 1;
-            offset_L = 0;
-            offset_R = 1;                     
+            sq_4_row = ypos - 1;     
           end
           else if (rot == 2) begin
             sq_1_col = xpos - 1;
@@ -285,9 +257,7 @@ module draw_rect(
             sq_3_col = xpos + 1;
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 0;
-            sq_4_row = ypos + 0;          
-            offset_L = 1;
-            offset_R = 1;          
+            sq_4_row = ypos + 0;
           end 
           else begin
             sq_1_col = xpos + 0;
@@ -297,9 +267,7 @@ module draw_rect(
             sq_3_col = xpos - 1;
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 0;
-            sq_4_row = ypos + 1;          
-            offset_L = 1;
-            offset_R = 0;          
+            sq_4_row = ypos + 1;
           end     
         end
         L_BLOCK: begin
@@ -315,8 +283,6 @@ module draw_rect(
             sq_3_row = ypos + 0;            
             sq_4_col = xpos - 1;
             sq_4_row = ypos + 1;
-            offset_L = 1;
-            offset_R = 1;
           end  
           else if (rot == 1) begin
             sq_1_col = xpos + 0;
@@ -326,9 +292,7 @@ module draw_rect(
             sq_3_col = xpos + 0;
             sq_3_row = ypos + 1;            
             sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;
-            offset_L = 0;
-            offset_R = 1;                     
+            sq_4_row = ypos + 1;      
           end
           else if (rot == 2) begin
             sq_1_col = xpos + 1;
@@ -338,9 +302,7 @@ module draw_rect(
             sq_3_col = xpos + 1;
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 0;
-            sq_4_row = ypos + 0;          
-            offset_L = 1;
-            offset_R = 1;          
+            sq_4_row = ypos + 0;
           end 
           else begin
             sq_1_col = xpos + 0;
@@ -350,9 +312,7 @@ module draw_rect(
             sq_3_col = xpos - 1;
             sq_3_row = ypos - 1;            
             sq_4_col = xpos + 0;
-            sq_4_row = ypos + 1;          
-            offset_L = 1;
-            offset_R = 0;          
+            sq_4_row = ypos + 1;
           end     
         end
         default: begin
@@ -367,8 +327,6 @@ module draw_rect(
             sq_3_row = ypos + 0;            
             sq_4_col = xpos + 0;
             sq_4_row = ypos + 0;
-            offset_L = 0;
-            offset_R = 0;                
         end        
       endcase
     end
