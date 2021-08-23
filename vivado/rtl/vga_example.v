@@ -170,13 +170,9 @@ module vga_example (
     .btnD(btnD),
     .btnU(btnU),
     .sq_1_col(sq_1_col_r),
-    .sq_1_row(sq_1_row_r),
     .sq_2_col(sq_2_col_r),
-    .sq_2_row(sq_2_row_r),
     .sq_3_col(sq_3_col_r),
-    .sq_3_row(sq_3_row_r),
     .sq_4_col(sq_4_col_r),
-    .sq_4_row(sq_4_row_r),
     .collision(collision),
     
     .xpos(xpos_ctl),
@@ -186,13 +182,13 @@ module vga_example (
   );
   
   fallen_blocks my_fallen_blocks (
-    .hcount_in(hcount_out_b),
-    .hsync_in(hsync_out_b),
-    .hblnk_in(hblnk_out_b),
-    .vcount_in(vcount_out_b),
-    .vsync_in(vsync_out_b),
-    .vblnk_in(vblnk_out_b),
-    .rgb_in(rgb_out_b),
+    .hcount_in(hcount_out_r),
+    .hsync_in(hsync_out_r),
+    .hblnk_in(hblnk_out_r),
+    .vcount_in(vcount_out_r),
+    .vsync_in(vsync_out_r),
+    .vblnk_in(vblnk_out_r),
+    .rgb_in(rgb_out_r),
     .pclk(pclk),
     .rst(rst),
     .sq_1_col(sq_1_col_r),
@@ -216,11 +212,11 @@ module vga_example (
 
 
   always @(posedge pclk)begin
-    hs <= hsync_out_r;
-    vs <= vsync_out_r;
+    hs <= hsync_out_f;
+    vs <= vsync_out_f;
     {r,g,b} <= rgb_out_b;
-    {r,g,b} <= rgb_out_f;
     {r,g,b} <= rgb_out_r;
+    {r,g,b} <= rgb_out_f;
    end
 
 endmodule

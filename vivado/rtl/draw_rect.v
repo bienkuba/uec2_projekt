@@ -68,7 +68,7 @@ module draw_rect(
 
   reg [11:0] rgb_out_nxt, color_L, color_D, color_N;
            
-  always@(posedge pclk or posedge rst)begin
+  always@(posedge pclk)begin
     if (rst) begin
       rgb_out    <= 0;
       hsync_out  <= 0;

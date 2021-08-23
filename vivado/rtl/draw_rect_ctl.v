@@ -8,13 +8,9 @@ module draw_rect_ctl(
     input btnD,
     input btnU,
     input [4:0] sq_1_col,
-    input [4:0] sq_1_row,
     input [4:0] sq_2_col,
-    input [4:0] sq_2_row,
-    input [4:0] sq_3_col,
-    input [4:0] sq_3_row,          
+    input [4:0] sq_3_col,          
     input [4:0] sq_4_col,
-    input [4:0] sq_4_row,
     input collision,
     
     output reg [4:0] xpos,
@@ -128,12 +124,8 @@ module draw_rect_ctl(
           debounce2_nxt = debounce2;
           end          
         MOVE_LEFT: begin
-            if((sq_1_col <= 0) || (sq_2_col <= 0) || (sq_3_col <= 0) || (sq_4_col <= 0))begin
-              xpos_nxt = xpos;
-              end
-            else begin
-              xpos_nxt = xpos - 1;
-              end
+            if((sq_1_col == 0) || (sq_2_col == 0) || (sq_3_col == 0) || (sq_4_col == 0)) xpos_nxt = xpos;
+            else xpos_nxt = xpos - 1;
           ypos_nxt = ypos;         
           iterator_nxt = iterator;
           counter_nxt = counter;
@@ -143,12 +135,8 @@ module draw_rect_ctl(
           debounce2_nxt = 0;       
           end
         MOVE_RIGHT: begin
-            if((sq_1_col >= 9) || (sq_2_col >= 9) || (sq_3_col >= 9) || (sq_4_col >= 9))begin
-              xpos_nxt = xpos;
-              end
-            else if((sq_1_col < 9) || (sq_2_col < 9) || (sq_3_col < 9) || (sq_4_col < 9))begin
-              xpos_nxt = xpos + 1;
-              end
+            if((sq_1_col < 9) || (sq_2_col < 9) || (sq_3_col < 9) || (sq_4_col < 9)) xpos_nxt = xpos + 1;
+            else xpos_nxt = xpos;
           ypos_nxt = ypos;           
           iterator_nxt = iterator;
           counter_nxt = counter;
@@ -173,17 +161,13 @@ module draw_rect_ctl(
           counter_nxt = 0;   
           iterator_nxt = 0;
           rot_nxt = 0;
-          block_nxt = block;
+          block_nxt = block + 1;
           debounce1_nxt = 0;
           debounce2_nxt = 0;
           end
         ROT: begin
-            if (rot == 3)begin
-              rot_nxt = 0;
-              end
-            else begin
-              rot_nxt = rot + 1;
-              end
+            if (rot == 3) rot_nxt = 0;
+            else rot_nxt = rot + 1;
           xpos_nxt = xpos;
           ypos_nxt = ypos;                
           iterator_nxt = iterator;
@@ -193,42 +177,18 @@ module draw_rect_ctl(
           debounce2_nxt = 0;
           end
         ROT_OFFSET: begin
-            if(block==I_BLOCK && xpos==9 && (rot == 0 || rot == 2))begin 
-              xpos_nxt = xpos - 2;
-              end
-            else if(block==I_BLOCK && xpos==8 && (rot == 0 || rot == 2))begin 
-              xpos_nxt = xpos - 1;
-              end  
-            else if(block==I_BLOCK && xpos==0 && (rot == 0 || rot == 2))begin 
-              xpos_nxt = xpos + 1;
-              end  
-            else if(block==T_BLOCK && xpos==9 && rot == 2)begin
-              xpos_nxt = xpos - 1;
-              end
-            else if(block==T_BLOCK && xpos==0 && rot == 0)begin
-              xpos_nxt = xpos + 1;
-              end 
-            else if(block==S_BLOCK && xpos==0 && (rot == 0 || rot == 2))begin
-              xpos_nxt = xpos + 1;
-              end
-            else if(block==Z_BLOCK && xpos==9 && (rot == 0 || rot == 2))begin
-              xpos_nxt = xpos - 1;
-              end
-            else if(block==J_BLOCK && xpos==0 && rot == 2)begin
-              xpos_nxt = xpos + 1;
-              end
-            else if(block==J_BLOCK && xpos==9 && rot == 0)begin
-              xpos_nxt = xpos - 1;
-              end
-            else if(block==L_BLOCK && xpos==0 && rot == 2)begin
-              xpos_nxt = xpos + 1;
-              end
-            else if(block==L_BLOCK && xpos==9 && rot == 0)begin
-              xpos_nxt = xpos - 1;
-              end
-            else begin
-              xpos_nxt = xpos;
-              end
+            if(block==I_BLOCK && xpos==9 && (rot == 0 || rot == 2)) xpos_nxt = xpos - 2;
+            else if(block==I_BLOCK && xpos==8 && (rot == 0 || rot == 2)) xpos_nxt = xpos - 1;
+            else if(block==I_BLOCK && xpos==0 && (rot == 0 || rot == 2)) xpos_nxt = xpos + 1;
+            else if(block==T_BLOCK && xpos==9 && rot == 2) xpos_nxt = xpos - 1;
+            else if(block==T_BLOCK && xpos==0 && rot == 0) xpos_nxt = xpos + 1;
+            else if(block==S_BLOCK && xpos==0 && (rot == 0 || rot == 2)) xpos_nxt = xpos + 1;
+            else if(block==Z_BLOCK && xpos==9 && (rot == 0 || rot == 2)) xpos_nxt = xpos - 1;
+            else if(block==J_BLOCK && xpos==0 && rot == 2) xpos_nxt = xpos + 1;
+            else if(block==J_BLOCK && xpos==9 && rot == 0) xpos_nxt = xpos - 1;
+            else if(block==L_BLOCK && xpos==0 && rot == 2) xpos_nxt = xpos + 1;
+            else if(block==L_BLOCK && xpos==9 && rot == 0) xpos_nxt = xpos - 1;
+            else xpos_nxt = xpos;
           rot_nxt = rot;
           ypos_nxt = ypos;                
           iterator_nxt = iterator;
@@ -238,16 +198,14 @@ module draw_rect_ctl(
           debounce2_nxt = 0;
           end
         NEW_BLOCK: begin
-          xpos_nxt = 4;
+          xpos_nxt = 6;
           ypos_nxt = 0;          
           counter_nxt = 0;   
           iterator_nxt = 0;
             if(block != I_BLOCK || block != O_BLOCK || block != T_BLOCK || block != S_BLOCK || block != Z_BLOCK || block != J_BLOCK || block != L_BLOCK)begin;
               block_nxt = I_BLOCK;
             end
-            else begin
-              block_nxt = block + 1;
-            end
+            else block_nxt = block + 1;            
           rot_nxt = 0;
           debounce1_nxt = 0;
           debounce2_nxt = 0;
