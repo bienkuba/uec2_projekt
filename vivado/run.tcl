@@ -54,6 +54,7 @@ read_verilog {
     rtl/debounce_r.v
     rtl/d_ff.v
     rtl/slow_clock_4Hz.v
+    rtl/fallen_blocks.v
 }
 
 add_files -fileset sim_1 {

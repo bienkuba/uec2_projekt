@@ -63,7 +63,7 @@ module vga_example (
     );
 
   //wire        btnL, btnR, btnD, btnU;
-  wire        collision;
+  wire        collision, lock_en;
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f;
   wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f;
   wire [1:0]  rot_ctl;
@@ -178,7 +178,8 @@ module vga_example (
     .xpos(xpos_ctl),
     .ypos(ypos_ctl),
     .block(block_ctl),
-    .rot(rot_ctl)
+    .rot(rot_ctl),
+    .lock_en(lock_en)
   );
   
   fallen_blocks my_fallen_blocks (
@@ -199,7 +200,8 @@ module vga_example (
     .sq_3_row(sq_3_row_r),
     .sq_4_col(sq_4_col_r),
     .sq_4_row(sq_4_row_r),
-          
+    .lock_en(lock_en),
+        
     .hcount_out(hcount_out_f),
     .hsync_out(hsync_out_f),
     .hblnk_out(hblnk_out_f),

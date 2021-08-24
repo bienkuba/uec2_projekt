@@ -16,11 +16,12 @@ module draw_rect_ctl(
     output reg [4:0] xpos,
     output reg [4:0] ypos,
     output reg [4:0] block,
-    output reg [1:0] rot
+    output reg [1:0] rot,
+    output reg lock_en
     );
     
-    localparam LEVEL = 1; //_______________________ make it input later
-    localparam FALL_DELAY = 2100 - 100*LEVEL;
+    localparam LEVEL = 3; //_______________________ make it input later
+    localparam FALL_DELAY = 1000 - 100*LEVEL;
     
     localparam INIT       = 'b0000;
     localparam IDLE       = 'b0001;
@@ -84,14 +85,15 @@ module draw_rect_ctl(
     always@*begin 
       case (state_nxt)  
         INIT: begin
+          lock_en = 0;
           xpos_nxt = 4;
           ypos_nxt = 0;          
           counter_nxt = 0;   
           iterator_nxt = 0;
-          block_nxt = I_BLOCK;
+          block_nxt = O_BLOCK;
           rot_nxt = 0;
           debounce1_nxt = 0;
-          debounce2_nxt = 0;
+          debounce2_nxt = 0;          
           end         
         IDLE: begin
           xpos_nxt = xpos;
@@ -102,6 +104,7 @@ module draw_rect_ctl(
           rot_nxt = rot;
           debounce1_nxt = 0;
           debounce2_nxt = 0;   
+          lock_en = 0;
           end 
         MOVE_DOWN: begin
           xpos_nxt = xpos;
@@ -112,6 +115,7 @@ module draw_rect_ctl(
           rot_nxt = rot;
           debounce1_nxt = 0;
           debounce2_nxt = 0;
+          lock_en = 0;
           end
         CHECK: begin
           xpos_nxt = xpos;
@@ -122,6 +126,7 @@ module draw_rect_ctl(
           rot_nxt = rot;
           debounce1_nxt = debounce1;
           debounce2_nxt = debounce2;
+          lock_en = 0;
           end          
         MOVE_LEFT: begin
             if((sq_1_col == 0) || (sq_2_col == 0) || (sq_3_col == 0) || (sq_4_col == 0)) xpos_nxt = xpos;
@@ -133,10 +138,11 @@ module draw_rect_ctl(
           rot_nxt = rot; 
           debounce1_nxt = 0;
           debounce2_nxt = 0;       
+          lock_en = 0;
           end
         MOVE_RIGHT: begin
-            if((sq_1_col < 9) || (sq_2_col < 9) || (sq_3_col < 9) || (sq_4_col < 9)) xpos_nxt = xpos + 1;
-            else xpos_nxt = xpos;
+            if((sq_1_col == 9) || (sq_2_col == 9) || (sq_3_col == 9) || (sq_4_col == 9)) xpos_nxt = xpos;
+            else xpos_nxt = xpos + 1;
           ypos_nxt = ypos;           
           iterator_nxt = iterator;
           counter_nxt = counter;
@@ -144,6 +150,7 @@ module draw_rect_ctl(
           rot_nxt = rot;
           debounce1_nxt = 0;
           debounce2_nxt = 0;         
+          lock_en = 0;
           end
         HOLD_BTN: begin
           xpos_nxt = xpos;
@@ -154,6 +161,7 @@ module draw_rect_ctl(
           rot_nxt = rot;
           debounce1_nxt = debounce1 + 1;
           debounce2_nxt = (debounce1)>>16;  
+          lock_en = 0;
           end
         STOP: begin
           xpos_nxt = xpos;
@@ -161,9 +169,10 @@ module draw_rect_ctl(
           counter_nxt = 0;   
           iterator_nxt = 0;
           rot_nxt = 0;
-          block_nxt = block + 1;
+          block_nxt = block;
           debounce1_nxt = 0;
           debounce2_nxt = 0;
+          lock_en = 1;
           end
         ROT: begin
             if (rot == 3) rot_nxt = 0;
@@ -175,6 +184,7 @@ module draw_rect_ctl(
           block_nxt = block;
           debounce1_nxt = 0;
           debounce2_nxt = 0;
+          lock_en = 0;
           end
         ROT_OFFSET: begin
             if(block==I_BLOCK && xpos==9 && (rot == 0 || rot == 2)) xpos_nxt = xpos - 2;
@@ -196,19 +206,21 @@ module draw_rect_ctl(
           block_nxt = block;
           debounce1_nxt = 0;
           debounce2_nxt = 0;
+          lock_en = 0;
           end
         NEW_BLOCK: begin
           xpos_nxt = 6;
           ypos_nxt = 0;          
           counter_nxt = 0;   
           iterator_nxt = 0;
-            if(block != I_BLOCK || block != O_BLOCK || block != T_BLOCK || block != S_BLOCK || block != Z_BLOCK || block != J_BLOCK || block != L_BLOCK)begin;
+            if(block == L_BLOCK)begin;
               block_nxt = I_BLOCK;
             end
             else block_nxt = block + 1;            
           rot_nxt = 0;
           debounce1_nxt = 0;
           debounce2_nxt = 0;
+          lock_en = 0;
           end          
         default: begin
           xpos_nxt = 11;
@@ -219,6 +231,7 @@ module draw_rect_ctl(
           rot_nxt = rot;
           debounce1_nxt = 0;
           debounce2_nxt = 0;
+          lock_en = 0;
           end
       endcase
     end      

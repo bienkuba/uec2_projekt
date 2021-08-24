@@ -19,6 +19,7 @@ module fallen_blocks(
  input wire [4:0] sq_3_row,          
  input wire [4:0] sq_4_col,
  input wire [4:0] sq_4_row,
+ input wire lock_en,
   
  output reg [10:0] vcount_out,
  output reg vsync_out,
@@ -27,7 +28,7 @@ module fallen_blocks(
  output reg hsync_out,
  output reg hblnk_out,
  output reg [11:0] rgb_out,
- output reg collision
+ output reg collision 
  );
   
 
@@ -55,17 +56,12 @@ module fallen_blocks(
   localparam CYAN_D   = 12'h0_c_f;
   localparam CYAN_N   = 12'h0_f_f;
   
-  integer    iy;
-  integer    ix;
-  integer    iiy;
-  integer    iix;
-  integer    ii;
+  integer    i;
   integer    j;
   integer    jj;
   reg        collision_nxt;
-  reg [9:0]  sq_1_col_bit, sq_2_col_bit, sq_3_col_bit, sq_4_col_bit;
   reg [11:0] rgb_out_nxt, color_L, color_D, color_N;
-  reg [20:0] my_reg[9:0], my_reg_nxt[9:0];
+  reg [0:9] my_reg[19:0], my_reg_nxt[19:0];
            
   always@(posedge pclk)begin
     if (rst) begin
@@ -92,47 +88,269 @@ module fallen_blocks(
       vcount_out <= vcount_in;
       rgb_out    <= rgb_out_nxt;
       collision  <= collision_nxt;
-      for(j = 0; j < 20; j = j + 1)begin
-        for(jj = 0; jj < 10; jj = jj + 1)begin
-          my_reg[jj][j]<=my_reg_nxt[jj][j];
-        end
-      end
+      for(jj = 0; jj < 20; jj = jj + 1) my_reg[jj] <= my_reg_nxt[jj];
     end
   end 
       
     
     always@*begin
-      sq_1_col_bit = 2^sq_1_col;
-      sq_2_col_bit = 2^sq_2_col;
-      sq_3_col_bit = 2^sq_3_col;
-      sq_4_col_bit = 2^sq_4_col;
       color_L = RED_L;
       color_D = RED_D;
       color_N = RED_N;
-      for(ii = 0; ii < 10; ii = ii + 1)begin
-        my_reg_nxt[ii][20] = 1;
-        my_reg_nxt[ii][19] = 1;
-      end
-      
-      if(my_reg[sq_1_col][sq_1_row + 1] == 1 || my_reg[sq_2_col][sq_2_row + 1] == 1 || my_reg[sq_3_col][sq_3_row + 1] == 1 || my_reg[sq_4_col][sq_4_row + 1] == 1)begin
+      if(sq_1_row == 19 || sq_2_row == 19 || sq_3_row == 19 || sq_4_row == 19)begin
         collision_nxt = 1; 
-        my_reg_nxt[sq_1_col][sq_1_row] = 1;
-        my_reg_nxt[sq_2_col][sq_2_row] = 1;
-        my_reg_nxt[sq_3_col][sq_3_row] = 1;
-        my_reg_nxt[sq_4_col][sq_4_row] = 1;
+          if(lock_en == 1)begin
+            my_reg_nxt[sq_1_row][sq_1_col] = 1;
+            my_reg_nxt[sq_2_row][sq_2_col] = 1;
+            my_reg_nxt[sq_3_row][sq_3_col] = 1;
+            my_reg_nxt[sq_4_row][sq_4_col] = 1;
+          end
+      end    
+      else if(my_reg[sq_1_row + 1][sq_1_col] == 1 || my_reg[sq_2_row + 1][sq_2_col] == 1 || my_reg[sq_3_row + 1][sq_3_col] == 1 || my_reg[sq_4_row + 1][sq_4_col] == 1)begin
+        collision_nxt = 1; 
+          if(lock_en == 1)begin
+            my_reg_nxt[sq_1_row][sq_1_col] = 1;
+            my_reg_nxt[sq_2_row][sq_2_col] = 1;
+            my_reg_nxt[sq_3_row][sq_3_col] = 1;
+            my_reg_nxt[sq_4_row][sq_4_col] = 1;
+          end
       end
-      else begin
-        collision_nxt = 0;
-      end
+      else if(my_reg_nxt[19] == 10'b1111111111) for(i = 0; i < 20; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[18] == 10'b1111111111) for(i = 0; i < 19; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[17] == 10'b1111111111) for(i = 0; i < 18; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[16] == 10'b1111111111) for(i = 0; i < 17; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[15] == 10'b1111111111) for(i = 0; i < 16; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[14] == 10'b1111111111) for(i = 0; i < 15; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[13] == 10'b1111111111) for(i = 0; i < 14; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[12] == 10'b1111111111) for(i = 0; i < 13; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[11] == 10'b1111111111) for(i = 0; i < 12; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[10] == 10'b1111111111) for(i = 0; i < 11; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[9] == 10'b1111111111) for(i = 0; i < 10; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[8] == 10'b1111111111) for(i = 0; i < 9; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[7] == 10'b1111111111) for(i = 0; i < 8; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[6] == 10'b1111111111) for(i = 0; i < 7; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[5] == 10'b1111111111) for(i = 0; i < 6; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[4] == 10'b1111111111) for(i = 0; i < 5; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[3] == 10'b1111111111) for(i = 0; i < 4; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[2] == 10'b1111111111) for(i = 0; i < 3; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
+      else if(my_reg_nxt[1] == 10'b1111111111) for(i = 0; i < 2; i = i + 1) my_reg_nxt[i] = my_reg[i-1];   
+      else collision_nxt = 0;
+      //for(i = 0; i < 20; i = i + 1) my_reg_nxt[i] = my_reg[i];         
     end
-                
+
+  
   always @* begin
     if (vblnk_in || hblnk_in) rgb_out_nxt = 12'h0_0_0; 
     else begin
-      if(my_reg[2][18] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_L;
-      else if(my_reg[1][18] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
-      else if(my_reg[1][17] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
-      else if(my_reg[1][16] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        if(my_reg[19][0] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[19][1] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[19][2] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[19][3] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[19][4] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[19][5] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[19][6] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[19][7] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[19][8] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[19][9] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;
+        
+        else if(my_reg[18][0] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[18][1] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[18][2] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[18][3] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[18][4] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[18][5] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[18][6] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[18][7] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[18][8] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[18][9] == 1 && vcount_in >= Y_CALIB + 35*18 && vcount_in < SIZE + Y_CALIB + 35*18 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;
+        
+        else if(my_reg[17][0] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[17][1] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[17][2] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[17][3] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[17][4] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[17][5] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[17][6] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[17][7] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[17][8] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[17][9] == 1 && vcount_in >= Y_CALIB + 35*17 && vcount_in < SIZE + Y_CALIB + 35*17 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;
+        
+        else if(my_reg[16][0] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[16][1] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[16][2] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[16][3] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[16][4] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[16][5] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[16][6] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[16][7] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[16][8] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[16][9] == 1 && vcount_in >= Y_CALIB + 35*16 && vcount_in < SIZE + Y_CALIB + 35*16 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;
+        
+        else if(my_reg[15][0] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[15][1] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[15][2] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[15][3] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[15][4] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[15][5] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[15][6] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[15][7] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[15][8] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[15][9] == 1 && vcount_in >= Y_CALIB + 35*15 && vcount_in < SIZE + Y_CALIB + 35*15 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;
+        
+        else if(my_reg[14][0] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[14][1] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[14][2] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[14][3] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[14][4] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[14][5] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[14][6] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[14][7] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[14][8] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[14][9] == 1 && vcount_in >= Y_CALIB + 35*14 && vcount_in < SIZE + Y_CALIB + 35*14 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+              
+        else if(my_reg[13][0] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[13][1] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[13][2] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[13][3] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[13][4] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[13][5] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[13][6] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[13][7] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[13][8] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[13][9] == 1 && vcount_in >= Y_CALIB + 35*13 && vcount_in < SIZE + Y_CALIB + 35*13 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+        
+        else if(my_reg[12][0] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[12][1] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[12][2] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[12][3] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[12][4] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[12][5] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[12][6] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[12][7] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[12][8] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[12][9] == 1 && vcount_in >= Y_CALIB + 35*12 && vcount_in < SIZE + Y_CALIB + 35*12 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+        
+        else if(my_reg[11][0] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[11][1] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[11][2] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[11][3] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[11][4] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[11][5] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[11][6] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[11][7] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[11][8] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[11][9] == 1 && vcount_in >= Y_CALIB + 35*11 && vcount_in < SIZE + Y_CALIB + 35*11 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+
+        else if(my_reg[10][0] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[10][1] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[10][2] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[10][3] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[10][4] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[10][5] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[10][6] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[10][7] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[10][8] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[10][9] == 1 && vcount_in >= Y_CALIB + 35*10 && vcount_in < SIZE + Y_CALIB + 35*10 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+        
+        else if(my_reg[9][0] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[9][1] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[9][2] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[9][3] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[9][4] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[9][5] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[9][6] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[9][7] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[9][8] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[9][9] == 1 && vcount_in >= Y_CALIB + 35*9 && vcount_in < SIZE + Y_CALIB + 35*9 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+        
+        else if(my_reg[8][0] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[8][1] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[8][2] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[8][3] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[8][4] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[8][5] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[8][6] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[8][7] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[8][8] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[8][9] == 1 && vcount_in >= Y_CALIB + 35*8 && vcount_in < SIZE + Y_CALIB + 35*8 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+
+        else if(my_reg[7][0] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[7][1] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[7][2] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[7][3] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[7][4] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[7][5] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[7][6] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[7][7] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[7][8] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[7][9] == 1 && vcount_in >= Y_CALIB + 35*7 && vcount_in < SIZE + Y_CALIB + 35*7 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;
+        
+        else if(my_reg[6][0] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[6][1] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[6][2] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[6][3] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[6][4] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[6][5] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[6][6] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[6][7] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[6][8] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[6][9] == 1 && vcount_in >= Y_CALIB + 35*6 && vcount_in < SIZE + Y_CALIB + 35*6 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;
+        
+        else if(my_reg[5][0] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[5][1] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[5][2] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[5][3] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[5][4] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[5][5] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[5][6] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[5][7] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[5][8] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[5][9] == 1 && vcount_in >= Y_CALIB + 35*5 && vcount_in < SIZE + Y_CALIB + 35*5 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;
+        
+        else if(my_reg[4][0] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[4][1] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[4][2] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[4][3] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[4][4] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[4][5] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[4][6] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[4][7] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[4][8] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[4][9] == 1 && vcount_in >= Y_CALIB + 35*4 && vcount_in < SIZE + Y_CALIB + 35*4 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+              
+        else if(my_reg[3][0] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[3][1] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[3][2] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[3][3] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[3][4] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[3][5] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[3][6] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[3][7] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[3][8] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[3][9] == 1 && vcount_in >= Y_CALIB + 35*3 && vcount_in < SIZE + Y_CALIB + 35*3 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+        
+        else if(my_reg[2][0] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[2][1] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[2][2] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[2][3] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[2][4] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[2][5] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[2][6] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[2][7] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[2][8] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[2][9] == 1 && vcount_in >= Y_CALIB + 35*2 && vcount_in < SIZE + Y_CALIB + 35*2 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;          
+        
+        else if(my_reg[1][0] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;
+        else if(my_reg[1][1] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*1 && hcount_in < SIZE + X_CALIB + 35*1) rgb_out_nxt = color_D;
+        else if(my_reg[1][2] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*2 && hcount_in < SIZE + X_CALIB + 35*2) rgb_out_nxt = color_D;
+        else if(my_reg[1][3] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*3 && hcount_in < SIZE + X_CALIB + 35*3) rgb_out_nxt = color_D;
+        else if(my_reg[1][4] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*4 && hcount_in < SIZE + X_CALIB + 35*4) rgb_out_nxt = color_D;
+        else if(my_reg[1][5] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*5 && hcount_in < SIZE + X_CALIB + 35*5) rgb_out_nxt = color_D;
+        else if(my_reg[1][6] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*6 && hcount_in < SIZE + X_CALIB + 35*6) rgb_out_nxt = color_D;
+        else if(my_reg[1][7] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*7 && hcount_in < SIZE + X_CALIB + 35*7) rgb_out_nxt = color_D;
+        else if(my_reg[1][8] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*8 && hcount_in < SIZE + X_CALIB + 35*8) rgb_out_nxt = color_D;
+        else if(my_reg[1][9] == 1 && vcount_in >= Y_CALIB + 35*1 && vcount_in < SIZE + Y_CALIB + 35*1 && hcount_in >= X_CALIB + 35*9 && hcount_in < SIZE + X_CALIB + 35*9) rgb_out_nxt = color_D;
+
       else rgb_out_nxt = rgb_in;
     end
   end
