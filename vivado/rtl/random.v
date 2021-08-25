@@ -6,12 +6,12 @@ module random (
     );
 
     initial begin
-        random = 16;
+        random = 5'b10000;
     end
 
     always @ (posedge pclk) begin
-        if (random == 22) begin
-            random <= 16;
+        if (random == 5'b10110) begin
+            random <= 5'b10000;
         end 
         else begin
             random <= random + 1;

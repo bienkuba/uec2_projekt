@@ -56,6 +56,7 @@ read_verilog {
     rtl/slow_clock_4Hz.v
     rtl/fallen_blocks.v
     rtl/random.v
+    rtl/draw_nxt_block.v
 }
 
 add_files -fileset sim_1 {
