@@ -67,11 +67,10 @@ module vga_example (
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f;
   wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f;
   wire [1:0]  rot_ctl;
-  wire [4:0]  sq_1_col_r, sq_1_row_r, sq_2_col_r, sq_2_row_r, sq_3_col_r, sq_3_row_r, sq_4_col_r, sq_4_row_r;
+  wire [4:0]  sq_1_col_r, sq_1_row_r, sq_2_col_r, sq_2_row_r, sq_3_col_r, sq_3_row_r, sq_4_col_r, sq_4_row_r, random;
   wire [4:0]  sq_1_col_ctl, sq_1_row_ctl, sq_2_col_ctl, sq_2_row_ctl, sq_3_col_ctl, sq_3_row_ctl, sq_4_col_ctl, sq_4_row_ctl, block_ctl, xpos_ctl, ypos_ctl;
   wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r, hcount_out_f, vcount_out_f;
   wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f;
-
 
   vga_timing my_timing (
     .vcount(vcount),
@@ -159,7 +158,10 @@ module vga_example (
 //    .clk_in(pclk),
 //    .rect_up(btnD_u)
 //  );
-
+  random my_random (
+    .pclk(pclk),
+    .random(random)
+   );
 
 
   draw_rect_ctl my_rect_ctl(
