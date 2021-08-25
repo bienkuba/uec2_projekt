@@ -62,14 +62,15 @@ module vga_example (
       .locked(locked)
     );
 
-  wire        btnD_d, btnD_u, btnD_l, btnD_r;
-  wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r;
-  wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r;
-  wire [1:0]  offset_L, offset_R;
-  wire [3:0]  rot_ctl, block_ctl;
-  wire [4:0]  sq_1_col, sq_1_row, sq_2_col, sq_2_row, sq_3_col, sq_3_row, sq_4_col, sq_4_row; 
-  wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r;
-  wire [11:0] rgb_out_b, rgb_out_r, xpos_ctl, ypos_ctl;
+  //wire        btnL, btnR, btnD, btnU;
+  wire        collision, lock_en;
+  wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f;
+  wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f;
+  wire [1:0]  rot_ctl;
+  wire [4:0]  sq_1_col_r, sq_1_row_r, sq_2_col_r, sq_2_row_r, sq_3_col_r, sq_3_row_r, sq_4_col_r, sq_4_row_r;
+  wire [4:0]  sq_1_col_ctl, sq_1_row_ctl, sq_2_col_ctl, sq_2_row_ctl, sq_3_col_ctl, sq_3_row_ctl, sq_4_col_ctl, sq_4_row_ctl, block_ctl, xpos_ctl, ypos_ctl;
+  wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r, hcount_out_f, vcount_out_f;
+  wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f;
 
 
   vga_timing my_timing (
@@ -110,8 +111,8 @@ module vga_example (
     .vcount_in(vcount_out_b),
     .vsync_in(vsync_out_b),
     .vblnk_in(vblnk_out_b),
-    .rgb_in(rgb_out_b),
     .pclk(pclk),
+    .rgb_in(rgb_out_b),
     .rst(rst),
     .xpos(xpos_ctl),
     .ypos(ypos_ctl),
@@ -125,75 +126,99 @@ module vga_example (
     .vsync_out(vsync_out_r),
     .vblnk_out(vblnk_out_r),
     .rgb_out(rgb_out_r),
-    .sq_1_col(sq_1_col),
-    .sq_1_row(sq_1_row),
-    .sq_2_col(sq_2_col),
-    .sq_2_row(sq_2_row),
-    .sq_3_col(sq_3_col),
-    .sq_3_row(sq_3_row),
-    .sq_4_col(sq_4_col),
-    .sq_4_row(sq_4_row),
-    .offset_L(offset_L),
-    .offset_R(offset_R)
+    .sq_1_col(sq_1_col_r),
+    .sq_1_row(sq_1_row_r),
+    .sq_2_col(sq_2_col_r),
+    .sq_2_row(sq_2_row_r),
+    .sq_3_col(sq_3_col_r),
+    .sq_3_row(sq_3_row_r),
+    .sq_4_col(sq_4_col_r),
+    .sq_4_row(sq_4_row_r)
     );
 
-  debounce_d my_d (
-    .pb_d(btnD),
-    .clk_in(pclk),
-    .rect_down(btnD_d)
-  );
+//  debounce_d my_d (
+//    .pb_d(btnD),
+//    .clk_in(pclk),
+//    .rect_down(btnD_d)
+//  );
 
-  debounce_l my_l (
-    .pb_l(btnL),
-    .clk_in(pclk),
-    .rect_left(btnD_l)
-  );
+//  debounce_l my_l (
+//    .pb_l(btnL),
+//    .clk_in(pclk),
+//    .rect_left(btnD_l)
+//  );
 
-  debounce_r my_r (
-    .pb_r(btnR),
-    .clk_in(pclk),
-    .rect_right(btnD_r)
-  );
+//  debounce_r my_r (
+//    .pb_r(btnR),
+//    .clk_in(pclk),
+//    .rect_right(btnD_r)
+//  );
 
-  debounce_u my_u (
-    .pb_u(btnU),
-    .clk_in(pclk),
-    .rect_up(btnD_u)
-  );
+//  debounce_u my_u (
+//    .pb_u(btnU),
+//    .clk_in(pclk),
+//    .rect_up(btnD_u)
+//  );
 
 
 
   draw_rect_ctl my_rect_ctl(
     .pclk(pclk),
     .rst(rst),       
-    .btnL(btnD_l),
-    .btnR(btnD_r),
-    .btnD(btnD_d),
-    .btnU(btnD_u),
-    .sq_1_col(sq_1_col),
-    .sq_1_row(sq_1_row),
-    .sq_2_col(sq_2_col),
-    .sq_2_row(sq_2_row),
-    .sq_3_col(sq_3_col),
-    .sq_3_row(sq_3_row),
-    .sq_4_col(sq_4_col),
-    .sq_4_row(sq_4_row),
-    .offset_L(offset_L),
-    .offset_R(offset_R),
-
+    .btnL(btnL),
+    .btnR(btnR),
+    .btnD(btnD),
+    .btnU(btnU),
+    .sq_1_col(sq_1_col_r),
+    .sq_2_col(sq_2_col_r),
+    .sq_3_col(sq_3_col_r),
+    .sq_4_col(sq_4_col_r),
+    .collision(collision),
     
     .xpos(xpos_ctl),
     .ypos(ypos_ctl),
     .block(block_ctl),
-    .rot(rot_ctl)
+    .rot(rot_ctl),
+    .lock_en(lock_en)
   );
   
+  fallen_blocks my_fallen_blocks (
+    .hcount_in(hcount_out_r),
+    .hsync_in(hsync_out_r),
+    .hblnk_in(hblnk_out_r),
+    .vcount_in(vcount_out_r),
+    .vsync_in(vsync_out_r),
+    .vblnk_in(vblnk_out_r),
+    .rgb_in(rgb_out_r),
+    .pclk(pclk),
+    .rst(rst),
+    .sq_1_col(sq_1_col_r),
+    .sq_1_row(sq_1_row_r),
+    .sq_2_col(sq_2_col_r),
+    .sq_2_row(sq_2_row_r),
+    .sq_3_col(sq_3_col_r),
+    .sq_3_row(sq_3_row_r),
+    .sq_4_col(sq_4_col_r),
+    .sq_4_row(sq_4_row_r),
+    .lock_en(lock_en),
+        
+    .hcount_out(hcount_out_f),
+    .hsync_out(hsync_out_f),
+    .hblnk_out(hblnk_out_f),
+    .vcount_out(vcount_out_f),
+    .vsync_out(vsync_out_f),
+    .vblnk_out(vblnk_out_f),
+    .rgb_out(rgb_out_f),
+    .collision(collision)
+    );
+
 
   always @(posedge pclk)begin
-    hs <= hsync_out_r;
-    vs <= vsync_out_r;
+    hs <= hsync_out_f;
+    vs <= vsync_out_f;
     {r,g,b} <= rgb_out_b;
     {r,g,b} <= rgb_out_r;
+    {r,g,b} <= rgb_out_f;
    end
 
 endmodule
