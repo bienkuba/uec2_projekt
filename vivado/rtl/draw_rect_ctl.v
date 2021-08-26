@@ -7,14 +7,14 @@ module draw_rect_ctl(
     input wire       btnR,
     input wire       btnD,
     input wire       btnU,
-    input wire [4:0] sq_1_col,
-    input wire [4:0] sq_2_col,
-    input wire [4:0] sq_3_col,          
-    input wire [4:0] sq_4_col,
+    input wire [3:0] sq_1_col,
+    input wire [3:0] sq_2_col,
+    input wire [3:0] sq_3_col,          
+    input wire [3:0] sq_4_col,
     input wire       collision,
-    input wire [5:0] random,
+    input wire [4:0] random,
     
-    output reg [4:0] xpos,
+    output reg [3:0] xpos,
     output reg [4:0] ypos,
     output reg [4:0] block,
     output reg [4:0] buf_block,
@@ -22,20 +22,21 @@ module draw_rect_ctl(
     output reg       lock_en
     );
     
-    localparam LEVEL = 3; //_______________________ make it input later
+    localparam LEVEL = 5; //_______________________ make it input later
     localparam FALL_DELAY = 1000 - 100*LEVEL;
     
-    localparam INIT       = 'b0000;
-    localparam IDLE       = 'b0001;
-    localparam MOVE_DOWN  = 'b0010;
-    localparam MOVE_LEFT  = 'b0011;
-    localparam MOVE_RIGHT = 'b0100;
-    localparam HOLD_BTN   = 'b0101;
-    localparam STOP       = 'b0110;
-    localparam ROT        = 'b0111;
-    localparam ROT_OFFSET = 'b1000;
-    localparam CHECK      = 'b1001;
-    localparam NEW_BLOCK  = 'b1010;
+    localparam WAIT_FOR_BTN= 'b0000;
+    localparam INIT        = 'b0001;
+    localparam IDLE        = 'b0010;
+    localparam MOVE_DOWN   = 'b0011;
+    localparam MOVE_LEFT   = 'b0100;
+    localparam MOVE_RIGHT  = 'b0101;
+    localparam HOLD_BTN    = 'b0110;
+    localparam STOP        = 'b0111;
+    localparam ROT         = 'b1000;
+    localparam ROT_OFFSET  = 'b1001;
+    localparam CHECK       = 'b1010;
+    localparam NEW_BLOCK   = 'b1011;
     
     localparam I_BLOCK = 'b10000;
     localparam O_BLOCK = 'b10001;
@@ -49,11 +50,10 @@ module draw_rect_ctl(
     reg [3:0]  state_nxt, state;
     reg [4:0]  block_nxt, xpos_nxt, ypos_nxt, buf_block_nxt;         
     reg [10:0] counter, counter_nxt, debounce2_nxt, debounce2;
-    reg [31:0] iterator, iterator_nxt, debounce1, debounce1_nxt;
-    
+    reg [26:0] iterator, iterator_nxt, debounce1, debounce1_nxt;
     always@(posedge pclk)
         if (rst)
-            state <= INIT;
+            state <= WAIT_FOR_BTN;
         else begin
             state    <= state_nxt;
             ypos     <= ypos_nxt;
@@ -69,17 +69,18 @@ module draw_rect_ctl(
     
     always@*begin
       case(state)
-        INIT:      state_nxt = (btnD) ? IDLE : INIT;
-        IDLE:      state_nxt = (counter > FALL_DELAY) ? CHECK : (btnD && (counter > FALL_DELAY/8)) ? CHECK : btnR ? MOVE_RIGHT : btnL ? MOVE_LEFT : btnU ? ROT : IDLE; 
-        MOVE_DOWN: state_nxt = IDLE;
-        CHECK:     state_nxt = collision ? STOP : MOVE_DOWN;
-        MOVE_LEFT: state_nxt = HOLD_BTN;
-        MOVE_RIGHT:state_nxt = HOLD_BTN;
-        HOLD_BTN:  state_nxt = (counter > FALL_DELAY) ? CHECK : (debounce2 > 400) ? IDLE : HOLD_BTN;
-        STOP:      state_nxt = NEW_BLOCK;
-        ROT:       state_nxt = ROT_OFFSET;
-        ROT_OFFSET:state_nxt = HOLD_BTN;
-        NEW_BLOCK :state_nxt = IDLE;
+        WAIT_FOR_BTN:state_nxt = (btnD||btnL||btnR) ? INIT : WAIT_FOR_BTN;
+        INIT:        state_nxt = IDLE;
+        IDLE:        state_nxt = (counter > FALL_DELAY) ? CHECK : (btnD && (counter > FALL_DELAY/8)) ? CHECK : btnR ? MOVE_RIGHT : btnL ? MOVE_LEFT : btnU ? ROT : IDLE; 
+        MOVE_DOWN:   state_nxt = IDLE;
+        CHECK:       state_nxt = collision ? STOP : MOVE_DOWN;
+        MOVE_LEFT:   state_nxt = HOLD_BTN;
+        MOVE_RIGHT:  state_nxt = HOLD_BTN;
+        HOLD_BTN:    state_nxt = (counter > FALL_DELAY) ? CHECK : (debounce2 > 300) ? IDLE : HOLD_BTN;
+        STOP:        state_nxt = NEW_BLOCK;
+        ROT:         state_nxt = ROT_OFFSET;
+        ROT_OFFSET:  state_nxt = HOLD_BTN;
+        NEW_BLOCK :  state_nxt = IDLE;
       default:
         state_nxt = STOP;  
       endcase
@@ -87,6 +88,18 @@ module draw_rect_ctl(
             
     always@*begin 
       case (state_nxt)  
+        WAIT_FOR_BTN: begin
+          xpos_nxt = 30;
+          ypos_nxt = 21;          
+          iterator_nxt = 0;
+          counter_nxt = 0;
+          block_nxt = block;
+          buf_block_nxt = buf_block;
+          rot_nxt = 0;
+          debounce1_nxt = 0;
+          debounce2_nxt = 0;
+          lock_en = 0;
+        end  
         INIT: begin
           lock_en = 0;
           xpos_nxt = 5;

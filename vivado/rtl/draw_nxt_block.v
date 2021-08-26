@@ -11,7 +11,6 @@ module draw_nxt_block(
  input wire        pclk,
  input wire [11:0] rgb_in,
  input wire        rst,
- input wire [4:0]  random, 
  input wire [4:0]  buf_block,
   
  output reg [10:0] hcount_out,
@@ -24,8 +23,8 @@ module draw_nxt_block(
  );
   
 
-  localparam X_CALIB = 201;
-  localparam Y_CALIB = 10;
+  localparam X_CALIB = -9;
+  localparam Y_CALIB = 25;
   localparam SIZE  = 35;
   
   
@@ -56,7 +55,8 @@ module draw_nxt_block(
   localparam J_BLOCK = 'b10101;
   localparam L_BLOCK = 'b10110;
 
-  reg [3:0]  sq_1_col, sq_2_col, sq_3_col, sq_4_col, sq_1_row, sq_2_row, sq_3_row, sq_4_row;
+  reg [3:0]  sq_1_col, sq_2_col, sq_3_col, sq_4_col;
+  reg [4:0]  sq_1_row, sq_2_row, sq_3_row, sq_4_row;
   reg [11:0] rgb_out_nxt, color_L, color_D, color_N;
            
   always@(posedge pclk)begin
@@ -87,105 +87,105 @@ module draw_nxt_block(
           color_L = RED_L;
           color_D = RED_D;
           color_N = RED_N;
-            sq_1_col = 11 - 1;
-            sq_1_row = 10 + 0;
-            sq_2_col = 11 + 0;
-            sq_2_row = 10 + 0;            
-            sq_3_col = 11 + 1;
-            sq_3_row = 10 + 0;            
-            sq_4_col = 11 + 2;
-            sq_4_row = 10 + 0;      
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 3;
+            sq_3_row = 0;            
+            sq_4_col = 4;
+            sq_4_row = 0;      
         end
         O_BLOCK: begin
           color_L = YELLOW_L;
           color_D = YELLOW_D;
           color_N = YELLOW_N;
-            sq_1_col = 12 + 0;
-            sq_1_row = 10 + 0;
-            sq_2_col = 12 + 1;
-            sq_2_row = 10 + 0;            
-            sq_3_col = 12 + 0;
-            sq_3_row = 10 + 1;            
-            sq_4_col = 12 + 1;
-            sq_4_row = 10 + 1;        
+            sq_1_col = 2;
+            sq_1_row = 0;
+            sq_2_col = 3;
+            sq_2_row = 0;            
+            sq_3_col = 2;
+            sq_3_row = 1;            
+            sq_4_col = 3;
+            sq_4_row = 1;        
         end
         T_BLOCK: begin
           color_L = PINK_L;
           color_D = PINK_D;
           color_N = PINK_N;    
-            sq_1_col = 12 - 1;
-            sq_1_row = 10 + 0;
-            sq_2_col = 12 + 0;
-            sq_2_row = 10 + 0;            
-            sq_3_col = 12 + 1;
-            sq_3_row = 10 + 0;            
-            sq_4_col = 12 + 0;
-            sq_4_row = 10 + 1;      
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 3;
+            sq_3_row = 0;            
+            sq_4_col = 2;
+            sq_4_row = 1;      
         end        
         S_BLOCK: begin
           color_L = GREEN_L;
           color_D = GREEN_D;
           color_N = GREEN_N;
-            sq_1_col = 12 - 1;
-            sq_1_row = 10 + 1;
-            sq_2_col = 12 + 0;
-            sq_2_row = 10 + 0;            
-            sq_3_col = 12 + 0;
-            sq_3_row = 10 + 1;            
-            sq_4_col = 12 + 1;
-            sq_4_row = 10 + 0;
+            sq_1_col = 1;
+            sq_1_row = 1;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 2;
+            sq_3_row = 1;            
+            sq_4_col = 3;
+            sq_4_row = 0;
         end        
         Z_BLOCK: begin
           color_L = BLUE_L;
           color_D = BLUE_D;
           color_N = BLUE_N;
-            sq_1_col = 12 - 1;
-            sq_1_row = 10 + 0;
-            sq_2_col = 12 + 0;
-            sq_2_row = 10 + 0;            
-            sq_3_col = 12 + 0;
-            sq_3_row = 10 + 1;            
-            sq_4_col = 12 + 1;
-            sq_4_row = 10 + 1;
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 2;
+            sq_3_row = 1;            
+            sq_4_col = 3;
+            sq_4_row = 1;
         end
         J_BLOCK: begin
           color_L = CYAN_L;
           color_D = CYAN_D;
           color_N = CYAN_N; 
-            sq_1_col = 12 - 1;
-            sq_1_row = 10 + 0;
-            sq_2_col = 12 + 0;
-            sq_2_row = 10 + 0;            
-            sq_3_col = 12 + 1;
-            sq_3_row = 10 + 0;            
-            sq_4_col = 12 + 1;
-            sq_4_row = 10 + 1;
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 3;
+            sq_3_row = 0;            
+            sq_4_col = 3;
+            sq_4_row = 1;
         end
         L_BLOCK: begin
           color_L = RED_L;
           color_D = RED_D;
           color_N = RED_N;
-            sq_1_col = 12 - 1;
-            sq_1_row = 10 + 0;
-            sq_2_col = 12 + 0;
-            sq_2_row = 10 + 0;            
-            sq_3_col = 12 + 1;
-            sq_3_row = 10 + 0;            
-            sq_4_col = 12 - 1;
-            sq_4_row = 10 + 1;
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 3;
+            sq_3_row = 0;            
+            sq_4_col = 1;
+            sq_4_row = 1;
         end
         default: begin
             color_L = CYAN_L;
             color_D = CYAN_D;
             color_N = CYAN_N;
-            sq_1_col = 12 + 0;
-            sq_1_row = 10 + 0;
-            sq_2_col = 12 + 0;
-            sq_2_row = 10 + 0;            
-            sq_3_col = 12 + 0;
-            sq_3_row = 10 + 0;
-            sq_4_col = 12 + 0;
-            sq_4_row = 10 + 0;
+            sq_1_col = 12;
+            sq_1_row = 21;
+            sq_2_col = 12;
+            sq_2_row = 21;            
+            sq_3_col = 12;
+            sq_3_row = 21;
+            sq_4_col = 12;
+            sq_4_row = 21;
         end        
       endcase
     end

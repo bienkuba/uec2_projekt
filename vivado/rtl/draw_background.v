@@ -21,7 +21,7 @@
     
   reg [11:0] rgb_out_nxt = 0;
     
-/*    //T
+    //T
     localparam Y_T1 = 40;
     localparam X_T1 = 600;
     localparam Y_T2 = 40;
@@ -135,7 +135,7 @@
     localparam X_S10 = 600 + 35*16;    
     localparam Y_S11 = 40 + 35*4;
     localparam X_S11 = 600 + 35*15; 
-*/
+
 
 
     
@@ -166,13 +166,6 @@
     // During blanking, make it black.
     if (vblnk_in || hblnk_in) rgb_out_nxt <= 12'h0_0_0; 
     else begin
-//      // guide net      
-//           if (hcount_in == 235) rgb_out_nxt <= 12'h0_f_0;
-//      else if (hcount_in == 270) rgb_out_nxt <= 12'h0_f_0;
-//      else if (hcount_in == 200+315) rgb_out_nxt <= 12'h0_f_0;
-//      else if (vcount_in == 45) rgb_out_nxt <= 12'hf_f_0;
-//      else if (vcount_in == 80) rgb_out_nxt <= 12'hf_f_0;
-//      else if (vcount_in == 10+665) rgb_out_nxt <= 12'hf_f_0;
       // frame bright part
       if (hcount_in >= 190 && hcount_in <= 191) rgb_out_nxt <= 12'ha_a_a;
       else if ((hcount_in >= 550 && hcount_in <= 551) && (vcount_in >= 10 && vcount_in <= 710)) rgb_out_nxt <= 12'ha_a_a;      
@@ -181,7 +174,7 @@
       // frame dark part
       else if ((hcount_in >= 198 && hcount_in <= 199) && (vcount_in >= 10 && vcount_in <= 710)) rgb_out_nxt <= 12'h6_6_6;
       else if (hcount_in >= 559 && hcount_in <= 560) rgb_out_nxt <= 12'h6_6_6;      
-      else if ((hcount_in >= 199 && hcount_in <= 550) && (vcount_in >= 8 && vcount_in <= 9)) rgb_out_nxt <= 12'h6_6_6;
+      else if ((hcount_in >= 198 && hcount_in <= 550) && (vcount_in >= 8 && vcount_in <= 9)) rgb_out_nxt <= 12'h6_6_6;
       else if ((hcount_in >= 190 && hcount_in <= 560) && (vcount_in >= 718 && vcount_in <= 719)) rgb_out_nxt <= 12'h6_6_6;
       // basic frame of game area
       else if (hcount_in >= 190 && hcount_in <= 199) rgb_out_nxt <= 12'h8_8_8; 
@@ -190,7 +183,24 @@
       else if ((hcount_in >= 190 && hcount_in <= 560) && (vcount_in >= 710 && vcount_in <= 719)) rgb_out_nxt <= 12'h8_8_8;
       // game area background
       else if ((hcount_in >= 200 && hcount_in <= 549) && (vcount_in >= 10 && vcount_in <= 710)) rgb_out_nxt <= 12'h0_0_0;   
-
+      
+      // nxt_block frame bright part
+      else if ((hcount_in >= 10  && hcount_in <=  11) && (vcount_in >= 10  && vcount_in <= 110)) rgb_out_nxt <= 12'ha_a_a;
+      else if ((hcount_in >= 170 && hcount_in <= 171) && (vcount_in >= 21  && vcount_in <= 100)) rgb_out_nxt <= 12'ha_a_a;      
+      else if ((hcount_in >= 21  && hcount_in <= 171) && (vcount_in >= 100 && vcount_in <= 101)) rgb_out_nxt <= 12'ha_a_a;
+      else if ((hcount_in >= 10  && hcount_in <= 179) && (vcount_in >= 10  && vcount_in <=  11)) rgb_out_nxt <= 12'ha_a_a;
+      // nxt_block frame dark part
+      else if ((hcount_in >= 10  && hcount_in <= 180) && (vcount_in >= 109 && vcount_in <= 110)) rgb_out_nxt <= 12'h6_6_6;
+      else if ((hcount_in >= 179 && hcount_in <= 180)  && (vcount_in >= 10 && vcount_in <= 110)) rgb_out_nxt <= 12'h6_6_6;      
+      else if ((hcount_in >= 19 && hcount_in <= 20) && (vcount_in >= 20 && vcount_in <= 100)) rgb_out_nxt <= 12'h6_6_6;
+      else if ((hcount_in >= 20 && hcount_in <= 170) && (vcount_in >= 19 && vcount_in <= 20)) rgb_out_nxt <= 12'h6_6_6;
+      // nxt_block basic frame of game area
+      else if ((hcount_in >= 10 && hcount_in <= 20) && (vcount_in >= 10 && vcount_in <= 110))rgb_out_nxt <= 12'h8_8_8; 
+      else if ((hcount_in >= 170 && hcount_in <= 180) && (vcount_in >= 10 && vcount_in <= 110))rgb_out_nxt <= 12'h8_8_8;
+      else if ((hcount_in >= 10 && hcount_in <= 180) && (vcount_in >= 10 && vcount_in <= 20)) rgb_out_nxt <= 12'h8_8_8;
+      else if ((hcount_in >= 10 && hcount_in <= 180) && (vcount_in >= 100 && vcount_in <= 110)) rgb_out_nxt <= 12'h8_8_8;
+      // nxt_block area background     
+      else if ((hcount_in >= 10 && hcount_in <= 180) && (vcount_in >= 10 && vcount_in <= 110)) rgb_out_nxt <= 12'h0_0_0;
 /*    // T1 of TETRIS sigh 
     else if (vcount_in >= Y_T1     && vcount_in < SIZE + Y_T1 - 1  && hcount_in == X_T1)            rgb_out_nxt = 12'hf_a_b; 
     else if (vcount_in >= Y_T1     && vcount_in < SIZE + Y_T1 - 2  && hcount_in == X_T1 + 1)        rgb_out_nxt = 12'hf_a_b; 
@@ -1056,11 +1066,8 @@
     else if (vcount_in == Y_S11 + SIZE - 2 && hcount_in > X_S11 + 1     && hcount_in < SIZE + X_S11)     rgb_out_nxt = 12'h0_c_f;
     else if (vcount_in == Y_S11 + SIZE - 3 && hcount_in > X_S11 + 2     && hcount_in < SIZE + X_S11)     rgb_out_nxt = 12'h0_c_f;          
     // inside color
-    else if (vcount_in >= Y_S11 && vcount_in < SIZE + Y_S11 && hcount_in >= X_S11 && hcount_in < SIZE + X_S11) rgb_out_nxt = 12'h0_f_f;       
-      */
-      
-      
-      
+    else if (vcount_in >= Y_S11 && vcount_in < SIZE + Y_S11 && hcount_in >= X_S11 && hcount_in < SIZE + X_S11) rgb_out_nxt = 12'h0_f_f;            
+    */  
       // light blue background
       else if (hcount_in >= vcount_in) rgb_out_nxt <= 12'h8_c_e;
       // dark blue background

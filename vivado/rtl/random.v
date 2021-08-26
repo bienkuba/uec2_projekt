@@ -1,6 +1,6 @@
-`timescale 1 ns / 1 ps
+`timescale 1ns / 1ps
 
-module random (
+module randomizer (
     input wire       pclk,
     output reg [4:0] random
     );

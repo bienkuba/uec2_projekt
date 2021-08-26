@@ -11,7 +11,7 @@ module draw_rect(
  input wire pclk,
  input wire [11:0] rgb_in,
  input wire rst,
- input wire [4:0] xpos,
+ input wire [3:0] xpos,
  input wire [4:0] ypos,
  input wire [4:0] block, 
  input wire [1:0] rot,
@@ -23,13 +23,13 @@ module draw_rect(
  output reg vsync_out,
  output reg vblnk_out,
  output reg [11:0] rgb_out,
- output reg [4:0] sq_1_col,
+ output reg [3:0] sq_1_col,
  output reg [4:0] sq_1_row,
- output reg [4:0] sq_2_col,
+ output reg [3:0] sq_2_col,
  output reg [4:0] sq_2_row,
- output reg [4:0] sq_3_col,
+ output reg [3:0] sq_3_col,
  output reg [4:0] sq_3_row,          
- output reg [4:0] sq_4_col,
+ output reg [3:0] sq_4_col,
  output reg [4:0] sq_4_row
  );
   
