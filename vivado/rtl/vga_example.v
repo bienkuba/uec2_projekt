@@ -64,13 +64,15 @@ module vga_example (
 
   //wire        btnL, btnR, btnD, btnU;
   wire        collision, lock_en;
-  wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f;
-  wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f;
+  wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f, vsync_out_nb, hsync_out_nb;
+  wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f, vblnk_out_nb, hblnk_out_nb;
   wire [1:0]  rot_ctl;
-  wire [4:0]  sq_1_col_r, sq_1_row_r, sq_2_col_r, sq_2_row_r, sq_3_col_r, sq_3_row_r, sq_4_col_r, sq_4_row_r, random;
-  wire [4:0]  sq_1_col_ctl, sq_1_row_ctl, sq_2_col_ctl, sq_2_row_ctl, sq_3_col_ctl, sq_3_row_ctl, sq_4_col_ctl, sq_4_row_ctl, block_ctl, xpos_ctl, ypos_ctl;
-  wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r, hcount_out_f, vcount_out_f;
-  wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f;
+  wire [3:0]  xpos_ctl;
+  wire [3:0]  sq_1_col_r, sq_2_col_r, sq_3_col_r, sq_4_col_r, sq_1_col_ctl, sq_2_col_ctl, sq_3_col_ctl, sq_4_col_ctl;
+  wire [4:0]  sq_1_row_r, sq_2_row_r, sq_3_row_r, sq_4_row_r, sq_1_row_ctl, sq_2_row_ctl, sq_3_row_ctl, sq_4_row_ctl;
+  wire [4:0]  random_out, block_ctl, buf_block_ctl, ypos_ctl;
+  wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r, hcount_out_f, vcount_out_f, hcount_out_nb, vcount_out_nb;
+  wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f, rgb_out_nb;
 
   vga_timing my_timing (
     .vcount(vcount),
@@ -104,14 +106,14 @@ module vga_example (
      
      
   draw_rect my_draw_rect (
-    .hcount_in(hcount_out_b),
-    .hsync_in(hsync_out_b),
-    .hblnk_in(hblnk_out_b),
-    .vcount_in(vcount_out_b),
-    .vsync_in(vsync_out_b),
-    .vblnk_in(vblnk_out_b),
+    .hcount_in(hcount_out_nb),
+    .hsync_in(hsync_out_nb),
+    .hblnk_in(hblnk_out_nb),
+    .vcount_in(vcount_out_nb),
+    .vsync_in(vsync_out_nb),
+    .vblnk_in(vblnk_out_nb),
     .pclk(pclk),
-    .rgb_in(rgb_out_b),
+    .rgb_in(rgb_out_nb),
     .rst(rst),
     .xpos(xpos_ctl),
     .ypos(ypos_ctl),
@@ -158,11 +160,11 @@ module vga_example (
 //    .clk_in(pclk),
 //    .rect_up(btnD_u)
 //  );
-  random my_random (
+  
+  randomizer my_randomizer (
     .pclk(pclk),
-    .random(random)
+    .random(random_out)
    );
-
 
   draw_rect_ctl my_rect_ctl(
     .pclk(pclk),
@@ -176,10 +178,12 @@ module vga_example (
     .sq_3_col(sq_3_col_r),
     .sq_4_col(sq_4_col_r),
     .collision(collision),
+    .random(random_out),
     
     .xpos(xpos_ctl),
     .ypos(ypos_ctl),
     .block(block_ctl),
+    .buf_block(buf_block_ctl),
     .rot(rot_ctl),
     .lock_en(lock_en)
   );
@@ -204,21 +208,42 @@ module vga_example (
     .sq_4_row(sq_4_row_r),
     .lock_en(lock_en),
         
-    .hcount_out(hcount_out_f),
+    //.hcount_out(hcount_out_f),
     .hsync_out(hsync_out_f),
-    .hblnk_out(hblnk_out_f),
-    .vcount_out(vcount_out_f),
+    //.hblnk_out(hblnk_out_f),
+    //.vcount_out(vcount_out_f),
     .vsync_out(vsync_out_f),
-    .vblnk_out(vblnk_out_f),
+    //.vblnk_out(vblnk_out_f),
     .rgb_out(rgb_out_f),
     .collision(collision)
     );
-
+  
+  draw_nxt_block my_draw_nxt_block (
+    .hcount_in(hcount_out_b),
+    .hsync_in(hsync_out_b),
+    .hblnk_in(hblnk_out_b),
+    .vcount_in(vcount_out_b),
+    .vsync_in(vsync_out_b),
+    .vblnk_in(vblnk_out_b),
+    .pclk(pclk),
+    .rgb_in(rgb_out_b),
+    .rst(rst),
+    .buf_block(buf_block_ctl),
+      
+    .hcount_out(hcount_out_nb),
+    .hsync_out(hsync_out_nb),
+    .hblnk_out(hblnk_out_nb),
+    .vcount_out(vcount_out_nb),
+    .vsync_out(vsync_out_nb),
+    .vblnk_out(vblnk_out_nb),
+    .rgb_out(rgb_out_nb)
+     );
 
   always @(posedge pclk)begin
     hs <= hsync_out_f;
     vs <= vsync_out_f;
     {r,g,b} <= rgb_out_b;
+    {r,g,b} <= rgb_out_nb;
     {r,g,b} <= rgb_out_r;
     {r,g,b} <= rgb_out_f;
    end

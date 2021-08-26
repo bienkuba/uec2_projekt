@@ -1,41 +1,30 @@
 `timescale 1ns / 1ps
 
-module draw_rect(
 
+module draw_nxt_block(
  input wire [10:0] vcount_in,
- input wire vsync_in,
- input wire vblnk_in,
+ input wire        vsync_in,
+ input wire        vblnk_in,
  input wire [10:0] hcount_in,
- input wire hsync_in,
- input wire hblnk_in,
- input wire pclk,
+ input wire        hsync_in,
+ input wire        hblnk_in,
+ input wire        pclk,
  input wire [11:0] rgb_in,
- input wire rst,
- input wire [3:0] xpos,
- input wire [4:0] ypos,
- input wire [4:0] block, 
- input wire [1:0] rot,
+ input wire        rst,
+ input wire [4:0]  buf_block,
   
  output reg [10:0] hcount_out,
- output reg hsync_out,
- output reg hblnk_out,
+ output reg        hsync_out,
+ output reg        hblnk_out,
  output reg [10:0] vcount_out,
- output reg vsync_out,
- output reg vblnk_out,
- output reg [11:0] rgb_out,
- output reg [3:0] sq_1_col,
- output reg [4:0] sq_1_row,
- output reg [3:0] sq_2_col,
- output reg [4:0] sq_2_row,
- output reg [3:0] sq_3_col,
- output reg [4:0] sq_3_row,          
- output reg [3:0] sq_4_col,
- output reg [4:0] sq_4_row
+ output reg        vsync_out,
+ output reg        vblnk_out,
+ output reg [11:0] rgb_out
  );
   
 
-  localparam X_CALIB = 201;
-  localparam Y_CALIB = 10;
+  localparam X_CALIB = -9;
+  localparam Y_CALIB = 25;
   localparam SIZE  = 35;
   
   
@@ -66,6 +55,8 @@ module draw_rect(
   localparam J_BLOCK = 'b10101;
   localparam L_BLOCK = 'b10110;
 
+  reg [3:0]  sq_1_col, sq_2_col, sq_3_col, sq_4_col;
+  reg [4:0]  sq_1_row, sq_2_row, sq_3_row, sq_4_row;
   reg [11:0] rgb_out_nxt, color_L, color_D, color_N;
            
   always@(posedge pclk)begin
@@ -76,7 +67,7 @@ module draw_rect(
       hblnk_out  <= 0;
       vblnk_out  <= 0;          
       hcount_out <= 0;
-      vcount_out <= 0;      
+      vcount_out <= 0;     
     end
     else begin
       hsync_out  <= hsync_in;
@@ -91,248 +82,115 @@ module draw_rect(
       
     
     always@*begin
-      case (block) 
+      case (buf_block) 
         I_BLOCK: begin
           color_L = RED_L;
           color_D = RED_D;
           color_N = RED_N;
-          if(rot == 0 || rot == 2) begin  
-            sq_1_col = xpos - 1;
-            sq_1_row = ypos + 0;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 2;
-            sq_4_row = ypos + 0;
-          end
-          else begin            
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 0;
-            sq_3_row = ypos + 1;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos + 2;
-          end       
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 3;
+            sq_3_row = 0;            
+            sq_4_col = 4;
+            sq_4_row = 0;      
         end
         O_BLOCK: begin
           color_L = YELLOW_L;
           color_D = YELLOW_D;
           color_N = YELLOW_N;
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos + 0;
-            sq_2_col = xpos + 1;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 0;
-            sq_3_row = ypos + 1;            
-            sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;        
+            sq_1_col = 2;
+            sq_1_row = 0;
+            sq_2_col = 3;
+            sq_2_row = 0;            
+            sq_3_col = 2;
+            sq_3_row = 1;            
+            sq_4_col = 3;
+            sq_4_row = 1;        
         end
         T_BLOCK: begin
           color_L = PINK_L;
           color_D = PINK_D;
-          color_N = PINK_N;        
-          if(rot == 0) begin   
-            sq_1_col = xpos - 1;
-            sq_1_row = ypos + 0;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos + 1;
-          end  
-          else if (rot == 1) begin
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos - 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos + 1;       
-          end
-          else if (rot == 2) begin
-            sq_1_col = xpos - 1;
-            sq_1_row = ypos + 0;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos - 1;
-          end 
-          else begin
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos + 1;  
-          end 
+          color_N = PINK_N;    
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 3;
+            sq_3_row = 0;            
+            sq_4_col = 2;
+            sq_4_row = 1;      
         end        
         S_BLOCK: begin
           color_L = GREEN_L;
           color_D = GREEN_D;
-          color_N = GREEN_N;        
-          if(rot == 0 || rot == 2) begin  
-            sq_1_col = xpos - 1;
-            sq_1_row = ypos + 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 0;
-            sq_3_row = ypos + 1;            
-            sq_4_col = xpos + 1;
-            sq_4_row = ypos + 0;
-          end
-          else begin
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;
-          end
+          color_N = GREEN_N;
+            sq_1_col = 1;
+            sq_1_row = 1;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 2;
+            sq_3_row = 1;            
+            sq_4_col = 3;
+            sq_4_row = 0;
         end        
         Z_BLOCK: begin
           color_L = BLUE_L;
           color_D = BLUE_D;
-          color_N = BLUE_N;        
-          if(rot == 0 || rot == 2) begin  
-            sq_1_col = xpos - 1;
-            sq_1_row = ypos + 0;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 0;
-            sq_3_row = ypos + 1;            
-            sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;
-          end
-          else begin
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos - 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos - 1;
-            sq_4_row = ypos + 1;
-          end       
+          color_N = BLUE_N;
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 2;
+            sq_3_row = 1;            
+            sq_4_col = 3;
+            sq_4_row = 1;
         end
         J_BLOCK: begin
           color_L = CYAN_L;
           color_D = CYAN_D;
-          color_N = CYAN_N;          
-          if(rot == 0) begin   
-            sq_1_col = xpos - 1;
-            sq_1_row = ypos + 0;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;
-          end  
-          else if (rot == 1) begin
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 0;
-            sq_3_row = ypos + 1;            
-            sq_4_col = xpos + 1;
-            sq_4_row = ypos - 1;     
-          end
-          else if (rot == 2) begin
-            sq_1_col = xpos - 1;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos - 1;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos + 0;
-          end 
-          else begin
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos - 1;
-            sq_3_row = ypos + 1;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos + 1;
-          end     
+          color_N = CYAN_N; 
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 3;
+            sq_3_row = 0;            
+            sq_4_col = 3;
+            sq_4_row = 1;
         end
         L_BLOCK: begin
           color_L = RED_L;
           color_D = RED_D;
-          color_N = RED_N;        
-          if(rot == 0) begin   
-            sq_1_col = xpos - 1;
-            sq_1_row = ypos + 0;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos - 1;
-            sq_4_row = ypos + 1;
-          end  
-          else if (rot == 1) begin
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 0;
-            sq_3_row = ypos + 1;            
-            sq_4_col = xpos + 1;
-            sq_4_row = ypos + 1;      
-          end
-          else if (rot == 2) begin
-            sq_1_col = xpos + 1;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos - 1;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 1;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos + 0;
-          end 
-          else begin
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos - 1;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos - 1;
-            sq_3_row = ypos - 1;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos + 1;
-          end     
+          color_N = RED_N;
+            sq_1_col = 1;
+            sq_1_row = 0;
+            sq_2_col = 2;
+            sq_2_row = 0;            
+            sq_3_col = 3;
+            sq_3_row = 0;            
+            sq_4_col = 1;
+            sq_4_row = 1;
         end
         default: begin
             color_L = CYAN_L;
             color_D = CYAN_D;
             color_N = CYAN_N;
-            sq_1_col = xpos + 0;
-            sq_1_row = ypos + 0;
-            sq_2_col = xpos + 0;
-            sq_2_row = ypos + 0;            
-            sq_3_col = xpos + 0;
-            sq_3_row = ypos + 0;            
-            sq_4_col = xpos + 0;
-            sq_4_row = ypos + 0;
+            sq_1_col = 12;
+            sq_1_row = 21;
+            sq_2_col = 12;
+            sq_2_row = 21;            
+            sq_3_col = 12;
+            sq_3_row = 21;
+            sq_4_col = 12;
+            sq_4_row = 21;
         end        
       endcase
     end
                  
-  always @*
-    begin
+  always@*begin
       if (vblnk_in || hblnk_in) rgb_out_nxt = 12'h0_0_0; 
         else begin
               // left and top edge -> bright

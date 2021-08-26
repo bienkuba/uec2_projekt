@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module slowe_clock_4Hz(
     input clk_in,
     output reg clk_out

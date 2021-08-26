@@ -1,17 +1,17 @@
-`timescale 1 ns / 1 ps
+`timescale 1ns / 1ps
 
-module random (
+module randomizer (
     input wire       pclk,
     output reg [4:0] random
     );
 
     initial begin
-        random = 16;
+        random = 5'b10000;
     end
 
     always @ (posedge pclk) begin
-        if (random == 22) begin
-            random <= 16;
+        if (random == 5'b10110) begin
+            random <= 5'b10000;
         end 
         else begin
             random <= random + 1;

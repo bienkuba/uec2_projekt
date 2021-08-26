@@ -11,22 +11,22 @@ module fallen_blocks(
  input wire [11:0] rgb_in,
  input wire pclk,
  input wire rst,
- input wire [4:0] sq_1_col,
+ input wire [3:0] sq_1_col,
  input wire [4:0] sq_1_row,
- input wire [4:0] sq_2_col,
+ input wire [3:0] sq_2_col,
  input wire [4:0] sq_2_row,
- input wire [4:0] sq_3_col,
+ input wire [3:0] sq_3_col,
  input wire [4:0] sq_3_row,          
- input wire [4:0] sq_4_col,
+ input wire [3:0] sq_4_col,
  input wire [4:0] sq_4_row,
  input wire lock_en,
   
- output reg [10:0] vcount_out,
+ //output reg [10:0] vcount_out,
  output reg vsync_out,
- output reg vblnk_out,
- output reg [10:0] hcount_out,
+ //output reg vblnk_out,
+ //output reg [10:0] hcount_out,
  output reg hsync_out,
- output reg hblnk_out,
+ //output reg hblnk_out,
  output reg [11:0] rgb_out,
  output reg collision 
  );
@@ -58,37 +58,34 @@ module fallen_blocks(
   
   integer    i;
   integer    j;
-  integer    jj;
+  integer    k;
+  integer    l;
   reg        collision_nxt;
   reg [11:0] rgb_out_nxt, color_L, color_D, color_N;
-  reg [0:9] my_reg[19:0], my_reg_nxt[19:0];
+  reg [0:9]  my_reg[19:0], my_reg_nxt[19:0];
            
   always@(posedge pclk)begin
     if (rst) begin
       rgb_out    <= 0;
       hsync_out  <= 0;
       vsync_out  <= 0;
-      hblnk_out  <= 0;
-      vblnk_out  <= 0;          
-      hcount_out <= 0;
-      vcount_out <= 0;
+//      hblnk_out  <= 0;
+//      vblnk_out  <= 0;          
+//      hcount_out <= 0;
+//      vcount_out <= 0;
       collision  <= 0;
-//      for(j = 0; j < 20; j = j + 1)begin
-//        for(jj = 0; jj < 10; jj = jj + 1)begin
-//          my_reg[jj][j] <= 0;
-//        end
-//      end      
+      for(i = 0; i < 20; i = i + 1) my_reg[i] <= 0;
     end
     else begin
       hsync_out  <= hsync_in;
       vsync_out  <= vsync_in;
-      hblnk_out  <= hblnk_in;
-      vblnk_out  <= vblnk_in;  
-      hcount_out <= hcount_in;
-      vcount_out <= vcount_in;
+//      hblnk_out  <= hblnk_in;
+//      vblnk_out  <= vblnk_in;  
+//      hcount_out <= hcount_in;
+//      vcount_out <= vcount_in;
       rgb_out    <= rgb_out_nxt;
       collision  <= collision_nxt;
-      for(jj = 0; jj < 20; jj = jj + 1) my_reg[jj] <= my_reg_nxt[jj];
+      for(j = 0; j < 20; j = j + 1) my_reg[j] <= my_reg_nxt[j];
     end
   end 
       
@@ -97,6 +94,8 @@ module fallen_blocks(
       color_L = RED_L;
       color_D = RED_D;
       color_N = RED_N;
+      collision_nxt = collision;
+      for(k = 0; k < 20; k = k + 1) my_reg_nxt[k] = my_reg[k];
       if(sq_1_row == 19 || sq_2_row == 19 || sq_3_row == 19 || sq_4_row == 19)begin
         collision_nxt = 1; 
           if(lock_en == 1)begin
@@ -115,27 +114,26 @@ module fallen_blocks(
             my_reg_nxt[sq_4_row][sq_4_col] = 1;
           end
       end
-      else if(my_reg_nxt[19] == 10'b1111111111) for(i = 0; i < 20; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[18] == 10'b1111111111) for(i = 0; i < 19; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[17] == 10'b1111111111) for(i = 0; i < 18; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[16] == 10'b1111111111) for(i = 0; i < 17; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[15] == 10'b1111111111) for(i = 0; i < 16; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[14] == 10'b1111111111) for(i = 0; i < 15; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[13] == 10'b1111111111) for(i = 0; i < 14; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[12] == 10'b1111111111) for(i = 0; i < 13; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[11] == 10'b1111111111) for(i = 0; i < 12; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[10] == 10'b1111111111) for(i = 0; i < 11; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[9] == 10'b1111111111) for(i = 0; i < 10; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[8] == 10'b1111111111) for(i = 0; i < 9; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[7] == 10'b1111111111) for(i = 0; i < 8; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[6] == 10'b1111111111) for(i = 0; i < 7; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[5] == 10'b1111111111) for(i = 0; i < 6; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[4] == 10'b1111111111) for(i = 0; i < 5; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[3] == 10'b1111111111) for(i = 0; i < 4; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[2] == 10'b1111111111) for(i = 0; i < 3; i = i + 1) my_reg_nxt[i] = my_reg[i-1];
-      else if(my_reg_nxt[1] == 10'b1111111111) for(i = 0; i < 2; i = i + 1) my_reg_nxt[i] = my_reg[i-1];   
-      else collision_nxt = 0;
-      //for(i = 0; i < 20; i = i + 1) my_reg_nxt[i] = my_reg[i];         
+      else if(my_reg_nxt[19] == 10'b1111111111) for(k = 1; k < 20; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[18] == 10'b1111111111) for(k = 1; k < 19; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[17] == 10'b1111111111) for(k = 1; k < 18; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[16] == 10'b1111111111) for(k = 1; k < 17; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[15] == 10'b1111111111) for(k = 1; k < 16; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[14] == 10'b1111111111) for(k = 1; k < 15; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[13] == 10'b1111111111) for(k = 1; k < 14; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[12] == 10'b1111111111) for(k = 1; k < 13; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[11] == 10'b1111111111) for(k = 1; k < 12; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[10] == 10'b1111111111) for(k = 1; k < 11; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[9] == 10'b1111111111) for(k = 1; k < 10; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[8] == 10'b1111111111) for(k = 1; k < 9; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[7] == 10'b1111111111) for(k = 1; k < 8; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[6] == 10'b1111111111) for(k = 1; k < 7; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[5] == 10'b1111111111) for(k = 1; k < 6; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[4] == 10'b1111111111) for(k = 1; k < 5; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[3] == 10'b1111111111) for(k = 1; k < 4; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[2] == 10'b1111111111) for(k = 1; k < 3; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
+      else if(my_reg_nxt[1] == 10'b1111111111) for(k = 1; k < 2; k = k + 1) my_reg_nxt[k] = my_reg[k-1];   
+      else collision_nxt = 0;     
     end
 
   
