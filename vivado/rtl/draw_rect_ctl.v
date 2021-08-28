@@ -3,6 +3,11 @@
 module draw_rect_ctl(
     input wire       pclk,
     input wire       rst,
+    input wire       pad_R,
+    input wire       pad_L,
+    input wire       pad_U,
+    input wire       pad_D,
+    input wire       pad_S,
     input wire       btnL,
     input wire       btnR,
     input wire       btnD,
@@ -69,9 +74,9 @@ module draw_rect_ctl(
     
     always@*begin
       case(state)
-        WAIT_FOR_BTN:state_nxt = (btnD||btnL||btnR) ? INIT : WAIT_FOR_BTN;
+        WAIT_FOR_BTN:state_nxt = (btnD||btnL||btnR||!pad_L||!pad_R||!pad_D||!pad_S) ? INIT : WAIT_FOR_BTN;
         INIT:        state_nxt = IDLE;
-        IDLE:        state_nxt = (counter > FALL_DELAY) ? CHECK : (btnD && (counter > FALL_DELAY/8)) ? CHECK : btnR ? MOVE_RIGHT : btnL ? MOVE_LEFT : btnU ? ROT : IDLE; 
+        IDLE:        state_nxt = (counter > FALL_DELAY) ? CHECK : btnD||!pad_D && (counter > FALL_DELAY/8) ? CHECK : btnR||!pad_R ? MOVE_RIGHT : btnL||!pad_L ? MOVE_LEFT : (btnU||!pad_S) ? ROT : IDLE; 
         MOVE_DOWN:   state_nxt = IDLE;
         CHECK:       state_nxt = collision ? STOP : MOVE_DOWN;
         MOVE_LEFT:   state_nxt = HOLD_BTN;
@@ -82,7 +87,7 @@ module draw_rect_ctl(
         ROT_OFFSET:  state_nxt = HOLD_BTN;
         NEW_BLOCK :  state_nxt = IDLE;
       default:
-        state_nxt = STOP;  
+        state_nxt = IDLE;  
       endcase
     end
             
