@@ -13,6 +13,11 @@
 module vga_example (
   input wire clk,
   input wire rst,
+  input wire pad_R,
+  input wire pad_L,
+  input wire pad_U,
+  input wire pad_D,
+  input wire pad_S,
   input wire btnL,
   input wire btnR,
   input wire btnD,
@@ -168,7 +173,12 @@ module vga_example (
 
   draw_rect_ctl my_rect_ctl(
     .pclk(pclk),
-    .rst(rst),       
+    .rst(rst),
+    .pad_R(pad_R),
+    .pad_L(pad_L),
+    .pad_U(pad_U),
+    .pad_D(pad_D),
+    .pad_S(pad_S),
     .btnL(btnL),
     .btnR(btnR),
     .btnD(btnD),

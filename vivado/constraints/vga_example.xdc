@@ -58,3 +58,29 @@ set_property PACKAGE_PIN T17 [get_ports btnR]
 	set_property IOSTANDARD LVCMOS33 [get_ports btnR]
 set_property PACKAGE_PIN U17 [get_ports btnD]						
 	set_property IOSTANDARD LVCMOS33 [get_ports btnD]
+	
+##Pmod Header JB
+##Sch name = JB1
+set_property PACKAGE_PIN A14 [get_ports pad_D]
+    set_property IOSTANDARD LVCMOS33 [get_ports pad_D]
+##Sch name = JB2
+set_property PACKAGE_PIN A16 [get_ports pad_R]
+    set_property IOSTANDARD LVCMOS33 [get_ports pad_R]
+##Sch name = JB3
+set_property PACKAGE_PIN B15 [get_ports pad_U]
+    set_property IOSTANDARD LVCMOS33 [get_ports pad_U]
+##Sch name = JB4
+set_property PACKAGE_PIN B16 [get_ports pad_L]
+    set_property IOSTANDARD LVCMOS33 [get_ports pad_L]
+##Sch name = JB7
+set_property PACKAGE_PIN A15 [get_ports pad_S]
+    set_property IOSTANDARD LVCMOS33 [get_ports pad_S]
+##Sch name = JB8
+#set_property PACKAGE_PIN A17 [get_ports pad_a5]
+#    set_property IOSTANDARD LVCMOS33 [get_ports pad_a5]
+###Sch name = JB9
+#set_property PACKAGE_PIN C15 [get_ports {pad_a_plug}]
+#    set_property IOSTANDARD LVCMOS33 [get_ports {pad_a_plug}]
+###Sch name = JB10
+#set_property PACKAGE_PIN C16 [get_ports {sound_a}]
+#    set_property IOSTANDARD LVCMOS33 [get_ports {sound_a}]
