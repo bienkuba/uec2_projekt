@@ -57,6 +57,9 @@ read_verilog {
     rtl/fallen_blocks.v
     rtl/random.v
     rtl/draw_nxt_block.v
+    rtl/char_rom_16x16.v
+    rtl/draw_rect_char.v
+    rtl/font_rom.v
 }
 
 add_files -fileset sim_1 {

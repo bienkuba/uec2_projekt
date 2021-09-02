@@ -18,17 +18,19 @@ module draw_rect_ctl(
     input wire [3:0] sq_4_col,
     input wire       collision,
     input wire [4:0] random,
+    input wire [3:0] level,
     
     output reg [3:0] xpos,
     output reg [4:0] ypos,
     output reg [4:0] block,
     output reg [4:0] buf_block,
     output reg [1:0] rot,
-    output reg       lock_en
+    output reg       lock_en,
+    output reg [19:0] points
     );
     
-    localparam LEVEL = 5; //_______________________ make it input later
-    localparam FALL_DELAY = 1000 - 100*LEVEL;
+    //localparam LEVEL = 5; //_______________________ make it input later
+    localparam FALL_DELAY = 775; //- 100*level
     
     localparam WAIT_FOR_BTN= 'b0000;
     localparam INIT        = 'b0001;
@@ -55,10 +57,23 @@ module draw_rect_ctl(
     reg [3:0]  state_nxt, state;
     reg [4:0]  block_nxt, xpos_nxt, ypos_nxt, buf_block_nxt;         
     reg [10:0] counter, counter_nxt, debounce2_nxt, debounce2;
+    reg [19:0] points_nxt;
     reg [26:0] iterator, iterator_nxt, debounce1, debounce1_nxt;
+    
     always@(posedge pclk)
-        if (rst)
+        if (rst) begin
             state <= WAIT_FOR_BTN;
+            ypos     <= 0;
+            xpos     <= 0;
+            counter  <= 0;
+            iterator <= 0;
+            block    <= 0;
+            rot      <= 0;
+            debounce1<= 0;
+            debounce2<= 0;
+            buf_block<= 0;
+            points   <= 0;
+        end
         else begin
             state    <= state_nxt;
             ypos     <= ypos_nxt;
@@ -70,13 +85,14 @@ module draw_rect_ctl(
             debounce1<= debounce1_nxt;
             debounce2<= debounce2_nxt;
             buf_block<= buf_block_nxt;
+            points   <= points_nxt;
         end
     
     always@*begin
       case(state)
         WAIT_FOR_BTN:state_nxt = (btnD||btnL||btnR||!pad_L||!pad_R||!pad_D||!pad_S) ? INIT : WAIT_FOR_BTN;
         INIT:        state_nxt = IDLE;
-        IDLE:        state_nxt = (counter > FALL_DELAY) ? CHECK : btnD||!pad_D && (counter > FALL_DELAY/8) ? CHECK : btnR||!pad_R ? MOVE_RIGHT : btnL||!pad_L ? MOVE_LEFT : (btnU||!pad_S) ? ROT : IDLE; 
+        IDLE:        state_nxt = (counter > FALL_DELAY-(50*level)) ? CHECK : btnD||!pad_D && (counter > (FALL_DELAY-(300*level))/4) ? CHECK : btnR||!pad_R ? MOVE_RIGHT : btnL||!pad_L ? MOVE_LEFT : (btnU||!pad_S) ? ROT : IDLE; 
         MOVE_DOWN:   state_nxt = IDLE;
         CHECK:       state_nxt = collision ? STOP : MOVE_DOWN;
         MOVE_LEFT:   state_nxt = HOLD_BTN;
@@ -131,6 +147,7 @@ module draw_rect_ctl(
           lock_en = 0;
           end 
         MOVE_DOWN: begin
+          if((btnD||!pad_D)&& counter>0) points_nxt = points + 1;
           xpos_nxt = xpos;
           ypos_nxt = ypos + 1;          
           iterator_nxt = 0;
@@ -253,15 +270,15 @@ module draw_rect_ctl(
           lock_en = 0;
           end          
         default: begin
-          xpos_nxt = 11;
-          ypos_nxt = 2;          
-          iterator_nxt = 0;
-          counter_nxt = 0;
+          xpos_nxt = xpos;
+          ypos_nxt = ypos;          
+          iterator_nxt = iterator;
+          counter_nxt = counter;
           block_nxt = block;
           buf_block_nxt = buf_block;
           rot_nxt = rot;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;
+          debounce1_nxt = debounce1;
+          debounce2_nxt = debounce2;
           lock_en = 0;
           end
       endcase
