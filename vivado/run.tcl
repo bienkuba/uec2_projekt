@@ -48,15 +48,20 @@ read_verilog {
     rtl/clk_wiz_0.v
     rtl/clk_wiz_0_clk_wiz.v
     rtl/draw_rect_ctl.v
-    rtl/debounce_d.v
     rtl/debounce_u.v
-    rtl/debounce_l.v
-    rtl/debounce_r.v
     rtl/d_ff.v
     rtl/slow_clock_4Hz.v
     rtl/fallen_blocks.v
     rtl/random.v
     rtl/draw_nxt_block.v
+    rtl/char_rom_16x16.v
+    rtl/draw_rect_char.v
+    rtl/font_rom.v
+    rtl/bin_to_BCD_converter.v
+    rtl/uart_rx.v
+    rtl/uart_tx.v
+    rtl/uart.v
+    rtl/baud_rate_gen.v
 }
 
 add_files -fileset sim_1 {

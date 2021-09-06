@@ -3,39 +3,40 @@
 module fallen_blocks(
 
  input wire [10:0] vcount_in,
- input wire vsync_in,
- input wire vblnk_in,
+ input wire        vsync_in,
+ input wire        vblnk_in,
  input wire [10:0] hcount_in,
- input wire hsync_in,
- input wire hblnk_in,
+ input wire        hsync_in,
+ input wire        hblnk_in,
  input wire [11:0] rgb_in,
- input wire pclk,
- input wire rst,
- input wire [3:0] sq_1_col,
- input wire [4:0] sq_1_row,
- input wire [3:0] sq_2_col,
- input wire [4:0] sq_2_row,
- input wire [3:0] sq_3_col,
- input wire [4:0] sq_3_row,          
- input wire [3:0] sq_4_col,
- input wire [4:0] sq_4_row,
- input wire lock_en,
-  
- //output reg [10:0] vcount_out,
- output reg vsync_out,
- //output reg vblnk_out,
- //output reg [10:0] hcount_out,
- output reg hsync_out,
- //output reg hblnk_out,
+ input wire        pclk,
+ input wire        rst,
+ input wire [3:0]  sq_1_col,
+ input wire [4:0]  sq_1_row,
+ input wire [3:0]  sq_2_col,
+ input wire [4:0]  sq_2_row,
+ input wire [3:0]  sq_3_col,
+ input wire [4:0]  sq_3_row,          
+ input wire [3:0]  sq_4_col,
+ input wire [4:0]  sq_4_row,
+ input wire        lock_en,
+ input wire [19:0] points_in,
+ 
+ output reg [10:0] vcount_out,
+ output reg        vsync_out,
+ output reg        vblnk_out,
+ output reg [10:0] hcount_out,
+ output reg        hsync_out,
+ output reg        hblnk_out,
  output reg [11:0] rgb_out,
- output reg collision 
+ output reg        collision,
+ output reg [19:0] points_out,
+ output reg [3:0]  level
  );
   
-
   localparam X_CALIB = 201;
   localparam Y_CALIB = 10;
-  localparam SIZE  = 35;
-  
+  localparam SIZE  = 35;  
   
   localparam RED_L    = 12'hf_a_b;
   localparam RED_D    = 12'h8_0_0;
@@ -61,30 +62,42 @@ module fallen_blocks(
   integer    k;
   integer    l;
   reg        collision_nxt;
-  reg [11:0] rgb_out_nxt, color_L, color_D, color_N;
+  reg [2:0]  cleared_lane, cleared_lane_nxt;
+  reg [3:0]  level_nxt;
   reg [0:9]  my_reg[19:0], my_reg_nxt[19:0];
+  reg [8:0]  deleted_rows, deleted_rows_nxt;
+  reg [11:0] rgb_out_nxt, color_L, color_D, color_N;  
+  reg [19:0] points, points_nxt;
            
   always@(posedge pclk)begin
     if (rst) begin
       rgb_out    <= 0;
       hsync_out  <= 0;
       vsync_out  <= 0;
-//      hblnk_out  <= 0;
-//      vblnk_out  <= 0;          
-//      hcount_out <= 0;
-//      vcount_out <= 0;
+      hblnk_out  <= 0;
+      vblnk_out  <= 0;          
+      hcount_out <= 0;
+      vcount_out <= 0;
       collision  <= 0;
+      points     <= 0;
+      cleared_lane <= 0;
+      deleted_rows <= 0;
+      level      <= 0;
       for(i = 0; i < 20; i = i + 1) my_reg[i] <= 0;
     end
     else begin
       hsync_out  <= hsync_in;
       vsync_out  <= vsync_in;
-//      hblnk_out  <= hblnk_in;
-//      vblnk_out  <= vblnk_in;  
-//      hcount_out <= hcount_in;
-//      vcount_out <= vcount_in;
+      hblnk_out  <= hblnk_in;
+      vblnk_out  <= vblnk_in;  
+      hcount_out <= hcount_in;
+      vcount_out <= vcount_in;
       rgb_out    <= rgb_out_nxt;
       collision  <= collision_nxt;
+      points     <= points_nxt;
+      cleared_lane <= cleared_lane_nxt;
+      deleted_rows <= deleted_rows_nxt;
+      level      <= level_nxt;
       for(j = 0; j < 20; j = j + 1) my_reg[j] <= my_reg_nxt[j];
     end
   end 
@@ -95,6 +108,11 @@ module fallen_blocks(
       color_D = RED_D;
       color_N = RED_N;
       collision_nxt = collision;
+      cleared_lane_nxt = cleared_lane;
+      deleted_rows_nxt = deleted_rows;
+      points_nxt = points;
+      points_out = points + points_in;
+      level_nxt = level;
       for(k = 0; k < 20; k = k + 1) my_reg_nxt[k] = my_reg[k];
       if(sq_1_row == 19 || sq_2_row == 19 || sq_3_row == 19 || sq_4_row == 19)begin
         collision_nxt = 1; 
@@ -103,6 +121,7 @@ module fallen_blocks(
             my_reg_nxt[sq_2_row][sq_2_col] = 1;
             my_reg_nxt[sq_3_row][sq_3_col] = 1;
             my_reg_nxt[sq_4_row][sq_4_col] = 1;
+            points_nxt = points + 5;
           end
       end    
       else if(my_reg[sq_1_row + 1][sq_1_col] == 1 || my_reg[sq_2_row + 1][sq_2_col] == 1 || my_reg[sq_3_row + 1][sq_3_col] == 1 || my_reg[sq_4_row + 1][sq_4_col] == 1)begin
@@ -112,28 +131,111 @@ module fallen_blocks(
             my_reg_nxt[sq_2_row][sq_2_col] = 1;
             my_reg_nxt[sq_3_row][sq_3_col] = 1;
             my_reg_nxt[sq_4_row][sq_4_col] = 1;
+            points_nxt = points + 1;
           end
       end
-      else if(my_reg_nxt[19] == 10'b1111111111) for(k = 1; k < 20; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[18] == 10'b1111111111) for(k = 1; k < 19; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[17] == 10'b1111111111) for(k = 1; k < 18; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[16] == 10'b1111111111) for(k = 1; k < 17; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[15] == 10'b1111111111) for(k = 1; k < 16; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[14] == 10'b1111111111) for(k = 1; k < 15; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[13] == 10'b1111111111) for(k = 1; k < 14; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[12] == 10'b1111111111) for(k = 1; k < 13; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[11] == 10'b1111111111) for(k = 1; k < 12; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[10] == 10'b1111111111) for(k = 1; k < 11; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[9] == 10'b1111111111) for(k = 1; k < 10; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[8] == 10'b1111111111) for(k = 1; k < 9; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[7] == 10'b1111111111) for(k = 1; k < 8; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[6] == 10'b1111111111) for(k = 1; k < 7; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[5] == 10'b1111111111) for(k = 1; k < 6; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[4] == 10'b1111111111) for(k = 1; k < 5; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[3] == 10'b1111111111) for(k = 1; k < 4; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[2] == 10'b1111111111) for(k = 1; k < 3; k = k + 1) my_reg_nxt[k] = my_reg[k-1];
-      else if(my_reg_nxt[1] == 10'b1111111111) for(k = 1; k < 2; k = k + 1) my_reg_nxt[k] = my_reg[k-1];   
-      else collision_nxt = 0;     
+      else if(my_reg_nxt[19] == 10'b1111111111) for(l = 1; l < 20; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;
+      end
+      else if(my_reg_nxt[18] == 10'b1111111111) for(l = 1; l < 19; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;
+      end
+      else if(my_reg_nxt[17] == 10'b1111111111) for(l = 1; l < 18; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;   
+      end
+      else if(my_reg_nxt[16] == 10'b1111111111) for(l = 1; l < 17; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[15] == 10'b1111111111) for(l = 1; l < 16; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[14] == 10'b1111111111) for(l = 1; l < 15; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;     
+      end
+      else if(my_reg_nxt[13] == 10'b1111111111) for(l = 1; l < 14; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[12] == 10'b1111111111) for(l = 1; l < 13; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[11] == 10'b1111111111) for(l = 1; l < 12; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[10] == 10'b1111111111) for(l = 1; l < 11; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[9] == 10'b1111111111) for(l = 1; l < 10; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[8] == 10'b1111111111) for(l = 1; l < 9; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[7] == 10'b1111111111) for(l = 1; l < 8; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[6] == 10'b1111111111) for(l = 1; l < 7; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[5] == 10'b1111111111) for(l = 1; l < 6; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[4] == 10'b1111111111) for(l = 1; l < 5; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[3] == 10'b1111111111) for(l = 1; l < 4; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[2] == 10'b1111111111) for(l = 1; l < 3; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else if(my_reg_nxt[1] == 10'b1111111111) for(l = 1; l < 2; l = l + 1) begin
+        my_reg_nxt[l] = my_reg[l-1];   
+        cleared_lane_nxt = cleared_lane + 1;      
+      end
+      else begin
+        collision_nxt = 0;
+        deleted_rows_nxt = deleted_rows + cleared_lane;
+        if (cleared_lane == 1) begin
+          points_nxt = points + 50;
+          cleared_lane_nxt = 0;
+          end
+        else if (cleared_lane == 2) begin
+          points_nxt = points + 150;
+          cleared_lane_nxt = 0;
+        end
+        else if (cleared_lane == 3) begin
+          points_nxt = points + 300;
+          cleared_lane_nxt = 0;
+        end
+        else if (cleared_lane >= 4) begin
+          points_nxt = points + 600;
+          cleared_lane_nxt = 0;
+        end
+        else points_nxt = points;
+      end
+      if(level == 0) level_nxt = level + l;
+      if(deleted_rows >= 10)begin
+        deleted_rows_nxt = 0;
+        level_nxt = level + 1;
+        end
     end
 
   
