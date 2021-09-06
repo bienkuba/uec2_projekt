@@ -1,8 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/d_ff.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module d_ff
-INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/slow_clock_4Hz.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module slowe_clock_4Hz
-INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/debounce_u.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module debounce_u
-INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module glbl
