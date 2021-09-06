@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Mon Sep  6 14:42:33 2021
+# Process ID: 13704
+# Current directory: F:/Project_tetris/uec2_projekt/vivado
+# Command line: vivado.exe -mode tcl -source run.tcl -tclargs simulation
+# Log file: F:/Project_tetris/uec2_projekt/vivado/vivado.log
+# Journal file: F:/Project_tetris/uec2_projekt/vivado\vivado.jou
+#-----------------------------------------------------------
+source run.tcl
+source debounce_u.tcl
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+close_sim

@@ -22,6 +22,8 @@ module vga_example (
   input wire btnR,
   input wire btnD,
   input wire btnU,
+  input wire rx1, rx2,
+  output wire tx1, tx2,
   output reg vs,
   output reg hs,
   output reg [3:0] r,
@@ -66,6 +68,8 @@ module vga_example (
       .reset(rst),
       .locked(locked)
     );
+    
+  localparam WIDTH = 16;
 
   wire        collision, lock_en;
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f, vsync_out_nb, hsync_out_nb, vsync_out_ch, hsync_out_ch;
@@ -81,6 +85,14 @@ module vga_example (
   wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f, rgb_out_nb, rgb_out_ch;
   wire [19:0] points_ctl, points_f;
   wire [23:0] BCD_out;
+  
+  reg [7:0] data = 0;
+  wire [7:0] dout;
+  reg enable = 0;
+  
+  wire tx_busy;
+  wire rdy;
+  reg rdy_clr = 0;
   
   vga_timing my_timing (
     .vcount(vcount),
@@ -145,30 +157,6 @@ module vga_example (
     .sq_4_row(sq_4_row_r)
     );
 
-//  debounce_d my_d (
-//    .pb_d(btnD),
-//    .clk_in(pclk),
-//    .rect_down(btnD_d)
-//  );
-
-//  debounce_l my_l (
-//    .pb_l(btnL),
-//    .clk_in(pclk),
-//    .rect_left(btnD_l)
-//  );
-
-//  debounce_r my_r (
-//    .pb_r(btnR),
-//    .clk_in(pclk),
-//    .rect_right(btnD_r)
-//  );
-
-//  debounce_u my_u (
-//    .pb_u(btnU),
-//    .clk_in(pclk),
-//    .rect_up(btnD_u)
-//  );
-  
   randomizer my_randomizer (
     .pclk(pclk),
     .random(random_out)
@@ -300,7 +288,29 @@ draw_rect_char my_draw_rect_char (
       
     .BCD(BCD_out)
    );
-   
+ 
+uart uart_1(
+    .din(BCD_out),
+    .pclk(pclk),
+    .rdy_clr(rdy_clr),
+    .tx(tx1),
+    .tx_busy(tx_busy),
+    .rx(rx1),
+    .rdy(rdy),
+    .dout(dout)
+);
+
+uart uart_2(
+    .din(BCD_out),
+    .pclk(pclk),
+    .rdy_clr(rdy_clr),
+    .tx(tx2),
+    .tx_busy(tx_busy),
+    .rx(rx2),
+    .rdy(rdy),
+    .dout(dout)
+);
+
   always @(posedge pclk)begin
     hs <= hsync_out_f;
     vs <= vsync_out_f;
