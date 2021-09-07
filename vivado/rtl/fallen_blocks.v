@@ -71,33 +71,33 @@ module fallen_blocks(
            
   always@(posedge pclk)begin
     if (rst) begin
-      rgb_out    <= 0;
-      hsync_out  <= 0;
-      vsync_out  <= 0;
-      hblnk_out  <= 0;
-      vblnk_out  <= 0;          
-      hcount_out <= 0;
-      vcount_out <= 0;
-      collision  <= 0;
-      points     <= 0;
+      rgb_out      <= 0;
+      hsync_out    <= 0;
+      vsync_out    <= 0;
+      hblnk_out    <= 0;
+      vblnk_out    <= 0;          
+      hcount_out   <= 0;
+      vcount_out   <= 0;
+      collision    <= 0;
+      points       <= 0;
       cleared_lane <= 0;
       deleted_rows <= 0;
-      level      <= 0;
+      level        <= 0;
       for(i = 0; i < 20; i = i + 1) my_reg[i] <= 0;
     end
     else begin
-      hsync_out  <= hsync_in;
-      vsync_out  <= vsync_in;
-      hblnk_out  <= hblnk_in;
-      vblnk_out  <= vblnk_in;  
-      hcount_out <= hcount_in;
-      vcount_out <= vcount_in;
-      rgb_out    <= rgb_out_nxt;
-      collision  <= collision_nxt;
-      points     <= points_nxt;
+      hsync_out    <= hsync_in;
+      vsync_out    <= vsync_in;
+      hblnk_out    <= hblnk_in;
+      vblnk_out    <= vblnk_in;  
+      hcount_out   <= hcount_in;
+      vcount_out   <= vcount_in;
+      rgb_out      <= rgb_out_nxt;
+      collision    <= collision_nxt;
+      points       <= points_nxt;
       cleared_lane <= cleared_lane_nxt;
       deleted_rows <= deleted_rows_nxt;
-      level      <= level_nxt;
+      level        <= level_nxt;
       for(j = 0; j < 20; j = j + 1) my_reg[j] <= my_reg_nxt[j];
     end
   end 
@@ -214,19 +214,19 @@ module fallen_blocks(
         collision_nxt = 0;
         deleted_rows_nxt = deleted_rows + cleared_lane;
         if (cleared_lane == 1) begin
-          points_nxt = points + 50;
+          points_nxt = points + 80;
           cleared_lane_nxt = 0;
           end
         else if (cleared_lane == 2) begin
-          points_nxt = points + 150;
+          points_nxt = points + 200;
           cleared_lane_nxt = 0;
         end
         else if (cleared_lane == 3) begin
-          points_nxt = points + 300;
+          points_nxt = points + 600;
           cleared_lane_nxt = 0;
         end
         else if (cleared_lane >= 4) begin
-          points_nxt = points + 600;
+          points_nxt = points + 1200;
           cleared_lane_nxt = 0;
         end
         else points_nxt = points;

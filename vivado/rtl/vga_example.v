@@ -1,14 +1,5 @@
-// File: vga_example.v
-// This is the top level design for EE178 Lab #4.
-
-// The `timescale directive specifies what the
-// simulation time units are (1 ns here) and what
-// the simulator time step should be (1 ps here).
-
 `timescale 1 ns / 1 ps
 
-// Declare the module and its ports. This is
-// using Verilog-2001 syntax.
 
 module vga_example (
   input wire clk,
@@ -32,9 +23,6 @@ module vga_example (
   output wire pclk_mirror
   );
 
-  // Converts 100 MHz clk into 40 MHz pclk.
-  // This uses a vendor specific primitive
-  // called MMCME2, for frequency synthesis.
 
   wire clk_in;
   wire locked;
@@ -57,9 +45,7 @@ module vga_example (
     .S(1'b0)
   );
 
-  // Instantiate the vga_timing module, which is
-  // the module you are designing for this lab.
-  
+
   wire mclk;
   clk_wiz_0 clk_wiz_0_my(
       .clk(clk),
@@ -71,10 +57,10 @@ module vga_example (
     
   localparam WIDTH = 16;
 
-  wire        collision, lock_en;
+  wire        collision, lock_en, lock_ID_en, external_ID_1, external_ID_2, ID_1_occupied, ID_2_occupied;
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f, vsync_out_nb, hsync_out_nb, vsync_out_ch, hsync_out_ch;
   wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f, vblnk_out_nb, hblnk_out_nb, vblnk_out_ch, hblnk_out_ch;
-  wire [1:0]  rot_ctl;
+  wire [1:0]  rot_ctl, board_ID;
   wire [3:0]  xpos_ctl, char_line, level_f;
   wire [3:0]  sq_1_col_r, sq_2_col_r, sq_3_col_r, sq_4_col_r, sq_1_col_ctl, sq_2_col_ctl, sq_3_col_ctl, sq_4_col_ctl;
   wire [4:0]  sq_1_row_r, sq_2_row_r, sq_3_row_r, sq_4_row_r, sq_1_row_ctl, sq_2_row_ctl, sq_3_row_ctl, sq_4_row_ctl;
@@ -181,6 +167,8 @@ module vga_example (
     .collision(collision),
     .random(random_out),
     .level(level_f),
+    .ID_1_occupied(ID_1_occupied),
+    .ID_2_occupied(ID_2_occupied),
     
     .xpos(xpos_ctl),
     .ypos(ypos_ctl),
@@ -188,7 +176,8 @@ module vga_example (
     .buf_block(buf_block_ctl),
     .rot(rot_ctl),
     .lock_en(lock_en),
-    .points(points_ctl)
+    .points(points_ctl),
+    .lock_ID_en(lock_ID_en)
   );
   
   fallen_blocks my_fallen_blocks (
@@ -279,6 +268,9 @@ draw_rect_char my_draw_rect_char (
   char_rom_16x16 my_char_rom(
     .char_xy(char_xy),
     .points(BCD_out),
+    .board_ID(board_ID),
+    .ext_data_1(),
+    .ext_data_2(),
     
     .char_code(char_code)
   );
@@ -310,7 +302,24 @@ uart uart_2(
     .rdy(rdy),
     .dout(dout)
 );
-
+  
+  board_ID my_board_ID(
+    .lock_ID_en(lock_ID_en),
+    .external_ID_1(external_ID_1),
+    .external_ID_2(external_ID_2),
+    
+    .board_ID(board_ID),
+    .ID_1_occupied(ID_1_occupied), 
+    .ID_2_occupied(ID_2_occupied)
+  );
+  
+  data_to_transfer my_data_to_transfer(
+    .board_ID(board_ID),
+    .points(BCD_out),
+    
+    .tx_data()
+  );
+  
   always @(posedge pclk)begin
     hs <= hsync_out_f;
     vs <= vsync_out_f;

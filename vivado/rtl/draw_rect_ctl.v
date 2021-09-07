@@ -19,6 +19,8 @@ module draw_rect_ctl(
     input wire       collision,
     input wire [4:0] random,
     input wire [3:0] level,
+    input wire       ID_1_occupied,
+    input wire       ID_2_occupied,
     
     output reg [3:0] xpos,
     output reg [4:0] ypos,
@@ -26,7 +28,8 @@ module draw_rect_ctl(
     output reg [4:0] buf_block,
     output reg [1:0] rot,
     output reg       lock_en,
-    output reg [19:0] points
+    output reg [19:0]points,
+    output reg       lock_ID_en
     );
     
     //localparam LEVEL = 5; //_______________________ make it input later
@@ -63,36 +66,37 @@ module draw_rect_ctl(
     always@(posedge pclk)
         if (rst) begin
             state <= WAIT_FOR_BTN;
-            ypos     <= 0;
-            xpos     <= 0;
-            counter  <= 0;
-            iterator <= 0;
-            block    <= 0;
-            rot      <= 0;
-            debounce1<= 0;
-            debounce2<= 0;
-            buf_block<= 0;
-            points   <= 0;
+            ypos       <= 0;
+            xpos       <= 0;
+            counter    <= 0;
+            iterator   <= 0;
+            block      <= 0;
+            rot        <= 0;
+            debounce1  <= 0;
+            debounce2  <= 0;
+            buf_block  <= 0;
+            points     <= 0;
         end
         else begin
-            state    <= state_nxt;
-            ypos     <= ypos_nxt;
-            xpos     <= xpos_nxt;
-            counter  <= counter_nxt;
-            iterator <= iterator_nxt;
-            block    <= block_nxt;
-            rot      <= rot_nxt;
-            debounce1<= debounce1_nxt;
-            debounce2<= debounce2_nxt;
-            buf_block<= buf_block_nxt;
-            points   <= points_nxt;
+            state     <= state_nxt;
+            ypos      <= ypos_nxt;
+            xpos      <= xpos_nxt;
+            counter   <= counter_nxt;
+            iterator  <= iterator_nxt;
+            block     <= block_nxt;
+            rot       <= rot_nxt;
+            debounce1 <= debounce1_nxt;
+            debounce2 <= debounce2_nxt;
+            buf_block <= buf_block_nxt;
+            points    <= points_nxt;
+            
         end
     
     always@*begin
       case(state)
         WAIT_FOR_BTN:state_nxt = (btnD||btnL||btnR||!pad_L||!pad_R||!pad_D||!pad_S) ? INIT : WAIT_FOR_BTN;
-        INIT:        state_nxt = IDLE;
-        IDLE:        state_nxt = (counter > FALL_DELAY-(50*level)) ? CHECK : btnD||!pad_D && (counter > (FALL_DELAY-(300*level))/4) ? CHECK : btnR||!pad_R ? MOVE_RIGHT : btnL||!pad_L ? MOVE_LEFT : (btnU||!pad_S) ? ROT : IDLE; 
+        INIT:        state_nxt = (ID_1_occupied && ID_2_occupied) ? IDLE : INIT;
+        IDLE:        state_nxt = (counter > FALL_DELAY-(50*level)) ? CHECK : btnD||!pad_D && (counter > (FALL_DELAY-(50*level))/10) ? CHECK : btnR||!pad_R ? MOVE_RIGHT : btnL||!pad_L ? MOVE_LEFT : (btnU||!pad_S) ? ROT : IDLE; 
         MOVE_DOWN:   state_nxt = IDLE;
         CHECK:       state_nxt = collision ? STOP : MOVE_DOWN;
         MOVE_LEFT:   state_nxt = HOLD_BTN;
@@ -114,12 +118,15 @@ module draw_rect_ctl(
           ypos_nxt = 21;          
           iterator_nxt = 0;
           counter_nxt = 0;
-          block_nxt = block;
-          buf_block_nxt = buf_block;
+          block_nxt = random;
+          if(random + 1 == 'b10111) buf_block_nxt = 'b10000;
+          else buf_block_nxt = random + 1;
           rot_nxt = 0;
           debounce1_nxt = 0;
           debounce2_nxt = 0;
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
         end  
         INIT: begin
           lock_en = 0;
@@ -127,12 +134,13 @@ module draw_rect_ctl(
           ypos_nxt = 0;          
           counter_nxt = 0;   
           iterator_nxt = 0;
-          block_nxt = random;
-            if(random + 1 == 'b10111) buf_block_nxt = 'b10000;
-            else buf_block_nxt = random + 1;
+          block_nxt = block;
+          buf_block_nxt = buf_block;
           rot_nxt = 0;
           debounce1_nxt = 0;
-          debounce2_nxt = 0;          
+          debounce2_nxt = 0;  
+          lock_ID_en = 1;
+          points_nxt = points;
           end         
         IDLE: begin
           xpos_nxt = xpos;
@@ -145,6 +153,8 @@ module draw_rect_ctl(
           debounce1_nxt = 0;
           debounce2_nxt = 0;   
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end 
         MOVE_DOWN: begin
           if((btnD||!pad_D)&& counter>0) points_nxt = points + 1;
@@ -158,6 +168,8 @@ module draw_rect_ctl(
           debounce1_nxt = 0;
           debounce2_nxt = 0;
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end
         CHECK: begin
           xpos_nxt = xpos;
@@ -170,6 +182,8 @@ module draw_rect_ctl(
           debounce1_nxt = debounce1;
           debounce2_nxt = debounce2;
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end          
         MOVE_LEFT: begin
             if((sq_1_col == 0) || (sq_2_col == 0) || (sq_3_col == 0) || (sq_4_col == 0)) xpos_nxt = xpos;
@@ -183,6 +197,8 @@ module draw_rect_ctl(
           debounce1_nxt = 0;
           debounce2_nxt = 0;       
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end
         MOVE_RIGHT: begin
             if((sq_1_col == 9) || (sq_2_col == 9) || (sq_3_col == 9) || (sq_4_col == 9)) xpos_nxt = xpos;
@@ -196,6 +212,8 @@ module draw_rect_ctl(
           debounce1_nxt = 0;
           debounce2_nxt = 0;         
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end
         HOLD_BTN: begin
           xpos_nxt = xpos;
@@ -208,6 +226,8 @@ module draw_rect_ctl(
           debounce1_nxt = debounce1 + 1;
           debounce2_nxt = (debounce1)>>16;  
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end
         STOP: begin
           xpos_nxt = xpos;
@@ -220,6 +240,8 @@ module draw_rect_ctl(
           debounce1_nxt = 0;
           debounce2_nxt = 0;
           lock_en = 1;
+          lock_ID_en = 0;
+          points_nxt = points;
           end
         ROT: begin
             if (rot == 3) rot_nxt = 0;
@@ -233,6 +255,8 @@ module draw_rect_ctl(
           debounce1_nxt = 0;
           debounce2_nxt = 0;
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end
         ROT_OFFSET: begin
             if(block==I_BLOCK && xpos==9 && (rot == 0 || rot == 2)) xpos_nxt = xpos - 2;
@@ -256,6 +280,8 @@ module draw_rect_ctl(
           debounce1_nxt = 0;
           debounce2_nxt = 0;
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end
         NEW_BLOCK: begin
           xpos_nxt = 5;
@@ -268,6 +294,8 @@ module draw_rect_ctl(
           debounce1_nxt = 0;
           debounce2_nxt = 0;
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end          
         default: begin
           xpos_nxt = xpos;
@@ -280,6 +308,8 @@ module draw_rect_ctl(
           debounce1_nxt = debounce1;
           debounce2_nxt = debounce2;
           lock_en = 0;
+          lock_ID_en = 0;
+          points_nxt = points;
           end
       endcase
     end      
