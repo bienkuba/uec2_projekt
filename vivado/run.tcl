@@ -62,6 +62,8 @@ read_verilog {
     rtl/uart_tx.v
     rtl/uart.v
     rtl/baud_rate_gen.v
+    rtl/data_to_transfer.v
+    rtl/board_ID.v
 }
 
 add_files -fileset sim_1 {
