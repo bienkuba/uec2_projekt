@@ -86,6 +86,8 @@ module vga_example (
   wire [19:0] points_ctl, points_f;
   wire [23:0] BCD_out;
   
+  wire pad_Sd, pad_Dd, pad_Ld, pad_Rd;
+  
   reg [7:0] data = 0;
   wire [7:0] dout;
   reg enable = 0;
@@ -162,14 +164,27 @@ module vga_example (
     .random(random_out)
    );
 
+  debouncer my_debouncer(
+    .pclk(pclk),
+    .rst(rst),
+    .sw_S(!pad_S),
+    .sw_R(!pad_R),
+    .sw_L(!pad_L),
+    .sw_D(!pad_D),
+    .pad_Sd(pad_Sd),
+    .pad_Rd(pad_Rd),
+    .pad_Ld(pad_Ld),
+    .pad_Dd(pad_Dd)
+  );
+
   draw_rect_ctl my_rect_ctl(
     .pclk(pclk),
     .rst(rst),
-    .pad_R(pad_R),
-    .pad_L(pad_L),
+    .pad_R(pad_Rd),
+    .pad_L(pad_Ld),
     .pad_U(pad_U),
-    .pad_D(pad_D),
-    .pad_S(pad_S),
+    .pad_D(pad_Dd),
+    .pad_S(pad_Sd),
     .btnL(btnL),
     .btnR(btnR),
     .btnD(btnD),
@@ -289,27 +304,27 @@ draw_rect_char my_draw_rect_char (
     .BCD(BCD_out)
    );
  
-uart uart_1(
-    .din(BCD_out),
-    .pclk(pclk),
-    .rdy_clr(rdy_clr),
-    .tx(tx1),
-    .tx_busy(tx_busy),
-    .rx(rx1),
-    .rdy(rdy),
-    .dout(dout)
-);
+//uart uart_1(
+//    .din(BCD_out),
+//    .pclk(pclk),
+//    .rdy_clr(rdy_clr),
+//    .tx(tx1),
+//    .tx_busy(tx_busy),
+//    .rx(rx1),
+//    .rdy(rdy),
+//    .dout(dout)
+//);
 
-uart uart_2(
-    .din(BCD_out),
-    .pclk(pclk),
-    .rdy_clr(rdy_clr),
-    .tx(tx2),
-    .tx_busy(tx_busy),
-    .rx(rx2),
-    .rdy(rdy),
-    .dout(dout)
-);
+//uart uart_2(
+//    .din(BCD_out),
+//    .pclk(pclk),
+//    .rdy_clr(rdy_clr),
+//    .tx(tx2),
+//    .tx_busy(tx_busy),
+//    .rx(rx2),
+//    .rdy(rdy),
+//    .dout(dout)
+//);
 
   always @(posedge pclk)begin
     hs <= hsync_out_f;

@@ -13,6 +13,7 @@ module uart(
 
 wire rxclk_en, txclk_en;
 reg wr_en;
+reg [7:0] din_nxt;
 
 baud_rate_gen uart_baud(.pclk(pclk),
 			.rxclk_en(rxclk_en),
@@ -20,8 +21,8 @@ baud_rate_gen uart_baud(.pclk(pclk),
 
 always@* begin
     if(din) 
-       wr_en = 1; 
-    else 
+       wr_en = 1;
+    else
        wr_en = 0;
 end
 
