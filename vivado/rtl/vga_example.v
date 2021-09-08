@@ -56,7 +56,7 @@ module vga_example (
     
   localparam WIDTH = 16;
 
-  wire        collision, lock_en, lock_ID_en, external_ID_1, external_ID_2, ID_1_occupied, ID_2_occupied;
+  wire        collision, lock_en, lock_ID_en, ID_1_occupied, ID_2_occupied;
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f, vsync_out_nb, hsync_out_nb, vsync_out_ch, hsync_out_ch;
   wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f, vblnk_out_nb, hblnk_out_nb, vblnk_out_ch, hblnk_out_ch;
   wire [1:0]  rot_ctl;
@@ -65,7 +65,7 @@ module vga_example (
   wire [4:0]  sq_1_row_r, sq_2_row_r, sq_3_row_r, sq_4_row_r, sq_1_row_ctl, sq_2_row_ctl, sq_3_row_ctl, sq_4_row_ctl;
   wire [4:0]  random_out, block_ctl, buf_block_ctl, ypos_ctl;
   wire [6:0]  char_code;
-  wire [7:0]  char_pixels, char_xy;
+  wire [7:0]  char_pixels, char_xy, external_ID_1, external_ID_2;
   wire [10:0] vcount, hcount, hcount_out_b, vcount_out_b, hcount_out_r, vcount_out_r, hcount_out_f, vcount_out_f, hcount_out_nb, vcount_out_nb, hcount_out_ch, vcount_out_ch;
   wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f, rgb_out_nb, rgb_out_ch;
   wire [19:0] points_ctl, points_f;

@@ -95,7 +95,7 @@ module draw_rect_ctl(
     always@*begin
       case(state)
         WAIT_FOR_BTN:state_nxt = (btnD||btnL||btnR||!pad_L||!pad_R||!pad_D||!pad_S) ? INIT : WAIT_FOR_BTN;
-        INIT:        state_nxt = (ID_1_occupied && ID_2_occupied) ? IDLE : INIT;
+        INIT:        state_nxt = (ID_1_occupied) ? IDLE : INIT;
         IDLE:        state_nxt = (counter > FALL_DELAY-(50*level)) ? CHECK : btnD||!pad_D && (counter > (FALL_DELAY-(50*level))/10) ? CHECK : btnR||!pad_R ? MOVE_RIGHT : btnL||!pad_L ? MOVE_LEFT : (btnU||!pad_S) ? ROT : IDLE; 
         MOVE_DOWN:   state_nxt = IDLE;
         CHECK:       state_nxt = collision ? STOP : MOVE_DOWN;
