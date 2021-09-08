@@ -17,6 +17,8 @@ module uart
     input wire rd_uart, wr_uart, rx,
     input wire [7:0] data_in,
     output wire tx,
+    output wire tx_full,
+    output wire rx_empty,
     output wire [7:0] data_out
    );
 
@@ -36,12 +38,12 @@ module uart
    fifo #(.B(DBIT), .W(FIFO_W)) fifo_rx_unit
       (.clk(clk), .reset(reset), .rd(rd_uart),
        .wr(rx_done_tick), .w_data(rx_data_out),
-       .full(), .r_data(data_out));
+       .full(), .empty(rx_empty), .r_data(data_out));
 
    fifo #(.B(DBIT), .W(FIFO_W)) fifo_tx_unit
       (.clk(clk), .reset(reset), .rd(tx_done_tick),
        .wr(wr_uart), .w_data(data_in), .empty(tx_empty),
-       .r_data(tx_fifo_out));
+       .r_data(tx_fifo_out), .full(tx_full));
 
    uart_tx #(.DBIT(DBIT), .SB_TICK(SB_TICK)) uart_tx_unit
       (.clk(clk), .reset(reset), .tx_start(tx_fifo_not_empty),

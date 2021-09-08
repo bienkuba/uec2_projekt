@@ -3,14 +3,14 @@
 module char_rom_16x16(
     input wire [7:0]  char_xy,
     input wire [23:0] points,
-    input wire [1:0]  board_ID,
-    input wire [31:0] ext_data_1,
-    input wire [31:0] ext_data_2,
+    input wire [7:0]  board_ID,
+    input wire [31:0] ext_data_1, // bylo 31:0
+    input wire [31:0] ext_data_2, //31:0
     //chyba trzeba zamieni? 31-tu-bitowe wej?cie na 8-miu-bitowe i p??niej stwo?y? rejestr, gdzie b?dzie to dodawane
     
     output reg [6:0]  char_code 
 );
-    
+ 
     reg [3:0] P1_D1, P1_D2, P1_D3, P1_D4, P1_D5, P1_D6;
     reg [3:0] P2_D1, P2_D2, P2_D3, P2_D4, P2_D5, P2_D6;
     reg [3:0] P3_D1, P3_D2, P3_D3, P3_D4, P3_D5, P3_D6;
@@ -86,7 +86,7 @@ module char_rom_16x16(
     localparam z = 7'h7A;
 
   always@*begin
-    if(board_ID == 2'b01)begin  
+    if(board_ID == 8'b00000001)begin  
         P1_D1 = points[23:20];
         P1_D2 = points[19:16];
         P1_D3 = points[15:12];
@@ -94,7 +94,7 @@ module char_rom_16x16(
         P1_D5 = points[7:4];
         P1_D6 = points[3:0];
     end
-    else if(board_ID == 2'b10)begin  
+    else if(board_ID == 8'b00000010)begin  
         P2_D1 = points[23:20];
         P2_D2 = points[19:16];
         P2_D3 = points[15:12];
@@ -110,7 +110,7 @@ module char_rom_16x16(
         P3_D5 = points[7:4];
         P3_D6 = points[3:0];
     end
-    if(ext_data_1[25:24] == 2'b01)begin
+    if(ext_data_1[7:0] == 8'b00000001)begin //bylo ext_data_1[31:24]
         P1_D1 = ext_data_1[23:20];
         P1_D2 = ext_data_1[19:16];
         P1_D3 = ext_data_1[15:12];
@@ -118,7 +118,7 @@ module char_rom_16x16(
         P1_D5 = ext_data_1[7:4];
         P1_D6 = ext_data_1[3:0];
     end
-    else if(ext_data_1[25:24] == 2'b10)begin  
+    else if(ext_data_1[31:24] == 8'b00000010)begin  
         P2_D1 = ext_data_1[23:20];
         P2_D2 = ext_data_1[19:16];
         P2_D3 = ext_data_1[15:12];
@@ -134,7 +134,7 @@ module char_rom_16x16(
         P3_D5 = ext_data_1[7:4];
         P3_D6 = ext_data_1[3:0];
     end
-    if(ext_data_2[25:24] == 2'b01)begin
+    if(ext_data_2[7:0] == 8'b00000001)begin //ext_data_2[31:24]
         P1_D1 = ext_data_2[23:20];
         P1_D2 = ext_data_2[19:16];
         P1_D3 = ext_data_2[15:12];
@@ -142,7 +142,7 @@ module char_rom_16x16(
         P1_D5 = ext_data_2[7:4];
         P1_D6 = ext_data_2[3:0];
     end                  
-    else if(ext_data_2[25:24] == 2'b10)begin  
+    else if(ext_data_2[31:24] == 8'b00000010)begin  
         P2_D1 = ext_data_2[23:20];
         P2_D2 = ext_data_2[19:16];
         P2_D3 = ext_data_2[15:12];

@@ -65,6 +65,7 @@ read_verilog {
     rtl/data_to_transfer.v
     rtl/board_ID.v
     rtl/fifo.v
+    rtl/serializer.v
 }
 
 add_files -fileset sim_1 {

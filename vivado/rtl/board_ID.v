@@ -25,7 +25,7 @@ module board_ID(
     input wire       external_ID_1,
     input wire       external_ID_2,
     
-    output reg [1:0] board_ID,
+    output reg [7:0] board_ID,
     output reg       ID_1_occupied, 
     output reg       ID_2_occupied
     );
@@ -37,17 +37,17 @@ module board_ID(
         if(external_ID_2) ID_2_occupied = 1;
         if(lock_ID_en && !ID_reserved)begin
             if(!ID_1_occupied && !ID_2_occupied)begin 
-                board_ID = 2'b01;
+                board_ID = 8'b00000001;
                 ID_1_occupied = 1;
                 ID_reserved = 1;
             end
             else if(ID_1_occupied && !ID_2_occupied) begin
-                board_ID = 2'b10;
+                board_ID = 8'b00000010;
                 ID_2_occupied = 1;
                 ID_reserved = 1;
             end
             else begin
-                board_ID = 2'b11;
+                board_ID = 8'b00000011;
                 ID_reserved = 1;
             end
         end

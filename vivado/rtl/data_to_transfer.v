@@ -21,23 +21,18 @@
 
 
 module data_to_transfer(
-    input wire [1:0]  board_ID,
+    input wire clk,
+    input wire rst,
+    input wire [7:0]  board_ID,
     input wire [23:0] points,
+    input wire tx_full,
+    input wire rx_empty_1, rx_empty_2,
     
-    output reg [7:0] tx_data1,
-    output reg [7:0] tx_data2,
-    output reg [7:0] tx_data3,
-    output reg [7:0] tx_data4
+    output reg [31:0] tx_data_stack
     );
     
     always@*begin
-        tx_data1 = board_ID;
-        tx_data2 = points[23:16];
-        tx_data3 = points[15:8];
-        tx_data4 = points[7:0];
-        
-        
-        
-    end    
+        tx_data_stack = {board_ID, points};
+    end  
     
 endmodule

@@ -1,0 +1,1508 @@
+
+*** Running vivado
+    with args -log vga_example.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source vga_example.tcl
+
+
+****** Vivado v2017.3 (64-bit)
+  **** SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source vga_example.tcl -notrace
+Command: synth_design -top vga_example -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 3676 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 358.016 ; gain = 97.973
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'vga_example' [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:3]
+	Parameter WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* KEEP = "TRUE" *) [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:35]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:35]
+INFO: [Synth 8-638] synthesizing module 'ODDR' [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:30648]
+	Parameter DDR_CLK_EDGE bound to: OPPOSITE_EDGE - type: string 
+	Parameter INIT bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter SRTYPE bound to: SYNC - type: string 
+INFO: [Synth 8-256] done synthesizing module 'ODDR' (1#1) [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:30648]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0.v:71]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0_clk_wiz' [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:69]
+INFO: [Synth 8-5534] Detected attribute (* KEEP = "TRUE" *) [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:127]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:127]
+INFO: [Synth 8-5534] Detected attribute (* KEEP = "TRUE" *) [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:130]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "TRUE" *) [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:130]
+INFO: [Synth 8-638] synthesizing module 'IBUF' [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:19468]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-256] done synthesizing module 'IBUF' (2#1) [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:19468]
+INFO: [Synth 8-638] synthesizing module 'MMCME2_ADV' [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:25757]
+	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
+	Parameter CLKFBOUT_MULT_F bound to: 9.750000 - type: float 
+	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKFBOUT_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKIN1_PERIOD bound to: 10.000000 - type: float 
+	Parameter CLKIN2_PERIOD bound to: 0.000000 - type: float 
+	Parameter CLKOUT0_DIVIDE_F bound to: 9.750000 - type: float 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT0_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT1_DIVIDE bound to: 13 - type: integer 
+	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT1_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT1_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT2_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT2_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT2_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT2_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT3_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT3_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT3_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT3_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT4_CASCADE bound to: FALSE - type: string 
+	Parameter CLKOUT4_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT4_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT4_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT4_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT5_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT5_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT5_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT5_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT6_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT6_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT6_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT6_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter COMPENSATION bound to: ZHOLD - type: string 
+	Parameter DIVCLK_DIVIDE bound to: 1 - type: integer 
+	Parameter IS_CLKINSEL_INVERTED bound to: 1'b0 
+	Parameter IS_PSEN_INVERTED bound to: 1'b0 
+	Parameter IS_PSINCDEC_INVERTED bound to: 1'b0 
+	Parameter IS_PWRDWN_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter REF_JITTER1 bound to: 0.010000 - type: float 
+	Parameter REF_JITTER2 bound to: 0.010000 - type: float 
+	Parameter SS_EN bound to: FALSE - type: string 
+	Parameter SS_MODE bound to: CENTER_HIGH - type: string 
+	Parameter SS_MOD_PERIOD bound to: 10000 - type: integer 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-256] done synthesizing module 'MMCME2_ADV' (3#1) [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:25757]
+INFO: [Synth 8-638] synthesizing module 'BUFG' [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'BUFG' (4#1) [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-638] synthesizing module 'BUFGCE' [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:617]
+	Parameter CE_TYPE bound to: SYNC - type: string 
+	Parameter IS_CE_INVERTED bound to: 1'b0 
+	Parameter IS_I_INVERTED bound to: 1'b0 
+INFO: [Synth 8-256] done synthesizing module 'BUFGCE' (5#1) [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:617]
+INFO: [Synth 8-638] synthesizing module 'BUFH' [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:806]
+INFO: [Synth 8-256] done synthesizing module 'BUFH' (6#1) [E:/programy/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:806]
+INFO: [Synth 8-256] done synthesizing module 'clk_wiz_0_clk_wiz' (7#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:69]
+INFO: [Synth 8-256] done synthesizing module 'clk_wiz_0' (8#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0.v:71]
+INFO: [Synth 8-638] synthesizing module 'vga_timing' [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_timing.v:6]
+	Parameter HOR_TOTAL_TIME bound to: 1650 - type: integer 
+	Parameter HOR_BLANK_START bound to: 1280 - type: integer 
+	Parameter HOR_BLANK_TIME bound to: 370 - type: integer 
+	Parameter HOR_SYNC_START bound to: 1390 - type: integer 
+	Parameter HOR_SYNC_TIME bound to: 40 - type: integer 
+	Parameter VER_TOTAL_TIME bound to: 750 - type: integer 
+	Parameter VER_BLANK_START bound to: 720 - type: integer 
+	Parameter VER_BLANK_TIME bound to: 30 - type: integer 
+	Parameter VER_SYNC_START bound to: 725 - type: integer 
+	Parameter VER_SYNC_TIME bound to: 5 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'vga_timing' (9#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_timing.v:6]
+INFO: [Synth 8-638] synthesizing module 'draw_background' [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_background.v:3]
+	Parameter Y_T1 bound to: 40 - type: integer 
+	Parameter X_T1 bound to: 600 - type: integer 
+	Parameter Y_T2 bound to: 40 - type: integer 
+	Parameter X_T2 bound to: 635 - type: integer 
+	Parameter Y_T3 bound to: 40 - type: integer 
+	Parameter X_T3 bound to: 670 - type: integer 
+	Parameter Y_T4 bound to: 75 - type: integer 
+	Parameter X_T4 bound to: 635 - type: integer 
+	Parameter Y_T5 bound to: 110 - type: integer 
+	Parameter X_T5 bound to: 635 - type: integer 
+	Parameter Y_T6 bound to: 145 - type: integer 
+	Parameter X_T6 bound to: 635 - type: integer 
+	Parameter Y_T7 bound to: 180 - type: integer 
+	Parameter X_T7 bound to: 635 - type: integer 
+	Parameter Y_E1 bound to: 40 - type: integer 
+	Parameter X_E1 bound to: 705 - type: integer 
+	Parameter Y_E2 bound to: 75 - type: integer 
+	Parameter X_E2 bound to: 705 - type: integer 
+	Parameter Y_E3 bound to: 110 - type: integer 
+	Parameter X_E3 bound to: 705 - type: integer 
+	Parameter Y_E4 bound to: 145 - type: integer 
+	Parameter X_E4 bound to: 705 - type: integer 
+	Parameter Y_E5 bound to: 180 - type: integer 
+	Parameter X_E5 bound to: 705 - type: integer 
+	Parameter Y_E6 bound to: 40 - type: integer 
+	Parameter X_E6 bound to: 740 - type: integer 
+	Parameter Y_E7 bound to: 40 - type: integer 
+	Parameter X_E7 bound to: 775 - type: integer 
+	Parameter Y_E8 bound to: 110 - type: integer 
+	Parameter X_E8 bound to: 740 - type: integer 
+	Parameter Y_E9 bound to: 180 - type: integer 
+	Parameter X_E9 bound to: 740 - type: integer 
+	Parameter Y_E10 bound to: 180 - type: integer 
+	Parameter X_E10 bound to: 775 - type: integer 
+	Parameter Y_T11 bound to: 40 - type: integer 
+	Parameter X_T11 bound to: 810 - type: integer 
+	Parameter Y_T12 bound to: 40 - type: integer 
+	Parameter X_T12 bound to: 845 - type: integer 
+	Parameter Y_T13 bound to: 40 - type: integer 
+	Parameter X_T13 bound to: 880 - type: integer 
+	Parameter Y_T14 bound to: 75 - type: integer 
+	Parameter X_T14 bound to: 845 - type: integer 
+	Parameter Y_T15 bound to: 110 - type: integer 
+	Parameter X_T15 bound to: 845 - type: integer 
+	Parameter Y_T16 bound to: 145 - type: integer 
+	Parameter X_T16 bound to: 845 - type: integer 
+	Parameter Y_T17 bound to: 180 - type: integer 
+	Parameter X_T17 bound to: 845 - type: integer 
+	Parameter Y_R1 bound to: 40 - type: integer 
+	Parameter X_R1 bound to: 915 - type: integer 
+	Parameter Y_R2 bound to: 75 - type: integer 
+	Parameter X_R2 bound to: 915 - type: integer 
+	Parameter Y_R3 bound to: 110 - type: integer 
+	Parameter X_R3 bound to: 915 - type: integer 
+	Parameter Y_R4 bound to: 145 - type: integer 
+	Parameter X_R4 bound to: 915 - type: integer 
+	Parameter Y_R5 bound to: 180 - type: integer 
+	Parameter X_R5 bound to: 915 - type: integer 
+	Parameter Y_R6 bound to: 40 - type: integer 
+	Parameter X_R6 bound to: 950 - type: integer 
+	Parameter Y_R7 bound to: 75 - type: integer 
+	Parameter X_R7 bound to: 985 - type: integer 
+	Parameter Y_R8 bound to: 110 - type: integer 
+	Parameter X_R8 bound to: 950 - type: integer 
+	Parameter Y_R9 bound to: 145 - type: integer 
+	Parameter X_R9 bound to: 985 - type: integer 
+	Parameter Y_R10 bound to: 180 - type: integer 
+	Parameter X_R10 bound to: 985 - type: integer 
+	Parameter Y_I1 bound to: 40 - type: integer 
+	Parameter X_I1 bound to: 1055 - type: integer 
+	Parameter Y_I2 bound to: 75 - type: integer 
+	Parameter X_I2 bound to: 1055 - type: integer 
+	Parameter Y_I3 bound to: 110 - type: integer 
+	Parameter X_I3 bound to: 1055 - type: integer 
+	Parameter Y_I4 bound to: 145 - type: integer 
+	Parameter X_I4 bound to: 1055 - type: integer 
+	Parameter Y_I5 bound to: 180 - type: integer 
+	Parameter X_I5 bound to: 1055 - type: integer 
+	Parameter Y_I6 bound to: 40 - type: integer 
+	Parameter X_I6 bound to: 1020 - type: integer 
+	Parameter Y_I7 bound to: 40 - type: integer 
+	Parameter X_I7 bound to: 1090 - type: integer 
+	Parameter Y_I8 bound to: 180 - type: integer 
+	Parameter X_I8 bound to: 1020 - type: integer 
+	Parameter Y_I9 bound to: 180 - type: integer 
+	Parameter X_I9 bound to: 1090 - type: integer 
+	Parameter Y_S1 bound to: 40 - type: integer 
+	Parameter X_S1 bound to: 1125 - type: integer 
+	Parameter Y_S2 bound to: 40 - type: integer 
+	Parameter X_S2 bound to: 1160 - type: integer 
+	Parameter Y_S3 bound to: 40 - type: integer 
+	Parameter X_S3 bound to: 1195 - type: integer 
+	Parameter Y_S4 bound to: 75 - type: integer 
+	Parameter X_S4 bound to: 1125 - type: integer 
+	Parameter Y_S5 bound to: 110 - type: integer 
+	Parameter X_S5 bound to: 1125 - type: integer 
+	Parameter Y_S6 bound to: 110 - type: integer 
+	Parameter X_S6 bound to: 1160 - type: integer 
+	Parameter Y_S7 bound to: 110 - type: integer 
+	Parameter X_S7 bound to: 1195 - type: integer 
+	Parameter Y_S8 bound to: 145 - type: integer 
+	Parameter X_S8 bound to: 1195 - type: integer 
+	Parameter Y_S9 bound to: 180 - type: integer 
+	Parameter X_S9 bound to: 1195 - type: integer 
+	Parameter Y_S10 bound to: 180 - type: integer 
+	Parameter X_S10 bound to: 1160 - type: integer 
+	Parameter Y_S11 bound to: 180 - type: integer 
+	Parameter X_S11 bound to: 1125 - type: integer 
+	Parameter SIZE bound to: 35 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'draw_background' (10#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_background.v:3]
+INFO: [Synth 8-638] synthesizing module 'draw_rect' [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect.v:3]
+	Parameter X_CALIB bound to: 201 - type: integer 
+	Parameter Y_CALIB bound to: 10 - type: integer 
+	Parameter SIZE bound to: 35 - type: integer 
+	Parameter RED_L bound to: 12'b111110101011 
+	Parameter RED_D bound to: 12'b100000000000 
+	Parameter RED_N bound to: 12'b111100000000 
+	Parameter YELLOW_L bound to: 12'b111111111000 
+	Parameter YELLOW_D bound to: 12'b101110110110 
+	Parameter YELLOW_N bound to: 12'b111111110000 
+	Parameter PINK_L bound to: 12'b111010001110 
+	Parameter PINK_D bound to: 12'b100000001000 
+	Parameter PINK_N bound to: 12'b111100001111 
+	Parameter BLUE_L bound to: 12'b000010111111 
+	Parameter BLUE_D bound to: 12'b000000001000 
+	Parameter BLUE_N bound to: 12'b000000001111 
+	Parameter GREEN_L bound to: 12'b100111111001 
+	Parameter GREEN_D bound to: 12'b000010000000 
+	Parameter GREEN_N bound to: 12'b000011110000 
+	Parameter CYAN_L bound to: 12'b110011111111 
+	Parameter CYAN_D bound to: 12'b000011001111 
+	Parameter CYAN_N bound to: 12'b000011111111 
+	Parameter I_BLOCK bound to: 16 - type: integer 
+	Parameter O_BLOCK bound to: 17 - type: integer 
+	Parameter T_BLOCK bound to: 18 - type: integer 
+	Parameter S_BLOCK bound to: 19 - type: integer 
+	Parameter Z_BLOCK bound to: 20 - type: integer 
+	Parameter J_BLOCK bound to: 21 - type: integer 
+	Parameter L_BLOCK bound to: 22 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'draw_rect' (11#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect.v:3]
+INFO: [Synth 8-638] synthesizing module 'randomizer' [F:/Project_tetris/uec2_projekt/vivado/rtl/random.v:3]
+INFO: [Synth 8-256] done synthesizing module 'randomizer' (12#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/random.v:3]
+INFO: [Synth 8-638] synthesizing module 'draw_rect_ctl' [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect_ctl.v:3]
+	Parameter FALL_DELAY bound to: 775 - type: integer 
+	Parameter WAIT_FOR_BTN bound to: 0 - type: integer 
+	Parameter INIT bound to: 32'b00000000000000000000000000000001 
+	Parameter IDLE bound to: 2 - type: integer 
+	Parameter MOVE_DOWN bound to: 3 - type: integer 
+	Parameter MOVE_LEFT bound to: 4 - type: integer 
+	Parameter MOVE_RIGHT bound to: 5 - type: integer 
+	Parameter HOLD_BTN bound to: 6 - type: integer 
+	Parameter STOP bound to: 7 - type: integer 
+	Parameter ROT bound to: 8 - type: integer 
+	Parameter ROT_OFFSET bound to: 9 - type: integer 
+	Parameter CHECK bound to: 10 - type: integer 
+	Parameter NEW_BLOCK bound to: 11 - type: integer 
+	Parameter I_BLOCK bound to: 16 - type: integer 
+	Parameter O_BLOCK bound to: 17 - type: integer 
+	Parameter T_BLOCK bound to: 18 - type: integer 
+	Parameter S_BLOCK bound to: 19 - type: integer 
+	Parameter Z_BLOCK bound to: 20 - type: integer 
+	Parameter J_BLOCK bound to: 21 - type: integer 
+	Parameter L_BLOCK bound to: 22 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'draw_rect_ctl' (13#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect_ctl.v:3]
+INFO: [Synth 8-638] synthesizing module 'fallen_blocks' [F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v:3]
+	Parameter X_CALIB bound to: 201 - type: integer 
+	Parameter Y_CALIB bound to: 10 - type: integer 
+	Parameter SIZE bound to: 35 - type: integer 
+	Parameter RED_L bound to: 12'b111110101011 
+	Parameter RED_D bound to: 12'b100000000000 
+	Parameter RED_N bound to: 12'b111100000000 
+	Parameter YELLOW_L bound to: 12'b111111111000 
+	Parameter YELLOW_D bound to: 12'b101110110110 
+	Parameter YELLOW_N bound to: 12'b111111110000 
+	Parameter PINK_L bound to: 12'b111010001110 
+	Parameter PINK_D bound to: 12'b100000001000 
+	Parameter PINK_N bound to: 12'b111100001111 
+	Parameter BLUE_L bound to: 12'b000010111111 
+	Parameter BLUE_D bound to: 12'b000000001000 
+	Parameter BLUE_N bound to: 12'b000000001111 
+	Parameter GREEN_L bound to: 12'b100111111001 
+	Parameter GREEN_D bound to: 12'b000010000000 
+	Parameter GREEN_N bound to: 12'b000011110000 
+	Parameter CYAN_L bound to: 12'b110011111111 
+	Parameter CYAN_D bound to: 12'b000011001111 
+	Parameter CYAN_N bound to: 12'b000011111111 
+INFO: [Synth 8-256] done synthesizing module 'fallen_blocks' (14#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v:3]
+INFO: [Synth 8-638] synthesizing module 'draw_nxt_block' [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_nxt_block.v:4]
+	Parameter X_CALIB bound to: -9 - type: integer 
+	Parameter Y_CALIB bound to: 25 - type: integer 
+	Parameter SIZE bound to: 35 - type: integer 
+	Parameter RED_L bound to: 12'b111110101011 
+	Parameter RED_D bound to: 12'b100000000000 
+	Parameter RED_N bound to: 12'b111100000000 
+	Parameter YELLOW_L bound to: 12'b111111111000 
+	Parameter YELLOW_D bound to: 12'b101110110110 
+	Parameter YELLOW_N bound to: 12'b111111110000 
+	Parameter PINK_L bound to: 12'b111010001110 
+	Parameter PINK_D bound to: 12'b100000001000 
+	Parameter PINK_N bound to: 12'b111100001111 
+	Parameter BLUE_L bound to: 12'b000010111111 
+	Parameter BLUE_D bound to: 12'b000000001000 
+	Parameter BLUE_N bound to: 12'b000000001111 
+	Parameter GREEN_L bound to: 12'b100111111001 
+	Parameter GREEN_D bound to: 12'b000010000000 
+	Parameter GREEN_N bound to: 12'b000011110000 
+	Parameter CYAN_L bound to: 12'b110011111111 
+	Parameter CYAN_D bound to: 12'b000011001111 
+	Parameter CYAN_N bound to: 12'b000011111111 
+	Parameter I_BLOCK bound to: 16 - type: integer 
+	Parameter O_BLOCK bound to: 17 - type: integer 
+	Parameter T_BLOCK bound to: 18 - type: integer 
+	Parameter S_BLOCK bound to: 19 - type: integer 
+	Parameter Z_BLOCK bound to: 20 - type: integer 
+	Parameter J_BLOCK bound to: 21 - type: integer 
+	Parameter L_BLOCK bound to: 22 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'draw_nxt_block' (15#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_nxt_block.v:4]
+INFO: [Synth 8-638] synthesizing module 'draw_rect_char' [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect_char.v:23]
+	Parameter COLOR bound to: 12'b000010011001 
+	Parameter BACKGROUND bound to: 12'b001100111111 
+	Parameter LETTERS_COLOR bound to: 12'b101010111100 
+	Parameter XPOS bound to: 570 - type: integer 
+	Parameter YPOS bound to: 400 - type: integer 
+WARNING: [Synth 8-3936] Found unconnected internal register 'addrx_reg' and it is trimmed from '11' to '3' bits. [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect_char.v:96]
+INFO: [Synth 8-256] done synthesizing module 'draw_rect_char' (16#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect_char.v:23]
+INFO: [Synth 8-638] synthesizing module 'font_rom' [F:/Project_tetris/uec2_projekt/vivado/rtl/font_rom.v:9]
+INFO: [Synth 8-256] done synthesizing module 'font_rom' (17#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/font_rom.v:9]
+INFO: [Synth 8-638] synthesizing module 'char_rom_16x16' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:3]
+	Parameter SPACE bound to: 7'b0100000 
+	Parameter COLON bound to: 7'b0111010 
+	Parameter greater bound to: 7'b0111110 
+	Parameter less bound to: 7'b0111100 
+	Parameter NUM0 bound to: 7'b0110000 
+	Parameter NUM1 bound to: 7'b0110001 
+	Parameter NUM2 bound to: 7'b0110010 
+	Parameter NUM3 bound to: 7'b0110011 
+	Parameter NUM4 bound to: 7'b0110100 
+	Parameter NUM5 bound to: 7'b0110101 
+	Parameter NUM6 bound to: 7'b0110110 
+	Parameter NUM7 bound to: 7'b0110111 
+	Parameter NUM8 bound to: 7'b0111000 
+	Parameter NUM9 bound to: 7'b0111001 
+	Parameter A bound to: 7'b1000001 
+	Parameter B bound to: 7'b1000010 
+	Parameter C bound to: 7'b1000011 
+	Parameter D bound to: 7'b1000100 
+	Parameter E bound to: 7'b1000101 
+	Parameter F bound to: 7'b1000110 
+	Parameter G bound to: 7'b1000111 
+	Parameter H bound to: 7'b1001000 
+	Parameter I bound to: 7'b1001001 
+	Parameter J bound to: 7'b1001010 
+	Parameter K bound to: 7'b1001011 
+	Parameter L bound to: 7'b1001100 
+	Parameter M bound to: 7'b1001101 
+	Parameter N bound to: 7'b1001110 
+	Parameter O bound to: 7'b1001111 
+	Parameter P bound to: 7'b1010000 
+	Parameter Q bound to: 7'b1010001 
+	Parameter R bound to: 7'b1010010 
+	Parameter S bound to: 7'b1010011 
+	Parameter T bound to: 7'b1010100 
+	Parameter U bound to: 7'b1010101 
+	Parameter V bound to: 7'b1010110 
+	Parameter W bound to: 7'b1010111 
+	Parameter X bound to: 7'b1011000 
+	Parameter Y bound to: 7'b1011001 
+	Parameter Z bound to: 7'b1011010 
+	Parameter a bound to: 7'b1100001 
+	Parameter b bound to: 7'b1100010 
+	Parameter c bound to: 7'b1100011 
+	Parameter d bound to: 7'b1100100 
+	Parameter e bound to: 7'b1100101 
+	Parameter f bound to: 7'b1100110 
+	Parameter g bound to: 7'b1100111 
+	Parameter h bound to: 7'b1101000 
+	Parameter i bound to: 7'b1101001 
+	Parameter j bound to: 7'b1101010 
+	Parameter k bound to: 7'b1101011 
+	Parameter l bound to: 7'b1101100 
+	Parameter m bound to: 7'b1101101 
+	Parameter n bound to: 7'b1101110 
+	Parameter o bound to: 7'b1101111 
+	Parameter p bound to: 7'b1110000 
+	Parameter q bound to: 7'b1110001 
+	Parameter r bound to: 7'b1110010 
+	Parameter s bound to: 7'b1110011 
+	Parameter t bound to: 7'b1110100 
+	Parameter u bound to: 7'b1110101 
+	Parameter v bound to: 7'b1110110 
+	Parameter w bound to: 7'b1110111 
+	Parameter x bound to: 7'b1111000 
+	Parameter y bound to: 7'b1111001 
+	Parameter z bound to: 7'b1111010 
+INFO: [Synth 8-256] done synthesizing module 'char_rom_16x16' (18#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:3]
+INFO: [Synth 8-638] synthesizing module 'bin_to_BCD_converter' [F:/Project_tetris/uec2_projekt/vivado/rtl/bin_to_BCD_converter.v:3]
+INFO: [Synth 8-256] done synthesizing module 'bin_to_BCD_converter' (19#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/bin_to_BCD_converter.v:3]
+INFO: [Synth 8-638] synthesizing module 'board_ID' [F:/Project_tetris/uec2_projekt/vivado/rtl/board_ID.v:23]
+INFO: [Synth 8-256] done synthesizing module 'board_ID' (20#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/board_ID.v:23]
+WARNING: [Synth 8-689] width (8) of port connection 'external_ID_1' does not match port width (1) of module 'board_ID' [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:286]
+WARNING: [Synth 8-689] width (8) of port connection 'external_ID_2' does not match port width (1) of module 'board_ID' [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:287]
+INFO: [Synth 8-638] synthesizing module 'data_to_transfer' [F:/Project_tetris/uec2_projekt/vivado/rtl/data_to_transfer.v:23]
+INFO: [Synth 8-256] done synthesizing module 'data_to_transfer' (21#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/data_to_transfer.v:23]
+WARNING: [Synth 8-350] instance 'my_data_to_transfer' of module 'data_to_transfer' requires 8 connections, but only 5 given [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:294]
+INFO: [Synth 8-638] synthesizing module 'serializer' [F:/Project_tetris/uec2_projekt/vivado/rtl/serializer.v:1]
+INFO: [Synth 8-226] default block is never used [F:/Project_tetris/uec2_projekt/vivado/rtl/serializer.v:12]
+INFO: [Synth 8-256] done synthesizing module 'serializer' (22#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/serializer.v:1]
+INFO: [Synth 8-638] synthesizing module 'uart' [F:/Project_tetris/uec2_projekt/vivado/rtl/uart.v:3]
+	Parameter DBIT bound to: 8 - type: integer 
+	Parameter SB_TICK bound to: 16 - type: integer 
+	Parameter DVSR bound to: 163 - type: integer 
+	Parameter DVSR_BIT bound to: 8 - type: integer 
+	Parameter FIFO_W bound to: 2 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'mod_m_counter' [F:/Project_tetris/uec2_projekt/vivado/rtl/mod_m_counter.v:3]
+	Parameter N bound to: 8 - type: integer 
+	Parameter M bound to: 163 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'mod_m_counter' (23#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/mod_m_counter.v:3]
+INFO: [Synth 8-638] synthesizing module 'uart_rx' [F:/Project_tetris/uec2_projekt/vivado/rtl/uart_rx.v:3]
+	Parameter DBIT bound to: 8 - type: integer 
+	Parameter SB_TICK bound to: 16 - type: integer 
+	Parameter idle bound to: 2'b00 
+	Parameter start bound to: 2'b01 
+	Parameter data bound to: 2'b10 
+	Parameter stop bound to: 2'b11 
+INFO: [Synth 8-256] done synthesizing module 'uart_rx' (24#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/uart_rx.v:3]
+INFO: [Synth 8-638] synthesizing module 'fifo' [F:/Project_tetris/uec2_projekt/vivado/rtl/fifo.v:3]
+	Parameter B bound to: 8 - type: integer 
+	Parameter W bound to: 2 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [F:/Project_tetris/uec2_projekt/vivado/rtl/fifo.v:62]
+INFO: [Synth 8-256] done synthesizing module 'fifo' (25#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/fifo.v:3]
+INFO: [Synth 8-638] synthesizing module 'uart_tx' [F:/Project_tetris/uec2_projekt/vivado/rtl/uart_tx.v:3]
+	Parameter DBIT bound to: 8 - type: integer 
+	Parameter SB_TICK bound to: 16 - type: integer 
+	Parameter idle bound to: 2'b00 
+	Parameter start bound to: 2'b01 
+	Parameter data bound to: 2'b10 
+	Parameter stop bound to: 2'b11 
+INFO: [Synth 8-256] done synthesizing module 'uart_tx' (26#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/uart_tx.v:3]
+INFO: [Synth 8-256] done synthesizing module 'uart' (27#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/uart.v:3]
+WARNING: [Synth 8-689] width (32) of port connection 'data_out' does not match port width (8) of module 'uart' [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:320]
+WARNING: [Synth 8-689] width (32) of port connection 'data_out' does not match port width (8) of module 'uart' [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:332]
+INFO: [Synth 8-256] done synthesizing module 'vga_example' (28#1) [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:3]
+WARNING: [Synth 8-3331] design data_to_transfer has unconnected port clk
+WARNING: [Synth 8-3331] design data_to_transfer has unconnected port rst
+WARNING: [Synth 8-3331] design data_to_transfer has unconnected port tx_full
+WARNING: [Synth 8-3331] design data_to_transfer has unconnected port rx_empty_1
+WARNING: [Synth 8-3331] design data_to_transfer has unconnected port rx_empty_2
+WARNING: [Synth 8-3331] design draw_rect_ctl has unconnected port pad_U
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 445.184 ; gain = 185.141
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 445.184 ; gain = 185.141
+---------------------------------------------------------------------------------
+INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [F:/Project_tetris/uec2_projekt/vivado/constraints/vga_example.xdc]
+Finished Parsing XDC File [F:/Project_tetris/uec2_projekt/vivado/constraints/vga_example.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [F:/Project_tetris/uec2_projekt/vivado/constraints/vga_example.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/vga_example_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/vga_example_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [F:/Project_tetris/uec2_projekt/vivado/constraints/clk_wiz_0.xdc]
+Finished Parsing XDC File [F:/Project_tetris/uec2_projekt/vivado/constraints/clk_wiz_0.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [F:/Project_tetris/uec2_projekt/vivado/constraints/clk_wiz_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/vga_example_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/vga_example_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  BUFGCE => BUFGCTRL: 2 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 760.281 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 760.281 ; gain = 500.238
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 760.281 ; gain = 500.238
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 760.281 ; gain = 500.238
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "vsync_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "hblnk_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "color_L" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "color_D" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "color_N" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "color_L" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "color_D" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "color_N" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5544] ROM "state_nxt1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "lock_en" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_nxt4" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_nxt0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_nxt0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_nxt0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "lock_ID_en" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ypos_nxt" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "xpos_nxt" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "counter_nxt" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "block_nxt" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rot_nxt" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "debounce1_nxt" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "my_reg_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "collision_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "level_nxt" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "l" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "l" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element points_reg was removed.  [F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v:82]
+WARNING: [Synth 8-6014] Unused sequential element deleted_rows_reg was removed.  [F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v:84]
+WARNING: [Synth 8-6014] Unused sequential element level_reg was removed.  [F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v:85]
+INFO: [Synth 8-5544] ROM "my_reg_nxt" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "collision_nxt" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "level_nxt" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5587] ROM size for "color_L" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "sq_1_row" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "color_D" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "color_N" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "sq_2_row" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sq_2_col" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sq_3_row" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sq_3_col" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sq_4_row" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "sq_4_col" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "color_L" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "sq_1_row" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "color_D" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "color_N" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "sq_2_row" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sq_2_col" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sq_3_row" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sq_3_col" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "sq_4_row" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "sq_4_col" is below threshold of ROM address width. It will be mapped to LUTs
+WARNING: [Synth 8-6014] Unused sequential element char_line_pixels_reg was removed.  [F:/Project_tetris/uec2_projekt/vivado/rtl/font_rom.v:22]
+INFO: [Synth 8-5546] ROM "P1_D1" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "max_tick" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "rx_done_tick" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_next" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_next" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "s_next" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "n_next" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "tx_done_tick" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_next" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "s_next" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "n_next" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+WARNING: [Synth 8-327] inferring latch for variable 'l' [F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v:117]
+WARNING: [Synth 8-327] inferring latch for variable 'P1_D1_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:90]
+WARNING: [Synth 8-327] inferring latch for variable 'P1_D2_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:91]
+WARNING: [Synth 8-327] inferring latch for variable 'P1_D3_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:92]
+WARNING: [Synth 8-327] inferring latch for variable 'P1_D4_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:93]
+WARNING: [Synth 8-327] inferring latch for variable 'P1_D5_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:94]
+WARNING: [Synth 8-327] inferring latch for variable 'P1_D6_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:95]
+WARNING: [Synth 8-327] inferring latch for variable 'P2_D1_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:98]
+WARNING: [Synth 8-327] inferring latch for variable 'P2_D2_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:99]
+WARNING: [Synth 8-327] inferring latch for variable 'P2_D3_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:100]
+WARNING: [Synth 8-327] inferring latch for variable 'P2_D4_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:101]
+WARNING: [Synth 8-327] inferring latch for variable 'P2_D5_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:102]
+WARNING: [Synth 8-327] inferring latch for variable 'P2_D6_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:103]
+WARNING: [Synth 8-327] inferring latch for variable 'P3_D1_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:106]
+WARNING: [Synth 8-327] inferring latch for variable 'P3_D2_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:107]
+WARNING: [Synth 8-327] inferring latch for variable 'P3_D3_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:108]
+WARNING: [Synth 8-327] inferring latch for variable 'P3_D4_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:109]
+WARNING: [Synth 8-327] inferring latch for variable 'P3_D5_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:110]
+WARNING: [Synth 8-327] inferring latch for variable 'P3_D6_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v:111]
+WARNING: [Synth 8-327] inferring latch for variable 'board_ID_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/board_ID.v:40]
+WARNING: [Synth 8-327] inferring latch for variable 'ID_1_occupied_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/board_ID.v:36]
+WARNING: [Synth 8-327] inferring latch for variable 'ID_2_occupied_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/board_ID.v:37]
+WARNING: [Synth 8-327] inferring latch for variable 'ID_reserved_reg' [F:/Project_tetris/uec2_projekt/vivado/rtl/board_ID.v:38]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 760.281 ; gain = 500.238
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     27 Bit       Adders := 2     
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input     11 Bit       Adders := 5     
+	   2 Input     10 Bit       Adders := 4     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 3     
+	   2 Input      7 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 6     
+	   2 Input      4 Bit       Adders := 82    
+	   2 Input      3 Bit       Adders := 6     
+	   2 Input      2 Bit       Adders := 10    
++---Registers : 
+	               27 Bit    Registers := 2     
+	               20 Bit    Registers := 1     
+	               12 Bit    Registers := 6     
+	               11 Bit    Registers := 12    
+	               10 Bit    Registers := 20    
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 9     
+	                5 Bit    Registers := 4     
+	                4 Bit    Registers := 10    
+	                3 Bit    Registers := 5     
+	                2 Bit    Registers := 6     
+	                1 Bit    Registers := 35    
++---RAMs : 
+	               32 Bit         RAMs := 4     
++---ROMs : 
+	                              ROMs := 1     
++---Muxes : 
+	  13 Input     27 Bit        Muxes := 2     
+	   2 Input     23 Bit        Muxes := 2     
+	  19 Input     20 Bit        Muxes := 1     
+	  26 Input     12 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 8     
+	   8 Input     12 Bit        Muxes := 6     
+	  53 Input     12 Bit        Muxes := 2     
+	 191 Input     12 Bit        Muxes := 1     
+	   3 Input     12 Bit        Muxes := 1     
+	   2 Input     11 Bit        Muxes := 2     
+	  13 Input     11 Bit        Muxes := 2     
+	   6 Input     11 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 139   
+	   5 Input     10 Bit        Muxes := 1     
+	   6 Input     10 Bit        Muxes := 1     
+	   8 Input     10 Bit        Muxes := 1     
+	   9 Input     10 Bit        Muxes := 1     
+	  10 Input     10 Bit        Muxes := 1     
+	  11 Input     10 Bit        Muxes := 1     
+	  12 Input     10 Bit        Muxes := 1     
+	  13 Input     10 Bit        Muxes := 1     
+	  14 Input     10 Bit        Muxes := 1     
+	  15 Input     10 Bit        Muxes := 1     
+	  16 Input     10 Bit        Muxes := 1     
+	  17 Input     10 Bit        Muxes := 1     
+	  18 Input     10 Bit        Muxes := 1     
+	  19 Input     10 Bit        Muxes := 1     
+	  20 Input     10 Bit        Muxes := 1     
+	  21 Input     10 Bit        Muxes := 1     
+	  22 Input     10 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 3     
+	   2 Input      8 Bit        Muxes := 2     
+	   4 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 31    
+	  13 Input      5 Bit        Muxes := 3     
+	   8 Input      5 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 149   
+	   4 Input      4 Bit        Muxes := 4     
+	   3 Input      4 Bit        Muxes := 2     
+	   8 Input      4 Bit        Muxes := 4     
+	   5 Input      4 Bit        Muxes := 4     
+	  11 Input      4 Bit        Muxes := 1     
+	  13 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	  13 Input      3 Bit        Muxes := 1     
+	  20 Input      3 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 4     
+	  13 Input      2 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 37    
+	  13 Input      1 Bit        Muxes := 7     
+	  21 Input      1 Bit        Muxes := 1     
+	  20 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 47    
+	  22 Input      1 Bit        Muxes := 1     
+	  19 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 10    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module vga_example 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 3     
+	                1 Bit    Registers := 2     
+Module clk_wiz_0_clk_wiz 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 2     
+Module vga_timing 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     11 Bit       Adders := 2     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 2     
+Module draw_background 
+Detailed RTL Component Info : 
++---Registers : 
+	               12 Bit    Registers := 2     
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	  26 Input     12 Bit        Muxes := 1     
+Module draw_rect 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 3     
+	   2 Input      4 Bit       Adders := 3     
++---Registers : 
+	               12 Bit    Registers := 1     
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 3     
+	   8 Input     12 Bit        Muxes := 3     
+	  53 Input     12 Bit        Muxes := 1     
+	   4 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 23    
+	   2 Input      4 Bit        Muxes := 17    
+	   4 Input      4 Bit        Muxes := 2     
+	   3 Input      4 Bit        Muxes := 2     
+	   8 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module randomizer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 1     
++---Registers : 
+	                5 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      5 Bit        Muxes := 1     
+Module draw_rect_ctl 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     27 Bit       Adders := 2     
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 2     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               27 Bit    Registers := 2     
+	               20 Bit    Registers := 1     
+	               11 Bit    Registers := 2     
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
++---Muxes : 
+	  13 Input     27 Bit        Muxes := 2     
+	  13 Input     11 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 3     
+	  13 Input      5 Bit        Muxes := 3     
+	   2 Input      4 Bit        Muxes := 7     
+	   5 Input      4 Bit        Muxes := 2     
+	  11 Input      4 Bit        Muxes := 1     
+	  13 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	  13 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 3     
+	  13 Input      2 Bit        Muxes := 1     
+	  13 Input      1 Bit        Muxes := 7     
+Module fallen_blocks 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 5     
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	               12 Bit    Registers := 1     
+	               11 Bit    Registers := 2     
+	               10 Bit    Registers := 20    
+	                9 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	  19 Input     20 Bit        Muxes := 1     
+	 191 Input     12 Bit        Muxes := 1     
+	   6 Input     11 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 138   
+	   5 Input     10 Bit        Muxes := 1     
+	   6 Input     10 Bit        Muxes := 1     
+	   8 Input     10 Bit        Muxes := 1     
+	   9 Input     10 Bit        Muxes := 1     
+	  10 Input     10 Bit        Muxes := 1     
+	  11 Input     10 Bit        Muxes := 1     
+	  12 Input     10 Bit        Muxes := 1     
+	  13 Input     10 Bit        Muxes := 1     
+	  14 Input     10 Bit        Muxes := 1     
+	  15 Input     10 Bit        Muxes := 1     
+	  16 Input     10 Bit        Muxes := 1     
+	  17 Input     10 Bit        Muxes := 1     
+	  18 Input     10 Bit        Muxes := 1     
+	  19 Input     10 Bit        Muxes := 1     
+	  20 Input     10 Bit        Muxes := 1     
+	  21 Input     10 Bit        Muxes := 1     
+	  22 Input     10 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	  20 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
+	  21 Input      1 Bit        Muxes := 1     
+	  20 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 1     
+	  22 Input      1 Bit        Muxes := 1     
+	  19 Input      1 Bit        Muxes := 1     
+Module draw_nxt_block 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     11 Bit       Adders := 3     
+	   2 Input     10 Bit       Adders := 4     
++---Registers : 
+	               12 Bit    Registers := 1     
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 3     
+	   8 Input     12 Bit        Muxes := 3     
+	  53 Input     12 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 4     
+	   8 Input      5 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 3     
+	   8 Input      4 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 1     
+Module draw_rect_char 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      7 Bit       Adders := 1     
++---Registers : 
+	               12 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 2     
+	   3 Input     12 Bit        Muxes := 1     
+Module font_rom 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
++---ROMs : 
+	                              ROMs := 1     
+Module char_rom_16x16 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 60    
+	   2 Input      1 Bit        Muxes := 13    
+	   3 Input      1 Bit        Muxes := 2     
+Module bin_to_BCD_converter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 68    
+	   2 Input      3 Bit       Adders := 1     
++---Muxes : 
+	   2 Input     23 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 55    
+Module board_ID 
+Detailed RTL Component Info : 
++---Muxes : 
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module serializer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      8 Bit        Muxes := 1     
+Module mod_m_counter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module uart_rx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   4 Input      3 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   4 Input      1 Bit        Muxes := 5     
+	   3 Input      1 Bit        Muxes := 2     
+Module fifo 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 2     
++---Registers : 
+	                1 Bit    Registers := 2     
++---RAMs : 
+	               32 Bit         RAMs := 1     
++---Muxes : 
+	   4 Input      1 Bit        Muxes := 6     
+Module uart_tx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      8 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 6     
+	   3 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "vsync_nxt" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "hblnk_nxt" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element points_reg was removed.  [F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v:82]
+WARNING: [Synth 8-6014] Unused sequential element deleted_rows_reg was removed.  [F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v:84]
+WARNING: [Synth 8-6014] Unused sequential element level_reg was removed.  [F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v:85]
+INFO: [Synth 8-5546] ROM "uart_1/baud_gen_unit/max_tick" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "uart_2/baud_gen_unit/max_tick" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element my_font_rom/char_line_pixels_reg was removed.  [F:/Project_tetris/uec2_projekt/vivado/rtl/font_rom.v:22]
+WARNING: [Synth 8-3331] design draw_rect_ctl has unconnected port pad_U
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[3]  is always disabled
+INFO: [Synth 8-3886] merging instance 'my_background/rgb_out_nxt_reg[0]' (FDR) to 'my_background/rgb_out_nxt_reg[8]'
+INFO: [Synth 8-3886] merging instance 'my_background/rgb_out_nxt_reg[3]' (FDR) to 'my_background/rgb_out_nxt_reg[7]'
+INFO: [Synth 8-3886] merging instance 'my_background/rgb_out_nxt_reg[4]' (FDR) to 'my_background/rgb_out_nxt_reg[8]'
+INFO: [Synth 8-3886] merging instance 'my_background/rgb_out_nxt_reg[5]' (FDR) to 'my_background/rgb_out_nxt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'my_background/rgb_out_reg[0]' (FDC) to 'my_background/rgb_out_reg[4]'
+INFO: [Synth 8-3886] merging instance 'my_background/rgb_out_reg[3]' (FDC) to 'my_background/rgb_out_reg[7]'
+INFO: [Synth 8-3886] merging instance 'my_background/rgb_out_reg[4]' (FDC) to 'my_background/rgb_out_reg[8]'
+INFO: [Synth 8-3886] merging instance 'my_background/rgb_out_reg[5]' (FDC) to 'my_background/rgb_out_reg[9]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D6_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D5_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D4_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D3_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D2_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D1_reg[0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (my_char_rom/\P3_D6_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D5_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D4_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D3_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D2_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D1_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D6_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D5_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D4_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D3_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D2_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D1_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D6_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D5_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D4_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D3_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D2_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_char_rom/\P3_D1_reg[3] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\my_board_ID/board_ID_reg[0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\my_board_ID/board_ID_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\my_board_ID/board_ID_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\my_board_ID/board_ID_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\my_board_ID/board_ID_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\my_board_ID/board_ID_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\my_board_ID/board_ID_reg[6] )
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[19]' (FDRE) to 'my_rect_ctl/points_reg[18]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[18]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[0]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[1]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[2]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[3]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[4]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[5]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[6]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[7]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[8]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[9]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[10]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[11]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[12]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[13]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[14]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[15]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3886] merging instance 'my_rect_ctl/points_reg[16]' (FDRE) to 'my_rect_ctl/points_reg[17]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (my_rect_ctl/\points_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\my_board_ID/board_ID_reg[7] )
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[1]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[2]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D4_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D3_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D2_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D1_reg[3]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D6_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[0]  is always disabled
+WARNING: [Synth 8-264] enable of latch my_char_rom/\P2_D5_reg[0]  is always disabled
+INFO: [Common 17-14] Message 'Synth 8-264' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (points_reg[17]) is unused and will be removed from module draw_rect_ctl.
+WARNING: [Synth 8-3332] Sequential element (l) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__0) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__1) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__2) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__3) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__4) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__5) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__6) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__7) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__8) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__9) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__10) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__11) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__12) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__13) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__14) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__15) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__16) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__17) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__18) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__19) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__20) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__21) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__22) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__23) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__24) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__25) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (l__26) is unused and will be removed from module fallen_blocks.
+WARNING: [Synth 8-3332] Sequential element (vsync_out_reg) is unused and will be removed from module draw_rect_char.
+WARNING: [Synth 8-3332] Sequential element (hsync_out_reg) is unused and will be removed from module draw_rect_char.
+WARNING: [Synth 8-3332] Sequential element (P1_D1_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D1_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D1_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D1_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D2_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D2_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D2_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D2_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D3_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D3_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D3_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D3_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D4_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D4_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D4_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D4_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D5_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D5_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D5_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D5_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D6_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D6_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D6_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P1_D6_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D1_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D1_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D1_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D1_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D2_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D2_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D2_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D2_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D3_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D3_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D3_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D3_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D4_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D4_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D4_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D4_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D5_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D5_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D5_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D5_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D6_reg[3]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D6_reg[2]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D6_reg[1]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (P3_D6_reg[0]) is unused and will be removed from module char_rom_16x16.
+WARNING: [Synth 8-3332] Sequential element (my_board_ID/board_ID_reg[7]) is unused and will be removed from module vga_example.
+WARNING: [Synth 8-3332] Sequential element (my_board_ID/board_ID_reg[6]) is unused and will be removed from module vga_example.
+WARNING: [Synth 8-3332] Sequential element (my_board_ID/board_ID_reg[5]) is unused and will be removed from module vga_example.
+WARNING: [Synth 8-3332] Sequential element (my_board_ID/board_ID_reg[4]) is unused and will be removed from module vga_example.
+WARNING: [Synth 8-3332] Sequential element (my_board_ID/board_ID_reg[3]) is unused and will be removed from module vga_example.
+WARNING: [Synth 8-3332] Sequential element (my_board_ID/board_ID_reg[2]) is unused and will be removed from module vga_example.
+WARNING: [Synth 8-3332] Sequential element (my_board_ID/board_ID_reg[1]) is unused and will be removed from module vga_example.
+WARNING: [Synth 8-3332] Sequential element (my_board_ID/board_ID_reg[0]) is unused and will be removed from module vga_example.
+WARNING: [Synth 8-3332] Sequential element (s_reg_reg[3]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (s_reg_reg[2]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (s_reg_reg[1]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (s_reg_reg[0]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (n_reg_reg[2]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (n_reg_reg[1]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (n_reg_reg[0]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (state_reg_reg[1]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (state_reg_reg[0]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (b_reg_reg[7]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (b_reg_reg[6]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (b_reg_reg[5]) is unused and will be removed from module uart_rx.
+WARNING: [Synth 8-3332] Sequential element (b_reg_reg[4]) is unused and will be removed from module uart_rx.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:27 ; elapsed = 00:01:28 . Memory (MB): peak = 846.102 ; gain = 586.059
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++------------+----------------------------------+---------------+----------------+
+|Module Name | RTL Object                       | Depth x Width | Implemented As | 
++------------+----------------------------------+---------------+----------------+
+|font_rom    | char_line_pixels_reg             | 2048x8        | Block RAM      | 
+|vga_example | my_font_rom/char_line_pixels_reg | 2048x8        | Block RAM      | 
++------------+----------------------------------+---------------+----------------+
+
+
+Distributed RAM: Preliminary Mapping  Report (see note below)
++------------+---------------+-----------+----------------------+--------------+
+|Module Name | RTL Object    | Inference | Size (Depth x Width) | Primitives   | 
++------------+---------------+-----------+----------------------+--------------+
+|fifo__1:    | array_reg_reg | Implied   | 4 x 8                | RAM32M x 2   | 
+|fifo__1:    | array_reg_reg | Implied   | 4 x 8                | RAM32M x 2   | 
+|fifo:       | array_reg_reg | Implied   | 4 x 8                | RAM32M x 2   | 
++------------+---------------+-----------+----------------------+--------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:35 ; elapsed = 00:01:36 . Memory (MB): peak = 846.102 ; gain = 586.059
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:52 ; elapsed = 00:01:53 . Memory (MB): peak = 981.488 ; gain = 721.445
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping  Report
++------------+---------------+-----------+----------------------+--------------+
+|Module Name | RTL Object    | Inference | Size (Depth x Width) | Primitives   | 
++------------+---------------+-----------+----------------------+--------------+
+|fifo__1:    | array_reg_reg | Implied   | 4 x 8                | RAM32M x 2   | 
+|fifo__1:    | array_reg_reg | Implied   | 4 x 8                | RAM32M x 2   | 
+|fifo:       | array_reg_reg | Implied   | 4 x 8                | RAM32M x 2   | 
++------------+---------------+-----------+----------------------+--------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4480] The timing for the instance my_font_rom/char_line_pixels_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:57 ; elapsed = 00:01:58 . Memory (MB): peak = 1082.566 ; gain = 822.523
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:58 ; elapsed = 00:01:59 . Memory (MB): peak = 1082.566 ; gain = 822.523
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:58 ; elapsed = 00:01:59 . Memory (MB): peak = 1082.566 ; gain = 822.523
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:59 ; elapsed = 00:02:00 . Memory (MB): peak = 1082.566 ; gain = 822.523
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:59 ; elapsed = 00:02:00 . Memory (MB): peak = 1082.566 ; gain = 822.523
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:59 ; elapsed = 00:02:00 . Memory (MB): peak = 1082.566 ; gain = 822.523
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:59 ; elapsed = 00:02:00 . Memory (MB): peak = 1082.566 ; gain = 822.523
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |BUFG       |     1|
+|2     |BUFGCE     |     2|
+|3     |BUFH       |     2|
+|4     |CARRY4     |   610|
+|5     |LUT1       |   137|
+|6     |LUT2       |   389|
+|7     |LUT3       |   561|
+|8     |LUT4       |   811|
+|9     |LUT5       |  1082|
+|10    |LUT6       |  2843|
+|11    |MMCME2_ADV |     1|
+|12    |MUXF7      |    47|
+|13    |MUXF8      |     5|
+|14    |ODDR       |     1|
+|15    |RAM32M     |     6|
+|16    |RAMB18E1   |     1|
+|17    |FDCE       |   158|
+|18    |FDPE       |     5|
+|19    |FDRE       |   504|
+|20    |LD         |     4|
+|21    |IBUF       |    11|
+|22    |OBUF       |    17|
++------+-----------+------+
+
+Report Instance Areas: 
++------+--------------------+------------------+------+
+|      |Instance            |Module            |Cells |
++------+--------------------+------------------+------+
+|1     |top                 |                  |  7198|
+|2     |  my_draw_rect_char |draw_rect_char    |    12|
+|3     |  clk_wiz_0_my      |clk_wiz_0         |    23|
+|4     |    inst            |clk_wiz_0_clk_wiz |    23|
+|5     |  my_background     |draw_background   |   589|
+|6     |  my_draw_nxt_block |draw_nxt_block    |   349|
+|7     |  my_draw_rect      |draw_rect         |   282|
+|8     |  my_fallen_blocks  |fallen_blocks     |  1168|
+|9     |  my_font_rom       |font_rom          |     3|
+|10    |  my_randomizer     |randomizer        |    27|
+|11    |  my_rect_ctl       |draw_rect_ctl     |  4292|
+|12    |  my_serializer     |serializer        |     4|
+|13    |  my_timing         |vga_timing        |   185|
+|14    |  uart_1            |uart              |   136|
+|15    |    baud_gen_unit   |mod_m_counter_1   |    23|
+|16    |    fifo_rx_unit    |fifo_2            |    16|
+|17    |    fifo_tx_unit    |fifo_3            |    16|
+|18    |    uart_rx_unit    |uart_rx           |    37|
+|19    |    uart_tx_unit    |uart_tx_4         |    42|
+|20    |  uart_2            |uart_0            |    83|
+|21    |    baud_gen_unit   |mod_m_counter     |    23|
+|22    |    fifo_tx_unit    |fifo              |    16|
+|23    |    uart_tx_unit    |uart_tx           |    42|
++------+--------------------+------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:59 ; elapsed = 00:02:00 . Memory (MB): peak = 1082.566 ; gain = 822.523
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 742 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:45 ; elapsed = 00:01:55 . Memory (MB): peak = 1082.566 ; gain = 507.426
+Synthesis Optimization Complete : Time (s): cpu = 00:01:59 ; elapsed = 00:02:00 . Memory (MB): peak = 1082.566 ; gain = 822.523
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 688 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 12 instances were transformed.
+  BUFGCE => BUFGCTRL: 2 instances
+  LD => LDCE: 4 instances
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 6 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+225 Infos, 244 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:02 ; elapsed = 00:02:04 . Memory (MB): peak = 1082.566 ; gain = 835.051
+INFO: [Common 17-1381] The checkpoint 'F:/Project_tetris/uec2_projekt/vivado/build/Tetris.runs/synth_1/vga_example.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file vga_example_utilization_synth.rpt -pb vga_example_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 1082.566 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Sep  8 16:53:54 2021...

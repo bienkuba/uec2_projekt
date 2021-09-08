@@ -59,7 +59,7 @@ module vga_example (
   wire        collision, lock_en, lock_ID_en, external_ID_1, external_ID_2, ID_1_occupied, ID_2_occupied;
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f, vsync_out_nb, hsync_out_nb, vsync_out_ch, hsync_out_ch;
   wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f, vblnk_out_nb, hblnk_out_nb, vblnk_out_ch, hblnk_out_ch;
-  wire [1:0]  rot_ctl, board_ID;
+  wire [1:0]  rot_ctl;
   wire [3:0]  xpos_ctl, char_line, level_f;
   wire [3:0]  sq_1_col_r, sq_2_col_r, sq_3_col_r, sq_4_col_r, sq_1_col_ctl, sq_2_col_ctl, sq_3_col_ctl, sq_4_col_ctl;
   wire [4:0]  sq_1_row_r, sq_2_row_r, sq_3_row_r, sq_4_row_r, sq_1_row_ctl, sq_2_row_ctl, sq_3_row_ctl, sq_4_row_ctl;
@@ -71,10 +71,10 @@ module vga_example (
   wire [19:0] points_ctl, points_f;
   wire [23:0] BCD_out;
   
-  wire [7:0] tx_data1, tx_data2, tx_data3, tx_data4;
-  reg [7:0] data = 0;
+  wire [31:0] tx_data;
+  wire [7:0] din, board_ID;
   wire [31:0] dout1, dout2;
-  reg enable = 0;
+  wire tx_full_1, tx_full_2, rx_empty_1, rx_empty_2;
   
   wire tx_busy;
   wire rdy;
@@ -268,9 +268,9 @@ draw_rect_char my_draw_rect_char (
   char_rom_16x16 my_char_rom(
     .char_xy(char_xy),
     .points(BCD_out),
-    .board_ID(board_ID),
+    .board_ID(8'b00000001),
     .ext_data_1(dout1),
-    .ext_data_2(dout2),
+    .ext_data_2(8'b00000010),
     
     .char_code(char_code)
   );
@@ -283,32 +283,40 @@ draw_rect_char my_draw_rect_char (
 
   board_ID my_board_ID(
     .lock_ID_en(lock_ID_en),
-    .external_ID_1(external_ID_1),
-    .external_ID_2(external_ID_2),
-    
+    .external_ID_1(dout1[7:0]),
+    .external_ID_2(dout2[7:0]),
+
     .board_ID(board_ID),
-    .ID_1_occupied(ID_1_occupied), 
+    .ID_1_occupied(ID_1_occupied),
     .ID_2_occupied(ID_2_occupied)
   );
   
   data_to_transfer my_data_to_transfer(
+    .clk(pclk),
+    .rst(rst),
     .board_ID(board_ID),
     .points(BCD_out),
     
-    .tx_data1(tx_data1), //ID
-    .tx_data2(tx_data2), //data
-    .tx_data3(tx_data3), //
-    .tx_data4(tx_data4)  //
+    .tx_data_stack(tx_data) //ID
+  );
+  
+  serializer my_serializer(
+  .clk(pclk),
+  .data_32(tx_data),
+  
+  .data_8(din)
   );
 
   uart uart_1(
     .clk(pclk),
     .reset(rst),
     .rx(rx1),
-    .rd_uart(pad_U),//warunek startu UART
-    .wr_uart(pad_U),//warunek startu UART
-    .data_in(),// kolejka danych do wyniku
+    .rd_uart(btnR),//warunek startu UART
+    .wr_uart(btnR),//warunek startu UART
+    .data_in(din),// kolejka danych do wyniku
 
+    .rx_empty(rx_empty_1),
+    .tx_full(tx_full_1),
     .data_out(dout1),
     .tx(tx1)
   );
@@ -317,11 +325,13 @@ draw_rect_char my_draw_rect_char (
     .clk(pclk),
     .reset(rst),
     .rx(rx2),
-    .rd_uart(pad_U),
-    .wr_uart(pad_U),
-    .data_in(),
+    .rd_uart(btnR),
+    .wr_uart(btnR),
+    .data_in(din),
     
     .data_out(dout2),//wysy?amy wynik + ID 
+    .rx_empty(rx_empty_2),
+    .tx_full(tx_full_2),
     .tx(tx2)
 );
   
