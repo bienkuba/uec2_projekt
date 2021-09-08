@@ -1,5 +1,4 @@
 `timescale 1ns / 1ps
-
   
 module char_rom_16x16(
     input wire [7:0]  char_xy,
@@ -7,9 +6,10 @@ module char_rom_16x16(
     input wire [1:0]  board_ID,
     input wire [31:0] ext_data_1,
     input wire [31:0] ext_data_2,
+    //chyba trzeba zamieni? 31-tu-bitowe wej?cie na 8-miu-bitowe i p??niej stwo?y? rejestr, gdzie b?dzie to dodawane
     
     output reg [6:0]  char_code 
-    );
+);
     
     reg [3:0] P1_D1, P1_D2, P1_D3, P1_D4, P1_D5, P1_D6;
     reg [3:0] P2_D1, P2_D2, P2_D3, P2_D4, P2_D5, P2_D6;
@@ -118,7 +118,7 @@ module char_rom_16x16(
         P1_D5 = ext_data_1[7:4];
         P1_D6 = ext_data_1[3:0];
     end
-    else if(ext_data_1 == 2'b10)begin  
+    else if(ext_data_1[25:24] == 2'b10)begin  
         P2_D1 = ext_data_1[23:20];
         P2_D2 = ext_data_1[19:16];
         P2_D3 = ext_data_1[15:12];
@@ -142,7 +142,7 @@ module char_rom_16x16(
         P1_D5 = ext_data_2[7:4];
         P1_D6 = ext_data_2[3:0];
     end                  
-    else if(ext_data_2 == 2'b10)begin  
+    else if(ext_data_2[25:24] == 2'b10)begin  
         P2_D1 = ext_data_2[23:20];
         P2_D2 = ext_data_2[19:16];
         P2_D3 = ext_data_2[15:12];
@@ -416,17 +416,17 @@ module char_rom_16x16(
         8'hed: char_code = SPACE;   
         8'hee: char_code = SPACE;  
         8'hef: char_code = SPACE;  
-       
-        8'hf0: char_code = SPACE;          
-        8'hf1: char_code = SPACE;   
-        8'hf2: char_code = SPACE;   
-        8'hf3: char_code = SPACE;  
-        8'hf4: char_code = SPACE;   
-        8'hf5: char_code = SPACE;   
-        8'hf6: char_code = SPACE;   
-        8'hf7: char_code = SPACE;  
-        8'hf8: char_code = SPACE;   
-        8'hf9: char_code = SPACE;   
+ 
+        8'hf0: char_code = SPACE;   
+        8'hf1: char_code = SPACE;
+        8'hf2: char_code = SPACE;
+        8'hf3: char_code = SPACE;
+        8'hf4: char_code = SPACE;
+        8'hf5: char_code = SPACE;
+        8'hf6: char_code = SPACE;
+        8'hf7: char_code = SPACE;
+        8'hf8: char_code = SPACE;
+        8'hf9: char_code = SPACE;
         8'hfa: char_code = SPACE;   
         8'hfb: char_code = SPACE;   
         8'hfc: char_code = SPACE;   

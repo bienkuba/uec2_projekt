@@ -1,6 +1,5 @@
 `timescale 1 ns / 1 ps
 
-
 module vga_example (
   input wire clk,
   input wire rst,
@@ -72,8 +71,9 @@ module vga_example (
   wire [19:0] points_ctl, points_f;
   wire [23:0] BCD_out;
   
+  wire [7:0] tx_data1, tx_data2, tx_data3, tx_data4;
   reg [7:0] data = 0;
-  wire [7:0] dout;
+  wire [31:0] dout1, dout2;
   reg enable = 0;
   
   wire tx_busy;
@@ -269,40 +269,18 @@ draw_rect_char my_draw_rect_char (
     .char_xy(char_xy),
     .points(BCD_out),
     .board_ID(board_ID),
-    .ext_data_1(),
-    .ext_data_2(),
+    .ext_data_1(dout1),
+    .ext_data_2(dout2),
     
     .char_code(char_code)
   );
-  
+ 
   bin_to_BCD_converter my_bin_to_BCD_converter(
     .bin(points_f),    
       
     .BCD(BCD_out)
    );
- 
-uart uart_1(
-    .din(BCD_out),
-    .pclk(pclk),
-    .rdy_clr(rdy_clr),
-    .tx(tx1),
-    .tx_busy(tx_busy),
-    .rx(rx1),
-    .rdy(rdy),
-    .dout(dout)
-);
 
-uart uart_2(
-    .din(BCD_out),
-    .pclk(pclk),
-    .rdy_clr(rdy_clr),
-    .tx(tx2),
-    .tx_busy(tx_busy),
-    .rx(rx2),
-    .rdy(rdy),
-    .dout(dout)
-);
-  
   board_ID my_board_ID(
     .lock_ID_en(lock_ID_en),
     .external_ID_1(external_ID_1),
@@ -317,8 +295,35 @@ uart uart_2(
     .board_ID(board_ID),
     .points(BCD_out),
     
-    .tx_data()
+    .tx_data1(tx_data1), //ID
+    .tx_data2(tx_data2), //data
+    .tx_data3(tx_data3), //
+    .tx_data4(tx_data4)  //
   );
+
+  uart uart_1(
+    .clk(pclk),
+    .reset(rst),
+    .rx(rx1),
+    .rd_uart(pad_U),//warunek startu UART
+    .wr_uart(pad_U),//warunek startu UART
+    .data_in(),// kolejka danych do wyniku
+
+    .data_out(dout1),
+    .tx(tx1)
+  );
+  
+  uart uart_2(
+    .clk(pclk),
+    .reset(rst),
+    .rx(rx2),
+    .rd_uart(pad_U),
+    .wr_uart(pad_U),
+    .data_in(),
+    
+    .data_out(dout2),//wysy?amy wynik + ID 
+    .tx(tx2)
+);
   
   always @(posedge pclk)begin
     hs <= hsync_out_f;
