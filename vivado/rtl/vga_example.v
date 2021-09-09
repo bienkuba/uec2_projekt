@@ -71,7 +71,7 @@ module vga_example (
   wire [19:0] points_ctl, points_f;
   wire [23:0] BCD_out;
   
-  wire [31:0] tx_data;
+  wire [31:0] tx_data, ext_data1, ext_data2;
   wire [7:0] din, board_ID;
   wire [31:0] dout1, dout2;
   wire tx_full_1, tx_full_2, rx_empty_1, rx_empty_2;
@@ -268,9 +268,9 @@ draw_rect_char my_draw_rect_char (
   char_rom_16x16 my_char_rom(
     .char_xy(char_xy),
     .points(BCD_out),
-    .board_ID(8'b00000001),
-    .ext_data_1(dout1),
-    .ext_data_2(8'b00000010),
+    .board_ID(board_ID),
+    .ext_data_1(ext_data1),
+    .ext_data_2(ext_data2),
     
     .char_code(char_code)
   );
@@ -283,8 +283,8 @@ draw_rect_char my_draw_rect_char (
 
   board_ID my_board_ID(
     .lock_ID_en(lock_ID_en),
-    .external_ID_1(dout1[7:0]),
-    .external_ID_2(dout2[7:0]),
+    .external_ID_1(ext_data1[7:0]),
+    .external_ID_2(ext_data2[7:0]),
 
     .board_ID(board_ID),
     .ID_1_occupied(ID_1_occupied),
@@ -311,8 +311,8 @@ draw_rect_char my_draw_rect_char (
     .clk(pclk),
     .reset(rst),
     .rx(rx1),
-    .rd_uart(btnR),//warunek startu UART
-    .wr_uart(btnR),//warunek startu UART
+    .rd_uart(),//warunek startu UART
+    .wr_uart(),//warunek startu UART
     .data_in(din),// kolejka danych do wyniku
 
     .rx_empty(rx_empty_1),
@@ -325,8 +325,8 @@ draw_rect_char my_draw_rect_char (
     .clk(pclk),
     .reset(rst),
     .rx(rx2),
-    .rd_uart(btnR),
-    .wr_uart(btnR),
+    .rd_uart(),
+    .wr_uart(),
     .data_in(din),
     
     .data_out(dout2),//wysy?amy wynik + ID 
@@ -334,6 +334,16 @@ draw_rect_char my_draw_rect_char (
     .tx_full(tx_full_2),
     .tx(tx2)
 );
+  
+  mux my_mux(
+  .mux_in_1(dout1),
+  .mux_in_2(dout2),
+  .clk(clk),
+  .rst(rst),
+  
+  .ext_data_1(ext_data1),
+  .ext_data_2(ext_data2)
+  );
   
   always @(posedge pclk)begin
     hs <= hsync_out_f;

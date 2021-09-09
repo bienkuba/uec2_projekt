@@ -1,0 +1,152 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Wed Sep  8 17:42:03 2021
+# Process ID: 16276
+# Current directory: F:/Project_tetris/uec2_projekt/vivado
+# Command line: vivado.exe -mode tcl -source run.tcl -tclargs simulation
+# Log file: F:/Project_tetris/uec2_projekt/vivado/vivado.log
+# Journal file: F:/Project_tetris/uec2_projekt/vivado\vivado.jou
+#-----------------------------------------------------------
+source run.tcl
+# set project Tetris
+# set top_module vga_example
+# set target xc7a35tcpg236-1
+# set bitstream_file build/${project}.runs/impl_1/${top_module}.bit
+# proc usage {} {
+#     puts "usage: vivado -mode tcl -source [info script] -tclargs \[simulation/bitstream/program\]"
+#     exit 1
+# }
+# if {($argc != 1) || ([lindex $argv 0] ni {"simulation" "bitstream" "program"})} {
+#     usage
+# }
+# if {[lindex $argv 0] == "program"} {
+#     open_hw
+#     connect_hw_server
+#     current_hw_target [get_hw_targets *]
+#     open_hw_target
+#     current_hw_device [lindex [get_hw_devices] 0]
+#     refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
+# 
+#     set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+#     set_property FULL_PROBES.FILE {} [lindex [get_hw_devices] 0]
+#     set_property PROGRAM.FILE ${bitstream_file} [lindex [get_hw_devices] 0]
+# 
+#     program_hw_devices [lindex [get_hw_devices] 0]
+#     refresh_hw_device [lindex [get_hw_devices] 0]
+#     
+#     exit
+# } else {
+#     file mkdir build
+#     create_project ${project} build -part ${target} -force
+# }
+# read_xdc {
+#     constraints/vga_example.xdc
+#     constraints/clk_wiz_0.xdc
+# }
+# read_verilog {
+#     rtl/vga_example.v
+#     rtl/vga_timing.v
+#     rtl/draw_background.v
+#     rtl/draw_rect.v
+#     rtl/clk_wiz_0.v
+#     rtl/clk_wiz_0_clk_wiz.v
+#     rtl/draw_rect_ctl.v
+#     rtl/debounce_u.v
+#     rtl/d_ff.v
+#     rtl/slow_clock_4Hz.v
+#     rtl/fallen_blocks.v
+#     rtl/random.v
+#     rtl/draw_nxt_block.v
+#     rtl/char_rom_16x16.v
+#     rtl/draw_rect_char.v
+#     rtl/font_rom.v
+#     rtl/bin_to_BCD_converter.v
+#     rtl/uart_rx.v
+#     rtl/uart_tx.v
+#     rtl/uart.v
+#     rtl/mod_m_counter.v
+#     rtl/data_to_transfer.v
+#     rtl/board_ID.v
+#     rtl/fifo.v
+#     rtl/serializer.v
+# }
+# add_files -fileset sim_1 {
+#     sim/testbench.v
+#     sim/tiff_writer.v
+# }
+# set_property top ${top_module} [current_fileset]
+# update_compile_order -fileset sources_1
+# update_compile_order -fileset sim_1
+# if {[lindex $argv 0] == "simulation"} {
+#     launch_simulation
+#     start_gui
+# } else {
+#     launch_runs synth_1 -jobs 8
+#     wait_on_run synth_1
+# 
+#     launch_runs impl_1 -to_step write_bitstream -jobs 8
+#     wait_on_run impl_1
+#     exit
+# }
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'debounce_u' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj debounce_u_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/d_ff.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module d_ff
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/slow_clock_4Hz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module slowe_clock_4Hz
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/debounce_u.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module debounce_u
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim'
+Vivado Simulator 2017.3
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: E:/programy/Xilinx/Vivado/2017.3/bin/unwrapped/win64.o/xelab.exe -wto a12899734d94470cbc0e93fdc9e7ba6e --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot debounce_u_behav xil_defaultlib.debounce_u xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.slowe_clock_4Hz
+Compiling module xil_defaultlib.d_ff
+Compiling module xil_defaultlib.debounce_u
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot debounce_u_behav
+
+****** Webtalk v2017.3 (64-bit)
+  **** SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim/xsim.dir/debounce_u_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Wed Sep  8 17:42:16 2021...
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'F:/Project_tetris/uec2_projekt/vivado/build/Tetris.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "debounce_u_behav -key {Behavioral:sim_1:Functional:debounce_u} -tclbatch {debounce_u.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2017.3
+Time resolution is 1 ps
+source debounce_u.tcl
+## current_wave_config
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'debounce_u_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 263.973 ; gain = 14.363
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Sep  8 17:51:41 2021...
