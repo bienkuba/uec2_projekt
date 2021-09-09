@@ -56,7 +56,7 @@ module vga_example (
     
   localparam WIDTH = 16;
 
-  wire        collision, lock_en, lock_ID_en, ID_1_occupied, ID_2_occupied;
+  wire        collision, lock_en, lock_ID_en, ID_1_occupied, ID_2_occupied, wr_en;
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f, vsync_out_nb, hsync_out_nb, vsync_out_ch, hsync_out_ch;
   wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f, vblnk_out_nb, hblnk_out_nb, vblnk_out_ch, hblnk_out_ch;
   wire [1:0]  rot_ctl;
@@ -296,24 +296,27 @@ draw_rect_char my_draw_rect_char (
     .rst(rst),
     .board_ID(board_ID),
     .points(BCD_out),
+    .tx_full_1(tx_full_1),
+    .tx_full_2(tx_full_2),
     
-    .tx_data_stack(tx_data) //ID
+    .tx_data(tx_data),
+    .wr_en(wr_en)
   );
   
-  serializer my_serializer(
-  .clk(pclk),
-  .data_32(tx_data),
+//  serializer my_serializer(
+//  .clk(pclk),
+//  .data_32(tx_data),
   
-  .data_8(din)
-  );
+//  .data_8(din)
+//  );
 
   uart uart_1(
     .clk(pclk),
     .reset(rst),
     .rx(rx1),
-    .rd_uart(),//warunek startu UART
-    .wr_uart(),//warunek startu UART
-    .data_in(din),// kolejka danych do wyniku
+    .rd_uart(wr_en),//warunek startu UART
+    .wr_uart(wr_en),//warunek startu UART
+    .data_in(tx_data),// kolejka danych do wyniku
 
     .rx_empty(rx_empty_1),
     .tx_full(tx_full_1),
@@ -325,9 +328,9 @@ draw_rect_char my_draw_rect_char (
     .clk(pclk),
     .reset(rst),
     .rx(rx2),
-    .rd_uart(),
-    .wr_uart(),
-    .data_in(din),
+    .rd_uart(wr_en),
+    .wr_uart(wr_en),
+    .data_in(tx_data),
     
     .data_out(dout2),//wysy?amy wynik + ID 
     .rx_empty(rx_empty_2),

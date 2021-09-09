@@ -61,19 +61,19 @@ always@*begin
     
     if(data_1_4 != 0) begin
         ext_data_1_nxt = {data_1_1, data_1_2, data_1_3, data_1_4};
-        data_1_1 = 0;
-        data_1_2 = 0;
-        data_1_3 = 0;
-        data_1_4 = 0;
+        data_1_1_nxt = 0;
+        data_1_2_nxt = 0;
+        data_1_3_nxt = 0;
+        data_1_4_nxt = 0;
     end
         else ext_data_1_nxt = ext_data_1;
     
     if(data_2_4 != 0) begin
         ext_data_2_nxt = {data_2_1, data_2_2, data_2_3, data_2_4};
-        data_2_1 = 0;
-        data_2_2 = 0;
-        data_2_3 = 0;
-        data_2_4 = 0;
+        data_2_1_nxt = 0;
+        data_2_2_nxt = 0;
+        data_2_3_nxt = 0;
+        data_2_4_nxt = 0;
     end
         else ext_data_2_nxt = ext_data_1;
     end
