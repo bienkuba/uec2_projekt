@@ -48,8 +48,14 @@ read_verilog {
     rtl/clk_wiz_0.v
     rtl/clk_wiz_0_clk_wiz.v
     rtl/draw_rect_ctl.v
+<<<<<<< Updated upstream
     rtl/list_ch06_02_debounce.v
     rtl/slow_clock_4Hz.v
+=======
+    rtl/debouncer.v
+    rtl/list_ch06_02_debounce.v
+    rtl/board_debouncer.v
+>>>>>>> Stashed changes
     rtl/fallen_blocks.v
     rtl/random.v
     rtl/draw_nxt_block.v
@@ -60,8 +66,18 @@ read_verilog {
     rtl/uart_rx.v
     rtl/uart_tx.v
     rtl/uart.v
+<<<<<<< Updated upstream
     rtl/baud_rate_gen.v
     rtl/debouncer.v
+=======
+    rtl/mod_m_counter.v
+    rtl/data_to_transfer.v
+    rtl/board_ID.v
+    rtl/fifo.v
+    rtl/serializer.v
+    rtl/mux.v
+
+>>>>>>> Stashed changes
 }
 
 add_files -fileset sim_1 {

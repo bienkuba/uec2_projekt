@@ -85,6 +85,7 @@ module vga_example (
   wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f, rgb_out_nb, rgb_out_ch;
   wire [19:0] points_ctl, points_f;
   wire [23:0] BCD_out;
+  wire pad_Sd, pad_Dd, pad_Ld, pad_Rd, btnDd;
   
   wire pad_Sd, pad_Dd, pad_Ld, pad_Rd;
   
@@ -163,6 +164,20 @@ module vga_example (
     .pclk(pclk),
     .random(random_out)
    );
+   
+   debouncer my_debouncer(
+     .pclk(pclk),
+     .rst(rst),
+     .sw_S(!pad_S),
+     .sw_R(!pad_R),
+     .sw_L(!pad_L),
+     .bttn_D(btnD),
+     .pad_Sd(pad_Sd),
+     .pad_Rd(pad_Rd),
+     .pad_Ld(pad_Ld),
+     .pad_Dd(),
+     .bttn_Dd(btnDd)
+   );
 
   debouncer my_debouncer(
     .pclk(pclk),
@@ -183,11 +198,15 @@ module vga_example (
     .pad_R(pad_Rd),
     .pad_L(pad_Ld),
     .pad_U(pad_U),
+<<<<<<< Updated upstream
     .pad_D(pad_Dd),
+=======
+    .pad_D(pad_D),
+>>>>>>> Stashed changes
     .pad_S(pad_Sd),
     .btnL(btnL),
     .btnR(btnR),
-    .btnD(btnD),
+    .btnD(btnDd),
     .btnU(btnU),
     .sq_1_col(sq_1_col_r),
     .sq_2_col(sq_2_col_r),
@@ -326,6 +345,39 @@ draw_rect_char my_draw_rect_char (
 //    .dout(dout)
 //);
 
+<<<<<<< Updated upstream
+=======
+    .rx_empty(rx_empty_1),
+    .tx_full(tx_full_1),
+    .data_out(dout1),
+    .tx(tx1)
+  );
+  
+  uart uart_2(
+    .clk(pclk),
+    .reset(rst),
+    .rx(rx2),
+    .rd_uart(),
+    .wr_uart(),
+    .data_in(din),
+    
+    .data_out(dout2),//wysy?amy wynik + ID 
+    .rx_empty(rx_empty_2),
+    .tx_full(tx_full_2),
+    .tx(tx2)
+);
+  
+  mux my_mux(
+  .mux_in_1(dout1),
+  .mux_in_2(dout2),
+  .clk(pclk),
+  .rst(rst),
+  
+  .ext_data_1(ext_data1),
+  .ext_data_2(ext_data2)
+  );
+  
+>>>>>>> Stashed changes
   always @(posedge pclk)begin
     hs <= hsync_out_f;
     vs <= vsync_out_f;

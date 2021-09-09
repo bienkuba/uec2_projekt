@@ -1,7 +1,7 @@
 // Listing 4.21
 `timescale 1 ns / 1 ps
 
-module debounce
+module board_debouncer
    (
     input wire clk, reset,
     input wire sw,
@@ -41,7 +41,7 @@ module debounce
    begin
       state_next = state_reg;   // default state: the same
       q_next = q_reg;           // default q: unchnaged
-      db_tick = 1'b1;           // default output: 0
+      db_tick = 1'b0;           // default output: 0
       case (state_reg)
          zero:
             begin
@@ -61,7 +61,7 @@ module debounce
                      if (q_next==0)
                         begin
                            state_next = one;
-                           db_tick = 1'b0;
+                           db_tick = 1'b1;
                         end
                   end
                else // sw==0
@@ -93,8 +93,4 @@ module debounce
       endcase
    end
 
-<<<<<<< Updated upstream
 endmodule
-=======
-endmodule
->>>>>>> Stashed changes
