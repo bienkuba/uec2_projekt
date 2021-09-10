@@ -48,9 +48,9 @@ read_verilog {
     rtl/clk_wiz_0.v
     rtl/clk_wiz_0_clk_wiz.v
     rtl/draw_rect_ctl.v
-    rtl/debounce_u.v
-    rtl/d_ff.v
-    rtl/slow_clock_4Hz.v
+    rtl/board_debounce.v
+    rtl/debounce.v
+    rtl/debouncer.v
     rtl/fallen_blocks.v
     rtl/random.v
     rtl/draw_nxt_block.v
@@ -66,7 +66,7 @@ read_verilog {
     rtl/board_ID.v
     rtl/fifo.v
     rtl/serializer.v
-rtl/mux.v
+    rtl/mux.v
 }
 
 add_files -fileset sim_1 {

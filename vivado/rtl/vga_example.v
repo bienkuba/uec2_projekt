@@ -70,6 +70,8 @@ module vga_example (
   wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f, rgb_out_nb, rgb_out_ch;
   wire [19:0] points_ctl, points_f;
   wire [23:0] BCD_out;
+
+  wire pad_Sd, pad_Dd, pad_Ld, pad_Rd, btnDd, btnLd, btnRd, btnUd;
   
   wire [31:0] tx_data, ext_data1, ext_data2;
   wire [7:0] din, board_ID;
@@ -148,18 +150,40 @@ module vga_example (
     .random(random_out)
    );
 
+debouncer my_debouncer(
+    .pclk(pclk),
+    .rst(rst),
+    .sw_S(!pad_S),
+    .sw_R(!pad_R),
+    .sw_L(!pad_L),
+    .sw_D(!pad_D),
+    .bttn_D(btnD),
+    .bttn_L(btnL),
+    .bttn_R(btnR),
+    .bttn_U(btnU),
+    .pad_Sd(pad_Sd),
+    .pad_Rd(pad_Rd),
+    .pad_Ld(pad_Ld),
+    .pad_Dd(pad_Dd),
+    .bttn_Dd(btnDd),
+    .bttn_Rd(btnRd),
+    .bttn_Ld(btnLd),
+    .bttn_Ud(btnUd)
+  );
+
+
   draw_rect_ctl my_rect_ctl(
     .pclk(pclk),
     .rst(rst),
-    .pad_R(pad_R),
-    .pad_L(pad_L),
-    .pad_U(pad_U),
-    .pad_D(pad_D),
-    .pad_S(pad_S),
-    .btnL(btnL),
-    .btnR(btnR),
-    .btnD(btnD),
-    .btnU(btnU),
+    .pad_R(pad_Rd),
+    .pad_L(pad_Ld),
+    //.pad_U(pad_U),
+    .pad_D(pad_Dd),
+    .pad_S(pad_Sd),
+    .btnL(btnLd),
+    .btnR(btnRd),
+    .btnD(btnDd),
+    .btnU(btnUd),
     .sq_1_col(sq_1_col_r),
     .sq_2_col(sq_2_col_r),
     .sq_3_col(sq_3_col_r),
