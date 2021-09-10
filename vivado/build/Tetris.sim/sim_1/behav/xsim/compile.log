@@ -1,0 +1,41 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/bin_to_BCD_converter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bin_to_BCD_converter
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/board_debouncer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module board_debouncer
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/char_rom_16x16.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module char_rom_16x16
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_0_clk_wiz
+INFO: [VRFC 10-2458] undeclared symbol clk100MHz_clk_wiz_0_en_clk, assumed default net type wire [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:215]
+INFO: [VRFC 10-2458] undeclared symbol clk75MHz_clk_wiz_0_en_clk, assumed default net type wire [F:/Project_tetris/uec2_projekt/vivado/rtl/clk_wiz_0_clk_wiz.v:234]
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/debounce.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module debounce
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/debouncer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module debouncer
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/draw_background.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_background
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/draw_nxt_block.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_nxt_block
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_rect
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect_char.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_rect_char
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/draw_rect_ctl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module draw_rect_ctl
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/fallen_blocks.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fallen_blocks
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/font_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module font_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/random.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module randomizer
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/sim/tiff_writer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tiff_writer
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vga_example
+INFO: [VRFC 10-2458] undeclared symbol btnDd, assumed default net type wire [F:/Project_tetris/uec2_projekt/vivado/rtl/vga_example.v:154]
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/rtl/vga_timing.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vga_timing
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/Project_tetris/uec2_projekt/vivado/sim/testbench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module testbench

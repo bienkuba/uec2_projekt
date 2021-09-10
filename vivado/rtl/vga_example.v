@@ -68,6 +68,8 @@ module vga_example (
   wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f, rgb_out_nb, rgb_out_ch;
   wire [19:0] points_ctl, points_f;
   wire [23:0] BCD_out;
+
+  wire pad_Sd, pad_Dd, pad_Ld, pad_Rd, bttn_Dd;
   
   
   vga_timing my_timing (
@@ -138,17 +140,31 @@ module vga_example (
     .random(random_out)
    );
 
+debouncer my_debouncer(
+    .pclk(pclk),
+    .rst(rst),
+    .sw_S(!pad_S),
+    .sw_R(!pad_R),
+    .sw_L(!pad_L),
+    .bttn_D(btnD),
+    .pad_Sd(pad_Sd),
+    .pad_Rd(pad_Rd),
+    .pad_Ld(pad_Ld),
+    .pad_Dd(),
+    .bttn_Dd(btnDd)
+  );
+
   draw_rect_ctl my_rect_ctl(
     .pclk(pclk),
     .rst(rst),
-    .pad_R(pad_R),
-    .pad_L(pad_L),
+    .pad_R(pad_Rd),
+    .pad_L(pad_Ld),
     //.pad_U(pad_U),
-    .pad_D(pad_D),
-    .pad_S(pad_S),
+    .pad_D(pad_Dd),
+    .pad_S(pad_Sd),
     .btnL(btnL),
     .btnR(btnR),
-    .btnD(btnD),
+    .btnD(btnDd),
     .btnU(btnU),
     .sq_1_col(sq_1_col_r),
     .sq_2_col(sq_2_col_r),
