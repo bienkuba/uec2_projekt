@@ -58,12 +58,7 @@ read_verilog {
     rtl/draw_rect_char.v
     rtl/font_rom.v
     rtl/bin_to_BCD_converter.v
-    rtl/uart_rx.v
-    rtl/uart_tx.v
-    rtl/uart.v
-    rtl/baud_rate_gen.v
-    rtl/data_to_transfer.v
-    rtl/board_ID.v
+rtl/mux.v
 }
 
 add_files -fileset sim_1 {

@@ -1,19 +1,13 @@
 `timescale 1ns / 1ps
-
   
 module char_rom_16x16(
     input wire [7:0]  char_xy,
     input wire [23:0] points,
-    input wire [1:0]  board_ID,
-    input wire [31:0] ext_data_1,
-    input wire [31:0] ext_data_2,
     
     output reg [6:0]  char_code 
-    );
-    
+);
+ 
     reg [3:0] P1_D1, P1_D2, P1_D3, P1_D4, P1_D5, P1_D6;
-    reg [3:0] P2_D1, P2_D2, P2_D3, P2_D4, P2_D5, P2_D6;
-    reg [3:0] P3_D1, P3_D2, P3_D3, P3_D4, P3_D5, P3_D6;
     
     localparam SPACE = 7'h20;
     localparam COLON = 7'h3A;
@@ -86,78 +80,12 @@ module char_rom_16x16(
     localparam z = 7'h7A;
 
   always@*begin
-    if(board_ID == 2'b01)begin  
-        P1_D1 = points[23:20];
-        P1_D2 = points[19:16];
-        P1_D3 = points[15:12];
-        P1_D4 = points[11:8];
-        P1_D5 = points[7:4];
-        P1_D6 = points[3:0];
-    end
-    else if(board_ID == 2'b10)begin  
-        P2_D1 = points[23:20];
-        P2_D2 = points[19:16];
-        P2_D3 = points[15:12];
-        P2_D4 = points[11:8];
-        P2_D5 = points[7:4];
-        P2_D6 = points[3:0];
-    end
-    else begin     
-        P3_D1 = points[23:20];
-        P3_D2 = points[19:16];
-        P3_D3 = points[15:12];
-        P3_D4 = points[11:8];
-        P3_D5 = points[7:4];
-        P3_D6 = points[3:0];
-    end
-    if(ext_data_1[25:24] == 2'b01)begin
-        P1_D1 = ext_data_1[23:20];
-        P1_D2 = ext_data_1[19:16];
-        P1_D3 = ext_data_1[15:12];
-        P1_D4 = ext_data_1[11:8];
-        P1_D5 = ext_data_1[7:4];
-        P1_D6 = ext_data_1[3:0];
-    end
-    else if(ext_data_1 == 2'b10)begin  
-        P2_D1 = ext_data_1[23:20];
-        P2_D2 = ext_data_1[19:16];
-        P2_D3 = ext_data_1[15:12];
-        P2_D4 = ext_data_1[11:8];
-        P2_D5 = ext_data_1[7:4];
-        P2_D6 = ext_data_1[3:0];
-    end
-    else begin     
-        P3_D1 = ext_data_1[23:20];
-        P3_D2 = ext_data_1[19:16];
-        P3_D3 = ext_data_1[15:12];
-        P3_D4 = ext_data_1[11:8];
-        P3_D5 = ext_data_1[7:4];
-        P3_D6 = ext_data_1[3:0];
-    end
-    if(ext_data_2[25:24] == 2'b01)begin
-        P1_D1 = ext_data_2[23:20];
-        P1_D2 = ext_data_2[19:16];
-        P1_D3 = ext_data_2[15:12];
-        P1_D4 = ext_data_2[11:8];
-        P1_D5 = ext_data_2[7:4];
-        P1_D6 = ext_data_2[3:0];
-    end                  
-    else if(ext_data_2 == 2'b10)begin  
-        P2_D1 = ext_data_2[23:20];
-        P2_D2 = ext_data_2[19:16];
-        P2_D3 = ext_data_2[15:12];
-        P2_D4 = ext_data_2[11:8];
-        P2_D5 = ext_data_2[7:4];
-        P2_D6 = ext_data_2[3:0];
-    end                  
-    else begin           
-        P3_D1 = ext_data_2[23:20];
-        P3_D2 = ext_data_2[19:16];
-        P3_D3 = ext_data_2[15:12];
-        P3_D4 = ext_data_2[11:8];
-        P3_D5 = ext_data_2[7:4];
-        P3_D6 = ext_data_2[3:0];
-    end
+    P1_D1 = points[23:20];
+    P1_D2 = points[19:16];
+    P1_D3 = points[15:12];
+    P1_D4 = points[11:8];
+    P1_D5 = points[7:4];
+    P1_D6 = points[3:0];
   end
 
     always@*   
@@ -206,12 +134,12 @@ module char_rom_16x16(
         8'h27: char_code = COLON;   
         8'h28: char_code = SPACE;   
         8'h29: char_code = SPACE;   
-        8'h2a: char_code = {4'b0011, P2_D1}; 
-        8'h2b: char_code = {4'b0011, P2_D2}; 
-        8'h2c: char_code = {4'b0011, P2_D3};
-        8'h2d: char_code = {4'b0011, P2_D4}; 
-        8'h2e: char_code = {4'b0011, P2_D5};
-        8'h2f: char_code = {4'b0011, P2_D6};
+        8'h2a: char_code = SPACE;    
+        8'h2b: char_code = SPACE;    
+        8'h2c: char_code = SPACE;   
+        8'h2d: char_code = SPACE;    
+        8'h2e: char_code = SPACE;   
+        8'h2f: char_code = SPACE; 
                   
         8'h30: char_code = P;   
         8'h31: char_code = l;   
@@ -223,12 +151,12 @@ module char_rom_16x16(
         8'h37: char_code = COLON;   
         8'h38: char_code = SPACE;   
         8'h39: char_code = SPACE;   
-        8'h3a: char_code = {4'b0011, P3_D1}; 
-        8'h3b: char_code = {4'b0011, P3_D2}; 
-        8'h3c: char_code = {4'b0011, P3_D3};
-        8'h3d: char_code = {4'b0011, P3_D4}; 
-        8'h3e: char_code = {4'b0011, P3_D5};
-        8'h3f: char_code = {4'b0011, P3_D6};
+        8'h3a: char_code = SPACE;   
+        8'h3b: char_code = SPACE;   
+        8'h3c: char_code = SPACE;   
+        8'h3d: char_code = SPACE;   
+        8'h3e: char_code = SPACE;   
+        8'h3f: char_code = SPACE; 
                    
         8'h40: char_code = SPACE;   
         8'h41: char_code = SPACE;   
@@ -247,22 +175,22 @@ module char_rom_16x16(
         8'h4e: char_code = SPACE;   
         8'h4f: char_code = SPACE; 
         
-        8'h50: char_code = Y;           
-        8'h51: char_code = o;   
-        8'h52: char_code = u;   
-        8'h53: char_code = SPACE;   
-        8'h54: char_code = a;   
-        8'h55: char_code = r;   
-        8'h56: char_code = e;   
-        8'h57: char_code = SPACE;   
-        8'h58: char_code = P;   
-        8'h59: char_code = l;   
-        8'h5a: char_code = a;   
-        8'h5b: char_code = y;   
-        8'h5c: char_code = e;   
-        8'h5d: char_code = r;   
-        8'h5e: char_code = {6'b001100, board_ID};
-        8'h5f: char_code = 7'h21;   //!
+        8'h50: char_code = SPACE;
+        8'h51: char_code = SPACE;
+        8'h52: char_code = SPACE;
+        8'h53: char_code = SPACE;
+        8'h54: char_code = SPACE;
+        8'h55: char_code = SPACE;
+        8'h56: char_code = SPACE;
+        8'h57: char_code = SPACE;
+        8'h58: char_code = SPACE;
+        8'h59: char_code = SPACE;
+        8'h5a: char_code = SPACE;
+        8'h5b: char_code = SPACE;
+        8'h5c: char_code = SPACE;
+        8'h5d: char_code = SPACE;
+        8'h5e: char_code = SPACE;
+        8'h5f: char_code = SPACE;
         
         8'h60: char_code = SPACE;           
         8'h61: char_code = SPACE;   
@@ -416,17 +344,17 @@ module char_rom_16x16(
         8'hed: char_code = SPACE;   
         8'hee: char_code = SPACE;  
         8'hef: char_code = SPACE;  
-       
-        8'hf0: char_code = SPACE;          
-        8'hf1: char_code = SPACE;   
-        8'hf2: char_code = SPACE;   
-        8'hf3: char_code = SPACE;  
-        8'hf4: char_code = SPACE;   
-        8'hf5: char_code = SPACE;   
-        8'hf6: char_code = SPACE;   
-        8'hf7: char_code = SPACE;  
-        8'hf8: char_code = SPACE;   
-        8'hf9: char_code = SPACE;   
+ 
+        8'hf0: char_code = SPACE;   
+        8'hf1: char_code = SPACE;
+        8'hf2: char_code = SPACE;
+        8'hf3: char_code = SPACE;
+        8'hf4: char_code = SPACE;
+        8'hf5: char_code = SPACE;
+        8'hf6: char_code = SPACE;
+        8'hf7: char_code = SPACE;
+        8'hf8: char_code = SPACE;
+        8'hf9: char_code = SPACE;
         8'hfa: char_code = SPACE;   
         8'hfb: char_code = SPACE;   
         8'hfc: char_code = SPACE;   
