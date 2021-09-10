@@ -341,7 +341,7 @@ draw_rect_char my_draw_rect_char (
   mux my_mux(
   .mux_in_1(dout1),
   .mux_in_2(dout2),
-  .clk(clk),
+  .clk(pclk),
   .rst(rst),
   
   .ext_data_1(ext_data1),
