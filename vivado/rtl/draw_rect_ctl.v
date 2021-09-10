@@ -140,8 +140,8 @@ module draw_rect_ctl(
         IDLE: begin
           xpos_nxt = xpos;
           ypos_nxt = ypos;           
-          iterator_nxt = iterator + 1;
-          counter_nxt = (iterator)>>15;
+          iterator_nxt = iterator + 2;
+          counter_nxt = (iterator)>>16;
           block_nxt = block;
           buf_block_nxt = buf_block;
           rot_nxt = rot;

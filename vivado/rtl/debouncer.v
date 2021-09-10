@@ -3,19 +3,41 @@
 module debouncer
    (
     input wire pclk, rst,
-    input wire sw_S, sw_R, sw_L, sw_D, bttn_D,
-    output wire pad_Sd, pad_Rd, pad_Ld, pad_Dd, bttn_Dd
+    input wire sw_S, sw_R, sw_L, sw_D, bttn_D, bttn_R, bttn_L, bttn_U,
+    output wire pad_Sd, pad_Rd, pad_Ld, pad_Dd, bttn_Dd, bttn_Rd, bttn_Ld, bttn_Ud
    ); 
 
-   wire pad_Sdd, pad_Rdd, pad_Ldd, pad_Ddd, bttn_Ddd;
+   wire pad_Sdd, pad_Rdd, pad_Ldd, pad_Ddd, bttn_Ddd, bttn_Rdd, bttn_Ldd, bttn_Udd;
 
 board_debouncer D_board (
-	.clk(pclk),
+    .clk(pclk),
     .reset(rst),
     .sw(bttn_D),
     .db_level(),
     .db_tick(bttn_Ddd)
-	);
+);
+board_debouncer L_board (
+    .clk(pclk),
+    .reset(rst),
+    .sw(bttn_L),
+    .db_level(),
+    .db_tick(bttn_Ldd)
+);
+board_debouncer U_board (
+    .clk(pclk),
+    .reset(rst),
+    .sw(bttn_U),
+    .db_level(),
+    .db_tick(bttn_Udd)
+);
+
+    board_debouncer R_board (
+        .clk(pclk),
+        .reset(rst),
+        .sw(bttn_R),
+        .db_level(),
+        .db_tick(bttn_Rdd)
+    );
 
      debounce S_debounce(
     .clk(pclk),
@@ -51,5 +73,10 @@ board_debouncer D_board (
   assign pad_Rd = pad_Rdd;
   assign pad_Ld = pad_Ldd;
   assign pad_Dd = pad_Ddd;
-
+  
+  assign bttn_Dd = bttn_Ddd;
+  assign bttn_Rd = bttn_Rdd;
+  assign bttn_Ld = bttn_Ldd;
+  assign bttn_Ud = bttn_Udd;
+  
 endmodule
