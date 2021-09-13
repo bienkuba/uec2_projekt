@@ -44,7 +44,7 @@ module vga_timing (
     hblnk  = hblnk_nxt;
   end
  
-  always@(posedge pclk or posedge rst)
+  always@(posedge pclk)
     if(rst)begin
       vsync_nxt  = 0;
       vblnk_nxt  = 0;

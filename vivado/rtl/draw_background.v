@@ -141,7 +141,7 @@
     
     localparam SIZE = 35;
     
-  always@(posedge pclk or posedge rst)begin
+  always@(posedge pclk)begin
     if(rst)begin
       rgb_out    <= 0;
       hsync_out  <= 0;
