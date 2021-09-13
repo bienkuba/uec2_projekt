@@ -17,7 +17,7 @@ module mod_m_counter
 
    // body
    // register
-   always @(posedge clk, posedge reset)
+   always @(posedge clk)
       if (reset)
          r_reg <= 0;
       else

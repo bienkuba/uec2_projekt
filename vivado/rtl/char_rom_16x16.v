@@ -3,10 +3,9 @@
 module char_rom_16x16(
     input wire [7:0]  char_xy,
     input wire [23:0] points,
-    input wire [7:0]  board_ID,
-    input wire [31:0] ext_data_1, // bylo 31:0
-    input wire [31:0] ext_data_2, //31:0
-    //chyba trzeba zamieni? 31-tu-bitowe wej?cie na 8-miu-bitowe i p??niej stwo?y? rejestr, gdzie b?dzie to dodawane
+    input wire [31:24]  board_ID,
+    input wire [31:0] ext_data_1,
+    input wire [31:0] ext_data_2,
     
     output reg [6:0]  char_code 
 );
@@ -111,52 +110,52 @@ module char_rom_16x16(
         P3_D6 = points[3:0];
     end
     if(ext_data_1[7:0] == 8'b00000001)begin //bylo ext_data_1[31:24]
-        P1_D1 = ext_data_1[23:20];
-        P1_D2 = ext_data_1[19:16];
-        P1_D3 = ext_data_1[15:12];
-        P1_D4 = ext_data_1[11:8];
-        P1_D5 = ext_data_1[7:4];
-        P1_D6 = ext_data_1[3:0];
+        P1_D1 = ext_data_1[31:28]; 
+        P1_D2 = ext_data_1[27:24]; 
+        P1_D3 = ext_data_1[23:20]; 
+        P1_D4 = ext_data_1[19:16]; 
+        P1_D5 = ext_data_1[15:12]; 
+        P1_D6 = ext_data_1[11:8];  
     end
-    else if(ext_data_1[31:24] == 8'b00000010)begin  
-        P2_D1 = ext_data_1[23:20];
-        P2_D2 = ext_data_1[19:16];
-        P2_D3 = ext_data_1[15:12];
-        P2_D4 = ext_data_1[11:8];
-        P2_D5 = ext_data_1[7:4];
-        P2_D6 = ext_data_1[3:0];
+    else if(ext_data_1[7:0] == 8'b00000010)begin  
+        P2_D1 = ext_data_1[31:28]; 
+        P2_D2 = ext_data_1[27:24]; 
+        P2_D3 = ext_data_1[23:20]; 
+        P2_D4 = ext_data_1[19:16]; 
+        P2_D5 = ext_data_1[15:12]; 
+        P2_D6 = ext_data_1[11:8];  
     end
     else begin     
-        P3_D1 = ext_data_1[23:20];
-        P3_D2 = ext_data_1[19:16];
-        P3_D3 = ext_data_1[15:12];
-        P3_D4 = ext_data_1[11:8];
-        P3_D5 = ext_data_1[7:4];
-        P3_D6 = ext_data_1[3:0];
+        P3_D1 = ext_data_1[31:28];
+        P3_D2 = ext_data_1[27:24];
+        P3_D3 = ext_data_1[23:20];
+        P3_D4 = ext_data_1[19:16];
+        P3_D5 = ext_data_1[15:12];
+        P3_D6 = ext_data_1[11:8]; 
     end
     if(ext_data_2[7:0] == 8'b00000001)begin //ext_data_2[31:24]
-        P1_D1 = ext_data_2[23:20];
-        P1_D2 = ext_data_2[19:16];
-        P1_D3 = ext_data_2[15:12];
-        P1_D4 = ext_data_2[11:8];
-        P1_D5 = ext_data_2[7:4];
-        P1_D6 = ext_data_2[3:0];
+        P1_D1 = ext_data_2[31:28];
+        P1_D2 = ext_data_2[27:24];
+        P1_D3 = ext_data_2[23:20];
+        P1_D4 = ext_data_2[19:16];
+        P1_D5 = ext_data_2[15:12];
+        P1_D6 = ext_data_2[11:8]; 
     end                  
-    else if(ext_data_2[31:24] == 8'b00000010)begin  
-        P2_D1 = ext_data_2[23:20];
-        P2_D2 = ext_data_2[19:16];
-        P2_D3 = ext_data_2[15:12];
-        P2_D4 = ext_data_2[11:8];
-        P2_D5 = ext_data_2[7:4];
-        P2_D6 = ext_data_2[3:0];
+    else if(ext_data_2[7:0] == 8'b00000010)begin  
+        P2_D1 = ext_data_2[31:28];
+        P2_D2 = ext_data_2[27:24];
+        P2_D3 = ext_data_2[23:20];
+        P2_D4 = ext_data_2[19:16];
+        P2_D5 = ext_data_2[15:12];
+        P2_D6 = ext_data_2[11:8]; 
     end                  
     else begin           
-        P3_D1 = ext_data_2[23:20];
-        P3_D2 = ext_data_2[19:16];
-        P3_D3 = ext_data_2[15:12];
-        P3_D4 = ext_data_2[11:8];
-        P3_D5 = ext_data_2[7:4];
-        P3_D6 = ext_data_2[3:0];
+        P3_D1 = ext_data_2[31:28];
+        P3_D2 = ext_data_2[27:24];
+        P3_D3 = ext_data_2[23:20];
+        P3_D4 = ext_data_2[19:16];
+        P3_D5 = ext_data_2[15:12];
+        P3_D6 = ext_data_2[11:8];
     end
   end
 

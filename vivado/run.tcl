@@ -41,7 +41,7 @@ read_xdc {
 }
 
 read_verilog {
-    rtl/vga_example.v
+    rtl/tetris.v
     rtl/vga_timing.v
     rtl/draw_background.v
     rtl/draw_rect.v
@@ -64,14 +64,12 @@ read_verilog {
     rtl/mod_m_counter.v
     rtl/data_to_transfer.v
     rtl/board_ID.v
-    rtl/fifo.v
     rtl/serializer.v
     rtl/mux.v
 }
 
 add_files -fileset sim_1 {
     sim/testbench.v
-    sim/tiff_writer.v
 }
 
 set_property top ${top_module} [current_fileset]

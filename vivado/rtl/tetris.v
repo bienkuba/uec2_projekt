@@ -1,6 +1,6 @@
 `timescale 1 ns / 1 ps
 
-module vga_example (
+module tetris (
   input wire clk,
   input wire rst,
   input wire pad_R,
@@ -11,7 +11,7 @@ module vga_example (
   input wire btnL,
   input wire btnR,
   input wire btnD,
-  input wire btnU,
+//  input wire btnU,
   input wire rx1, rx2,
   output wire tx1, tx2,
   output reg vs,
@@ -22,17 +22,8 @@ module vga_example (
   output wire pclk_mirror
   );
 
-
-  wire clk_in;
   wire locked;
-  wire clk_fb;
-  wire clk_ss;
-  wire clk_out;
   wire pclk;
-  wire clkfb;
-  (* KEEP = "TRUE" *) 
-  (* ASYNC_REG = "TRUE" *)
-  reg [7:0] safe_start = 0;
 
   ODDR pclk_oddr (
     .Q(pclk_mirror),
@@ -56,7 +47,7 @@ module vga_example (
     
   localparam WIDTH = 16;
 
-  wire        collision, lock_en, lock_ID_en, ID_1_occupied, ID_2_occupied, wr_en;
+  wire        collision, lock_en, lock_ID_en, ID_1_occupied, ID_2_occupied;
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f, vsync_out_nb, hsync_out_nb, vsync_out_ch, hsync_out_ch;
   wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f, vblnk_out_nb, hblnk_out_nb, vblnk_out_ch, hblnk_out_ch;
   wire [1:0]  rot_ctl;
@@ -76,11 +67,6 @@ module vga_example (
   wire [31:0] tx_data, ext_data1, ext_data2;
   wire [7:0] din, board_ID;
   wire [31:0] dout1, dout2;
-  wire tx_full_1, tx_full_2, rx_empty_1, rx_empty_2;
-  
-  wire tx_busy;
-  wire rdy;
-  reg rdy_clr = 0;
   
   vga_timing my_timing (
     .vcount(vcount),
@@ -160,7 +146,7 @@ debouncer my_debouncer(
     .bttn_D(btnD),
     .bttn_L(btnL),
     .bttn_R(btnR),
-    .bttn_U(btnU),
+//    .bttn_U(btnU),
     .pad_Sd(pad_Sd),
     .pad_Rd(pad_Rd),
     .pad_Ld(pad_Ld),
@@ -177,7 +163,7 @@ debouncer my_debouncer(
     .rst(rst),
     .pad_R(pad_Rd),
     .pad_L(pad_Ld),
-    //.pad_U(pad_U),
+    .pad_U(pad_U),
     .pad_D(pad_Dd),
     .pad_S(pad_Sd),
     .btnL(btnLd),
@@ -270,7 +256,7 @@ draw_rect_char my_draw_rect_char (
     .hblnk_in(hblnk_out_f),   
     .rgb_in(rgb_out_f),
     .char_pixels(char_pixels),
-           
+
     //.vcount_out(vcount_out_ch),
     .vsync_out(vsync_out_ch),
     //.vblnk_out(vblnk_out_ch),
@@ -307,8 +293,8 @@ draw_rect_char my_draw_rect_char (
 
   board_ID my_board_ID(
     .lock_ID_en(lock_ID_en),
-    .external_ID_1(ext_data1[7:0]),
-    .external_ID_2(ext_data2[7:0]),
+    .external_ID_1(ext_data1[31:24]),
+    .external_ID_2(ext_data2[31:24]),
 
     .board_ID(board_ID),
     .ID_1_occupied(ID_1_occupied),
@@ -320,11 +306,8 @@ draw_rect_char my_draw_rect_char (
     .rst(rst),
     .board_ID(board_ID),
     .points(BCD_out),
-    .tx_full_1(tx_full_1),
-    .tx_full_2(tx_full_2),
     
-    .tx_data(tx_data),
-    .wr_en(wr_en)
+    .tx_data(tx_data)
   );
   
 //  serializer my_serializer(
@@ -338,40 +321,32 @@ draw_rect_char my_draw_rect_char (
     .clk(pclk),
     .reset(rst),
     .rx(rx1),
-    .rd_uart(wr_en),//warunek startu UART
-    .wr_uart(wr_en),//warunek startu UART
-    .data_in(tx_data),// kolejka danych do wyniku
+    .data_in(tx_data),
 
-    .rx_empty(rx_empty_1),
-    .tx_full(tx_full_1),
     .data_out(dout1),
     .tx(tx1)
   );
-  
+
   uart uart_2(
     .clk(pclk),
     .reset(rst),
     .rx(rx2),
-    .rd_uart(wr_en),
-    .wr_uart(wr_en),
     .data_in(tx_data),
-    
-    .data_out(dout2),//wysy?amy wynik + ID 
-    .rx_empty(rx_empty_2),
-    .tx_full(tx_full_2),
+
+    .data_out(dout2),
     .tx(tx2)
 );
-  
+
   mux my_mux(
   .mux_in_1(dout1),
   .mux_in_2(dout2),
   .clk(pclk),
   .rst(rst),
-  
+
   .ext_data_1(ext_data1),
   .ext_data_2(ext_data2)
   );
-  
+
   always @(posedge pclk)begin
     hs <= hsync_out_f;
     vs <= vsync_out_f;

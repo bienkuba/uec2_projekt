@@ -8,7 +8,6 @@ module uart_rx
    (
     input wire clk, reset,
     input wire rx, s_tick,
-    output reg rx_done_tick,
     output wire [7:0] dout
    );
 
@@ -47,7 +46,6 @@ module uart_rx
    always @*
    begin
       state_next = state_reg;
-      rx_done_tick = 1'b0;
       s_next = s_reg;
       n_next = n_reg;
       b_next = b_reg;
@@ -86,7 +84,6 @@ module uart_rx
                if (s_reg==(SB_TICK-1))
                   begin
                      state_next = idle;
-                     rx_done_tick =1'b1;
                   end
                else
                   s_next = s_reg + 1;

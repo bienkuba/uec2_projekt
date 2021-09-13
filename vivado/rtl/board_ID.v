@@ -34,7 +34,7 @@ module board_ID(
     
     always@*begin
         if(external_ID_1) ID_1_occupied = 1;
-        /*if(external_ID_2)*/ ID_2_occupied = 1;
+        if(external_ID_2) ID_2_occupied = 1;
         if(lock_ID_en && !ID_reserved)begin
             if(!ID_1_occupied && !ID_2_occupied)begin 
                 board_ID = 8'b00000001;
