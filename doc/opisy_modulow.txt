@@ -1,0 +1,25 @@
+bin to BCD converter:
+	modul stworzony w oparciu algorytm “double dabble” na podstawie kodu ze strony internetowej: https://www.realdigital.org/doc/6dae6583570fd816d1d675b93578203d
+char rom 16x16, draw_background, vga timing:
+	zmodyfikowany modul z labolatoriów
+draw nxt block
+	modul odpowiedzilny za rysowanie nastepnego tetrimino(blok składający sie z 4 kwadratow) z boku planszy
+draw rect
+	rysuje aktulnie spadajace tetrimino (blok składający sie z 4 kwadratow)
+draw rect char
+	wyswietlanie wyniku
+draw rect ctl
+	główna maszyna stanów gry - odpowiedzilna za poruszanie i obracanie tetrimino
+fallen blocks
+	rysowanie blokow zablokowanych na dole planszy,
+	kasowanie pełnych rzedów i naliczanie za nie punktow
+font rom
+	wzięto z labolatoriów
+random
+	generator liczb pseudolosowych - losuje nastepne tetrimino
+
+
+
+
+
+

@@ -1,11 +1,14 @@
 `timescale 1 ns / 1 ps
 
-module vga_example (
+/*
+Autorzy: Jakub Bien, Tomasz Jurczyk, Bohdan Klymchuk
+*/
+
+module tetris (
   input wire clk,
   input wire rst,
   input wire pad_R,
   input wire pad_L,
-  //input wire pad_U,
   input wire pad_D,
   input wire pad_S,
   input wire btnL,
@@ -51,8 +54,6 @@ module vga_example (
       .reset(rst),
       .locked(locked)
     );
-    
-  localparam WIDTH = 16;
 
   wire        collision, lock_en;
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f, vsync_out_nb, hsync_out_nb, vsync_out_ch, hsync_out_ch;
@@ -68,8 +69,7 @@ module vga_example (
   wire [11:0] rgb_out_b, rgb_out_r, rgb_out_f, rgb_out_nb, rgb_out_ch;
   wire [19:0] points_ctl, points_f;
   wire [23:0] BCD_out;
-
-  wire pad_Sd, pad_Dd, pad_Ld, pad_Rd, btnDd, btnLd, btnRd, btnUd;
+  wire        pad_Sd, pad_Dd, pad_Ld, pad_Rd, btnDd, btnLd, btnRd, btnUd;
   
   
   vga_timing my_timing (
@@ -140,13 +140,13 @@ module vga_example (
     .random(random_out)
    );
 
-debouncer my_debouncer(
+  debouncer my_debouncer(
     .pclk(pclk),
     .rst(rst),
-    .sw_S(!pad_S),
-    .sw_R(!pad_R),
-    .sw_L(!pad_L),
-    .sw_D(!pad_D),
+    .pad_S(!pad_S),
+    .pad_R(!pad_R),
+    .pad_L(!pad_L),
+    .pad_D(!pad_D),
     .bttn_D(btnD),
     .bttn_L(btnL),
     .bttn_R(btnR),
@@ -166,7 +166,6 @@ debouncer my_debouncer(
     .rst(rst),
     .pad_R(pad_Rd),
     .pad_L(pad_Ld),
-    //.pad_U(pad_U),
     .pad_D(pad_Dd),
     .pad_S(pad_Sd),
     .btnL(btnLd),
@@ -242,7 +241,7 @@ debouncer my_debouncer(
     .rgb_out(rgb_out_nb)
      );
 
-draw_rect_char my_draw_rect_char (
+    draw_rect_char my_draw_rect_char (
     .rst(rst),
     .pclk(pclk),
     
@@ -255,12 +254,8 @@ draw_rect_char my_draw_rect_char (
     .rgb_in(rgb_out_f),
     .char_pixels(char_pixels),
            
-    //.vcount_out(vcount_out_ch),
     .vsync_out(vsync_out_ch),
-    //.vblnk_out(vblnk_out_ch),
-    //.hcount_out(hcount_out_ch),
     .hsync_out(hsync_out_ch),
-    //.hblnk_out(hblnk_out_ch),
     .char_line(char_line),  
     .char_xy(char_xy),
     .rgb_out(rgb_out_ch)   
@@ -286,8 +281,6 @@ draw_rect_char my_draw_rect_char (
     .BCD(BCD_out)
    );
 
-
-  
   always @(posedge pclk)begin
     hs <= hsync_out_ch;
     vs <= vsync_out_ch;
