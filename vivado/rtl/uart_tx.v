@@ -3,10 +3,6 @@
 // UartTxExtreme.v
 // Konstantin Pavlov, pavlovconst@gmail.com
 //--------------------------------------------------------------------------------
-
-// INFO --------------------------------------------------------------------------------
-// Extreme minimal UART transmitter
-//  
 // CAUTION:
 // optimized for 20MHz/115200
 // tx_busy has been made asynchronous to tx_do_sample

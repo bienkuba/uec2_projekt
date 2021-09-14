@@ -34,7 +34,6 @@ module data_to_transfer(
     reg [7:0] tx_data1, tx_data2, tx_data3, tx_data4;
     reg [7:0] tx_data_nxt;
     reg [1:0] UART1_pack_nr, UART2_pack_nr;
-//    reg tx_start1_nxt, tx_start2_nxt;
     
     always@(posedge clk)begin
         if(rst)begin
@@ -43,8 +42,6 @@ module data_to_transfer(
             tx_data3 <= 0;
             tx_data4 <= 0;
             tx_data <= 0;
-//            tx_start1 <= 0;
-//            tx_start2 <= 0;
         end
         else begin
             tx_data1 <= board_ID[7:0];
@@ -52,16 +49,10 @@ module data_to_transfer(
             tx_data3 <= points[15:8];
             tx_data4 <= points[7:0];
             tx_data <= tx_data_nxt;
-//            tx_start1 = tx_start1_nxt;
-//            tx_start2 = tx_start2_nxt;
         end
     end
     
      always@*begin
-//       tx_data1 = board_ID;
-//       tx_data2 = points[23:16];
-//       tx_data3 = points[15:8];
-//       tx_data4 = points[7:0];
         if(board_ID != 0)begin
             if(tx_busy1 == 0)begin
                 if(UART1_pack_nr == 0)begin
