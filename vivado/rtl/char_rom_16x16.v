@@ -1,6 +1,8 @@
 `timescale 1ns / 1ps
   
 module char_rom_16x16(
+    input wire pclk,
+    input wire rst,
     input wire [7:0]  char_xy,
     input wire [23:0] points,
     input wire [31:24]  board_ID,
@@ -9,7 +11,7 @@ module char_rom_16x16(
     
     output reg [6:0]  char_code 
 );
- 
+
     reg [3:0] P1_D1, P1_D2, P1_D3, P1_D4, P1_D5, P1_D6;
     reg [3:0] P2_D1, P2_D2, P2_D3, P2_D4, P2_D5, P2_D6;
     reg [3:0] P3_D1, P3_D2, P3_D3, P3_D4, P3_D5, P3_D6;
@@ -83,81 +85,99 @@ module char_rom_16x16(
     localparam x = 7'h78;
     localparam y = 7'h79;
     localparam z = 7'h7A;
-
-  always@*begin
-    if(board_ID == 8'b00000001)begin  
-        P1_D1 = points[23:20];
-        P1_D2 = points[19:16];
-        P1_D3 = points[15:12];
-        P1_D4 = points[11:8];
-        P1_D5 = points[7:4];
-        P1_D6 = points[3:0];
+    
+ always@(posedge pclk) begin
+    if(rst) begin
+        P1_D1 <= 0;
+        P1_D2 <= 0;
+        P1_D3 <= 0;
+        P1_D4 <= 0;
+        
+        P2_D1 <= 0;
+        P2_D2 <= 0;
+        P2_D3 <= 0;
+        P2_D4 <= 0;
+        
+        P3_D1 <= 0;
+        P3_D2 <= 0;
+        P3_D3 <= 0;
+        P3_D4 <= 0;
     end
-    else if(board_ID == 8'b00000010)begin  
-        P2_D1 = points[23:20];
-        P2_D2 = points[19:16];
-        P2_D3 = points[15:12];
-        P2_D4 = points[11:8];
-        P2_D5 = points[7:4];
-        P2_D6 = points[3:0];
+    else begin
+        if(board_ID == 8'b00000001)begin  
+            P1_D1 <= points[23:20];
+            P1_D2 <= points[19:16];
+            P1_D3 <= points[15:12];
+            P1_D4 <= points[11:8];
+            P1_D5 <= points[7:4];
+            P1_D6 <= points[3:0];
+        end
+        else if(board_ID == 8'b00000010)begin  
+            P2_D1 <= points[23:20];
+            P2_D2 <= points[19:16];
+            P2_D3 <= points[15:12];
+            P2_D4 <= points[11:8];
+            P2_D5 <= points[7:4];
+            P2_D6 <= points[3:0];
+        end
+        else begin     
+            P3_D1 <= points[23:20];
+            P3_D2 <= points[19:16];
+            P3_D3 <= points[15:12];
+            P3_D4 <= points[11:8];
+            P3_D5 <= points[7:4];
+            P3_D6 <= points[3:0];
+        end
+        if(ext_data_1[31:24] == 8'b00000001)begin
+            P1_D1 <= ext_data_1[23:20]; 
+            P1_D2 <= ext_data_1[19:16]; 
+            P1_D3 <= ext_data_1[15:12]; 
+            P1_D4 <= ext_data_1[11:8];  
+            P1_D5 <= ext_data_1[7:4];   
+            P1_D6 <= ext_data_1[3:0];   
+        end
+        else if(ext_data_1[31:24] == 8'b00000010)begin  
+            P2_D1 <= ext_data_1[23:20]; 
+            P2_D2 <= ext_data_1[19:16]; 
+            P2_D3 <= ext_data_1[15:12]; 
+            P2_D4 <= ext_data_1[11:8];  
+            P2_D5 <= ext_data_1[7:4];   
+            P2_D6 <= ext_data_1[3:0];   
+        end
+        else begin     
+            P3_D1 <= ext_data_1[23:20];
+            P3_D2 <= ext_data_1[19:16];
+            P3_D3 <= ext_data_1[15:12];
+            P3_D4 <= ext_data_1[11:8]; 
+            P3_D5 <= ext_data_1[7:4];  
+            P3_D6 <= ext_data_1[3:0];  
+        end
+        if(ext_data_2[31:24] == 8'b00000001)begin //ext_data_2[31:24]
+            P1_D1 <= ext_data_2[23:20];
+            P1_D2 <= ext_data_2[19:16];
+            P1_D3 <= ext_data_2[15:12];
+            P1_D4 <= ext_data_2[11:8]; 
+            P1_D5 <= ext_data_2[7:4];  
+            P1_D6 <= ext_data_2[3:0];  
+        end                  
+        else if(ext_data_2[31:24] == 8'b00000010)begin  
+            P2_D1 <= ext_data_2[23:20];
+            P2_D2 <= ext_data_2[19:16];
+            P2_D3 <= ext_data_2[15:12];
+            P2_D4 <= ext_data_2[11:8]; 
+            P2_D5 <= ext_data_2[7:4];  
+            P2_D6 <= ext_data_2[3:0];  
+        end                  
+        else begin           
+            P3_D1 <= ext_data_2[23:20];
+            P3_D2 <= ext_data_2[19:16];
+            P3_D3 <= ext_data_2[15:12];
+            P3_D4 <= ext_data_2[11:8];
+            P3_D5 <= ext_data_2[7:4];
+            P3_D6 <= ext_data_2[3:0];
+        end
     end
-    else begin     
-        P3_D1 = points[23:20];
-        P3_D2 = points[19:16];
-        P3_D3 = points[15:12];
-        P3_D4 = points[11:8];
-        P3_D5 = points[7:4];
-        P3_D6 = points[3:0];
-    end
-    if(ext_data_1[7:0] == 8'b00000001)begin //bylo ext_data_1[31:24]
-        P1_D1 = ext_data_1[31:28]; 
-        P1_D2 = ext_data_1[27:24]; 
-        P1_D3 = ext_data_1[23:20]; 
-        P1_D4 = ext_data_1[19:16]; 
-        P1_D5 = ext_data_1[15:12]; 
-        P1_D6 = ext_data_1[11:8];  
-    end
-    else if(ext_data_1[7:0] == 8'b00000010)begin  
-        P2_D1 = ext_data_1[31:28]; 
-        P2_D2 = ext_data_1[27:24]; 
-        P2_D3 = ext_data_1[23:20]; 
-        P2_D4 = ext_data_1[19:16]; 
-        P2_D5 = ext_data_1[15:12]; 
-        P2_D6 = ext_data_1[11:8];  
-    end
-    else begin     
-        P3_D1 = ext_data_1[31:28];
-        P3_D2 = ext_data_1[27:24];
-        P3_D3 = ext_data_1[23:20];
-        P3_D4 = ext_data_1[19:16];
-        P3_D5 = ext_data_1[15:12];
-        P3_D6 = ext_data_1[11:8]; 
-    end
-    if(ext_data_2[7:0] == 8'b00000001)begin //ext_data_2[31:24]
-        P1_D1 = ext_data_2[31:28];
-        P1_D2 = ext_data_2[27:24];
-        P1_D3 = ext_data_2[23:20];
-        P1_D4 = ext_data_2[19:16];
-        P1_D5 = ext_data_2[15:12];
-        P1_D6 = ext_data_2[11:8]; 
-    end                  
-    else if(ext_data_2[7:0] == 8'b00000010)begin  
-        P2_D1 = ext_data_2[31:28];
-        P2_D2 = ext_data_2[27:24];
-        P2_D3 = ext_data_2[23:20];
-        P2_D4 = ext_data_2[19:16];
-        P2_D5 = ext_data_2[15:12];
-        P2_D6 = ext_data_2[11:8]; 
-    end                  
-    else begin           
-        P3_D1 = ext_data_2[31:28];
-        P3_D2 = ext_data_2[27:24];
-        P3_D3 = ext_data_2[23:20];
-        P3_D4 = ext_data_2[19:16];
-        P3_D5 = ext_data_2[15:12];
-        P3_D6 = ext_data_2[11:8];
-    end
-  end
+ end
 
     always@*   
       case(char_xy)
@@ -433,5 +453,5 @@ module char_rom_16x16(
         8'hfe: char_code = SPACE;   
         8'hff: char_code = SPACE;        
       endcase
-    
+ 
 endmodule

@@ -1,5 +1,5 @@
 set project Tetris
-set top_module vga_example
+set top_module tetris
 set target xc7a35tcpg236-1
 set bitstream_file build/${project}.runs/impl_1/${top_module}.bit
 
@@ -37,7 +37,7 @@ if {[lindex $argv 0] == "program"} {
 
 read_xdc {
     constraints/vga_example.xdc
-    constraints/clk_wiz_0.xdc
+    constraints/clock.xdc
 }
 
 read_verilog {
@@ -45,8 +45,8 @@ read_verilog {
     rtl/vga_timing.v
     rtl/draw_background.v
     rtl/draw_rect.v
-    rtl/clk_wiz_0.v
-    rtl/clk_wiz_0_clk_wiz.v
+    rtl/clock.v
+    rtl/clock_clk_wiz.v
     rtl/draw_rect_ctl.v
     rtl/board_debounce.v
     rtl/debounce.v
@@ -61,10 +61,8 @@ read_verilog {
     rtl/uart_rx.v
     rtl/uart_tx.v
     rtl/uart.v
-    rtl/mod_m_counter.v
     rtl/data_to_transfer.v
     rtl/board_ID.v
-    rtl/serializer.v
     rtl/mux.v
 }
 

@@ -9,35 +9,55 @@ module uart
                 DVSR = 163,   // baud rate divisor
                               // DVSR = 50M/(16*baud rate)
                 DVSR_BIT = 8, // # bits of DVSR
-                FIFO_W = 2,    // # addr bits of FIFO
-                              // # words in FIFO=2^FIFO_W
-                tx_start = 1'b1 
+                FIFO_W = 2    // # addr bits of FIFO
+                              // # words in FIFO=2^FIFO_W 
    )
    (
-    input wire clk, reset,
-    input wire rx,
+    input wire clk,
+    input wire rx, tx_start,
     input wire [7:0] data_in,
-    output wire tx,
+    output wire tx, tx_busy,
     output wire [7:0] data_out
    );
 
    // signal declaration
-   wire tick;
+   wire rx_busy, rx_done, tx_busy_nxt;
    wire [7:0] rx_data_out;
+   wire tx_do_sample = 1'b1;
    
 
    //body
-   mod_m_counter #(.M(DVSR), .N(DVSR_BIT)) baud_gen_unit
-      (.clk(clk), .reset(reset),  .max_tick(tick));
+//   mod_m_counter #(.M(DVSR), .N(DVSR_BIT)) baud_gen_unit
+//      (.clk(clk), .reset(reset),  .max_tick(tick));
 
-   uart_rx #(.DBIT(DBIT), .SB_TICK(SB_TICK)) uart_rx_unit
-      (.clk(clk), .reset(reset), .rx(rx), .s_tick(tick),
-       .dout(data_out));
+//    reg [7:0] tx_sample_cntr = 0;
+//    always @ (posedge clk) begin
+//        if (tx_sample_cntr[7:0] == 0) begin
+//            tx_sample_cntr[7:0] <= (173-1);
+//        end else begin
+//            tx_sample_cntr[7:0] <= tx_sample_cntr[7:0] - 1;
+//        end
+//    end
+//    wire tx_do_sample = (tx_sample_cntr[7:0] == 0);
 
-   uart_tx #(.DBIT(DBIT), .SB_TICK(SB_TICK)) uart_tx_unit
-      (.clk(clk), .reset(reset), .tx_start(tx_start),
-       .s_tick(tick), .din(data_in), .tx(tx));
+    uart_tx my_uart_tx (
+        .clk(clk),
+        .tx_do_sample(tx_do_sample),
+        .tx_data(data_in),
+        .tx_start(tx_start),
+        .tx_busy(tx_busy_nxt),
+        .txd(tx)
+    );
+    
+        uart_rx my_uart_rx (
+        .clk(clk),
+        .rx_data(rx_data_out),
+        .rx_busy(rx_busy),
+        .rx_done(rx_done),
+        .rxd(rx)
+    );
 
-//   assign data_out = rx_data_out;
+   assign data_out = rx_data_out;
+   assign tx_busy = tx_busy_nxt;
 
 endmodule

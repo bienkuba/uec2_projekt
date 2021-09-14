@@ -5,7 +5,7 @@ module draw_rect_ctl(
     input wire       rst,
     input wire       pad_R,
     input wire       pad_L,
-    input wire       pad_U,
+    //input wire       pad_U,
     input wire       pad_D,
     input wire       pad_S,
     input wire       btnL,
@@ -18,7 +18,6 @@ module draw_rect_ctl(
     input wire [3:0] sq_4_col,
     input wire       collision,
     input wire [4:0] random,
-    input wire [3:0] level,
     input wire       ID_1_occupied,
     input wire       ID_2_occupied,
     
@@ -33,7 +32,7 @@ module draw_rect_ctl(
     );
     
     //localparam LEVEL = 5; //_______________________ make it input later
-    localparam FALL_DELAY = 775; //- 100*level
+    //localparam FALL_DELAY = 775; //- 100*level
     
     localparam WAIT_FOR_BTN= 'b0000;
     localparam INIT        = 'b0001;
@@ -57,11 +56,11 @@ module draw_rect_ctl(
     localparam L_BLOCK = 'b10110;
     
     reg [1:0]  rot_nxt;
-    reg [3:0]  state_nxt, state;
+    reg [3:0]  state_nxt, state, level, level_nxt;
     reg [4:0]  block_nxt, xpos_nxt, ypos_nxt, buf_block_nxt;         
-    reg [10:0] counter, counter_nxt, debounce2_nxt, debounce2;
+    reg [10:0] counter, counter_nxt, lvl_param, lvl_param_nxt;
     reg [19:0] points_nxt;
-    reg [26:0] iterator, iterator_nxt, debounce1, debounce1_nxt;
+    reg [26:0] iterator, iterator_nxt;
     
     always@(posedge pclk)
         if (rst) begin
@@ -72,10 +71,9 @@ module draw_rect_ctl(
             iterator   <= 0;
             block      <= 0;
             rot        <= 0;
-            debounce1  <= 0;
-            debounce2  <= 0;
             buf_block  <= 0;
             points     <= 0;
+            lvl_param  <= 0;
         end
         else begin
             state     <= state_nxt;
@@ -85,26 +83,29 @@ module draw_rect_ctl(
             iterator  <= iterator_nxt;
             block     <= block_nxt;
             rot       <= rot_nxt;
-            debounce1 <= debounce1_nxt;
-            debounce2 <= debounce2_nxt;
             buf_block <= buf_block_nxt;
             points    <= points_nxt;
-            
+            lvl_param <= lvl_param_nxt;
         end
+    
+    always@* begin
+      if(lvl_param == 20) begin
+        level_nxt = level + 1;
+      end
+    end
     
     always@*begin
       case(state)
         WAIT_FOR_BTN:state_nxt = (btnD||btnL||btnR||!pad_L||!pad_R||!pad_D||!pad_S) ? INIT : WAIT_FOR_BTN;
-        INIT:        state_nxt = (ID_1_occupied) ? IDLE : INIT;
-        IDLE:        state_nxt = (counter > FALL_DELAY-(50*level)) ? CHECK : btnD||!pad_D && (counter > (FALL_DELAY-(50*level))/10) ? CHECK : btnR||!pad_R ? MOVE_RIGHT : btnL||!pad_L ? MOVE_LEFT : (btnU||!pad_S) ? ROT : IDLE; 
+        INIT:        state_nxt = (ID_1_occupied && ID_2_occupied) ? IDLE : INIT;
+        IDLE:        state_nxt = (counter > 775-(50*level)) ? CHECK : btnD||!pad_D && (counter > (775-(50*level))/10) ? CHECK : btnR||!pad_R ? MOVE_RIGHT : btnL||!pad_L ? MOVE_LEFT : (btnU||!pad_S) ? ROT : IDLE; 
         MOVE_DOWN:   state_nxt = IDLE;
         CHECK:       state_nxt = collision ? STOP : MOVE_DOWN;
-        MOVE_LEFT:   state_nxt = HOLD_BTN;
-        MOVE_RIGHT:  state_nxt = HOLD_BTN;
-        HOLD_BTN:    state_nxt = (counter > FALL_DELAY) ? CHECK : (debounce2 > 300) ? IDLE : HOLD_BTN;
+        MOVE_LEFT:   state_nxt = IDLE;
+        MOVE_RIGHT:  state_nxt = IDLE;
         STOP:        state_nxt = NEW_BLOCK;
         ROT:         state_nxt = ROT_OFFSET;
-        ROT_OFFSET:  state_nxt = HOLD_BTN;
+        ROT_OFFSET:  state_nxt = IDLE;
         NEW_BLOCK :  state_nxt = IDLE;
       default:
         state_nxt = IDLE;  
@@ -122,11 +123,10 @@ module draw_rect_ctl(
           if(random + 1 == 'b10111) buf_block_nxt = 'b10000;
           else buf_block_nxt = random + 1;
           rot_nxt = 0;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;
-          lock_en = 0;
-          lock_ID_en = 0;
+          lock_en = 0; 
+          lock_ID_en = 0;         
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
         end  
         INIT: begin
           lock_en = 0;
@@ -134,27 +134,26 @@ module draw_rect_ctl(
           ypos_nxt = 0;          
           counter_nxt = 0;   
           iterator_nxt = 0;
-          block_nxt = block;
-          buf_block_nxt = buf_block;
+          block_nxt = random;
+          if(random + 1 == 'b10111) buf_block_nxt = 'b10000;
+          else buf_block_nxt = random + 1;
           rot_nxt = 0;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;  
           lock_ID_en = 1;
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end         
         IDLE: begin
           xpos_nxt = xpos;
           ypos_nxt = ypos;           
-          iterator_nxt = iterator + 1;
+          iterator_nxt = iterator + 2;
           counter_nxt = (iterator)>>16;
           block_nxt = block;
           buf_block_nxt = buf_block;
           rot_nxt = rot;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;   
-          lock_en = 0;
-          lock_ID_en = 0;
+          lock_en = 0;    
+          lock_ID_en = 0;      
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end 
         MOVE_DOWN: begin
           if((btnD||!pad_D)&& counter>0) points_nxt = points + 1;
@@ -165,11 +164,10 @@ module draw_rect_ctl(
           block_nxt = block;
           buf_block_nxt = buf_block;
           rot_nxt = rot;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;
-          lock_en = 0;
-          lock_ID_en = 0;
+          lock_en = 0;  
+          lock_ID_en = 0;        
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end
         CHECK: begin
           xpos_nxt = xpos;
@@ -179,55 +177,51 @@ module draw_rect_ctl(
           block_nxt = block;
           buf_block_nxt = buf_block;
           rot_nxt = rot;
-          debounce1_nxt = debounce1;
-          debounce2_nxt = debounce2;
-          lock_en = 0;
-          lock_ID_en = 0;
+          lock_en = 0;     
+          lock_ID_en = 0;     
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end          
         MOVE_LEFT: begin
-            if((sq_1_col == 0) || (sq_2_col == 0) || (sq_3_col == 0) || (sq_4_col == 0)) xpos_nxt = xpos;
-            else xpos_nxt = xpos - 1;
+          if((sq_1_col == 0) || (sq_2_col == 0) || (sq_3_col == 0) || (sq_4_col == 0)) xpos_nxt = xpos;
+          else xpos_nxt = xpos - 1;
           ypos_nxt = ypos;         
           iterator_nxt = iterator;
           counter_nxt = counter;
           block_nxt = block;
           buf_block_nxt = buf_block;
           rot_nxt = rot; 
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;       
-          lock_en = 0;
-          lock_ID_en = 0;
+          lock_en = 0;  
+          lock_ID_en = 0;        
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end
         MOVE_RIGHT: begin
-            if((sq_1_col == 9) || (sq_2_col == 9) || (sq_3_col == 9) || (sq_4_col == 9)) xpos_nxt = xpos;
-            else xpos_nxt = xpos + 1;
+          if((sq_1_col == 9) || (sq_2_col == 9) || (sq_3_col == 9) || (sq_4_col == 9)) xpos_nxt = xpos;
+          else xpos_nxt = xpos + 1;
           ypos_nxt = ypos;           
           iterator_nxt = iterator;
           counter_nxt = counter;
           block_nxt = block;
           buf_block_nxt = buf_block;
           rot_nxt = rot;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;         
-          lock_en = 0;
-          lock_ID_en = 0;
+          lock_en = 0;    
+          lock_ID_en = 0;      
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end
         HOLD_BTN: begin
           xpos_nxt = xpos;
           ypos_nxt = ypos;  
           iterator_nxt = iterator + 1;
-          counter_nxt = (iterator)>>16;
+          counter_nxt = (iterator)>>15;
           block_nxt = block;
           buf_block_nxt = buf_block;
           rot_nxt = rot;
-          debounce1_nxt = debounce1 + 1;
-          debounce2_nxt = (debounce1)>>16;  
-          lock_en = 0;
-          lock_ID_en = 0;
+          lock_en = 0; 
+          lock_ID_en = 0;         
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end
         STOP: begin
           xpos_nxt = xpos;
@@ -237,11 +231,10 @@ module draw_rect_ctl(
           rot_nxt = 0;
           block_nxt = block;
           buf_block_nxt = buf_block;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;
-          lock_en = 1;
-          lock_ID_en = 0;
+          lock_en = 1;  
+          lock_ID_en = 0;        
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end
         ROT: begin
             if (rot == 3) rot_nxt = 0;
@@ -252,11 +245,10 @@ module draw_rect_ctl(
           counter_nxt = counter;
           block_nxt = block;
           buf_block_nxt = buf_block;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;
-          lock_en = 0;
-          lock_ID_en = 0;
+          lock_en = 0;  
+          lock_ID_en = 0;        
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end
         ROT_OFFSET: begin
             if(block==I_BLOCK && xpos==9 && (rot == 0 || rot == 2)) xpos_nxt = xpos - 2;
@@ -277,11 +269,10 @@ module draw_rect_ctl(
           counter_nxt = counter;
           block_nxt = block;
           buf_block_nxt = buf_block;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;
-          lock_en = 0;
-          lock_ID_en = 0;
+          lock_en = 0; 
+          lock_ID_en = 0;         
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end
         NEW_BLOCK: begin
           xpos_nxt = 5;
@@ -291,11 +282,10 @@ module draw_rect_ctl(
           block_nxt = buf_block;
           buf_block_nxt = random;
           rot_nxt = 0;
-          debounce1_nxt = 0;
-          debounce2_nxt = 0;
           lock_en = 0;
-          lock_ID_en = 0;
+          lock_ID_en = 0;          
           points_nxt = points;
+          lvl_param_nxt = lvl_param + 1;
           end          
         default: begin
           xpos_nxt = xpos;
@@ -305,11 +295,10 @@ module draw_rect_ctl(
           block_nxt = block;
           buf_block_nxt = buf_block;
           rot_nxt = rot;
-          debounce1_nxt = debounce1;
-          debounce2_nxt = debounce2;
           lock_en = 0;
-          lock_ID_en = 0;
+          lock_ID_en = 0;          
           points_nxt = points;
+          lvl_param_nxt = lvl_param;
           end
       endcase
     end      

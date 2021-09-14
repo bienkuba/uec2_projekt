@@ -21,6 +21,8 @@
 
 
 module board_ID(
+    input clk,
+    input rst,
     input wire       lock_ID_en,
     input wire [7:0] external_ID_1,
     input wire [7:0] external_ID_2,
@@ -31,19 +33,32 @@ module board_ID(
     );
     
     reg ID_reserved;
+    reg ID_1_occupied_nxt, ID_2_occupied_nxt;
+    
+    always@(posedge clk) begin
+        if(rst) begin
+            ID_1_occupied <= 0;
+            ID_2_occupied <= 0;
+        end
+        else begin
+            ID_1_occupied <= ID_1_occupied_nxt;
+            ID_2_occupied <= ID_2_occupied_nxt;
+            end
+    end
     
     always@*begin
-        if(external_ID_1) ID_1_occupied = 1;
-        if(external_ID_2) ID_2_occupied = 1;
+        if(external_ID_1) ID_1_occupied_nxt = 1;
+        if(external_ID_2) ID_2_occupied_nxt = 1;
+
         if(lock_ID_en && !ID_reserved)begin
-            if(!ID_1_occupied && !ID_2_occupied)begin 
+            if(!ID_1_occupied_nxt && !ID_2_occupied_nxt)begin 
                 board_ID = 8'b00000001;
-                ID_1_occupied = 1;
+                ID_1_occupied_nxt = 1;
                 ID_reserved = 1;
             end
-            else if(ID_1_occupied && !ID_2_occupied) begin
+            else if(ID_1_occupied_nxt && !ID_2_occupied_nxt) begin
                 board_ID = 8'b00000010;
-                ID_2_occupied = 1;
+                ID_2_occupied_nxt = 1;
                 ID_reserved = 1;
             end
             else begin
@@ -51,6 +66,8 @@ module board_ID(
                 ID_reserved = 1;
             end
         end
+        else
+            ID_reserved = 0;
     end
     
 endmodule

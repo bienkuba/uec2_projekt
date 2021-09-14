@@ -30,8 +30,7 @@ module fallen_blocks(
  output reg        hblnk_out,
  output reg [11:0] rgb_out,
  output reg        collision,
- output reg [19:0] points_out,
- output reg [3:0]  level
+ output reg [19:0] points_out
  );
   
   localparam X_CALIB = 201;
@@ -65,7 +64,6 @@ module fallen_blocks(
   reg [2:0]  cleared_lane, cleared_lane_nxt;
   reg [3:0]  level_nxt;
   reg [0:9]  my_reg[19:0], my_reg_nxt[19:0];
-  reg [8:0]  deleted_rows, deleted_rows_nxt;
   reg [11:0] rgb_out_nxt, color_L, color_D, color_N;  
   reg [19:0] points, points_nxt;
            
@@ -81,8 +79,6 @@ module fallen_blocks(
       collision    <= 0;
       points       <= 0;
       cleared_lane <= 0;
-      deleted_rows <= 0;
-      level        <= 0;
       for(i = 0; i < 20; i = i + 1) my_reg[i] <= 0;
     end
     else begin
@@ -96,8 +92,6 @@ module fallen_blocks(
       collision    <= collision_nxt;
       points       <= points_nxt;
       cleared_lane <= cleared_lane_nxt;
-      deleted_rows <= deleted_rows_nxt;
-      level        <= level_nxt;
       for(j = 0; j < 20; j = j + 1) my_reg[j] <= my_reg_nxt[j];
     end
   end 
@@ -109,10 +103,8 @@ module fallen_blocks(
       color_N = RED_N;
       collision_nxt = collision;
       cleared_lane_nxt = cleared_lane;
-      deleted_rows_nxt = deleted_rows;
       points_nxt = points;
       points_out = points + points_in;
-      level_nxt = level;
       for(k = 0; k < 20; k = k + 1) my_reg_nxt[k] = my_reg[k];
       if(sq_1_row == 19 || sq_2_row == 19 || sq_3_row == 19 || sq_4_row == 19)begin
         collision_nxt = 1; 
@@ -212,7 +204,6 @@ module fallen_blocks(
       end
       else begin
         collision_nxt = 0;
-        deleted_rows_nxt = deleted_rows + cleared_lane;
         if (cleared_lane == 1) begin
           points_nxt = points + 80;
           cleared_lane_nxt = 0;
@@ -231,15 +222,10 @@ module fallen_blocks(
         end
         else points_nxt = points;
       end
-      if(level == 0) level_nxt = level + l;
-      if(deleted_rows >= 10)begin
-        deleted_rows_nxt = 0;
-        level_nxt = level + 1;
-        end
     end
 
   
-  always @* begin
+  always@*begin
     if (vblnk_in || hblnk_in) rgb_out_nxt = 12'h0_0_0; 
     else begin
         if(my_reg[19][0] == 1 && vcount_in >= Y_CALIB + 35*19 && vcount_in < SIZE + Y_CALIB + 35*19 && hcount_in >= X_CALIB + 35*0 && hcount_in < SIZE + X_CALIB + 35*0) rgb_out_nxt = color_D;

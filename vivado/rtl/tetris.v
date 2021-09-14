@@ -5,13 +5,12 @@ module tetris (
   input wire rst,
   input wire pad_R,
   input wire pad_L,
-  input wire pad_U,
   input wire pad_D,
   input wire pad_S,
   input wire btnL,
   input wire btnR,
   input wire btnD,
-//  input wire btnU,
+  input wire btnU,
   input wire rx1, rx2,
   output wire tx1, tx2,
   output reg vs,
@@ -37,10 +36,9 @@ module tetris (
 
 
   wire mclk;
-  clk_wiz_0 clk_wiz_0_my(
+  clock my_clock(
       .clk(clk),
       .clk75MHz(pclk),
-      .clk100MHz(mclk),
       .reset(rst),
       .locked(locked)
     );
@@ -51,7 +49,7 @@ module tetris (
   wire        vsync, hsync, vsync_out_b, hsync_out_b, vsync_out_r, hsync_out_r, vsync_out_f, hsync_out_f, vsync_out_nb, hsync_out_nb, vsync_out_ch, hsync_out_ch;
   wire        vblnk, hblnk, vblnk_out_b, hblnk_out_b, vblnk_out_r, hblnk_out_r, vblnk_out_f, hblnk_out_f, vblnk_out_nb, hblnk_out_nb, vblnk_out_ch, hblnk_out_ch;
   wire [1:0]  rot_ctl;
-  wire [3:0]  xpos_ctl, char_line, level_f;
+  wire [3:0]  xpos_ctl, char_line;
   wire [3:0]  sq_1_col_r, sq_2_col_r, sq_3_col_r, sq_4_col_r, sq_1_col_ctl, sq_2_col_ctl, sq_3_col_ctl, sq_4_col_ctl;
   wire [4:0]  sq_1_row_r, sq_2_row_r, sq_3_row_r, sq_4_row_r, sq_1_row_ctl, sq_2_row_ctl, sq_3_row_ctl, sq_4_row_ctl;
   wire [4:0]  random_out, block_ctl, buf_block_ctl, ypos_ctl;
@@ -64,9 +62,11 @@ module tetris (
 
   wire pad_Sd, pad_Dd, pad_Ld, pad_Rd, btnDd, btnLd, btnRd, btnUd;
   
-  wire [31:0] tx_data, ext_data1, ext_data2;
-  wire [7:0] din, board_ID;
-  wire [31:0] dout1, dout2;
+  wire tx_busy1, tx_busy2, tx_start1, tx_start2;
+  
+  wire [31:0] ext_data1, ext_data2;
+  wire [7:0] din, board_ID, tx_data;
+  wire [7:0] dout1, dout2;
   
   vga_timing my_timing (
     .vcount(vcount),
@@ -146,7 +146,7 @@ debouncer my_debouncer(
     .bttn_D(btnD),
     .bttn_L(btnL),
     .bttn_R(btnR),
-//    .bttn_U(btnU),
+    .bttn_U(btnU),
     .pad_Sd(pad_Sd),
     .pad_Rd(pad_Rd),
     .pad_Ld(pad_Ld),
@@ -163,7 +163,6 @@ debouncer my_debouncer(
     .rst(rst),
     .pad_R(pad_Rd),
     .pad_L(pad_Ld),
-    .pad_U(pad_U),
     .pad_D(pad_Dd),
     .pad_S(pad_Sd),
     .btnL(btnLd),
@@ -176,7 +175,6 @@ debouncer my_debouncer(
     .sq_4_col(sq_4_col_r),
     .collision(collision),
     .random(random_out),
-    .level(level_f),
     .ID_1_occupied(ID_1_occupied),
     .ID_2_occupied(ID_2_occupied),
     
@@ -219,8 +217,7 @@ debouncer my_debouncer(
     .vblnk_out(vblnk_out_f),
     .rgb_out(rgb_out_f),
     .collision(collision),
-    .points_out(points_f),
-    .level(level_f)
+    .points_out(points_f)
     );
   
   draw_nxt_block my_draw_nxt_block (
@@ -252,7 +249,7 @@ draw_rect_char my_draw_rect_char (
     .vsync_in(vsync_out_f),
     .vblnk_in(vblnk_out_f),
     .hcount_in(hcount_out_f),
-    .hsync_in(vsync_out_f),
+    .hsync_in(hsync_out_f),
     .hblnk_in(hblnk_out_f),   
     .rgb_in(rgb_out_f),
     .char_pixels(char_pixels),
@@ -276,6 +273,8 @@ draw_rect_char my_draw_rect_char (
   );
   
   char_rom_16x16 my_char_rom(
+    .pclk(pclk),
+    .rst(rst),
     .char_xy(char_xy),
     .points(BCD_out),
     .board_ID(board_ID),
@@ -292,6 +291,8 @@ draw_rect_char my_draw_rect_char (
    );
 
   board_ID my_board_ID(
+    .clk(pclk),
+    .rst(rst),
     .lock_ID_en(lock_ID_en),
     .external_ID_1(ext_data1[31:24]),
     .external_ID_2(ext_data2[31:24]),
@@ -306,8 +307,12 @@ draw_rect_char my_draw_rect_char (
     .rst(rst),
     .board_ID(board_ID),
     .points(BCD_out),
+    .tx_busy1(tx_busy1),
+    .tx_busy2(tx_busy2),
     
-    .tx_data(tx_data)
+    .tx_data(tx_data),
+    .tx_start1(tx_start1),
+    .tx_start2(tx_start2)
   );
   
 //  serializer my_serializer(
@@ -319,21 +324,25 @@ draw_rect_char my_draw_rect_char (
 
   uart uart_1(
     .clk(pclk),
-    .reset(rst),
+//    .reset(rst),
     .rx(rx1),
+    .tx_start(tx_start1),
     .data_in(tx_data),
 
     .data_out(dout1),
+    .tx_busy(tx_busy1),
     .tx(tx1)
   );
 
   uart uart_2(
     .clk(pclk),
-    .reset(rst),
+//    .reset(rst),
     .rx(rx2),
+    .tx_start(tx_start2),
     .data_in(tx_data),
 
     .data_out(dout2),
+    .tx_busy(tx_busy2),
     .tx(tx2)
 );
 
@@ -348,8 +357,8 @@ draw_rect_char my_draw_rect_char (
   );
 
   always @(posedge pclk)begin
-    hs <= hsync_out_f;
-    vs <= vsync_out_f;
+    hs <= hsync_out_ch;
+    vs <= vsync_out_ch;
     {r,g,b} <= rgb_out_b;
     {r,g,b} <= rgb_out_nb;
     {r,g,b} <= rgb_out_r;

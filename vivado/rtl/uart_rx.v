@@ -1,95 +1,82 @@
 `timescale 1ns / 1ps
-//Listing 8.1
-module uart_rx
-   #(
-     parameter DBIT = 8,     // # data bits
-               SB_TICK = 16  // # ticks for stop bits
-   )
-   (
-    input wire clk, reset,
-    input wire rx, s_tick,
-    output wire [7:0] dout
-   );
+//--------------------------------------------------------------------------------
+// UartRxExtreme.v
+// Konstantin Pavlov, pavlovconst@gmail.com
+//--------------------------------------------------------------------------------
 
-   // symbolic state declaration
-   localparam [1:0]
-      idle  = 2'b00,
-      start = 2'b01,
-      data  = 2'b10,
-      stop  = 2'b11;
+// INFO --------------------------------------------------------------------------------
+//  Extreme minimal UART receiver optimized for 20MHz/115200 data rate
+//  
+// CAUTION:
+// optimized for 20MHz/115200
+// rx_sample_cntr[7:0] does never stop, but reloads on sequense start condition
+// initial rx_sample_cntr[7:0] value has been made 255 instead of 257 to save one precious counter register
+// rx_busy and rx_done fall simultaneously 0,5 bit before stop bit time end
 
-   // signal declaration
-   reg [1:0] state_reg, state_next;
-   reg [3:0] s_reg, s_next;
-   reg [2:0] n_reg, n_next;
-   reg [7:0] b_reg, b_next;
+/* --- INSTANTIATION TEMPLATE BEGIN ---
+UartRxExtreme UR1 (
+    .clk(),
+	.rx_data(),
+	.rx_busy(),
+	.rx_done(),
+	.rxd()
+    );
+--- INSTANTIATION TEMPLATE END ---*/
 
-   // body
-   // FSMD state & data registers
-   always @(posedge clk, posedge reset)
-      if (reset)
-         begin
-            state_reg <= idle;
-            s_reg <= 0;
-            n_reg <= 0;
-            b_reg <= 0;
-         end
-      else
-         begin
-            state_reg <= state_next;
-            s_reg <= s_next;
-            n_reg <= n_next;
-            b_reg <= b_next;
-         end
 
-   // FSMD next-state logic
-   always @*
-   begin
-      state_next = state_reg;
-      s_next = s_reg;
-      n_next = n_reg;
-      b_next = b_reg;
-      case (state_reg)
-         idle:
-            if (~rx)
-               begin
-                  state_next = start;
-                  s_next = 0;
-               end
-         start:
-            if (s_tick)
-               if (s_reg==7)
-                  begin
-                     state_next = data;
-                     s_next = 0;
-                     n_next = 0;
-                  end
-               else
-                  s_next = s_reg + 1;
-         data:
-            if (s_tick)
-               if (s_reg==15)
-                  begin
-                     s_next = 0;
-                     b_next = {rx, b_reg[7:1]};
-                     if (n_reg==(DBIT-1))
-                        state_next = stop ;
-                      else
-                        n_next = n_reg + 1;
-                   end
-               else
-                  s_next = s_reg + 1;
-         stop:
-            if (s_tick)
-               if (s_reg==(SB_TICK-1))
-                  begin
-                     state_next = idle;
-                  end
-               else
-                  s_next = s_reg + 1;
-      endcase
-   end
-   // output
-   assign dout = b_reg;
-
-endmodule
+    module uart_rx(clk, rx_data, rx_busy, rx_done, rxd);
+    
+    
+    input wire clk;
+    
+    output reg [7:0] rx_data = 0;
+    reg rx_data_9th_bit = 0;	// {rx_data[7:0],rx_data_9th_bit} is actually a shift register
+    
+    output reg rx_busy = 0;     // sequence control is done by rx_busy and unique high logic state of rx_data_9th_bit register
+    output wire rx_done;
+    input wire rxd;
+    
+    
+    // Falling edge detector
+    reg rxd_prev = 0;
+    always @ (posedge clk) begin
+        rxd_prev <= rxd;
+    end
+    wire start_bit_strobe = ~rx_busy && (~rxd & rxd_prev);
+    
+    
+    // Sample counter
+    reg [7:0] rx_sample_cntr = 0;
+    always @ (posedge clk) begin
+        if (start_bit_strobe) begin
+            rx_sample_cntr[7:0] <= (86 * 3 - 1) - 2;
+        end else begin
+            if (rx_sample_cntr[7:0] == 0) begin
+                rx_sample_cntr[7:0] <= (86 * 2 - 1);
+            end else begin
+                rx_sample_cntr[7:0] <= rx_sample_cntr[7:0] - 1;
+            end // rx_sample_cntr
+        end // start_bit_strobe
+    end
+    wire rx_do_sample = (rx_sample_cntr[7:0] == 0);
+    
+    // Data shifting
+    always @ (posedge clk) begin
+        if (start_bit_strobe) begin
+            {rx_data[7:0],rx_data_9th_bit} <= 9'b100000000;
+            rx_busy <= 1;
+        end // start_bit_strobe
+    
+        if (rx_busy && rx_do_sample) begin
+            if (rx_data_9th_bit) begin
+                  rx_busy <= 0;
+            end else begin
+                  {rx_data[7:0],rx_data_9th_bit} <= {rxd,rx_data[7:0]};
+            end
+        end // (rx_busy && rx_do_sample)
+    end
+    
+    assign
+        rx_done = (rx_busy && rx_do_sample && rx_data_9th_bit) && rxd;
+        
+    endmodule

@@ -1,7 +1,7 @@
 # Constraints for CLK
 set_property PACKAGE_PIN W5 [get_ports clk]
 set_property IOSTANDARD LVCMOS33 [get_ports clk]
-create_clock -period 10.00 [get_ports clk]
+#create_clock -period 10.00 [get_ports clk]
 
 # Constraints for VS and HS
 set_property PACKAGE_PIN R19 [get_ports {vs}]
@@ -76,15 +76,15 @@ set_property CONFIG_VOLTAGE 3.3 [current_design]
 #Buttons
 set_property PACKAGE_PIN U18 [get_ports rst]						
 	set_property IOSTANDARD LVCMOS33 [get_ports rst]
-#set_property PACKAGE_PIN T18 [get_ports btnU]						
-#	set_property IOSTANDARD LVCMOS33 [get_ports btnU]
+set_property PACKAGE_PIN T18 [get_ports btnU]						
+	set_property IOSTANDARD LVCMOS33 [get_ports btnU]
 set_property PACKAGE_PIN W19 [get_ports btnL]						
 	set_property IOSTANDARD LVCMOS33 [get_ports btnL]
 set_property PACKAGE_PIN T17 [get_ports btnR]						
 	set_property IOSTANDARD LVCMOS33 [get_ports btnR]
 set_property PACKAGE_PIN U17 [get_ports btnD]						
 	set_property IOSTANDARD LVCMOS33 [get_ports btnD]
-	
+
 #Pmod Header JXADC
 #Sch name = XA1_P
 #set_property PACKAGE_PIN J3 [get_ports rx1]                
@@ -119,8 +119,8 @@ set_property PACKAGE_PIN A14 [get_ports pad_D]
 set_property PACKAGE_PIN A16 [get_ports pad_R]
     set_property IOSTANDARD LVCMOS33 [get_ports pad_R]
 ##Sch name = JB3
-set_property PACKAGE_PIN B15 [get_ports pad_U]
-    set_property IOSTANDARD LVCMOS33 [get_ports pad_U]
+#set_property PACKAGE_PIN B15 [get_ports pad_U]
+#    set_property IOSTANDARD LVCMOS33 [get_ports pad_U]
 ##Sch name = JB4
 set_property PACKAGE_PIN B16 [get_ports pad_L]
     set_property IOSTANDARD LVCMOS33 [get_ports pad_L]
