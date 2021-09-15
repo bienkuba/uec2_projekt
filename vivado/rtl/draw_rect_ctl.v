@@ -1,5 +1,9 @@
 `timescale 1ns / 1ps
 
+/*
+Autor: Jakub Bien
+*/
+
 module draw_rect_ctl(
     input wire       pclk,
     input wire       rst,

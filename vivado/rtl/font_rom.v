@@ -6,6 +6,11 @@
 //  - ROM size: 512-by-8 (2^11-by-8) bits
 //              16K bits: 1 BRAM
 
+/*
+modul z labolatoriow
+Autor: Jakub Bien
+*/
+
 module font_rom
     (
         input  wire        clk,

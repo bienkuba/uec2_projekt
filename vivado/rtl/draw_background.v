@@ -1,5 +1,10 @@
 `timescale 1ns / 1ps
 
+/*
+zmodyfikowany modul z labolatoriow
+Autor: Jakub Bien
+*/
+
   module draw_background(
     input wire [10:0] vcount_in,
     input wire vsync_in,
@@ -201,7 +206,7 @@
       else if ((hcount_in >= 10 && hcount_in <= 180) && (vcount_in >= 100 && vcount_in <= 110)) rgb_out_nxt <= 12'h8_8_8;
       // nxt_block area background     
       else if ((hcount_in >= 10 && hcount_in <= 180) && (vcount_in >= 10 && vcount_in <= 110)) rgb_out_nxt <= 12'h0_0_0;
-/*    // T1 of TETRIS sigh 
+    // T1 of TETRIS sigh 
     else if (vcount_in >= Y_T1     && vcount_in < SIZE + Y_T1 - 1  && hcount_in == X_T1)            rgb_out_nxt = 12'hf_a_b; 
     else if (vcount_in >= Y_T1     && vcount_in < SIZE + Y_T1 - 2  && hcount_in == X_T1 + 1)        rgb_out_nxt = 12'hf_a_b; 
     else if (vcount_in >= Y_T1     && vcount_in < SIZE + Y_T1 - 3  && hcount_in == X_T1 + 2)        rgb_out_nxt = 12'hf_a_b;
@@ -1067,7 +1072,7 @@
     else if (vcount_in == Y_S11 + SIZE - 3 && hcount_in > X_S11 + 2     && hcount_in < SIZE + X_S11)     rgb_out_nxt = 12'h0_c_f;          
     // inside color
     else if (vcount_in >= Y_S11 && vcount_in < SIZE + Y_S11 && hcount_in >= X_S11 && hcount_in < SIZE + X_S11) rgb_out_nxt = 12'h0_f_f;            
-    */  
+ 
       // light blue background
       else if (hcount_in >= vcount_in) rgb_out_nxt <= 12'h8_c_e;
       // dark blue background

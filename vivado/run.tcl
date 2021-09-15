@@ -1,5 +1,5 @@
 set project Tetris
-set top_module tetris
+set top_module top_tetris
 set target xc7a35tcpg236-1
 set bitstream_file build/${project}.runs/impl_1/${top_module}.bit
 
@@ -39,7 +39,7 @@ read_xdc {
 }
 
 read_verilog {
-    rtl/tetris.v
+    rtl/top_tetris.v
     rtl/vga_timing.v
     rtl/draw_background.v
     rtl/draw_rect.v
@@ -61,8 +61,7 @@ read_verilog {
     rtl/uart_tx.v
     rtl/uart.v
     rtl/data_to_transfer.v
-    rtl/board_ID.v
-    rtl/mux.v
+    rtl/demux.v
 }
 
 add_files -fileset sim_1 {

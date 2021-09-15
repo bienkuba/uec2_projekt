@@ -1,5 +1,11 @@
 `timescale 1ns / 1ps
 
+/*
+ Autor: Tomasz Jurczyk, Bohdan Klymchuk
+*/
+
+
+
 module data_to_transfer(
     input wire clk,
     input wire rst,

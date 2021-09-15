@@ -3,6 +3,11 @@
 // Declare the module and its ports. This is
 // using Verilog-2001 syntax.
 
+/*
+zmodyfikowany modul z labolatoriow
+Autor: Bohdan Klymchuk
+*/
+
 module vga_timing (
   output reg [10:0] vcount,
   output reg vsync,

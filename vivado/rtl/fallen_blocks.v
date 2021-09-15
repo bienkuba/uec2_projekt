@@ -1,5 +1,9 @@
 `timescale 1ns / 1ps
 
+/*
+Autor: Jakub Bien
+*/
+
 module fallen_blocks(
 
  input wire [10:0] vcount_in,
@@ -123,7 +127,7 @@ module fallen_blocks(
             my_reg_nxt[sq_2_row][sq_2_col] = 1;
             my_reg_nxt[sq_3_row][sq_3_col] = 1;
             my_reg_nxt[sq_4_row][sq_4_col] = 1;
-            points_nxt = points + 1;
+            points_nxt = points + 5;
           end
       end
       else if(my_reg_nxt[19] == 10'b1111111111) for(l = 1; l < 20; l = l + 1) begin
@@ -205,19 +209,19 @@ module fallen_blocks(
       else begin
         collision_nxt = 0;
         if (cleared_lane == 1) begin
-          points_nxt = points + 2;
+          points_nxt = points + 80;
           cleared_lane_nxt = 0;
           end
         else if (cleared_lane == 2) begin
-          points_nxt = points + 3;
+          points_nxt = points + 200;
           cleared_lane_nxt = 0;
         end
         else if (cleared_lane == 3) begin
-          points_nxt = points + 4;
+          points_nxt = points + 600;
           cleared_lane_nxt = 0;
         end
         else if (cleared_lane >= 4) begin
-          points_nxt = points + 5;
+          points_nxt = points + 1200;
           cleared_lane_nxt = 0;
         end
         else points_nxt = points;

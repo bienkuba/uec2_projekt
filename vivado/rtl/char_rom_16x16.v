@@ -1,5 +1,10 @@
 `timescale 1ns / 1ps
   
+ /*
+zmodyfikowany modul z labolatoriow
+Autor: Bohdan Klymchuk
+*/
+  
 module char_rom_16x16(
     input wire pclk,
     input wire rst,

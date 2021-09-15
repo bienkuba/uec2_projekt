@@ -1,3 +1,8 @@
+/*
+ Autor: Tomasz Jurczyk, Bohdan Klymchuk
+*/
+
+
 module mod_m_counter
    #(
     parameter N=4, // number of bits in counter

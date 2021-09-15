@@ -1,5 +1,9 @@
 `timescale 1ns / 1ps
 
+/*
+ Autor: Tomasz Jurczyk, Bohdan Klymchuk
+*/
+
 module uart
    #( // Default setting:
       // 19,200 baud, 8 data bits, 1 stop bit, 2^2 FIFO

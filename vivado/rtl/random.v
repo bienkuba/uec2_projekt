@@ -1,5 +1,9 @@
 `timescale 1ns / 1ps
 
+/*
+Autor: Tomasz Jurczyk
+*/
+
 module randomizer (
     input wire       pclk,
     output reg [4:0] random

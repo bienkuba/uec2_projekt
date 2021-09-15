@@ -1,5 +1,9 @@
 `timescale 1ns / 1ps
 
+/*
+Autor: Jakub Bien
+*/
+
 module draw_rect(
 
  input wire [10:0] vcount_in,

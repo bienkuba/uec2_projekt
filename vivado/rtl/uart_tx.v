@@ -1,5 +1,9 @@
 `timescale 1ns / 1ps
 
+/*
+ Autor: Tomasz Jurczyk, Bohdan Klymchuk
+*/
+
 module uart_tx
    #(
      parameter DBIT = 8,     // # data bits

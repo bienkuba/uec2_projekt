@@ -1,5 +1,10 @@
 `timescale 1 ns / 1 ps
 
+/*
+Debouncer wziety z labolatoriow i lekko zmodyfiowany
+Autor: Bohdan Klymchuk
+*/
+
 module debounce
    (
     input wire clk, reset,

@@ -1,5 +1,9 @@
 `timescale 1 ns / 1 ps
 
+/*
+Autor: Bohdan Klymchuk
+*/
+
 module debouncer
    (
     input wire pclk, rst,

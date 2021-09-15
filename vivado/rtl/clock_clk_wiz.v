@@ -65,6 +65,10 @@
 
 `timescale 1ps/1ps
 
+/*
+Autor: Tomasz Jurczyk
+*/
+
 module clock_clk_wiz 
 
  (// Clock in ports

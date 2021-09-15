@@ -1,5 +1,10 @@
 `timescale 1ns / 1ps
 
+/*
+na podstawie kodu ze strony internetowej: https://www.realdigital.org/doc/6dae6583570fd816d1d675b93578203d
+Autor: Tomasz Jurczyk
+*/
+
 module bin_to_BCD_converter(
     input wire [19:0] bin,    
     output reg [23:0] BCD 
