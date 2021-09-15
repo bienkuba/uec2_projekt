@@ -35,11 +35,11 @@ module tetris (
   );
 
 
-  wire mclk;
+  wire reset;
   clock my_clock(
       .clk(clk),
       .clk75MHz(pclk),
-      .reset(rst),
+      .reset(reset),
       .locked(locked)
     );
     
@@ -62,10 +62,10 @@ module tetris (
 
   wire pad_Sd, pad_Dd, pad_Ld, pad_Rd, btnDd, btnLd, btnRd, btnUd;
   
-  wire tx_busy1, tx_busy2, tx_start1, tx_start2;
+  wire tx_busy1, tx_busy2, tx_start1, tx_start2, rx_done_tick1, tx_done_tick1, tx_done_tick2, rx_done_tick2;
   
-  wire [31:0] ext_data1, ext_data2;
-  wire [7:0] din, board_ID, tx_data;
+  wire [23:0] ext_data1, ext_data2;
+  wire [7:0] din, tx_data1, tx_data2, tx_data;
   wire [7:0] dout1, dout2;
   
   vga_timing my_timing (
@@ -175,8 +175,6 @@ debouncer my_debouncer(
     .sq_4_col(sq_4_col_r),
     .collision(collision),
     .random(random_out),
-    .ID_1_occupied(ID_1_occupied),
-    .ID_2_occupied(ID_2_occupied),
     
     .xpos(xpos_ctl),
     .ypos(ypos_ctl),
@@ -254,12 +252,8 @@ draw_rect_char my_draw_rect_char (
     .rgb_in(rgb_out_f),
     .char_pixels(char_pixels),
 
-    //.vcount_out(vcount_out_ch),
     .vsync_out(vsync_out_ch),
-    //.vblnk_out(vblnk_out_ch),
-    //.hcount_out(hcount_out_ch),
     .hsync_out(hsync_out_ch),
-    //.hblnk_out(hblnk_out_ch),
     .char_line(char_line),  
     .char_xy(char_xy),
     .rgb_out(rgb_out_ch)   
@@ -277,7 +271,6 @@ draw_rect_char my_draw_rect_char (
     .rst(rst),
     .char_xy(char_xy),
     .points(BCD_out),
-    .board_ID(board_ID),
     .ext_data_1(ext_data1),
     .ext_data_2(ext_data2),
     
@@ -285,68 +278,50 @@ draw_rect_char my_draw_rect_char (
   );
  
   bin_to_BCD_converter my_bin_to_BCD_converter(
-    .bin(points_f),    
+    .bin(points_f),  
       
     .BCD(BCD_out)
    );
-
-  board_ID my_board_ID(
-    .clk(pclk),
-    .rst(rst),
-    .lock_ID_en(lock_ID_en),
-    .external_ID_1(ext_data1[31:24]),
-    .external_ID_2(ext_data2[31:24]),
-
-    .board_ID(board_ID),
-    .ID_1_occupied(ID_1_occupied),
-    .ID_2_occupied(ID_2_occupied)
-  );
   
   data_to_transfer my_data_to_transfer(
     .clk(pclk),
     .rst(rst),
-    .board_ID(board_ID),
+    .tx_done_tick1(tx_done_tick1),
+    .tx_done_tick2(tx_done_tick2),    
     .points(BCD_out),
-    .tx_busy1(tx_busy1),
-    .tx_busy2(tx_busy2),
     
-    .tx_data(tx_data),
-    .tx_start1(tx_start1),
-    .tx_start2(tx_start2)
+    .tx_data1(tx_data1),
+    .tx_data2(tx_data2)
   );
   
-//  serializer my_serializer(
-//  .clk(pclk),
-//  .data_32(tx_data),
-  
-//  .data_8(din)
-//  );
 
   uart uart_1(
-    .clk(pclk),
-//    .reset(rst),
-    .rx(rx1),
-    .tx_start(tx_start1),
-    .data_in(tx_data),
-
-    .data_out(dout1),
-    .tx_busy(tx_busy1),
-    .tx(tx1)
-  );
+    .clk(pclk), 
+    .reset(rst),
+    .wr_uart(1),
+    .rx(rx1), 
+    .w_data(tx_data1),
+    .r_data(dout1),
+    .tx(tx1),
+    .rx_done_tick(rx_done_tick1),
+    .tx_done_tick(tx_done_tick1)
+);
 
   uart uart_2(
-    .clk(pclk),
-//    .reset(rst),
-    .rx(rx2),
-    .tx_start(tx_start2),
-    .data_in(tx_data),
-
-    .data_out(dout2),
-    .tx_busy(tx_busy2),
-    .tx(tx2)
+    .clk(pclk), 
+    .reset(rst),
+    .wr_uart(1),
+    .rx(rx2), 
+    .w_data(tx_data2),
+    .r_data(dout2),
+    .tx(tx2),
+    .rx_done_tick(rx_done_tick2),
+    .tx_done_tick(tx_done_tick2)
 );
 
   mux my_mux(
+  .rx_done_tick1(rx_done_tick1),
+  .rx_done_tick2(rx_done_tick2),
   .mux_in_1(dout1),
   .mux_in_2(dout2),
   .clk(pclk),

@@ -33,16 +33,11 @@ module draw_rect_char(
  input wire [11:0] rgb_in,
  input wire [7:0] char_pixels,
  
- //output reg [10:0] vcount_out,
  output reg vsync_out,
- //output reg vblnk_out,
- //output reg [10:0] hcount_out,
  output reg hsync_out,
- //output reg hblnk_out,
  output reg [11:0] rgb_out,
  output reg [7:0]  char_xy, 
  output reg [3:0]  char_line
- //output reg [10:0] addr
  );
  
  localparam COLOR  = 12'h0_9_9;
@@ -59,18 +54,10 @@ module draw_rect_char(
      rgb_out    <= 0;
      hsync_out  <= 0;
      vsync_out  <= 0;
-//     hblnk_out  <= 0;
-//     vblnk_out  <= 0;          
-//     hcount_out <= 0;
-//     vcount_out <= 0;
    end
    else begin
      hsync_out  <= hsync_in;
      vsync_out  <= vsync_in;
-//     hblnk_out  <= hblnk_in;
-//     vblnk_out  <= vblnk_in;  
-//     hcount_out <= hcount_in;
-//     vcount_out <= vcount_in;
      rgb_out    <= rgb_out_nxt;
    end
  end 

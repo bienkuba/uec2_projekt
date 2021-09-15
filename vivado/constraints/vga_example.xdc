@@ -93,8 +93,8 @@ set_property PACKAGE_PIN U17 [get_ports btnD]
 set_property PACKAGE_PIN L3 [get_ports rx1]                
     set_property IOSTANDARD LVCMOS33 [get_ports rx1]
 #Sch name = XA3_P
-set_property PACKAGE_PIN M2 [get_ports tx1]                
-    set_property IOSTANDARD LVCMOS33 [get_ports tx1]
+set_property PACKAGE_PIN M2 [get_ports tx2]                
+    set_property IOSTANDARD LVCMOS33 [get_ports tx2]
 ##Sch name = XA4_P
 #set_property PACKAGE_PIN N2 [get_ports {JXADC[3]}]                
     #set_property IOSTANDARD LVCMOS33 [get_ports {JXADC[3]}]
@@ -102,8 +102,8 @@ set_property PACKAGE_PIN M2 [get_ports tx1]
 #set_property PACKAGE_PIN K3 [get_ports tx2]                
 #    set_property IOSTANDARD LVCMOS33 [get_ports tx2]
 #Sch name = XA2_N
-set_property PACKAGE_PIN M3 [get_ports tx2]                
-    set_property IOSTANDARD LVCMOS33 [get_ports tx2]
+set_property PACKAGE_PIN M3 [get_ports tx1]                
+    set_property IOSTANDARD LVCMOS33 [get_ports tx1]
 #Sch name = XA3_N
 set_property PACKAGE_PIN M1 [get_ports rx2]                
     set_property IOSTANDARD LVCMOS33 [get_ports rx2]

@@ -12,8 +12,6 @@ if {($argc != 1) || ([lindex $argv 0] ni {"simulation" "bitstream" "program"})} 
     usage
 }
 
-
-
 if {[lindex $argv 0] == "program"} {
     open_hw
     connect_hw_server
@@ -58,6 +56,7 @@ read_verilog {
     rtl/draw_rect_char.v
     rtl/font_rom.v
     rtl/bin_to_BCD_converter.v
+    rtl/mod_m_counter.v
     rtl/uart_rx.v
     rtl/uart_tx.v
     rtl/uart.v

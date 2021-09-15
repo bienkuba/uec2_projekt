@@ -5,7 +5,6 @@ module draw_rect_ctl(
     input wire       rst,
     input wire       pad_R,
     input wire       pad_L,
-    //input wire       pad_U,
     input wire       pad_D,
     input wire       pad_S,
     input wire       btnL,
@@ -18,8 +17,6 @@ module draw_rect_ctl(
     input wire [3:0] sq_4_col,
     input wire       collision,
     input wire [4:0] random,
-    input wire       ID_1_occupied,
-    input wire       ID_2_occupied,
     
     output reg [3:0] xpos,
     output reg [4:0] ypos,
@@ -31,8 +28,6 @@ module draw_rect_ctl(
     output reg       lock_ID_en
     );
     
-    //localparam LEVEL = 5; //_______________________ make it input later
-    //localparam FALL_DELAY = 775; //- 100*level
     
     localparam WAIT_FOR_BTN= 'b0000;
     localparam INIT        = 'b0001;
@@ -97,7 +92,7 @@ module draw_rect_ctl(
     always@*begin
       case(state)
         WAIT_FOR_BTN:state_nxt = (btnD||btnL||btnR||!pad_L||!pad_R||!pad_D||!pad_S) ? INIT : WAIT_FOR_BTN;
-        INIT:        state_nxt = (ID_1_occupied && ID_2_occupied) ? IDLE : INIT;
+        INIT:        state_nxt = IDLE;
         IDLE:        state_nxt = (counter > 775-(50*level)) ? CHECK : btnD||!pad_D && (counter > (775-(50*level))/10) ? CHECK : btnR||!pad_R ? MOVE_RIGHT : btnL||!pad_L ? MOVE_LEFT : (btnU||!pad_S) ? ROT : IDLE; 
         MOVE_DOWN:   state_nxt = IDLE;
         CHECK:       state_nxt = collision ? STOP : MOVE_DOWN;

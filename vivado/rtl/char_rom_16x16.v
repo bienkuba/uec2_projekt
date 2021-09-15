@@ -5,9 +5,8 @@ module char_rom_16x16(
     input wire rst,
     input wire [7:0]  char_xy,
     input wire [23:0] points,
-    input wire [31:24]  board_ID,
-    input wire [31:0] ext_data_1,
-    input wire [31:0] ext_data_2,
+    input wire [23:0] ext_data_1,
+    input wire [23:0] ext_data_2,
     
     output reg [6:0]  char_code 
 );
@@ -103,79 +102,27 @@ module char_rom_16x16(
         P3_D3 <= 0;
         P3_D4 <= 0;
     end
-    else begin
-        if(board_ID == 8'b00000001)begin  
-            P1_D1 <= points[23:20];
-            P1_D2 <= points[19:16];
-            P1_D3 <= points[15:12];
-            P1_D4 <= points[11:8];
-            P1_D5 <= points[7:4];
-            P1_D6 <= points[3:0];
-        end
-        else if(board_ID == 8'b00000010)begin  
-            P2_D1 <= points[23:20];
-            P2_D2 <= points[19:16];
-            P2_D3 <= points[15:12];
-            P2_D4 <= points[11:8];
-            P2_D5 <= points[7:4];
-            P2_D6 <= points[3:0];
-        end
-        else begin     
-            P3_D1 <= points[23:20];
-            P3_D2 <= points[19:16];
-            P3_D3 <= points[15:12];
-            P3_D4 <= points[11:8];
-            P3_D5 <= points[7:4];
-            P3_D6 <= points[3:0];
-        end
-        if(ext_data_1[31:24] == 8'b00000001)begin
-            P1_D1 <= ext_data_1[23:20]; 
-            P1_D2 <= ext_data_1[19:16]; 
-            P1_D3 <= ext_data_1[15:12]; 
-            P1_D4 <= ext_data_1[11:8];  
-            P1_D5 <= ext_data_1[7:4];   
-            P1_D6 <= ext_data_1[3:0];   
-        end
-        else if(ext_data_1[31:24] == 8'b00000010)begin  
-            P2_D1 <= ext_data_1[23:20]; 
-            P2_D2 <= ext_data_1[19:16]; 
-            P2_D3 <= ext_data_1[15:12]; 
-            P2_D4 <= ext_data_1[11:8];  
-            P2_D5 <= ext_data_1[7:4];   
-            P2_D6 <= ext_data_1[3:0];   
-        end
-        else begin     
-            P3_D1 <= ext_data_1[23:20];
-            P3_D2 <= ext_data_1[19:16];
-            P3_D3 <= ext_data_1[15:12];
-            P3_D4 <= ext_data_1[11:8]; 
-            P3_D5 <= ext_data_1[7:4];  
-            P3_D6 <= ext_data_1[3:0];  
-        end
-        if(ext_data_2[31:24] == 8'b00000001)begin //ext_data_2[31:24]
-            P1_D1 <= ext_data_2[23:20];
-            P1_D2 <= ext_data_2[19:16];
-            P1_D3 <= ext_data_2[15:12];
-            P1_D4 <= ext_data_2[11:8]; 
-            P1_D5 <= ext_data_2[7:4];  
-            P1_D6 <= ext_data_2[3:0];  
-        end                  
-        else if(ext_data_2[31:24] == 8'b00000010)begin  
-            P2_D1 <= ext_data_2[23:20];
-            P2_D2 <= ext_data_2[19:16];
-            P2_D3 <= ext_data_2[15:12];
-            P2_D4 <= ext_data_2[11:8]; 
-            P2_D5 <= ext_data_2[7:4];  
-            P2_D6 <= ext_data_2[3:0];  
-        end                  
-        else begin           
-            P3_D1 <= ext_data_2[23:20];
-            P3_D2 <= ext_data_2[19:16];
-            P3_D3 <= ext_data_2[15:12];
-            P3_D4 <= ext_data_2[11:8];
-            P3_D5 <= ext_data_2[7:4];
-            P3_D6 <= ext_data_2[3:0];
-        end
+    else begin     
+        P1_D1 <= points[23:20]; 
+        P1_D2 <= points[19:16]; 
+        P1_D3 <= points[15:12]; 
+        P1_D4 <= points[11:8];  
+        P1_D5 <= points[7:4];   
+        P1_D6 <= points[3:0];   
+     
+        P2_D1 <= ext_data_1[23:20]; 
+        P2_D2 <= ext_data_1[19:16]; 
+        P2_D3 <= ext_data_1[15:12]; 
+        P2_D4 <= ext_data_1[11:8];  
+        P2_D5 <= ext_data_1[7:4];   
+        P2_D6 <= ext_data_1[3:0];   
+        
+        P3_D1 <= ext_data_2[23:20];
+        P3_D2 <= ext_data_2[19:16];
+        P3_D3 <= ext_data_2[15:12];
+        P3_D4 <= ext_data_2[11:8]; 
+        P3_D5 <= ext_data_2[7:4];  
+        P3_D6 <= ext_data_2[3:0];        
     end
  end
 
@@ -265,24 +212,24 @@ module char_rom_16x16(
         8'h4d: char_code = SPACE;   
         8'h4e: char_code = SPACE;   
         8'h4f: char_code = SPACE; 
-        
-        8'h50: char_code = Y;           
-        8'h51: char_code = o;   
-        8'h52: char_code = u;   
-        8'h53: char_code = SPACE;   
-        8'h54: char_code = a;   
-        8'h55: char_code = r;   
-        8'h56: char_code = e;   
-        8'h57: char_code = SPACE;   
-        8'h58: char_code = P;   
-        8'h59: char_code = l;   
-        8'h5a: char_code = a;   
-        8'h5b: char_code = y;   
-        8'h5c: char_code = e;   
-        8'h5d: char_code = r;   
-        8'h5e: char_code = {6'b001100, board_ID};
-        8'h5f: char_code = 7'h21;   //!
-        
+
+        8'h50: char_code = SPACE;     
+        8'h51: char_code = SPACE;
+        8'h52: char_code = SPACE;
+        8'h53: char_code = SPACE;
+        8'h54: char_code = SPACE;
+        8'h55: char_code = SPACE;
+        8'h56: char_code = SPACE;
+        8'h57: char_code = SPACE;
+        8'h58: char_code = SPACE;
+        8'h59: char_code = SPACE;
+        8'h5a: char_code = SPACE;
+        8'h5b: char_code = SPACE;
+        8'h5c: char_code = SPACE;
+        8'h5d: char_code = SPACE;
+        8'h5e: char_code = SPACE;
+        8'h5f: char_code = SPACE;
+     
         8'h60: char_code = SPACE;           
         8'h61: char_code = SPACE;   
         8'h62: char_code = SPACE;   

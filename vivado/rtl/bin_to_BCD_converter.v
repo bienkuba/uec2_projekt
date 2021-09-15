@@ -19,4 +19,5 @@ module bin_to_BCD_converter(
       BCD = {BCD[22:0],bin[19-i]};
       end
     end
-    endmodule
+endmodule
+    
